@@ -1,0 +1,88 @@
+% ============================================================
+%  §1  Introduction
+% ============================================================
+
+Large vision-language models (VLMs) have made remarkable strides on visual benchmarks, yet they
+still exhibit systematic, repeatable failure modes on tasks that require structured visual reasoning.
+A chart that demands multi-step data extraction, a high-resolution image that requires isolating a
+sub-region, a mathematical diagram that calls for compositional interpretation: these cases expose
+not random errors but consistent gaps in strategy and perception.
+Current approaches to closing these gaps fall into two camps, both expensive.
+Training-based methods such as \citet{vtoolr1_2025} and \citet{pixelreasoner_2025} apply
+reinforcement learning or supervised fine-tuning on large GPU clusters to teach VLMs to use tools.
+Prompt-based methods such as chain-of-thought or few-shot exemplars improve performance on narrow
+distributions but do not generalise across benchmark families and require manual curation.
+
+A third approach—letting the agent learn from its own mistakes—has shown promise in text-only
+domains~\citep{shinn2023reflexion,wang2023voyager}, but it stops short of what visual reasoning
+requires. Reflexion~\citep{shinn2023reflexion} accumulates verbal reflections per case, yet these
+reflections are not persistent across cases, never become reusable capabilities, and cannot encode
+executable visual processing. No prior work achieves training-free generation of \emph{both}
+reusable reasoning strategies \emph{and} executable visual tools that generalise to unseen cases.
+
+We present \sysname{}, a training-free framework in which a VLM agent autonomously evolves two
+complementary capability types from failure.
+\textbf{Skills} are structured reasoning strategies—standard operating procedures (SOPs) encoding
+\emph{when} and \emph{how} to approach a problem class.
+\textbf{Tools} are executable Python programs that expand the agent's visual perception by
+manipulating images directly.
+On each failure, a two-role agent (AnalyzerDecider + Generator) visually diagnoses the root cause
+by inspecting the original image alongside any tool outputs, decides whether the bottleneck is
+cognitive or perceptual, generates the appropriate capability, validates it, and accumulates it for
+future cases---all without updating model weights.
+
+After only three evolution iterations on $k{=}200$ training cases per benchmark, \sysname{}
+achieves consistent improvements of $+2.8\%$--$9.2\%$ on four standard VQA benchmarks
+(ChartQA, V*, HRBench, MathVista) evaluated on held-out validation sets,
+outperforming all training-free baselines including Reflexion~\citep{shinn2023reflexion} and
+few-shot chain-of-thought.
+Our most consequential finding is that \emph{skill evolution is universally effective} across all
+four benchmarks, while tool evolution provides additional gains only on benchmarks with perceptual
+bottlenecks—revealing that most systematic VLM failures are \emph{strategy} failures, not
+perception failures.
+
+\paragraph{Contributions.}
+\begin{enumerate}[leftmargin=*, label=(\arabic*)]
+  \item We propose \sysname{}, a training-free framework for VLM agents to autonomously evolve
+        reasoning skills and visual tools from failure, achieving $+2.8\%$--$9.2\%$ improvements
+        on four VQA benchmarks without any weight updates.
+
+  \item We identify a \textbf{cognitive-perceptual bottleneck dichotomy}: skill evolution alone
+        suffices for strategy-bottlenecked benchmarks (ChartQA, MathVista), while perceptual
+        benchmarks (V*, HRBench) additionally require tool evolution.  This decomposition provides
+        a principled diagnostic for where to invest improvement effort for a given benchmark.
+
+  \item We introduce \textbf{progressive tool mastery}: after generating a tool, the agent profiles
+        its applicability boundaries (supported patterns, failure modes, optimal chaining
+        conditions) on a small held-out set, distilling the profile into a reusable deployment SOP.
+        Ablation shows this mastery phase is critical for generalisation on perceptual benchmarks.
+
+  \item We show via ablation that \textbf{visual failure analysis}—the AnalyzerDecider seeing both
+        the original image and tool artifacts—is essential: text-only diagnosis produces
+        systematically inferior capability generation, confirming that the visual channel is
+        necessary for accurate root-cause identification.
+\end{enumerate}
+
+\paragraph{Paper organisation.}
+Section~\ref{sec:related_work} positions \sysname{} against related work.
+Section~\ref{sec:method} describes the evolution framework in detail.
+Section~\ref{sec:experiments} presents experiments, ablations, and analysis.
+Section~\ref{sec:discussion} discusses limitations and future directions, and
+Section~\ref{sec:conclusion} concludes.
+
+\begin{figure}[t]
+  \centering
+  % TODO: replace with generated Figure 1 (two-panel hero figure)
+  \includegraphics[width=\columnwidth]{figures/QABG5.png}
+  \caption{
+    \textbf{\sysname{} evolution loop and system comparison.}
+    \figleft{}: on each failure, the AnalyzerDecider visually inspects the image and any tool
+    outputs, diagnoses the bottleneck type, and directs the Generator to produce a reasoning skill
+    (SOP), an executable visual tool (Python), or both.  Generated capabilities are validated and
+    accumulated for future cases.
+    \figright{}: \sysname{} achieves competitive accuracy against RL-trained methods across
+    ChartQA and V* at zero training cost (\ding{55}~= training required,
+    \ding{51}~= training-free).
+  }
+  \label{fig:hero}
+\end{figure}

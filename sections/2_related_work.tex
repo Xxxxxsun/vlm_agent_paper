@@ -1,0 +1,63 @@
+% ============================================================
+%  §2  Related Work
+% ============================================================
+\label{sec:related_work}
+
+\paragraph{Self-improving agents.}
+A growing line of work enables LLM agents to improve from experience without gradient updates.
+Reflexion~\citep{shinn2023reflexion} maintains a verbal reflection buffer that the agent can
+consult on future attempts, but reflections are case-specific and non-persistent: once the episode
+ends, the buffer resets, so no reusable capability accumulates.
+Voyager~\citep{wang2023voyager} and ExpeL~\citep{zhao2023expel} build libraries of executable
+skills from experience in game and tool-use domains, demonstrating that cross-case skill transfer
+is feasible and valuable.
+AutoManual~\citep{chen2024automanual} automatically constructs structured instruction manuals for
+agent behaviour, and EvolveR~\citep{evolver_2025} iteratively refines reasoning strategies via
+self-play.
+These methods operate exclusively in text, code-execution, or game domains; none generates
+executable \emph{visual processing} tools, and none confronts the dual-modality challenge of
+deciding whether a given failure is cognitive or perceptual in nature.
+\sysname{} extends the persistent skill-library paradigm into the visual domain, adding a
+visual-modality diagnostic that text-only frameworks structurally cannot perform.
+
+\paragraph{Tool creation for language models.}
+Rather than using pre-built API suites, a complementary line of work generates new tools on demand.
+CREATOR~\citep{tang2023creator} prompts an LLM to write Python functions to solve problems it
+cannot answer directly.
+LATM~\citep{cai2024latm} and ToolLLM~\citep{qin2024toolllm} extend this to large API collections,
+demonstrating that models can learn to create and invoke tools dynamically.
+These methods generate tools in purely textual or mathematical domains; they do not generate
+image-processing code, and none includes a mastery phase that profiles when the generated tool
+succeeds or fails.
+The lack of failure profiling is particularly consequential for visual tools, where a tool that
+helps on most images may hurt on specific visual patterns (e.g.\ a sharpening filter degrading
+low-contrast charts).
+Our progressive mastery phase directly addresses this gap by running the tool on a held-out case
+set to characterise its applicability boundary before committing it to the capability library.
+
+\paragraph{``Think with images'': visual reasoning via tools.}
+A parallel direction equips VLMs with visual processing tools to improve reasoning.
+VTool-R1~\citep{vtoolr1_2025} trains a VLM via RL to invoke a fixed set of visual tools
+(zoom, crop, contrast adjustment), achieving strong gains on high-resolution benchmarks but
+requiring GPU-intensive RL training.
+PixelReasoner~\citep{pixelreasoner_2025} uses SFT and RL to train models to reason over
+intermediate visual representations, attaining state-of-the-art on MathVista but demanding
+$\sim$14k supervised examples and multi-GPU training.
+V-Thinker~\citep{vthinker_2025} teaches VLMs to interleave visual tool calls with chain-of-thought
+reasoning, again via supervised training on curated datasets.
+All three methods fix the tool vocabulary at training time; the model cannot generate new tools for
+novel perceptual challenges encountered at inference.
+\sysname{} achieves competitive accuracy without any weight updates, generates tools on demand
+from failure, and remains deployable with only API access to a frozen VLM backbone.
+
+\paragraph{Tool-augmented VLMs with predefined tool sets.}
+VisProg~\citep{gupta2023visprog}, ViperGPT~\citep{suris2023vipergpt}, and
+Chameleon~\citep{lu2024chameleon} compose predefined tool libraries (object detectors, OCR,
+arithmetic modules) via program synthesis to answer visual questions.
+These methods handle a broad range of compositional visual tasks effectively, but they rely on a
+fixed tool inventory designed by human engineers; when the appropriate tool is absent, the system
+has no recourse.
+ReFOCUS~\citep{refocus_2025} augments VLMs with adaptive visual focus operations, again
+requiring a curated action space.
+\sysname{} complements this direction by generating new tools from scratch when the current
+inventory fails---bridging the gap between fixed-tool composition and training-based tool learning.

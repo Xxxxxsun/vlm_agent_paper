@@ -1,0 +1,191 @@
+% ============================================================
+%  §3  Method
+% ============================================================
+\label{sec:method}
+
+\subsection{Problem Formulation}
+\label{sec:method_formulation}
+
+Let $\mathcal{D}_{\text{train}} = \{(x_i, y_i, \mathbf{v}_i)\}_{i=1}^{k}$ denote a small training
+subset of $k$ cases, where $x_i$ is the question, $y_i$ the ground-truth answer, and $\mathbf{v}_i$
+the associated visual input (one or more images).
+Let $\pi_\theta$ be a frozen VLM backbone (no gradient updates permitted).
+We define a capability set $\mathcal{C} = \{\mathcal{S}, \mathcal{T}\}$, where
+$\mathcal{S}$ is a library of \emph{skills} (structured reasoning SOPs) and
+$\mathcal{T}$ is a library of \emph{tools} (executable Python programs).
+An agent $f_{\mathcal{C}}$ operates by retrieving relevant capabilities from $\mathcal{C}$,
+applying them during problem solving, and invoking $\pi_\theta$ for reasoning.
+Our goal is to learn $\mathcal{C}$ from $\mathcal{D}_{\text{train}}$ to maximise performance on a
+held-out validation set $\mathcal{D}_{\text{val}}$, subject to the constraint
+$\nabla_\theta = 0$ (no weight updates).
+
+\subsection{Evolution Loop}
+\label{sec:method_loop}
+
+Figure~\ref{fig:hero} (left) illustrates the \sysname{} evolution loop, which processes each
+training case as follows.
+
+\textbf{(1) Attempt.}
+Agent $f_{\mathcal{C}}$ attempts case $(x_i, \mathbf{v}_i)$ using the current capability set
+$\mathcal{C}$.  Relevant skills are retrieved by semantic similarity to $x_i$; relevant tools are
+identified by their applicability SOPs (see Section~\ref{sec:method_mastery}).
+
+\textbf{(2) Evaluate.}
+The attempted answer is compared to $y_i$.  If correct, the loop advances to the next case.
+If incorrect, a failure record
+$\delta_i = (x_i, y_i, \mathbf{v}_i, \hat{y}_i, \tau_i)$ is created, where
+$\hat{y}_i$ is the wrong answer and $\tau_i$ is the agent's reasoning trace.
+
+\textbf{(3) Diagnose.}
+The AnalyzerDecider role receives the failure record $\delta_i$ together with the original images
+$\mathbf{v}_i$ and any intermediate tool outputs from the failed attempt.
+It produces a structured root-cause analysis and a decision
+$a \in \{\texttt{gen\_skill},\, \texttt{gen\_tool},\, \texttt{gen\_both},\, \texttt{give\_up}\}$.
+Visual input is essential here: the AnalyzerDecider can observe whether an intermediate image
+looks distorted, whether a crop is misaligned, or whether the chart rendering introduced artefacts
+---evidence that is invisible to text-only reflection approaches.
+
+\textbf{(4) Generate.}
+The Generator role produces the requested capability.
+Skill generation outputs a Markdown SOP; tool generation outputs Python code
+(Section~\ref{sec:method_skill} and~\ref{sec:method_tool}).
+
+\textbf{(5) Validate and Promote.}
+Generated capabilities are validated before promotion.
+A skill is validated by re-attempting $\delta_i$ with the new SOP included.
+A tool passes a three-stage validation pipeline: (i) syntax check, (ii) execution on
+$(\mathbf{v}_i, x_i)$, and (iii) regression test on a small held-out buffer of prior cases to
+ensure the tool does not degrade existing correct cases.
+Capabilities that pass validation are added to $\mathcal{C}$; failed capabilities are discarded.
+
+\textbf{(6) Retry.}
+After promoting new capabilities, the agent retries $\delta_i$ with the updated $\mathcal{C}$.
+This retry serves as an additional quality signal but does not affect $\mathcal{D}_{\text{val}}$
+evaluation, which uses only the \emph{frozen} capability set produced after all iterations.
+
+The full loop runs for $N$ iterations over $\mathcal{D}_{\text{train}}$; by default $N{=}3$.
+Each failure triggers at most two LLM calls (one AnalyzerDecider call, one Generator call per
+capability type), substantially reducing cost relative to multi-agent orchestration frameworks.
+
+\begin{algorithm}[t]
+\SetAlgoLined
+\KwIn{Training set $\mathcal{D}_{\text{train}}$, frozen VLM $\pi_\theta$,
+      iterations $N$, training size $k$}
+\KwOut{Capability set $\mathcal{C} = (\mathcal{S}, \mathcal{T})$}
+$\mathcal{C} \leftarrow (\emptyset, \emptyset)$\;
+\For{$n = 1$ \KwTo $N$}{
+  \ForEach{$(x_i, y_i, \mathbf{v}_i) \in \mathcal{D}_{\text{train}}$}{
+    $\hat{y}_i, \tau_i \leftarrow f_{\mathcal{C}}(x_i, \mathbf{v}_i;\, \pi_\theta)$\;
+    \If{$\hat{y}_i \neq y_i$}{
+      $\delta_i \leftarrow (x_i, y_i, \mathbf{v}_i, \hat{y}_i, \tau_i)$\;
+      $a,\, r \leftarrow \textsc{AnalyzerDecider}(\delta_i, \mathbf{v}_i;\, \pi_\theta)$\;
+      \If{$a \in \{\texttt{gen\_skill}, \texttt{gen\_both}\}$}{
+        $s \leftarrow \textsc{Generator}(r;\, \pi_\theta)$\;
+        \lIf{\textsc{Validate}$(s, \mathcal{D}_{\text{train}})$}{$\mathcal{S} \leftarrow \mathcal{S} \cup \{s\}$}
+      }
+      \If{$a \in \{\texttt{gen\_tool}, \texttt{gen\_both}\}$}{
+        $t \leftarrow \textsc{Generator}(r;\, \pi_\theta)$\;
+        \If{\textsc{Validate}$(t, \mathbf{v}_i, \mathcal{D}_{\text{train}})$}{
+          $t.\text{mastery} \leftarrow \textsc{Mastery}(t, \mathcal{D}_{\text{train}};\, \pi_\theta)$\;
+          $\mathcal{T} \leftarrow \mathcal{T} \cup \{t\}$\;
+        }
+      }
+    }
+  }
+}
+\Return{$\mathcal{C}$}\;
+\caption{\sysname{} Evolution Loop}
+\label{alg:main}
+\end{algorithm}
+
+\subsection{Visual Failure Diagnosis}
+\label{sec:method_diagnosis}
+
+The AnalyzerDecider is the core reasoning component that distinguishes \sysname{} from text-only
+self-improvement methods.
+It receives as input: (a) the original images $\mathbf{v}_i$, (b) any intermediate tool outputs
+produced during the failed attempt (cropped sub-images, processed renders), (c) the agent's full
+reasoning trace $\tau_i$, and (d) the current capability set $\mathcal{C}$ (to avoid regenerating
+existing capabilities).
+
+From these inputs, the AnalyzerDecider produces a structured diagnosis comprising:
+\begin{itemize}[noitemsep]
+  \item \textbf{Root cause}: a description of why the agent failed, grounded in visual evidence
+        (e.g.\ ``the bar chart labels are too small to read reliably without OCR preprocessing'');
+  \item \textbf{Bottleneck type}: cognitive (the agent had the right percepts but applied the wrong
+        strategy) vs.\ perceptual (the agent could not extract the necessary visual information);
+  \item \textbf{Next action} $a$: one of \texttt{gen\_skill}, \texttt{gen\_tool},
+        \texttt{gen\_both}, or \texttt{give\_up} (when the failure is attributed to inherent
+        model limitations with no recoverable capability).
+\end{itemize}
+
+The visual channel is critical for accurate diagnosis.
+In our experiments, cases where the AnalyzerDecider had access to images produced
+diagnoses that correctly identified perceptual bottlenecks \textcolor{red}{[TBD]\%} of the time,
+vs.\ \textcolor{red}{[TBD]\%} for text-only diagnosis (Section~\ref{sec:ablation}).
+
+\subsection{Skill Evolution}
+\label{sec:method_skill}
+
+A \emph{skill} in \sysname{} is a structured Markdown document with four mandatory fields:
+\textbf{When-to-Use} (a trigger condition expressed as a natural-language predicate over the
+question and image type),
+\textbf{Strategy} (a numbered step-by-step SOP for approaching the problem class),
+\textbf{Common Pitfalls} (failure modes to avoid), and
+\textbf{Worked Example} (a solved instance illustrating the SOP).
+
+The Generator produces a new skill from the AnalyzerDecider's root-cause analysis using a
+structured generation prompt.
+If a skill covering the same problem class already exists in $\mathcal{S}$, the Generator
+instead \emph{merges}: it appends new insights (additional pitfalls, alternative strategy
+branches) to the existing skill, preventing library bloat while preserving accumulated knowledge.
+Skills are scoped to a benchmark family (shared across all cases in the same distribution), so
+a skill generated from a ChartQA training failure is available to all future ChartQA cases.
+
+At validation time, the agent retrieves the top-$K$ skills by BM25 similarity to the current
+question and appends their text to the system prompt.
+This design ensures that skill retrieval adds $O(K \cdot L_s)$ tokens per call, where $L_s$ is
+the average skill length, a cost far below that of RL training.
+
+\subsection{Tool Evolution and Progressive Mastery}
+\label{sec:method_tool}
+\label{sec:method_mastery}
+
+A \emph{tool} in \sysname{} is a Python function (at most 150 lines) that takes one or more
+image paths as input and returns processed images or extracted data.
+Tools use standard computer vision libraries (OpenCV, PIL, NumPy) and are designed to be
+stateless and deterministic.
+
+\textbf{Tool generation.}
+Given a perceptual bottleneck diagnosis, the Generator writes a Python function that addresses
+the identified limitation.
+Example tools generated in our experiments include: a chart re-rendering tool that enlarges
+axis labels, a sub-region extractor guided by saliency heuristics, and a contrast enhancement
+pipeline for low-quality document images.
+
+\textbf{Three-stage validation.}
+Before promotion, each tool passes:
+\begin{enumerate}[noitemsep, label=(\roman*)]
+  \item \emph{Syntax check}: the code compiles and executes without errors;
+  \item \emph{Origin test}: the tool improves the agent's answer on the failure case $\delta_i$
+        that triggered its creation;
+  \item \emph{Regression test}: the tool does not reduce accuracy on a buffer of 20 prior cases
+        from $\mathcal{D}_{\text{train}}$ that the agent currently handles correctly.
+\end{enumerate}
+This staged validation rejects tools that are too specialised (pass (i) and (ii) but fail (iii))
+or trivially wrong (fail (i)).
+
+\textbf{Progressive mastery.}
+After a tool passes three-stage validation, \sysname{} runs a mastery phase.
+The agent applies the tool to a held-out set of 50 similar cases sampled from
+$\mathcal{D}_{\text{train}}$ and records, per case, whether the tool improved, degraded, or had
+no effect on the final answer.
+From this profiling run, the agent synthesises a \emph{mastery SOP}: a Markdown document
+describing the tool's supported input patterns (image types where it helps),
+negative patterns (image types where it hurts or produces no gain), and recommended trigger
+conditions.
+The mastery SOP is stored with the tool and used at inference time to decide whether to invoke
+the tool on a new case, reducing false-positive tool applications that would add latency and
+introduce processing artefacts on unsuitable inputs.
+
+This mastery phase is what distinguishes \sysname{} from prior tool-creation methods~\citep{tang2023creator,cai2024latm}: rather than generating tools and deploying them indiscriminately, the agent learns the boundary conditions of each tool's effectiveness, enabling selective, context-appropriate invocation.

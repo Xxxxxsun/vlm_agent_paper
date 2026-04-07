@@ -1,0 +1,26 @@
+% ============================================================
+%  §6  Conclusion
+% ============================================================
+\label{sec:conclusion}
+
+We introduced \sysname{}, a training-free framework that enables VLM agents to self-evolve both
+reasoning strategies (skills) and visual processing capabilities (tools) from failure, without
+updating model weights.
+On four standard VQA benchmarks, \sysname{} achieves consistent improvements of
+$+2.8\%$--$9.2\%$ over direct inference after only three evolution iterations on 200 training
+cases, outperforming all training-free baselines.
+
+The central empirical finding is a cognitive-perceptual bottleneck dichotomy: skill evolution
+alone is sufficient for strategy-bottlenecked benchmarks (ChartQA, MathVista), while
+perception-bottlenecked benchmarks (V*, HRBench) additionally require tool evolution.
+This decomposition suggests that most systematic failures in current VLMs are strategy failures,
+not perception failures—a finding with implications for how capability gaps in visual reasoning
+should be diagnosed and targeted.
+
+Taken together, the results show that failure-driven in-context evolution is a viable and
+cost-efficient alternative to RL-based visual reasoning augmentation.
+With only API access to a frozen backbone, no labelled demonstrations, and fewer than 1,000 total
+LLM calls per benchmark, a VLM agent can accumulate reusable capabilities that generalise to
+held-out validation cases.
+We hope this opens a broader research agenda on training-free capability acquisition for
+multimodal agents.

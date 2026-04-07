@@ -1,0 +1,156 @@
+% ============================================================
+%  Appendix
+% ============================================================
+
+\section{Implementation Details}
+\label{app:impl}
+
+\paragraph{Role prompts.}
+\sysname{} uses three role-specific system prompts for the same base VLM:
+\textit{Solver} (standard QA prompt with capability context injected),
+\textit{AnalyzerDecider} (root-cause analysis and decision), and
+\textit{Generator} (skill or tool generation).
+All prompts are provided in full at \url{[anonymised repository]}.
+
+\paragraph{Skill retrieval.}
+At inference time, the Solver retrieves the top-$K{=}3$ skills from $\mathcal{S}$ using BM25
+cosine similarity over skill titles and When-to-Use fields.
+Retrieved skill text is appended to the system prompt.
+
+\paragraph{Tool invocation.}
+The Solver inspects each tool's mastery SOP to decide whether to invoke it on the current input.
+If the input matches a tool's supported patterns, the tool is applied and its output image(s)
+are appended to the multimodal context.
+Tool execution is sandboxed with a 30-second timeout and resource limits.
+
+\paragraph{Hyperparameters.}
+Table~\ref{tab:hyperparams} lists all hyperparameter settings.
+
+\begin{table}[h]
+\centering
+\caption{Hyperparameter settings.}
+\label{tab:hyperparams}
+\begin{tabular}{lll}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\
+\midrule
+$k$         & 200        & Training cases per benchmark \\
+$N$         & 3          & Evolution iterations \\
+$K$         & 3          & Skills retrieved per query \\
+Max tool lines & 150     & Max lines for generated Python tool \\
+Mastery sample & 50      & Cases for mastery profiling \\
+Regression buffer & 20   & Cases for tool regression test \\
+Temperature & 0.7        & Generator temperature \\
+Max tokens (gen.) & 2048 & Max tokens for capability generation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Compute.}
+All experiments use Gemini-2.0-Flash via the Google AI API.
+Total API calls per benchmark: $\leq k \times N \times 3 = 1{,}800$ calls
+(solver + analyzer + generator, upper bound).
+Estimated token usage: $\sim$3M tokens per benchmark.
+No GPU training is performed.
+
+\section{Additional Results}
+\label{app:results}
+
+\subsection{Training Set Size Sensitivity}
+
+\begin{figure}[h]
+\centering
+\fbox{\rule{0pt}{3cm}\rule{0.7\columnwidth}{0pt}}
+\caption{ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.
+\textcolor{red}{[TBD: insert figure]}}
+\label{fig:k_sensitivity}
+\end{figure}
+
+Figure~\ref{fig:k_sensitivity} shows ChartQA accuracy as a function of training set size
+$k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.
+
+\subsection{Per-Category Analysis on ChartQA}
+
+\textcolor{red}{[TBD: breakdown of accuracy gains by chart type (bar, line, pie, scatter)]}
+
+\subsection{Qualitative Examples}
+\label{app:qualitative}
+
+Figure~\ref{fig:casestudy} illustrates \sysname{}'s evolution loop on a representative ChartQA
+failure.
+\textcolor{red}{[TBD: insert side-by-side case study showing before/after skill]}
+
+\begin{figure}[h]
+\centering
+% TODO: replace with generated Figure 5/6 (case study + skill/tool example)
+\fbox{\rule{0pt}{5cm}\rule{\columnwidth}{0pt}}
+\caption{
+  \textbf{Case study: ChartQA failure before and after skill evolution.}
+  \textit{(Left)}: without an evolved skill, the agent attempts direct value reading and
+  misreads a stacked bar chart.
+  \textit{(Right)}: with the evolved ``stacked chart extraction'' skill, the agent applies
+  a structured subtraction strategy and answers correctly.
+}
+\label{fig:casestudy}
+\end{figure}
+
+\section{Example Generated Skill and Tool}
+\label{app:examples}
+
+\subsection{Example Skill: ChartQA Multi-Step Data Extraction}
+
+\begin{verbatim}
+## Skill: Stacked Bar Chart Extraction
+
+**When-to-Use**: Question asks for a specific segment value or
+difference in a stacked bar chart.
+
+**Strategy**:
+1. Identify the target bar and segment colour from the legend.
+2. Read the bottom boundary value of the target segment.
+3. Read the top boundary value of the target segment.
+4. Subtract bottom from top to obtain the segment value.
+5. If asked for a difference, apply the operation to two segments.
+
+**Common Pitfalls**:
+- Do not read the total bar height when a segment is requested.
+- Verify legend colour matches—similar colours may be confused.
+
+**Worked Example**: [see training case #47]
+\end{verbatim}
+
+\subsection{Example Tool: Sub-Region Contrast Enhancer (V*)}
+
+\begin{verbatim}
+def enhance_target_region(image_path: str,
+                          x: int, y: int, w: int, h: int) -> str:
+    """Crop and contrast-enhance a region of interest."""
+    import cv2, numpy as np, tempfile, os
+    img = cv2.imread(image_path)
+    region = img[y:y+h, x:x+w]
+    lab = cv2.cvtColor(region, cv2.COLOR_BGR2LAB)
+    l, a, b = cv2.split(lab)
+    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8,8))
+    l = clahe.apply(l)
+    enhanced = cv2.merge([l, a, b])
+    enhanced = cv2.cvtColor(enhanced, cv2.COLOR_LAB2BGR)
+    out_path = tempfile.mktemp(suffix='.png')
+    cv2.imwrite(out_path, enhanced)
+    return out_path
+\end{verbatim}
+
+\section{Reproducibility Statement}
+\label{app:reproducibility}
+
+The code, evolved capability files (\texttt{learned/} directory), and all evaluation scripts
+will be released at \url{[anonymised repository]} upon acceptance.
+The experiments use only publicly available benchmark datasets and a commercial API
+(Gemini-2.0-Flash).
+Evolved capability sets (\texttt{*.skill.md} and \texttt{*.tool.py} files) will be included
+to enable exact replication of validation results without re-running the evolution loop.
+
+\section{LLM Assistance Disclosure}
+\label{app:disclosure}
+
+Portions of this paper were drafted with assistance from a large language model.
+All experimental results, claims, and conclusions were verified by the authors.

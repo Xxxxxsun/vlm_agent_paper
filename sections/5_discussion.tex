@@ -1,0 +1,45 @@
+% ============================================================
+%  §5  Discussion
+% ============================================================
+\label{sec:discussion}
+
+\paragraph{When does evolution help?}
+The bottleneck analysis in Section~\ref{sec:bottleneck} suggests a practical diagnostic:
+skill evolution is effective whenever the benchmark has a recurring family of problem structures
+that can be captured in an SOP---which appears to be the common case.
+Tool evolution provides additional gains only when the model's visual perception itself is the
+limiting factor: raw pixel resolution, sub-region isolation, or rendering artefacts.
+A practitioner targeting a new benchmark can use a small pilot run ($k{\approx}25$, $N{=}1$)
+to detect which bottleneck type dominates before committing to a full evolution run.
+
+\paragraph{Limitations.}
+Several limitations bound the scope of our conclusions.
+\textit{(a) Short evolution horizon.}
+We report results at $N{=}3$ iterations; Section~\ref{sec:dynamics} suggests gains plateau
+around $N{=}5$, but we have not evaluated whether longer runs (e.g.\ $N{>}10$) eventually
+overfit the training distribution.
+\textit{(b) Tool quality ceiling.}
+Tool effectiveness is bounded by the VLM's Python coding ability.
+For benchmarks requiring specialised computer vision operations beyond standard libraries
+(e.g.\ learned feature extractors), the Generator may fail to produce valid tools, limiting
+the perceptual gains.
+\textit{(c) Benchmark scope.}
+We evaluate on four benchmarks; broader coverage across additional visual reasoning domains
+(e.g.\ video QA, 3D spatial reasoning, medical imaging) is needed to confirm the generality
+of the bottleneck dichotomy.
+\textit{(d) API cost.}
+Each training case incurs up to $\sim$15K tokens (attempt + failure analysis + generation +
+validation), summing to $\sim$3M tokens per benchmark run.  While negligible compared to RL
+training, this cost should be accounted for when comparing training-free methods.
+
+\paragraph{Future directions.}
+Three extensions merit investigation.
+First, \emph{cross-benchmark skill transfer}: skills generated from ChartQA failures may
+transfer to MathVista (both involve structured data reading); a shared skill library across
+benchmarks could reduce per-benchmark cold-start cost.
+Second, \emph{image generation as a reasoning tool}: rather than only processing existing images,
+the agent could generate hypothetical visualisations (e.g.\ mentally redrawing a chart in a
+clearer format) using image generation APIs, extending the ``think with images'' paradigm
+\citep{vtoolr1_2025} to internally imagined percepts.
+Third, \emph{online evolution}: rather than a fixed pre-deployment training phase, the agent
+could evolve capabilities during deployment, adapting to the distribution shift of live queries.
