@@ -189,3 +189,23 @@ the tool on a new case, reducing false-positive tool applications that would add
 introduce processing artefacts on unsuitable inputs.
 
 This mastery phase is what distinguishes \sysname{} from prior tool-creation methods~\citep{tang2023creator,cai2024latm}: rather than generating tools and deploying them indiscriminately, the agent learns the boundary conditions of each tool's effectiveness, enabling selective, context-appropriate invocation.
+
+\subsection{Tool Mastery from External Tool Sets (\sysname{} Mode B)}
+\label{sec:method_mastery_ext}
+
+The evolution loop above (Mode A) both \emph{generates} tools and \emph{profiles} their
+applicability.  In settings where a practitioner already supplies a useful tool set
+$\mathcal{T}_0 \neq \emptyset$, \sysname{} can operate in \textbf{Mode B}: skip tool generation
+entirely and apply the mastery phase directly to the provided tools.
+
+\textbf{Formal statement.}
+Given an external tool set $\mathcal{T}_0 = \{t_1, \ldots, t_m\}$ and training data
+$\mathcal{D}_{\text{train}}$, run the mastery profiling procedure (Section~\ref{sec:method_mastery})
+for each $t_j \in \mathcal{T}_0$ to produce mastery SOPs
+$\{t_j.\text{mastery}\}_{j=1}^{m}$.
+Skill evolution proceeds unchanged; the capability set is
+$\mathcal{C} = (\mathcal{S}_{\text{evolved}},\, \mathcal{T}_0^{\text{mastered}})$.
+
+Mode B requires no code generation and fewer LLM calls (one mastery profiling pass per tool),
+making it practical when tool quality is already high but deployment strategy is unknown.
+Experiment II (Section~\ref{sec:exp2}) evaluates this mode.

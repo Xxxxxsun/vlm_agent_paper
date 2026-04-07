@@ -125,18 +125,23 @@ complementary capability types from failure: \emph{skills}---structured reasonin
 encoding how to approach a problem class---and \emph{tools}---executable Python programs that
 expand the agent's visual perception by manipulating images directly.
 On each failure, \sysname{} visually diagnoses the root cause by inspecting both the original
-image and any intermediate tool outputs, decides whether the bottleneck is cognitive or
-perceptual, generates the appropriate capability, validates it, and accumulates it for future
-cases---all without any weight updates.
-Evaluated on four standard VQA benchmarks (ChartQA, V*, HRBench, MathVista),
-\sysname{} achieves improvements of $+2.8\%$--$9.2\%$ on held-out validation sets after only
-three evolution iterations on 200 training cases per benchmark.
-Our central finding is that skill evolution is universally effective (4/4 benchmarks) while
-tool evolution provides additional gains only on perceptually challenging benchmarks (2/4),
-revealing a fundamental dichotomy: most systematic VLM failures on standard benchmarks are
-\emph{strategy} failures, not perception failures.
-These results show that failure-driven in-context evolution is a viable, cost-efficient
-alternative to training-based approaches for visual reasoning improvement.
+image and any tool outputs, decides whether the bottleneck is cognitive or perceptual, generates
+the appropriate capability, validates it, and accumulates it for future cases---all without
+any weight updates.
+We report three experiments.
+\textbf{(I) From-scratch evolution}: starting with zero capabilities, \sysname{} achieves
+consistent gains across ChartQA, MathVista, HRBench, and MMStar on both
+Gemini-2.0-Flash and Qwen2.5-VL-7B, confirming the framework is model-agnostic.
+\textbf{(II) Tool mastery from pre-provided tools}: when given an external tool set,
+naive invocation degrades accuracy on ill-suited inputs; mastery learning---where the agent
+profiles each tool's applicability on a small training set---recovers and exceeds the full
+potential of the provided tools.
+\textbf{(III) Gap to RL}: training-free skill evolution alone closes approximately
+\textcolor{red}{[TBD]}\% of the performance gap between direct inference and RL-trained
+VTool-R1 on ChartQA, suggesting that most of what RL training achieves on
+strategy-bottlenecked benchmarks is capturable as structured reasoning strategy.
+Together, these results show that failure-driven in-context evolution is a viable,
+cost-efficient path to visual reasoning improvement without model retraining.
 \end{abstract}
 
 \begin{document}
