@@ -6,232 +6,193 @@
 \subsection{Experimental Setup}
 \label{sec:setup}
 
-\paragraph{Models.}
-We use \textbf{Gemini-2.0-Flash} as the primary backbone (API access, frozen weights).
-All roles—Solver, AnalyzerDecider, and Generator—share the same backbone with role-specific
-system prompts.
-To verify that gains are model-agnostic, we additionally report results with
-\textbf{Qwen2.5-VL-7B}~\citep{qwen25vl} as an open-weight secondary backbone.
 
-\paragraph{Benchmarks.}
-We evaluate on four benchmarks covering both general multimodal reasoning and
-high-resolution visual understanding:
-\begin{itemize}[noitemsep]
-  \item \textbf{ChartQA}~\citep{masry2022chartqa}: chart understanding with multi-step arithmetic.
-        Relaxed accuracy on 2,500-sample test set.
-  \item \textbf{MathVista}~\citep{lu2023mathvista}: mathematical reasoning over diverse visual
-        contexts. Accuracy on testmini (1,000 samples).
-  \item \textbf{HRBench}~\citep{chen2024hrbench}: high-resolution multi-task benchmark covering
-        fine-grained recognition, document understanding, and spatial reasoning.
-  \item \textbf{MMStar}~\citep{chen2024mmstar}: a challenging general multimodal benchmark
-        designed to minimise data leakage and assess genuine visual reasoning ability across
-        6 core capabilities.
-\end{itemize}
-
-\paragraph{Evolution protocol.}
-For each benchmark we sample $k{=}200$ training cases to form $\mathcal{D}_{\text{train}}$,
-run $N{=}3$ evolution iterations, then freeze $\mathcal{C}$ and evaluate on the held-out
-validation split.  Training and evaluation splits are disjoint.
-
-\paragraph{Baselines.}
-We compare against: Direct VLM (no capabilities, no CoT), chain-of-thought (CoT), 3-shot
-few-shot, and Reflexion~\citep{shinn2023reflexion} (per-case verbal reflection, no cross-case
-persistence).  Experiment III additionally includes VTool-R1~\citep{vtoolr1_2025} as a
-reference RL-trained method.
 
 % ============================================================
-\subsection{Experiment I: Autonomous Evolution from Scratch}
+\subsection{Experiment I: }
 \label{sec:exp1}
 % ============================================================
 
-We first verify that \sysname{} can bootstrap a useful capability set starting from
-$\mathcal{C} = \emptyset$ — no pre-provided tools, no manually written skills.
 
-\paragraph{Results.}
-Table~\ref{tab:main} reports accuracy for Gemini-2.0-Flash and Qwen2.5-VL-7B.
-\sysname{} (full) achieves the best training-free result on every benchmark and both architectures,
-improving over the Direct VLM baseline by $+$\textcolor{red}{[TBD]}\% on average across four
-benchmarks.
-The gains are consistent across models: the open-weight Qwen2.5-VL-7B shows similar relative
-improvements, confirming that the evolution framework is not tied to a specific API model.
-
-\begin{table}[t]
+\begin{table*}[t]
 \centering
-\caption{
-  \textbf{Exp I — Autonomous evolution from scratch.}
-  Accuracy (\%) on four benchmarks for two VLM backbones.
-  Best training-free result per benchmark in \textbf{bold}.
-  VTool-R1 (RL-trained) shown as a reference in Table~\ref{tab:vtool} (Exp III).
-}
-\label{tab:main}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{llccccc}
-\toprule
-\textbf{Backbone} & \textbf{Method} & \textbf{ChartQA} & \textbf{MathVista} & \textbf{HRBench} & \textbf{MMStar} & \textbf{Avg.} \\
-\midrule
-\multirow{6}{*}{Gemini-2.0-Flash}
-  & Direct VLM      & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & --- \\
-  & CoT             & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & --- \\
-  & Reflexion       & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & --- \\
-  & \sysname{}-Skill & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & --- \\
-  & \sysname{}-Tool  & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & --- \\
-  & \sysname{} (full)& \best{\textcolor{red}{[TBD]}} & \best{\textcolor{red}{[TBD]}} & \best{\textcolor{red}{[TBD]}} & \best{\textcolor{red}{[TBD]}} & \best{---} \\
-\midrule
-\multirow{3}{*}{Qwen2.5-VL-7B}
-  & Direct VLM      & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & --- \\
-  & \sysname{} (full)& \best{\textcolor{red}{[TBD]}} & \best{\textcolor{red}{[TBD]}} & \best{\textcolor{red}{[TBD]}} & \best{\textcolor{red}{[TBD]}} & \best{---} \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
+\small
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{l|l|cccc}
+\hline
+\textbf{Model} & \textbf{Evolution Strategy} 
+& \textbf{HRBench} 
+& \textbf{MathVista} 
+& \textbf{V\_Star} 
+& \textbf{ChartQA} \\
+\hline
 
-\paragraph{Analysis.}
-Comparing \sysname{}-Skill and \sysname{}-Tool variants reveals the bottleneck structure:
-on ChartQA and MathVista, skill evolution alone matches the full system, indicating that the
-primary failure mode is strategy-level rather than perceptual; on HRBench, tool evolution
-additionally contributes, consistent with the high-resolution perceptual demands of that
-benchmark.
+\multirow{4}{*}{GPT-4o}
+& None (Base Agent) &  &  &  &  \\
+& Skill Only        &  &  &  &  \\
+& Tool Only         &  &  &  &  \\
+& Skill + Tool      &  &  &  &  \\
+
+\hline
+
+\multirow{4}{*}{GPT-5.4}
+& None (Base Agent) &  &  &  &  \\
+& Skill Only        &  &  &  &  \\
+& Tool Only         &  &  &  &  \\
+& Skill + Tool      &  &  &  &  \\
+
+\hline
+
+\multirow{4}{*}{Doubao-Seed-2.0}
+& None (Base Agent) &  &  &  &  \\
+& Skill Only        &  &  &  &  \\
+& Tool Only         &  &  &  &  \\
+& Skill + Tool      &  &  &  &  \\
+
+\hline
+
+\multirow{4}{*}{Qwen3.5-397B}
+& None (Base Agent) &  &  &  &  \\
+& Skill Only        &  &  &  &  \\
+& Tool Only         &  &  &  &  \\
+& Skill + Tool      &  &  &  &  \\
+
+\hline
+
+\multirow{4}{*}{Gemini-3.0-Pro}
+& None (Base Agent) &  &  &  &  \\
+& Skill Only        &  &  &  &  \\
+& Tool Only         &  &  &  &  \\
+& Skill + Tool      &  &  &  &  \\
+
+\hline
+\end{tabular}
+\caption{
+Comparison of different evolution strategies across multiple foundation models.
+We evaluate four settings: (1) no evolution (base agent), (2) evolving only skills, 
+(3) evolving only tools, and (4) jointly evolving both skills and tools.
+All methods are trained from scratch with the same adaptation budget on each benchmark.
+}
+\label{tab:evolution_full}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{l|ccccc}
+\hline
+\textbf{Method} 
+& \textbf{HRBench} 
+& \textbf{+ MathVista} 
+& \textbf{+ V\_Star} 
+& \textbf{+ ChartQA} 
+& \textbf{Final Avg.} \\
+\hline
+Base Agent                       &  &  &  &  &  \\
+Skill Accumulation Only          &  &  &  &  &  \\
+Tool Accumulation Only           &  &  &  &  &  \\
+Naive Skill+Tool Accumulation    &  &  &  &  &  \\
+Dynamic Skill--Tool Co-Evolution &  &  &  &  &  \\
+\hline
+\end{tabular}
+\caption{
+Results under the cumulative streaming setting, where benchmarks are introduced sequentially and the agent must continuously adapt to the growing task distribution.
+We compare static and naive accumulation strategies against our dynamic skill--tool co-evolution framework.
+}
+\label{tab:streaming_accumulation}
+\end{table*}
 
 % ============================================================
-\subsection{Experiment II: Learning to Use Pre-Provided Tools}
+\subsection{Experiment II: }
 \label{sec:exp2}
 % ============================================================
 
-The result above shows \sysname{} can generate its own tools from scratch.
-A natural question follows: if a practitioner already has a useful tool set, can the agent
-learn to use those tools effectively without generating new ones?
-This experiment isolates the \emph{tool mastery} component (Section~\ref{sec:method_mastery})
-from tool generation.
-
-\paragraph{Setup.}
-We provide a fixed external tool set $\mathcal{T}_0$ consisting of five standard
-image-processing tools: (i) adaptive crop/zoom to a region of interest,
-(ii) CLAHE contrast enhancement, (iii) OCR pre-processing (binarise + denoise),
-(iv) edge highlighting, and (v) colour histogram equalisation.
-These tools are representative of what a practitioner might supply to a VLM system.
-We compare three conditions on HRBench and MMStar:
-\begin{itemize}[noitemsep]
-  \item \textbf{Direct VLM}: no tools provided;
-  \item \textbf{+ Tools (naive)}: all five tools are invoked on every input image and the
-        outputs are appended to the VLM context — no mastery learning;
-  \item \textbf{+ Tools + Mastery} (\sysname{} Mode B): the agent runs the mastery phase
-        (Section~\ref{sec:method_mastery_ext}) on $\mathcal{D}_{\text{train}}$ to learn per-tool
-        deployment SOPs, then uses them to selectively invoke tools at inference.
-\end{itemize}
-
-\paragraph{Results.}
-Table~\ref{tab:mastery} shows that naive tool invocation provides minimal—and sometimes
-negative—gain: indiscriminate application of all tools introduces artefacts that confuse the
-model on inputs where the tools are ill-suited.
-Mastery learning recovers and exceeds the full potential of the provided tool set, achieving
-$+$\textcolor{red}{[TBD]}\% over the naive condition on HRBench.
-
-\begin{table}[t]
+\begin{table*}[t]
 \centering
-\caption{
-  \textbf{Exp II — Tool mastery learning with pre-provided tools.}
-  Accuracy (\%) on HRBench and MMStar under three tool usage conditions.
-  Backbone: Gemini-2.0-Flash.
-}
-\label{tab:mastery}
-\begin{tabular}{lccc}
-\toprule
-\textbf{Condition} & \textbf{HRBench} & \textbf{MMStar} & \textbf{Avg.} \\
-\midrule
-Direct VLM                   & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & --- \\
-+ Tools (naive, no mastery)  & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & --- \\
-+ Tools + Mastery (\sysname{} Mode B) & \best{\textcolor{red}{[TBD]}} & \best{\textcolor{red}{[TBD]}} & \best{---} \\
-\bottomrule
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{l|l|cccc}
+\hline
+\textbf{Model} & \textbf{Method}
+& \textbf{ToolAcc} 
+& \textbf{ArgAcc} 
+& \textbf{InstAcc} 
+& \textbf{AnsAcc} \\
+\hline
+
+\multirow{4}{*}{GPT-4o}
+& Base Agent            &  &  &  &  \\
+& Prompting Only        &  &  &  &  \\
+& Tool Usage Tuning     &  &  &  &  \\
+& Skill Evolution (Ours)&  &  &  &  \\
+
+\hline
+
+\multirow{4}{*}{GPT-5.4}
+& Base Agent            &  &  &  &  \\
+& Prompting Only        &  &  &  &  \\
+& Tool Usage Tuning     &  &  &  &  \\
+& Skill Evolution (Ours)&  &  &  &  \\
+
+\hline
 \end{tabular}
-\end{table}
-
-\paragraph{Implication.}
-Tool availability alone is not sufficient for performance improvement; the agent must learn
-\emph{when} and \emph{how} to deploy each tool.
-This distinguishes \sysname{} from naive tool-augmented VLMs~\citep{gupta2023visprog,suris2023vipergpt},
-which invoke predefined tools without learning their applicability boundaries.
-
+\caption{
+Detailed evaluation on GTA benchmark.
+We report both step-level tool-use metrics and final task accuracy.
+}
+\label{tab:gta_detailed}
+\end{table*}
 % ============================================================
-\subsection{Experiment III: Training-Free Skill Evolution vs.\ VTool-R1}
+\subsection{Experiment III: }
 \label{sec:exp3}
 % ============================================================
-
-The previous experiments show \sysname{} is effective as a training-free method.
-We now ask a sharper question: \emph{how much of the gain achieved by RL-trained methods is
-actually capturable without any weight updates?}
-We compare against VTool-R1~\citep{vtoolr1_2025}, a state-of-the-art method that uses
-reinforcement learning to train the VLM to invoke visual tools.
-
-\paragraph{Setup.}
-We focus on ChartQA and HRBench — the benchmarks most relevant to VTool-R1's design.
-We report Direct VLM, \sysname{}-Skill, \sysname{}-Full, and VTool-R1 (RL-trained, reference).
-We also include a cost row: API calls / GPU hours required to deploy each method.
-
-\begin{table}[t]
+\begin{table*}[t]
 \centering
-\caption{
-  \textbf{Exp III — Training-free vs.\ RL-trained (VTool-R1).}
-  Accuracy (\%) on ChartQA and HRBench.
-  VTool-R1 is shown as a reference; it uses RL training and is not directly comparable.
-  ``Gap closed'' = (\sysname{} $-$ Direct VLM) / (VTool-R1 $-$ Direct VLM).
-}
-\label{tab:vtool}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Method} & \textbf{Training} & \textbf{ChartQA} & \textbf{HRBench} & \textbf{Gap closed} \\
-\midrule
-Direct VLM           & None        & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & 0\% \\
-\sysname{}-Skill     & None        & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]}\% \\
-\sysname{} (full)    & None        & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]}\% \\
-\midrule
-VTool-R1~\citep{vtoolr1_2025} & RL (8$\times$H100) & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & 100\% \\
-\bottomrule
-\end{tabular}
-\end{table}
+\small
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{l|l|cc|cc}
+\hline
+\textbf{Model} & \textbf{Method} 
+& \textbf{Chart Split} & \textbf{Table Split}
+& \textbf{\#Train Traj.} & \textbf{RL Update} \\
+\hline
 
-\paragraph{Key finding.}
-\sysname{}-Skill alone closes approximately \textcolor{red}{[TBD]}\% of the gap between direct
-inference and VTool-R1 on ChartQA, without any weight updates.
-This suggests that a substantial portion of what RL training achieves on strategy-heavy
-benchmarks is capturable as structured reasoning strategies — i.e., the model already has the
-latent ability to reason correctly, but lacks the \emph{strategy scaffolding} to deploy it.
-On HRBench, where perceptual processing is more critical, adding tool evolution (\sysname{} full)
-increases the gap-closed fraction further, confirming that visual tool use remains an advantage
-of the RL-trained approach on perception-heavy tasks.
+\multirow{4}{*}{Qwen2.5-VL-3B}
+& Pure Run                  &  &  & -- & No \\
+& Prompted Tool Use         &  &  & -- & No \\
+& VTool-R1                  &  &  &    & Yes \\
+& Ours (Self-Evolved Skill) &  &  &    & No \\
+\hline
+
+\multirow{4}{*}{Qwen2.5-VL-7B}
+& Pure Run                  &  &  & -- & No \\
+& Prompted Tool Use         &  &  & -- & No \\
+& VTool-R1                  &  &  &    & Yes \\
+& Ours (Self-Evolved Skill) &  &  &    & No \\
+\hline
+
+\multirow{4}{*}{Qwen2.5-VL-32B}
+& Pure Run                  &  &  & -- & No \\
+& Prompted Tool Use         &  &  & -- & No \\
+& VTool-R1                  &  &  &    & Yes \\
+& Ours (Self-Evolved Skill) &  &  &    & No \\
+\hline
+
+\end{tabular}
+\caption{
+Aligned comparison with VTool-R1 on the fixed-tool visual reasoning setting.
+VTool-R1 improves tool-use behavior via GRPO-based reinforcement learning, whereas our method performs explicit skill evolution over the same predefined tool library.
+}
+\label{tab:vtoolr1_aligned_full}
+\end{table*}
+
 
 % ============================================================
 \subsection{Ablation Studies}
 \label{sec:ablation}
 % ============================================================
-
-Table~\ref{tab:ablation} isolates the contribution of each component on ChartQA (strategy-
-bottlenecked) and HRBench (perception-bottlenecked).
-
-\begin{table}[t]
-\centering
-\caption{
-  \textbf{Ablation study.}
-  Accuracy (\%) when individual components are disabled.
-  $\Delta$ = absolute change from the full system.
-}
-\label{tab:ablation}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Variant} & \textbf{ChartQA} & $\Delta$ & \textbf{HRBench} & $\Delta$ \\
-\midrule
-\sysname{} (full)         & \textcolor{red}{[TBD]} & --- & \textcolor{red}{[TBD]} & --- \\
-\quad w/o skill evolution & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} \\
-\quad w/o tool evolution  & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} \\
-\quad w/o mastery phase   & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} \\
-\quad w/o visual analysis & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} & \textcolor{red}{[TBD]} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Three patterns stand out.
-Removing skill evolution causes the largest drop on ChartQA, confirming that strategy
-generation is the primary driver on reasoning-heavy benchmarks.
-Removing the mastery phase causes the largest drop on HRBench: without mastery profiling,
-tools are applied indiscriminately, introducing processing artefacts on ill-suited inputs.
-Removing visual analysis (text-only AnalyzerDecider) degrades HRBench more than ChartQA,
-confirming that perceptual bottleneck identification requires seeing the image.
