@@ -6,73 +6,86 @@
 \subsection{Experimental Setup}
 \label{sec:setup}
 
-
+We evaluate \sysname{} on four visual reasoning benchmarks: \textbf{ChartQA}~\citep{masry2022chartqa},
+\textbf{MathVista}~\citep{lu2023mathvista}, \textbf{HRBench}~\citep{chen2024hrbench}, and
+\textbf{V$^*$}~\citep{wu2024vstar}.
+All experiments use a training subset of $k{=}200$ cases and $N{=}3$ evolution iterations unless
+stated otherwise.
+Full implementation details (hyperparameters, prompt templates, hardware) are in
+Appendix~\ref{sec:impl_details}.
 
 % ============================================================
-\subsection{Experiment I: }
+\subsection{Experiment~I: Autonomous Evolution from Scratch}
 \label{sec:exp1}
 % ============================================================
 
+We evaluate the full \sysname{} loop starting from an empty capability set
+($\mathcal{S}{=}\emptyset$, $\mathcal{T}{=}\emptyset$) across five foundation models and four
+benchmarks.
+Table~\ref{tab:evolution_full} compares four evolution strategies and
+Table~\ref{tab:streaming_accumulation} reports performance under a cumulative streaming setting
+where benchmarks are introduced sequentially.
 
 \begin{table*}[t]
 \centering
 \small
 \setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.15}
-\begin{tabular}{l|l|cccc}
-\hline
-\textbf{Model} & \textbf{Evolution Strategy} 
-& \textbf{HRBench} 
-& \textbf{MathVista} 
-& \textbf{V\_Star} 
-& \textbf{ChartQA} \\
-\hline
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Model} & \textbf{Evolution Strategy}
+  & \textbf{HRBench}
+  & \textbf{MathVista}
+  & \textbf{V$^*$}
+  & \textbf{ChartQA} \\
+\midrule
 
 \multirow{4}{*}{GPT-4o}
-& None (Base Agent) &  &  &  &  \\
-& Skill Only        &  &  &  &  \\
-& Tool Only         &  &  &  &  \\
-& Skill + Tool      &  &  &  &  \\
+  & None (Base Agent)  &  &  &  &  \\
+  & Skill Only         &  &  &  &  \\
+  & Tool Only          &  &  &  &  \\
+  & Skill + Tool       &  &  &  &  \\
 
-\hline
+\midrule
 
 \multirow{4}{*}{GPT-5.4}
-& None (Base Agent) &  &  &  &  \\
-& Skill Only        &  &  &  &  \\
-& Tool Only         &  &  &  &  \\
-& Skill + Tool      &  &  &  &  \\
+  & None (Base Agent)  &  &  &  &  \\
+  & Skill Only         &  &  &  &  \\
+  & Tool Only          &  &  &  &  \\
+  & Skill + Tool       &  &  &  &  \\
 
-\hline
+\midrule
 
 \multirow{4}{*}{Doubao-Seed-2.0}
-& None (Base Agent) &  &  &  &  \\
-& Skill Only        &  &  &  &  \\
-& Tool Only         &  &  &  &  \\
-& Skill + Tool      &  &  &  &  \\
+  & None (Base Agent)  &  &  &  &  \\
+  & Skill Only         &  &  &  &  \\
+  & Tool Only          &  &  &  &  \\
+  & Skill + Tool       &  &  &  &  \\
 
-\hline
+\midrule
 
 \multirow{4}{*}{Qwen3.5-397B}
-& None (Base Agent) &  &  &  &  \\
-& Skill Only        &  &  &  &  \\
-& Tool Only         &  &  &  &  \\
-& Skill + Tool      &  &  &  &  \\
+  & None (Base Agent)  &  &  &  &  \\
+  & Skill Only         &  &  &  &  \\
+  & Tool Only          &  &  &  &  \\
+  & Skill + Tool       &  &  &  &  \\
 
-\hline
+\midrule
 
 \multirow{4}{*}{Gemini-3.0-Pro}
-& None (Base Agent) &  &  &  &  \\
-& Skill Only        &  &  &  &  \\
-& Tool Only         &  &  &  &  \\
-& Skill + Tool      &  &  &  &  \\
+  & None (Base Agent)  &  &  &  &  \\
+  & Skill Only         &  &  &  &  \\
+  & Tool Only          &  &  &  &  \\
+  & Skill + Tool       &  &  &  &  \\
 
-\hline
+\bottomrule
 \end{tabular}
-\caption{
-Comparison of different evolution strategies across multiple foundation models.
-We evaluate four settings: (1) no evolution (base agent), (2) evolving only skills, 
-(3) evolving only tools, and (4) jointly evolving both skills and tools.
-All methods are trained from scratch with the same adaptation budget on each benchmark.
+\caption{%
+  Comparison of evolution strategies across five foundation models and four benchmarks.
+  We evaluate: \emph{(1)}~no evolution (base agent), \emph{(2)}~skill-only evolution,
+  \emph{(3)}~tool-only evolution, and \emph{(4)}~joint skill--tool evolution.
+  All variants start from an empty capability set with the same adaptation budget.
+  Best result per model--benchmark pair in \textbf{bold}.
 }
 \label{tab:evolution_full}
 \end{table*}
@@ -82,117 +95,150 @@ All methods are trained from scratch with the same adaptation budget on each ben
 \small
 \setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.15}
-\begin{tabular}{l|ccccc}
-\hline
-\textbf{Method} 
-& \textbf{HRBench} 
-& \textbf{+ MathVista} 
-& \textbf{+ V\_Star} 
-& \textbf{+ ChartQA} 
-& \textbf{Final Avg.} \\
-\hline
-Base Agent                       &  &  &  &  &  \\
-Skill Accumulation Only          &  &  &  &  &  \\
-Tool Accumulation Only           &  &  &  &  &  \\
-Naive Skill+Tool Accumulation    &  &  &  &  &  \\
-Dynamic Skill--Tool Co-Evolution &  &  &  &  &  \\
-\hline
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Method}
+  & \textbf{HRBench}
+  & \textbf{+MathVista}
+  & \textbf{+V$^*$}
+  & \textbf{+ChartQA}
+  & \textbf{Final Avg.} \\
+\midrule
+Base Agent                        &  &  &  &  &  \\
+Skill Accumulation Only           &  &  &  &  &  \\
+Tool Accumulation Only            &  &  &  &  &  \\
+Naive Skill+Tool Accumulation     &  &  &  &  &  \\
+Dynamic Skill--Tool Co-Evolution  &  &  &  &  &  \\
+\bottomrule
 \end{tabular}
-\caption{
-Results under the cumulative streaming setting, where benchmarks are introduced sequentially and the agent must continuously adapt to the growing task distribution.
-We compare static and naive accumulation strategies against our dynamic skill--tool co-evolution framework.
+\caption{%
+  Results under the \emph{cumulative streaming} setting, where benchmarks are introduced
+  sequentially and the agent must continuously adapt to the growing task distribution.
+  Each column reports accuracy on all benchmarks seen so far; \textbf{Final Avg.}\ averages
+  over all four benchmarks.
+  We compare static and naive accumulation strategies against our dynamic skill--tool
+  co-evolution framework.
 }
 \label{tab:streaming_accumulation}
 \end{table*}
 
 % ============================================================
-\subsection{Experiment II: }
+\subsection{Experiment~II: Learning to Use Pre-Provided Tools}
 \label{sec:exp2}
 % ============================================================
+
+We evaluate \sysname{} Mode~B (Section~\ref{sec:method_mastery_ext}), where the agent is given
+a fixed external tool set and learns \emph{when} to invoke each tool via the mastery profiling
+phase, without generating new tools.
+Table~\ref{tab:gta_detailed} reports step-level tool-use metrics and final task accuracy on the
+GTA benchmark, comparing base invocation strategies against mastery-guided deployment.
 
 \begin{table*}[t]
 \centering
 \small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.15}
-\begin{tabular}{l|l|cccc}
-\hline
+\begin{tabular}{llcccc}
+\toprule
 \textbf{Model} & \textbf{Method}
-& \textbf{ToolAcc} 
-& \textbf{ArgAcc} 
-& \textbf{InstAcc} 
-& \textbf{AnsAcc} \\
-\hline
+  & \textbf{ToolAcc}
+  & \textbf{ArgAcc}
+  & \textbf{InstAcc}
+  & \textbf{AnsAcc} \\
+\midrule
 
 \multirow{4}{*}{GPT-4o}
-& Base Agent            &  &  &  &  \\
-& Prompting Only        &  &  &  &  \\
-& Tool Usage Tuning     &  &  &  &  \\
-& Skill Evolution (Ours)&  &  &  &  \\
+  & Base Agent             &  &  &  &  \\
+  & Prompting Only         &  &  &  &  \\
+  & Tool Usage Tuning      &  &  &  &  \\
+  & Skill Evolution (Ours) &  &  &  &  \\
 
-\hline
+\midrule
 
 \multirow{4}{*}{GPT-5.4}
-& Base Agent            &  &  &  &  \\
-& Prompting Only        &  &  &  &  \\
-& Tool Usage Tuning     &  &  &  &  \\
-& Skill Evolution (Ours)&  &  &  &  \\
+  & Base Agent             &  &  &  &  \\
+  & Prompting Only         &  &  &  &  \\
+  & Tool Usage Tuning      &  &  &  &  \\
+  & Skill Evolution (Ours) &  &  &  &  \\
 
-\hline
+\bottomrule
 \end{tabular}
-\caption{
-Detailed evaluation on GTA benchmark.
-We report both step-level tool-use metrics and final task accuracy.
+\caption{%
+  Detailed evaluation on the GTA benchmark.
+  We report step-level tool-use accuracy (\textbf{ToolAcc}: correct tool selected;
+  \textbf{ArgAcc}: correct arguments; \textbf{InstAcc}: correct instruction following)
+  and final task accuracy (\textbf{AnsAcc}).
+  \emph{Skill Evolution (Ours)} corresponds to \sysname{} Mode~B, which applies mastery
+  profiling to the provided tool set without generating new tools.
 }
 \label{tab:gta_detailed}
 \end{table*}
+
 % ============================================================
-\subsection{Experiment III: }
+\subsection{Experiment~III: Comparison with VTool-R1}
 \label{sec:exp3}
 % ============================================================
+
+We align our evaluation with VTool-R1~\citep{vtoolr1_2025} to measure how much of the
+RL-trained model's gain can be recovered by training-free skill evolution alone.
+Table~\ref{tab:vtoolr1_aligned_full} compares \sysname{} against VTool-R1 on the Chart and
+Table reasoning splits of~\citet{vtoolr1_2025}, using the same Qwen2.5-VL backbone family at
+three scales.
+
 \begin{table*}[t]
 \centering
 \small
 \setlength{\tabcolsep}{4.5pt}
 \renewcommand{\arraystretch}{1.15}
-\begin{tabular}{l|l|cc|cc}
-\hline
-\textbf{Model} & \textbf{Method} 
-& \textbf{Chart Split} & \textbf{Table Split}
-& \textbf{\#Train Traj.} & \textbf{RL Update} \\
-\hline
+\begin{tabular}{llcc cc}
+\toprule
+\textbf{Model} & \textbf{Method}
+  & \textbf{Chart Split} & \textbf{Table Split}
+  & \textbf{\#Train Traj.} & \textbf{RL Update} \\
+\midrule
 
 \multirow{4}{*}{Qwen2.5-VL-3B}
-& Pure Run                  &  &  & -- & No \\
-& Prompted Tool Use         &  &  & -- & No \\
-& VTool-R1                  &  &  &    & Yes \\
-& Ours (Self-Evolved Skill) &  &  &    & No \\
-\hline
+  & Pure Run                   &  &  & ---                & \ding{55} \\
+  & Prompted Tool Use          &  &  & ---                & \ding{55} \\
+  & VTool-R1                   &  &  & \phantom{0}        & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &  &  & \phantom{0}        & \ding{55} \\
+
+\midrule
 
 \multirow{4}{*}{Qwen2.5-VL-7B}
-& Pure Run                  &  &  & -- & No \\
-& Prompted Tool Use         &  &  & -- & No \\
-& VTool-R1                  &  &  &    & Yes \\
-& Ours (Self-Evolved Skill) &  &  &    & No \\
-\hline
+  & Pure Run                   &  &  & ---                & \ding{55} \\
+  & Prompted Tool Use          &  &  & ---                & \ding{55} \\
+  & VTool-R1                   &  &  & \phantom{0}        & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &  &  & \phantom{0}        & \ding{55} \\
+
+\midrule
 
 \multirow{4}{*}{Qwen2.5-VL-32B}
-& Pure Run                  &  &  & -- & No \\
-& Prompted Tool Use         &  &  & -- & No \\
-& VTool-R1                  &  &  &    & Yes \\
-& Ours (Self-Evolved Skill) &  &  &    & No \\
-\hline
+  & Pure Run                   &  &  & ---                & \ding{55} \\
+  & Prompted Tool Use          &  &  & ---                & \ding{55} \\
+  & VTool-R1                   &  &  & \phantom{0}        & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &  &  & \phantom{0}        & \ding{55} \\
 
+\bottomrule
 \end{tabular}
-\caption{
-Aligned comparison with VTool-R1 on the fixed-tool visual reasoning setting.
-VTool-R1 improves tool-use behavior via GRPO-based reinforcement learning, whereas our method performs explicit skill evolution over the same predefined tool library.
+\caption{%
+  Aligned comparison with VTool-R1~\citep{vtoolr1_2025} on fixed-tool visual reasoning.
+  VTool-R1 improves tool-use behaviour via GRPO-based reinforcement learning
+  (\ding{51}~RL Update); our method performs explicit skill evolution over the same
+  predefined tool library with no weight updates (\ding{55}~RL Update).
+  \textbf{\#Train Traj.}\ reports the number of training trajectories consumed by each method.
+  Results for Pure Run and Prompted Tool Use are replicated from~\citet{vtoolr1_2025} for
+  fair comparison.
 }
 \label{tab:vtoolr1_aligned_full}
 \end{table*}
-
 
 % ============================================================
 \subsection{Ablation Studies}
 \label{sec:ablation}
 % ============================================================
+
+\textcolor{red}{[Ablation tables to be added.  Planned ablations: (i)~w/o visual diagnosis
+(text-only AnalyzerDecider), (ii)~w/o skill evolution, (iii)~w/o tool evolution,
+(iv)~w/o mastery phase, (v)~effect of training size $k$, (vi)~effect of iteration count $N$.
+Primary benchmark: ChartQA; secondary: HRBench.]}
