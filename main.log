@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  9 APR 2026 22:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  9 APR 2026 22:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2337,55 +2337,64 @@ e 191.
 [5]) (./sections/4_experiments.tex
 
 Package natbib Warning: Citation `masry2022chartqa' on page 6 undefined on inpu
-t line 9.
+t line 14.
 
 
 Package natbib Warning: Citation `lu2023mathvista' on page 6 undefined on input
- line 10.
+ line 17.
 
 
 Package natbib Warning: Citation `chen2024hrbench' on page 6 undefined on input
- line 10.
+ line 19.
 
 
 Package natbib Warning: Citation `wu2024vstar' on page 6 undefined on input lin
-e 11.
-
-
-LaTeX Warning: Reference `sec:impl_details' on page 6 undefined on input line 1
-5.
+e 22.
 
 
 Package natbib Warning: Citation `vtoolr1_2025' on page 6 undefined on input li
-ne 182.
+ne 66.
+
+[6] [7]
+
+Package natbib Warning: Citation `vtoolr1_2025' on page 8 undefined on input li
+ne 345.
 
 
-Package natbib Warning: Citation `vtoolr1_2025' on page 6 undefined on input li
-ne 185.
+Package natbib Warning: Citation `vtoolr1_2025' on page 8 undefined on input li
+ne 348.
+
+[8] [9]
+
+Package natbib Warning: Citation `vtoolr1_2025' on page 10 undefined on input l
+ine 441.
 
 
-Package natbib Warning: Citation `vtoolr1_2025' on page 6 undefined on input li
-ne 232.
+Package natbib Warning: Citation `vtoolr1_2025' on page 10 undefined on input l
+ine 441.
 
 
-Package natbib Warning: Citation `vtoolr1_2025' on page 6 undefined on input li
-ne 232.
+LaTeX Warning: Reference `tab:ablation_main' on page 10 undefined on input line
+ 451.
 
-) (./sections/5_discussion.tex [6]
+[10]
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/sc' will be
+(Font)              scaled to size 9.0pt on input line 511.
+) (./sections/5_discussion.tex
 
-Package natbib Warning: Citation `vtoolr1_2025' on page 7 undefined on input li
-ne 43.
+Package natbib Warning: Citation `vtoolr1_2025' on page 11 undefined on input l
+ine 43.
 
-) (./sections/6_conclusion.tex [7])
+) (./sections/6_conclusion.tex [11])
 No file main.bbl.
-[8] [9] (./sections/A_appendix.tex
+[12] (./sections/A_appendix.tex
 Overfull \hbox (6.79999pt too wide) in paragraph at lines 86--93
  [][] 
  []
 
-[10
+[13
 
-] [11]
+] [14]
 Overfull \hbox (81.771pt too wide) in paragraph at lines 145--151
 \T1/XCharter-TLF/m/n/10 (-20) The code, evolved ca-pa-bil-ity files (\T1/pcr/m/
 n/10 learned/ \T1/XCharter-TLF/m/n/10 (-20) di-rec-tory), and all eval-u-a-tion
@@ -2394,7 +2403,7 @@ n/10 learned/ \T1/XCharter-TLF/m/n/10 (-20) di-rec-tory), and all eval-u-a-tion
 
 ) 
 AED: lastpage setting LastPage
-[12]
+[15]
 
 Package natbib Warning: There were undefined citations.
 
@@ -2406,38 +2415,50 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DB5256D97B7AC7177372E861DDFC6C7B;5078.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: DB5256D97B7AC7177372E861DDFC6C7B;5078
+(rerunfilecheck)             After:  CA5D2D2C60A0C9BAAB2A810762E5CA4E;5099.
  ) 
 Here is how much of TeX's memory you used:
- 42091 strings out of 478994
- 798685 string characters out of 5858184
- 1195928 words of memory out of 5000000
- 57953 multiletter control sequences out of 15000+600000
- 718937 words of font info for 530 fonts, out of 8000000 for 9000
+ 42199 strings out of 478994
+ 801500 string characters out of 5858184
+ 1185003 words of memory out of 5000000
+ 57960 multiletter control sequences out of 15000+600000
+ 743947 words of font info for 594 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,26n,131p,1038b,932s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
-exlive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_fpvofg.enc}{/usr/local/texl
-ive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_abgjzu.enc}{/usr/local/texlive
-/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_bxmb3o.enc}{/usr/local/texlive/20
-21/texmf-dist/fonts/enc/dvips/xcharter/xch_mos65x.enc}{/usr/local/texlive/2021/
-texmf-dist/fonts/enc/dvips/xcharter/xch_rydp4l.enc}{/usr/local/texlive/2021/tex
-mf-dist/fonts/enc/dvips/xcharter/xch_axzxh7.enc}{/usr/local/texlive/2021/texmf-
-dist/fonts/enc/dvips/xcharter/xch1_co4ru4.enc}</usr/local/texlive/2021/texmf-di
-st/fonts/type1/public/xcharter/XCharter-Bold.pfb></usr/local/texlive/2021/texmf
--dist/fonts/type1/public/xcharter/XCharter-Italic.pfb></usr/local/texlive/2021/
-texmf-dist/fonts/type1/public/xcharter/XCharter-Roman.pfb></usr/local/texlive/2
-021/texmf-dist/fonts/type1/public/xcharter/XCharterMathMI.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2021
-/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/font
-s/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
-/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (12 pages, 353168 bytes).
+pdfTeX warning (dest): name{figure.caption.8} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/tex
+live/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_fpvofg.enc}{/usr/local/texliv
+e/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_abgjzu.enc}{/usr/local/texlive/2
+021/texmf-dist/fonts/enc/dvips/xcharter/xch_bxmb3o.enc}{/usr/local/texlive/2021
+/texmf-dist/fonts/enc/dvips/xcharter/xch_mos65x.enc}{/usr/local/texlive/2021/te
+xmf-dist/fonts/enc/dvips/xcharter/xch_rydp4l.enc}{/usr/local/texlive/2021/texmf
+-dist/fonts/enc/dvips/xcharter/xch_axzxh7.enc}{/usr/local/texlive/2021/texmf-di
+st/fonts/enc/dvips/xcharter/xch1_co4ru4.enc}</usr/local/texlive/2021/texmf-dist
+/fonts/type1/public/xcharter/XCharter-Bold.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/xcharter/XCharter-Italic.pfb></usr/local/texlive/2021/te
+xmf-dist/fonts/type1/public/xcharter/XCharter-Roman.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/xcharter/XCharterMathMI.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/
+type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/u
+rw/zapfding/uzdr.pfb>
+Output written on main.pdf (15 pages, 372334 bytes).
 PDF statistics:
- 368 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 80 named destinations out of 1000 (max. 500000)
- 136587 words of extra memory for PDF output out of 154059 (max. 10000000)
+ 392 PDF objects out of 1000 (max. 8388607)
+ 316 compressed objects within 4 object streams
+ 85 named destinations out of 1000 (max. 500000)
+ 142731 words of extra memory for PDF output out of 154059 (max. 10000000)
 

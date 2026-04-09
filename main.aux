@@ -75,69 +75,87 @@
 \citation{chen2024hrbench}
 \citation{wu2024vstar}
 \citation{vtoolr1_2025}
-\citation{vtoolr1_2025}
-\citation{vtoolr1_2025}
-\citation{vtoolr1_2025}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Tool Mastery from External Tool Sets (\textsc  {EvoAgent}{} Mode B)}{6}{subsection.3.6}\protected@file@percent }
 \newlabel{sec:method_mastery_ext}{{3.6}{6}{Tool Mastery from External Tool Sets (\sysname {} Mode B)}{subsection.3.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{6}{section.4}\protected@file@percent }
 \newlabel{sec:experiments}{{4}{6}{Experiments}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Experimental Setup}{6}{subsection.4.1}\protected@file@percent }
 \newlabel{sec:setup}{{4.1}{6}{Experimental Setup}{subsection.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experiment~I: Autonomous Evolution from Scratch}{6}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:exp1}{{4.2}{6}{Experiment~I: Autonomous Evolution from Scratch}{subsection.4.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Experiment~II: Learning to Use Pre-Provided Tools}{6}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:exp2}{{4.3}{6}{Experiment~II: Learning to Use Pre-Provided Tools}{subsection.4.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Experiment~III: Comparison with VTool-R1}{6}{subsection.4.4}\protected@file@percent }
-\newlabel{sec:exp3}{{4.4}{6}{Experiment~III: Comparison with VTool-R1}{subsection.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Ablation Studies}{6}{subsection.4.5}\protected@file@percent }
-\newlabel{sec:ablation}{{4.5}{6}{Ablation Studies}{subsection.4.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{6}{section.5}\protected@file@percent }
-\newlabel{sec:discussion}{{5}{6}{Discussion}{section.5}{}}
-\@writefile{toc}{\contentsline {paragraph}{When does evolution help?}{6}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Benchmarks.}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Foundation models.}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Evolution protocol.}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Baselines.}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Evaluation metrics.}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experiment~I: Autonomous Evolution from Scratch}{7}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:exp1}{{4.2}{7}{Experiment~I: Autonomous Evolution from Scratch}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Motivation.}{7}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Multi-model comparison.}{7}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cumulative streaming setting.}{7}{table.caption.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Experiment~II: Learning to Use Pre-Provided Tools}{7}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:exp2}{{4.3}{7}{Experiment~II: Learning to Use Pre-Provided Tools}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Motivation.}{7}{subsection.4.3}\protected@file@percent }
 \citation{vtoolr1_2025}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of evolution strategies across five foundation models and four benchmarks. We evaluate: \emph  {(1)}~no evolution (base agent), \emph  {(2)}~skill-only evolution, \emph  {(3)}~tool-only evolution, and \emph  {(4)}~joint skill--tool evolution. All variants start from an empty capability set with the same adaptation budget. Best result per model--benchmark pair in \textbf  {bold}. \relax }}{7}{table.caption.3}\protected@file@percent }
-\newlabel{tab:evolution_full}{{1}{7}{Comparison of evolution strategies across five foundation models and four benchmarks. We evaluate: \emph {(1)}~no evolution (base agent), \emph {(2)}~skill-only evolution, \emph {(3)}~tool-only evolution, and \emph {(4)}~joint skill--tool evolution. All variants start from an empty capability set with the same adaptation budget. Best result per model--benchmark pair in \textbf {bold}. \relax }{table.caption.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Limitations.}{7}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Future directions.}{7}{section.5}\protected@file@percent }
+\citation{vtoolr1_2025}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textbf  {Exp~I: Autonomous evolution from scratch.} Accuracy (\%) for each evolution strategy across five foundation models and four benchmarks, all starting from an empty capability set. \emph  {None} is the zero-shot VLM baseline. \emph  {Skill Only} / \emph  {Tool Only} ablate one capability type. \emph  {Skill~$+$~Tool} is the full \textsc  {EvoAgent}{} system. Bold denotes the best result per model--benchmark pair. Consistent gains of Skill~$+$~Tool over the base agent confirm that training-free evolution is effective across both model families and all four benchmarks. \relax }}{8}{table.caption.3}\protected@file@percent }
+\newlabel{tab:evolution_full}{{1}{8}{\textbf {Exp~I: Autonomous evolution from scratch.} Accuracy (\%) for each evolution strategy across five foundation models and four benchmarks, all starting from an empty capability set. \emph {None} is the zero-shot VLM baseline. \emph {Skill Only} / \emph {Tool Only} ablate one capability type. \emph {Skill~$+$~Tool} is the full \sysname {} system. Bold denotes the best result per model--benchmark pair. Consistent gains of Skill~$+$~Tool over the base agent confirm that training-free evolution is effective across both model families and all four benchmarks. \relax }{table.caption.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Results on GTA.}{8}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Experiment~III: Closing the Gap to VTool-R1}{8}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:exp3}{{4.4}{8}{Experiment~III: Closing the Gap to VTool-R1}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Motivation.}{8}{subsection.4.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {Exp~I: Cumulative streaming setting.} Benchmarks are introduced sequentially from left to right; each cell reports accuracy on \emph  {all benchmarks seen so far}. \textbf  {Final Avg.} is the mean accuracy over all four benchmarks after the full stream. Dynamic co-evolution maintains consistent gains across the growing distribution, whereas naive accumulation degrades on earlier benchmarks as later ones are added — indicating capability interference when no revalidation is applied. \relax }}{9}{table.caption.4}\protected@file@percent }
+\newlabel{tab:streaming_accumulation}{{2}{9}{\textbf {Exp~I: Cumulative streaming setting.} Benchmarks are introduced sequentially from left to right; each cell reports accuracy on \emph {all benchmarks seen so far}. \textbf {Final Avg.} is the mean accuracy over all four benchmarks after the full stream. Dynamic co-evolution maintains consistent gains across the growing distribution, whereas naive accumulation degrades on earlier benchmarks as later ones are added — indicating capability interference when no revalidation is applied. \relax }{table.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {Exp~II: Learning to use pre-provided tools on GTA.} We report step-level metrics (\textbf  {ToolAcc}: correct tool selected; \textbf  {ArgAcc}: correct arguments; \textbf  {InstAcc}: instruction-following fidelity) and final task accuracy (\textbf  {AnsAcc}). \emph  {Tool Usage Tuning} invokes all tools unconditionally; \emph  {Skill Evolution (Ours)} applies \textsc  {EvoAgent}{} Mode~B, which learns per-tool mastery SOPs from the training set without generating new tools. The gap between \emph  {Tool Usage Tuning} and \emph  {Ours} isolates the benefit of mastery-guided conditional invocation over naive tool deployment. \relax }}{9}{table.caption.5}\protected@file@percent }
+\newlabel{tab:gta_detailed}{{3}{9}{\textbf {Exp~II: Learning to use pre-provided tools on GTA.} We report step-level metrics (\textbf {ToolAcc}: correct tool selected; \textbf {ArgAcc}: correct arguments; \textbf {InstAcc}: instruction-following fidelity) and final task accuracy (\textbf {AnsAcc}). \emph {Tool Usage Tuning} invokes all tools unconditionally; \emph {Skill Evolution (Ours)} applies \sysname {} Mode~B, which learns per-tool mastery SOPs from the training set without generating new tools. The gap between \emph {Tool Usage Tuning} and \emph {Ours} isolates the benefit of mastery-guided conditional invocation over naive tool deployment. \relax }{table.caption.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Results.}{9}{subsection.4.4}\protected@file@percent }
+\citation{vtoolr1_2025}
+\citation{vtoolr1_2025}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textbf  {Exp~III: Training-free skill evolution vs.\ VTool-R1 (RL).} Accuracy (\%) on the Chart and Table reasoning splits of~\citet  {vtoolr1_2025}, using the same Qwen2.5-VL backbone at three scales. \textbf  {\#Train Traj.}\ reports training trajectories consumed. {\fontfamily  {pzd}\fontencoding  {U}\fontseries  {m}\fontshape  {n}\selectfont  \char 51}~RL Update: model weights are updated via GRPO. {\fontfamily  {pzd}\fontencoding  {U}\fontseries  {m}\fontshape  {n}\selectfont  \char 55}~RL Update: weights are frozen. \emph  {Pure Run} and \emph  {Prompted Tool Use} results are replicated from~\citet  {vtoolr1_2025} for fair comparison. \textsc  {EvoAgent}{} closes a substantial fraction of the gap between \emph  {Pure Run} and VTool-R1 without any gradient updates, at dramatically lower computational cost. \relax }}{10}{table.caption.6}\protected@file@percent }
+\newlabel{tab:vtoolr1_aligned_full}{{4}{10}{\textbf {Exp~III: Training-free skill evolution vs.\ VTool-R1 (RL).} Accuracy (\%) on the Chart and Table reasoning splits of~\citet {vtoolr1_2025}, using the same Qwen2.5-VL backbone at three scales. \textbf {\#Train Traj.}\ reports training trajectories consumed. \ding {51}~RL Update: model weights are updated via GRPO. \ding {55}~RL Update: weights are frozen. \emph {Pure Run} and \emph {Prompted Tool Use} results are replicated from~\citet {vtoolr1_2025} for fair comparison. \sysname {} closes a substantial fraction of the gap between \emph {Pure Run} and VTool-R1 without any gradient updates, at dramatically lower computational cost. \relax }{table.caption.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Cost comparison.}{10}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Ablation Studies}{10}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:ablation}{{4.5}{10}{Ablation Studies}{subsection.4.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Component ablations.}{10}{subsection.4.5}\protected@file@percent }
+\citation{vtoolr1_2025}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textbf  {Ablation study.} Each row removes one component of \textsc  {EvoAgent}{} while holding all others fixed (GPT-4o backbone; $k{=}200$, $N{=}3$). \emph  {w/o Skill Evolution}: tool evolution only. \emph  {w/o Tool Evolution}: skill evolution only. \emph  {w/o Mastery Phase}: tools deployed unconditionally without applicability SOPs. \emph  {w/o Visual Diagnosis}: AnalyzerDecider receives only text (question, answer, trace) with no image input. Accuracy (\%); bold denotes the full system. \relax }}{11}{table.caption.7}\protected@file@percent }
+\newlabel{tab:ablation_main}{{5}{11}{\textbf {Ablation study.} Each row removes one component of \sysname {} while holding all others fixed (GPT-4o backbone; $k{=}200$, $N{=}3$). \emph {w/o Skill Evolution}: tool evolution only. \emph {w/o Tool Evolution}: skill evolution only. \emph {w/o Mastery Phase}: tools deployed unconditionally without applicability SOPs. \emph {w/o Visual Diagnosis}: AnalyzerDecider receives only text (question, answer, trace) with no image input. Accuracy (\%); bold denotes the full system. \relax }{table.caption.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Sensitivity analysis.}{11}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{11}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{11}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{When does evolution help?}{11}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Limitations.}{11}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Future directions.}{11}{section.5}\protected@file@percent }
 \bibdata{references}
 \bibstyle{conference}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Results under the \emph  {cumulative streaming} setting, where benchmarks are introduced sequentially and the agent must continuously adapt to the growing task distribution. Each column reports accuracy on all benchmarks seen so far; \textbf  {Final Avg.}\ averages over all four benchmarks. We compare static and naive accumulation strategies against our dynamic skill--tool co-evolution framework. \relax }}{8}{table.caption.4}\protected@file@percent }
-\newlabel{tab:streaming_accumulation}{{2}{8}{Results under the \emph {cumulative streaming} setting, where benchmarks are introduced sequentially and the agent must continuously adapt to the growing task distribution. Each column reports accuracy on all benchmarks seen so far; \textbf {Final Avg.}\ averages over all four benchmarks. We compare static and naive accumulation strategies against our dynamic skill--tool co-evolution framework. \relax }{table.caption.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Detailed evaluation on the GTA benchmark. We report step-level tool-use accuracy (\textbf  {ToolAcc}: correct tool selected; \textbf  {ArgAcc}: correct arguments; \textbf  {InstAcc}: correct instruction following) and final task accuracy (\textbf  {AnsAcc}). \emph  {Skill Evolution (Ours)} corresponds to \textsc  {EvoAgent}{} Mode~B, which applies mastery profiling to the provided tool set without generating new tools. \relax }}{8}{table.caption.5}\protected@file@percent }
-\newlabel{tab:gta_detailed}{{3}{8}{Detailed evaluation on the GTA benchmark. We report step-level tool-use accuracy (\textbf {ToolAcc}: correct tool selected; \textbf {ArgAcc}: correct arguments; \textbf {InstAcc}: correct instruction following) and final task accuracy (\textbf {AnsAcc}). \emph {Skill Evolution (Ours)} corresponds to \sysname {} Mode~B, which applies mastery profiling to the provided tool set without generating new tools. \relax }{table.caption.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{8}{section.6}\protected@file@percent }
-\newlabel{sec:conclusion}{{6}{8}{Conclusion}{section.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Aligned comparison with VTool-R1~\citep  {vtoolr1_2025} on fixed-tool visual reasoning. VTool-R1 improves tool-use behaviour via GRPO-based reinforcement learning ({\fontfamily  {pzd}\fontencoding  {U}\fontseries  {m}\fontshape  {n}\selectfont  \char 51}~RL Update); our method performs explicit skill evolution over the same predefined tool library with no weight updates ({\fontfamily  {pzd}\fontencoding  {U}\fontseries  {m}\fontshape  {n}\selectfont  \char 55}~RL Update). \textbf  {\#Train Traj.}\ reports the number of training trajectories consumed by each method. Results for Pure Run and Prompted Tool Use are replicated from~\citet  {vtoolr1_2025} for fair comparison. \relax }}{9}{table.caption.6}\protected@file@percent }
-\newlabel{tab:vtoolr1_aligned_full}{{4}{9}{Aligned comparison with VTool-R1~\citep {vtoolr1_2025} on fixed-tool visual reasoning. VTool-R1 improves tool-use behaviour via GRPO-based reinforcement learning (\ding {51}~RL Update); our method performs explicit skill evolution over the same predefined tool library with no weight updates (\ding {55}~RL Update). \textbf {\#Train Traj.}\ reports the number of training trajectories consumed by each method. Results for Pure Run and Prompted Tool Use are replicated from~\citet {vtoolr1_2025} for fair comparison. \relax }{table.caption.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Implementation Details}{10}{appendix.A}\protected@file@percent }
-\newlabel{app:impl}{{A}{10}{Implementation Details}{appendix.A}{}}
-\@writefile{toc}{\contentsline {paragraph}{Role prompts.}{10}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Skill retrieval.}{10}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Tool invocation.}{10}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Hyperparameters.}{10}{appendix.A}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Hyperparameter settings.\relax }}{10}{table.caption.7}\protected@file@percent }
-\newlabel{tab:hyperparams}{{5}{10}{Hyperparameter settings.\relax }{table.caption.7}{}}
-\@writefile{toc}{\contentsline {paragraph}{Compute.}{10}{table.caption.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Additional Results}{10}{appendix.B}\protected@file@percent }
-\newlabel{app:results}{{B}{10}{Additional Results}{appendix.B}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Training Set Size Sensitivity}{10}{subsection.B.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations. \leavevmode {\color {red}[TBD: insert figure]}\relax }}{10}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:k_sensitivity}{{2}{10}{ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations. \textcolor {red}{[TBD: insert figure]}\relax }{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Per-Category Analysis on ChartQA}{10}{subsection.B.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Qualitative Examples}{11}{subsection.B.3}\protected@file@percent }
-\newlabel{app:qualitative}{{B.3}{11}{Qualitative Examples}{subsection.B.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  \textbf  {Case study: ChartQA failure before and after skill evolution.} \textit  {(Left)}: without an evolved skill, the agent attempts direct value reading and misreads a stacked bar chart. \textit  {(Right)}: with the evolved ``stacked chart extraction'' skill, the agent applies a structured subtraction strategy and answers correctly. \relax }}{11}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:casestudy}{{3}{11}{\textbf {Case study: ChartQA failure before and after skill evolution.} \textit {(Left)}: without an evolved skill, the agent attempts direct value reading and misreads a stacked bar chart. \textit {(Right)}: with the evolved ``stacked chart extraction'' skill, the agent applies a structured subtraction strategy and answers correctly. \relax }{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {C}Example Generated Skill and Tool}{11}{appendix.C}\protected@file@percent }
-\newlabel{app:examples}{{C}{11}{Example Generated Skill and Tool}{appendix.C}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Example Skill: ChartQA Multi-Step Data Extraction}{11}{subsection.C.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Example Tool: Sub-Region Contrast Enhancer (V*)}{11}{subsection.C.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {D}Reproducibility Statement}{12}{appendix.D}\protected@file@percent }
-\newlabel{app:reproducibility}{{D}{12}{Reproducibility Statement}{appendix.D}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {E}LLM Assistance Disclosure}{12}{appendix.E}\protected@file@percent }
-\newlabel{app:disclosure}{{E}{12}{LLM Assistance Disclosure}{appendix.E}{}}
-\newlabel{LastPage}{{}{12}{}{page.12}{}}
-\xdef\lastpage@lastpage{12}
-\xdef\lastpage@lastpageHy{12}
-\gdef \@abspage@last{12}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{12}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{12}{Conclusion}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Implementation Details}{13}{appendix.A}\protected@file@percent }
+\newlabel{app:impl}{{A}{13}{Implementation Details}{appendix.A}{}}
+\@writefile{toc}{\contentsline {paragraph}{Role prompts.}{13}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Skill retrieval.}{13}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Tool invocation.}{13}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Hyperparameters.}{13}{appendix.A}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Hyperparameter settings.\relax }}{13}{table.caption.8}\protected@file@percent }
+\newlabel{tab:hyperparams}{{6}{13}{Hyperparameter settings.\relax }{table.caption.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{Compute.}{13}{table.caption.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Additional Results}{13}{appendix.B}\protected@file@percent }
+\newlabel{app:results}{{B}{13}{Additional Results}{appendix.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Training Set Size Sensitivity}{13}{subsection.B.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations. \leavevmode {\color {red}[TBD: insert figure]}\relax }}{13}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:k_sensitivity}{{2}{13}{ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations. \textcolor {red}{[TBD: insert figure]}\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Per-Category Analysis on ChartQA}{13}{subsection.B.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Qualitative Examples}{14}{subsection.B.3}\protected@file@percent }
+\newlabel{app:qualitative}{{B.3}{14}{Qualitative Examples}{subsection.B.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  \textbf  {Case study: ChartQA failure before and after skill evolution.} \textit  {(Left)}: without an evolved skill, the agent attempts direct value reading and misreads a stacked bar chart. \textit  {(Right)}: with the evolved ``stacked chart extraction'' skill, the agent applies a structured subtraction strategy and answers correctly. \relax }}{14}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:casestudy}{{3}{14}{\textbf {Case study: ChartQA failure before and after skill evolution.} \textit {(Left)}: without an evolved skill, the agent attempts direct value reading and misreads a stacked bar chart. \textit {(Right)}: with the evolved ``stacked chart extraction'' skill, the agent applies a structured subtraction strategy and answers correctly. \relax }{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Example Generated Skill and Tool}{14}{appendix.C}\protected@file@percent }
+\newlabel{app:examples}{{C}{14}{Example Generated Skill and Tool}{appendix.C}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Example Skill: ChartQA Multi-Step Data Extraction}{14}{subsection.C.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Example Tool: Sub-Region Contrast Enhancer (V*)}{14}{subsection.C.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D}Reproducibility Statement}{15}{appendix.D}\protected@file@percent }
+\newlabel{app:reproducibility}{{D}{15}{Reproducibility Statement}{appendix.D}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {E}LLM Assistance Disclosure}{15}{appendix.E}\protected@file@percent }
+\newlabel{app:disclosure}{{E}{15}{LLM Assistance Disclosure}{appendix.E}{}}
+\newlabel{LastPage}{{}{15}{}{page.15}{}}
+\xdef\lastpage@lastpage{15}
+\xdef\lastpage@lastpageHy{15}
+\gdef \@abspage@last{15}
