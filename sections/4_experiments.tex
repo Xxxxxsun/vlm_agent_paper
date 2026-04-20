@@ -81,6 +81,15 @@ By evaluating five foundation models ranging from 3B to frontier scale, we asses
 whether the gains are model-specific or a general property of the failure-driven
 evolution paradigm.
 
+
+\textcolor{red}{case study}
+
+\begin{itemize}
+    \item refocus
+    \item zoomeyes
+    \item interleaved skills
+\end{itemize}
+
 \paragraph{Multi-model comparison.}
 Table~\ref{tab:evolution_full} reports accuracy for all model--strategy combinations.
 Several consistent patterns emerge.
@@ -126,42 +135,50 @@ task-specific strategic knowledge.
 \midrule
 
 \multirow{4}{*}{GPT-4o}
-  & None (Base Agent)  &  &  &  &  \\
-  & Skill Only         &  &  &  &  \\
-  & Tool Only          &  &  &  &  \\
-  & Skill + Tool       &  &  &  &  \\
+  & None (Base Agent)  &0.6386  &0.6711  &0.5828  &0.7552  \\
+  & Skill Only         &0.66142  &0.7077  &0.63576  &0.7796  \\
+  & Tool Only          &0.6414  &0.6922  &0.6159  &0.7693  \\
+  & Skill + Tool       &0.66  &0.70777  &0.6423  &0.775  \\
 
 \midrule
 
-\multirow{4}{*}{GPT-5.4}
-  & None (Base Agent)  &  &  &  &  \\
-  & Skill Only         &  &  &  &  \\
+\multirow{4}{*}{o4-mini?}
+  & None (Base Agent)  &\textcolor{red}{0.7374}  &\textcolor{red}{0.7433}  &0.72847  &\textcolor{red}{0.776}  \\
+  & Skill Only         &0.7671  &0.75666  &0.75496  &0.76927  \\
+  & Tool Only          &\textcolor{red}{0.773}  &\textcolor{red}{0.7633}  &0.7881  &\textcolor{red}{0.7738}  \\
+  & Skill + Tool       &\textcolor{red}{0.782}  &\textcolor{red}{0.7640}  &0.7947  &\textcolor{red}{0.7940}  \\
+
+\midrule
+
+\multirow{4}{*}{gpt5.4}
+  & None (Base Agent)  &0.747142  &0.75888  &0.7748  &0.7974  \\
+  & Skill Only         &  &  &  & \\
   & Tool Only          &  &  &  &  \\
   & Skill + Tool       &  &  &  &  \\
 
 \midrule
 
 \multirow{4}{*}{Doubao-Seed-2.0}
-  & None (Base Agent)  &  &  &  &  \\
-  & Skill Only         &  &  &  &  \\
-  & Tool Only          &  &  &  &  \\
-  & Skill + Tool       &  &  &  &  \\
+  & None (Base Agent)  &0.8214  &0.8824  &0.8675  &0.8152  \\
+  & Skill Only         &0.8431  &  &  &  \\
+  & Tool Only          &0.8302  &  &0.95364  &  \\
+  & Skill + Tool       &\textcolor{green}{0.90571}  &\textcolor{red}{0.845555}  &0.95364  &\textcolor{red}{0.8218}  \\
 
 \midrule
 
 \multirow{4}{*}{Qwen3.5-397B}
-  & None (Base Agent)  &  &  &  &  \\
+  & None (Base Agent)  &0.89  &0.8189  &0.9083  &0.5789  \\
   & Skill Only         &  &  &  &  \\
   & Tool Only          &  &  &  &  \\
-  & Skill + Tool       &  &  &  &  \\
+  & Skill + Tool       &  &0.8200  &0.8411  &0.8234  \\
 
 \midrule
 
-\multirow{4}{*}{Gemini-3.0-Pro}
-  & None (Base Agent)  &  &  &  &  \\
+\multirow{4}{*}{Gemini-3.1-Pro-Preview}
+  & None (Base Agent)  &0.7792  &0.8473  &0.8411  &0.6517  \\
   & Skill Only         &  &  &  &  \\
   & Tool Only          &  &  &  &  \\
-  & Skill + Tool       &  &  &  &  \\
+  & Skill + Tool       &  &0.849  &0.8543  &0.7980  \\
 
 \bottomrule
 \end{tabular}
@@ -220,11 +237,11 @@ neither capability type alone is sufficient for a diverse, growing task distribu
   & \textbf{+ChartQA}
   & \textbf{Final Avg.} \\
 \midrule
-Base Agent                        &  &  &  &  &  \\
+Base Agent                        &0.671  &0.63  &0.637  &0.722  &  \\
 Skill Accumulation Only           &  &  &  &  &  \\
 Tool Accumulation Only            &  &  &  &  &  \\
 Naive Skill+Tool Accumulation     &  &  &  &  &  \\
-Dynamic Skill--Tool Co-Evolution  &  &  &  &  &  \\
+Dynamic Skill--Tool Co-Evolution  &0.751  &0.733  &0.742  &0.802  &  \\
 \bottomrule
 \end{tabular}
 \caption{%
@@ -306,19 +323,21 @@ artefacts.
   & \textbf{AnsAcc} \\
 \midrule
 
-\multirow{4}{*}{GPT-4o}
-  & Base Agent             &  &  &  &  \\
-  & Prompting Only         &  &  &  &  \\
-  & Tool Usage Tuning      &  &  &  &  \\
-  & Skill Evolution (Ours) &  &  &  &  \\
+\multirow{2}{*}{GPT-4o}
+  & Base Agent             & 76.4 & 69.8 & 66.2 & 62.81 \\
+  & Skill Evolution (Ours) & 74.9 & 68.1 & 64.7 & 61.16 \\
 
 \midrule
 
-\multirow{4}{*}{GPT-5.4}
-  & Base Agent             &  &  &  &  \\
-  & Prompting Only         &  &  &  &  \\
-  & Tool Usage Tuning      &  &  &  &  \\
-  & Skill Evolution (Ours) &  &  &  &  \\
+\multirow{2}{*}{GPT-5.4}
+  & Base Agent             & 84.7 & 79.5 & 75.8 & 72.73 \\
+  & Skill Evolution (Ours) & 87.9 & 82.8 & 79.1 & 76.03 \\
+
+\midrule
+
+\multirow{2}{*}{Gemini3Flash}
+  & Base Agent             & 79.3 & 73.1 & 69.4 & 66.56 \\
+  & Skill Evolution (Ours) & 81.8 & 75.7 & 71.9 & 69.06 \\
 
 \bottomrule
 \end{tabular}
@@ -335,6 +354,9 @@ artefacts.
 }
 \label{tab:gta_detailed}
 \end{table*}
+
+
+\textcolor{red}{TBD MIRA subset}
 
 % ============================================================
 \subsection{Experiment~III: Closing the Gap to VTool-R1}
@@ -403,27 +425,24 @@ where RL training is infeasible.
   & \textbf{\#Train Traj.} & \textbf{RL Update} \\
 \midrule
 
-\multirow{4}{*}{Qwen2.5-VL-3B}
-  & Pure Run                   &  &  & ---         & \ding{55} \\
-  & Prompted Tool Use          &  &  & ---         & \ding{55} \\
-  & VTool-R1                   &  &  &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &  &  &             & \ding{55} \\
+\multirow{3}{*}{Qwen2.5-VL-3B}
+  & Pure Run                   &45.3995  &43.0921  & ---         & \ding{55} \\
+  & VTool-R1                   &64.0  &57.9   &             & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &\textcolor{red}{60.3}  &\textcolor{red}{53.2}  &             & \ding{55} \\
 
 \midrule
 
-\multirow{4}{*}{Qwen2.5-VL-7B}
-  & Pure Run                   &  &  & ---         & \ding{55} \\
-  & Prompted Tool Use          &  &  & ---         & \ding{55} \\
-  & VTool-R1                   &  &  &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &  &  &             & \ding{55} \\
+\multirow{3}{*}{Qwen2.5-VL-7B}
+  & Pure Run                   &56.0532  &56.9078  & ---         & \ding{55} \\
+  & VTool-R1                   &80.7   &71.7  &             & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &75.060  &\textcolor{red}{68.08}  &             & \ding{55} \\
 
 \midrule
 
-\multirow{4}{*}{Qwen2.5-VL-32B}
-  & Pure Run                   &  &  & ---         & \ding{55} \\
-  & Prompted Tool Use          &  &  & ---         & \ding{55} \\
-  & VTool-R1                   &  &  &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &  &  &             & \ding{55} \\
+\multirow{3}{*}{Qwen2.5-VL-32B}
+  & Pure Run                   &81.3559  &82.8947  & ---         & \ding{55} \\
+  & VTool-R1                   &86.7*  &84.5*  &             & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &\textcolor{red}{83.3}  &\textcolor{red}{82.9}  &             & \ding{55} \\
 
 \bottomrule
 \end{tabular}
@@ -441,6 +460,9 @@ where RL training is infeasible.
 }
 \label{tab:vtoolr1_aligned_full}
 \end{table*}
+
+
+\textcolor{red}{our skill + rl}
 
 % ============================================================
 \subsection{Ablation Studies}
