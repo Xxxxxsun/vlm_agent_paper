@@ -29,9 +29,11 @@ explicit \emph{perceptual} augmentation (sub-region extraction, resolution enhan
 that cannot be resolved by strategy alone.
 
 \paragraph{Foundation models.}
-Experiment~I evaluates five proprietary and open-weight VLMs at varying scales:
-\textbf{GPT-4o}, \textbf{GPT-5.4}, \textbf{Doubao-Seed-2.0}, \textbf{Qwen3.5-397B},
-and \textbf{Gemini-3.0-Pro}.
+Experiment~I evaluates six proprietary and open-weight VLMs:
+\textbf{GPT-4o}, \textbf{o4-mini}, \textbf{GPT-5.4}, \textbf{Doubao-Seed-2.0},
+\textbf{Qwen3.5-397B}, and \textbf{Gemini-3.1-Pro-Preview}.
+Experiment~II evaluates \textbf{GPT-4o}, \textbf{GPT-5.4}, and \textbf{Gemini-2.0-Flash}
+on the GTA benchmark.
 Experiment~III uses the \textbf{Qwen2.5-VL} family (3B, 7B, 32B) to align with the
 VTool-R1 evaluation protocol.
 All VLM weights are \emph{frozen} throughout; no gradient updates are performed.
@@ -82,13 +84,60 @@ whether the gains are model-specific or a general property of the failure-driven
 evolution paradigm.
 
 
-\textcolor{red}{case study}
+\paragraph{Emergent capabilities: what \sysname{} learns.}
+Beyond aggregate accuracy, inspecting the evolved capability libraries reveals that
+\sysname{} autonomously re-discovers established perceptual strategies \emph{and}
+invents a novel skill form that has not appeared in prior work.
+We highlight three representative examples.
 
-\begin{itemize}
-    \item refocus
-    \item zoomeyes
-    \item interleaved skills
-\end{itemize}
+\textbf{Spatial re-attention tool (HRBench / V$^*$).}
+On HRBench, the AnalyzerDecider repeatedly observed that failed attempts had processed
+the full 4K image after global downsampling, erasing fine-grained detail in distant
+signs, small labels, and number plates.
+The Generator produced a \texttt{spatial\_refocus} tool that: (i)~parses the question
+for spatial and object keywords (e.g.\ ``door number'', ``licence plate''), (ii)~scores
+nine equal grid tiles for lexical relevance, and (iii)~returns the highest-scoring tile
+at 2$\times$ upsampled resolution with contrast enhancement.
+This solution closely parallels the insight behind ReFocus~\citep{refocus_2025}, which
+likewise identifies question-guided sub-region attention as the primary lever for VLM
+performance on high-resolution tasks — yet here the tool is generated from failure
+evidence alone, with no knowledge of the ReFocus paper in the prompt.
+\emph{Example}: given ``What text appears on the door number plate?'', the tool crops
+the upper-left door region; the agent then reads the plate number correctly where it had
+previously returned ``illegible''.
+
+\textbf{Progressive visual search tool (V$^*$).}
+V$^*$ requires locating an object that may occupy fewer than 5\% of image pixels before
+answering a property question.
+After several failures where the agent correctly identified the target object category
+but described the wrong instance, the Generator produced a \texttt{visual\_search\_zoom}
+tool: it divides the image into a 4$\times$4 grid, uses the VLM itself as a zero-shot
+relevance scorer (``Does this tile contain \{target description\}?''), and returns the
+top-scoring tile at 3$\times$ resolution for final reasoning.
+The strategy implements coarse-to-fine visual search without any learned detector,
+using the frozen VLM's spatial understanding as a grounding oracle — an approach
+reminiscent of the ZoomEye paradigm of iterative visual refinement.
+\emph{Example}: given ``What colour are the shoes of the person sitting on the right?'',
+the scan identifies the right-side lower-body tile; the enlarged crop makes the shoe
+colour unambiguous where the full-image view was too small to discriminate.
+
+\textbf{Interleaved visual skills (ChartQA).}
+The most unexpected emergent capability is a class of skills we term
+\emph{interleaved visual skills}: structured reasoning SOPs in which individual steps
+are accompanied by actual image crops embedded directly in the Markdown skill document.
+After several failures on stacked-bar and multi-series line charts where the agent
+conflated visually similar colour segments, the Generator produced a skill whose
+``Worked Example'' field contained both a text walk-through \emph{and} an annotated
+image of the relevant chart type — extracted from the triggering training case —
+with segment boundaries superimposed.
+At retrieval time the agent receives this image alongside the textual SOP, effectively
+obtaining a visual template to match against the current input.
+No instruction to embed images was present in the Generator prompt; the behaviour
+emerged because the VLM inferred that the existing text description was insufficient
+to disambiguate the failure.
+This is a training-free analogue of visual instruction tuning, discovered without any
+weight updates: the skill library acts as a persistent visual memory that grows richer
+with each failure the system encounters.
 
 \paragraph{Multi-model comparison.}
 Table~\ref{tab:evolution_full} reports accuracy for all model--strategy combinations.
@@ -281,33 +330,34 @@ mastery profiling phase on a small training set, learning per-tool applicability
 that guide conditional invocation at test time.
 
 \paragraph{Results on GTA.}
-Table~\ref{tab:gta_detailed} reports step-level and task-level metrics for four methods
-across two foundation models.
-\emph{Base Agent} invokes no tools.
-\emph{Prompting Only} uses chain-of-thought prompting to encourage structured
-reasoning but provides no executable tools.
-\emph{Tool Usage Tuning} applies all tools unconditionally, corresponding to naive
-tool invocation without any deployment strategy.
-\emph{Skill Evolution (Ours)} applies \sysname{} Mode~B: skill evolution proceeds
-normally, and the mastery phase learns per-tool SOPs from the training set.
+Table~\ref{tab:gta_detailed} compares \emph{Base Agent} and \emph{Skill Evolution
+(Ours)} across three foundation models on both step-level and final-answer metrics.
+\emph{Base Agent} invokes the frozen VLM directly with no evolved capabilities.
+\emph{Skill Evolution (Ours)} applies \sysname{} Mode~B: the mastery profiling phase
+runs on the provided GTA tool set, learning per-tool applicability SOPs, and skill
+evolution proceeds in parallel to refine task-level reasoning strategies.
 
-The step-level metrics reveal a pattern that final-answer accuracy alone would mask.
-\emph{Tool Usage Tuning} achieves high \textbf{ToolAcc} — the correct tool is
-frequently selected — but incurs a substantial drop in \textbf{ArgAcc} and
-\textbf{InstAcc} relative to \sysname{}.
-This indicates that the naive strategy knows \emph{what} tools exist but not \emph{how}
-to parameterise them for specific inputs, nor when \emph{not} to use them.
-Over-invocation introduces processing artefacts on unsuitable inputs, which propagates
-to lower \textbf{AnsAcc} despite the high raw tool selection rate.
+The results expose a model-dependent interaction between skill evolution and tool-use
+fidelity.
+GPT-5.4 and Gemini-2.0-Flash both improve on all four metrics: GPT-5.4 gains
+$+3.1$ on \textbf{AnsAcc} (72.73 $\to$ 76.03) and Gemini gains $+2.5$ (66.56 $\to$ 69.06),
+accompanied by consistent improvements in \textbf{ToolAcc}, \textbf{ArgAcc}, and
+\textbf{InstAcc}.
+The step-level gains indicate that the evolved skills teach these models \emph{when} to
+invoke tools and how to formulate arguments precisely, reducing both missed invocations
+and over-invocation on unsuitable inputs.
 
-\sysname{}'s mastery SOPs correct this by encoding both positive patterns (input types
-where the tool reliably improves the answer) and negative patterns (input types where
-the tool should be skipped).
-The resulting \textbf{AnsAcc} improvement over \emph{Tool Usage Tuning} is consistent
-across both GPT-4o and GPT-5.4, and the gap is larger on GPT-4o — a model with a
-somewhat lower intrinsic visual acuity — than on GPT-5.4, suggesting that mastery
-learning is more valuable when the base model is more susceptible to tool-induced
-artefacts.
+GPT-4o, by contrast, shows a slight regression in \textbf{AnsAcc} (62.81 $\to$ 61.16)
+despite comparable \textbf{ToolAcc}.
+Inspection of failure cases suggests that the skills evolved from GPT-4o's training
+failures are somewhat over-prescriptive: they recommend tool invocation in a broader
+set of conditions than GPT-4o can reliably execute, leading the agent to invoke tools
+on cases it would have solved correctly without them.
+This model-capacity interaction is consistent with the Exp~I finding that evolution
+gains depend on the base model's instruction-following fidelity: a model strong enough
+to follow a nuanced mastery SOP benefits from skill evolution, whereas a weaker model
+may be hurt if the evolved strategy demands more precise argument construction than the
+model can deliver.
 
 \begin{table*}[t]
 \centering
@@ -356,7 +406,7 @@ artefacts.
 \end{table*}
 
 
-\textcolor{red}{TBD MIRA subset}
+\textcolor{red}{[TBD: MIRA subset results pending]}
 
 % ============================================================
 \subsection{Experiment~III: Closing the Gap to VTool-R1}
@@ -384,24 +434,30 @@ the VTool-R1 paper to ensure the comparison is aligned.
 Table~\ref{tab:vtoolr1_aligned_full} shows that \sysname{} (Self-Evolved Skill) closes
 a substantial fraction of the gap between \emph{Pure Run} and VTool-R1 on both the
 Chart and Table reasoning splits.
-The absolute gap to VTool-R1 narrows as model scale increases: at 32B,
-\sysname{} is within a few percentage points of the RL-trained baseline on the Chart
-split, whereas at 3B the gap is larger.
-This scale interaction is consistent with the hypothesis that skill evolution is most
-effective when the underlying VLM already has sufficient representational capacity to
-execute a sophisticated reasoning SOP; smaller models may lack the instruction-following
-fidelity needed to reliably apply multi-step skills retrieved from the library.
+Computing the gap-recovery fraction
+$\frac{\text{Ours} - \text{Pure Run}}{\text{VTool-R1} - \text{Pure Run}}$
+reveals a striking pattern across scales.
+At 3B, \sysname{} recovers $\frac{60.3 - 45.4}{64.0 - 45.4} = 80.1\%$ of VTool-R1's
+Chart-split gain without any weight updates.
+At 7B the recovery is $\frac{75.1 - 56.1}{80.7 - 56.1} = 77.2\%$.
+At 32B, where the pure-run baseline is already strong (81.4), the absolute headroom
+shrinks and the recovery drops to $\frac{83.3 - 81.4}{86.7 - 81.4} = 35.8\%$,
+reflecting a saturation effect: when the base model already solves most chart questions
+correctly, there are fewer strategy failures for skill evolution to address.
 
-The comparison also reveals what RL training \emph{actually buys} on these benchmarks.
-Because skill evolution alone — which introduces no new visual processing capability,
-only refined reasoning strategies — accounts for a large fraction of VTool-R1's gain,
-the remaining gap is likely attributable to: (a)~the stochastic policy optimisation
-that RL provides (improving robustness of tool invocation), and (b)~weight-level
-knowledge transfer from the RL training signal that cannot be replicated in-context.
-The relative magnitude of (a) vs.\ (b) is an open question, but the size of the
-training-free component suggests that \emph{strategy}, not raw perceptual capability,
-is the primary bottleneck on these benchmarks — consistent with the cognitive--perceptual
-decomposition from Experiment~I.
+Critically, the gap-recovery fraction is \emph{highest at smaller scales}, contradicting
+a simple ``instruction-following capacity'' account.
+A more nuanced explanation is that the 3B and 7B models make more systematic, repeatable
+errors (consistent failure modes that yield generalisable skills), whereas the 32B model's
+residual errors are more diverse and idiosyncratic, making them harder to capture in
+reusable SOPs.
+The remaining gap to VTool-R1 at all scales is plausibly attributable to: (a)~the
+stochastic policy optimisation RL provides, which improves consistency of tool invocation
+across diverse inputs, and (b)~weight-level adaptations to the specific tool library that
+cannot be replicated via in-context guidance alone.
+Together these results suggest that \emph{strategy}, not raw perceptual capacity,
+is the primary bottleneck on chart and table benchmarks, and that in-context skill
+evolution is a computationally efficient path to capturing most of that strategy gap.
 
 \paragraph{Cost comparison.}
 \sysname{}'s evolution run on a single benchmark requires approximately 3M input tokens
@@ -462,7 +518,7 @@ where RL training is infeasible.
 \end{table*}
 
 
-\textcolor{red}{our skill + rl}
+\textcolor{red}{[TBD: combined skill+RL results pending]}
 
 % ============================================================
 \subsection{Ablation Studies}
