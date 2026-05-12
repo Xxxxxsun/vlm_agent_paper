@@ -192,34 +192,34 @@ task-specific strategic knowledge.
 \midrule
 
 \multirow{4}{*}{o4-mini?}
-  & None (Base Agent)  &\textcolor{red}{0.7374}  &\textcolor{red}{0.7433}  &0.72847  &\textcolor{red}{0.776}  \\
+  & None (Base Agent)  &0.73  &0.753333  &0.72847  &0.7833  \\
   & Skill Only         &0.7671  &0.75666  &0.75496  &0.76927  \\
-  & Tool Only          &\textcolor{red}{0.773}  &\textcolor{red}{0.7633}  &0.7881  &\textcolor{red}{0.7738}  \\
-  & Skill + Tool       &\textcolor{red}{0.782}  &\textcolor{red}{0.7640}  &0.7947  &\textcolor{red}{0.7940}  \\
+  & Tool Only          &0.5529  &0.6978  &0.7677  &0.7677  \\
+  & Skill + Tool       &0.8457  &0.7622  &0.7947  &0.7641  \\
 
 \midrule
 
 \multirow{4}{*}{gpt5.4}
   & None (Base Agent)  &0.747142  &0.75888  &0.7748  &0.7974  \\
-  & Skill Only         &  &  &  & \\
-  & Tool Only          &  &  &  &  \\
-  & Skill + Tool       &  &  &  &  \\
+  & Skill Only         &0.7800  &0.7711  &0.7881  &0.8115 \\
+  & Tool Only          &0.7971  &0.7722  &0.8609  &0.8161  \\
+  & Skill + Tool       &0.8500  &0.7856  &0.8742  &0.859375  \\
 
 \midrule
 
 \multirow{4}{*}{Doubao-Seed-2.0}
-  & None (Base Agent)  &0.8214  &0.8824  &0.8675  &0.8152  \\
-  & Skill Only         &0.8431  &  &  &  \\
-  & Tool Only          &0.8302  &  &0.95364  &  \\
-  & Skill + Tool       &\textcolor{green}{0.90571}  &\textcolor{red}{0.845555}  &0.95364  &\textcolor{red}{0.8218}  \\
+  & None (Base Agent)  &0.8214  &0.8544  &0.8675  &0.8152  \\
+  & Skill Only         &0.8629  &0.8433  &0.8675  &0.8229 \\
+  & Tool Only          &0.9000  &0.8700  &0.9470  &0.8078  \\
+  & Skill + Tool       &\textcolor{green}{0.90571}  &0.8800  &0.9536  &0.86875  \\
 
 \midrule
 
-\multirow{4}{*}{Qwen3.5-397B}
-  & None (Base Agent)  &0.89  &0.8189  &0.9083  &0.5789  \\
-  & Skill Only         &  &  &  &  \\
-  & Tool Only          &  &  &  &  \\
-  & Skill + Tool       &  &0.8200  &0.8411  &0.8234  \\
+\multirow{4}{*}{Qwen3.5-27B}
+  & None (Base Agent)  &0.8171  &0.7556  &0.8675  &0.7823  \\
+  & Skill Only         &0.8192  &  &  &  \\
+  & Tool Only          &0.8201  &  &  &  \\
+  & Skill + Tool       &0.8372  &0.8200  &0.8411  &0.8234  \\
 
 \midrule
 
@@ -277,19 +277,18 @@ neither capability type alone is sufficient for a diverse, growing task distribu
 \small
 \setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.15}
-\begin{tabular}{lcccccc}
+\begin{tabular}{lccccc}
 \toprule
 \textbf{Method}
   & \textbf{HRBench}
   & \textbf{+MathVista}
   & \textbf{+V$^*$}
-  & \textbf{+ChartQA}
-  & \textbf{Final Avg.} \\
+  & \textbf{+ChartQA} \\
 \midrule
 Base Agent                        &0.671  &0.63  &0.637  &0.722  &  \\
-Skill Accumulation Only           &  &  &  &  &  \\
-Tool Accumulation Only            &  &  &  &  &  \\
-Naive Skill+Tool Accumulation     &  &  &  &  &  \\
+Skill Accumulation Only           &  &  &  &    \\
+Tool Accumulation Only            &  &  &  &    \\
+Naive Skill+Tool Accumulation     &  &  &  &    \\
 Dynamic Skill--Tool Co-Evolution  &0.751  &0.733  &0.742  &0.802  &  \\
 \bottomrule
 \end{tabular}
@@ -484,21 +483,21 @@ where RL training is infeasible.
 \multirow{3}{*}{Qwen2.5-VL-3B}
   & Pure Run                   &45.3995  &43.0921  & ---         & \ding{55} \\
   & VTool-R1                   &64.0  &57.9   &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &\textcolor{red}{60.3}  &\textcolor{red}{53.2}  &             & \ding{55} \\
+  & Ours (Self-Evolved Skill)  &59.56  &\textcolor{red}{51.97}  &             & \ding{55} \\
 
 \midrule
 
 \multirow{3}{*}{Qwen2.5-VL-7B}
   & Pure Run                   &56.0532  &56.9078  & ---         & \ding{55} \\
-  & VTool-R1                   &80.7   &71.7  &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &75.060  &\textcolor{red}{68.08}  &             & \ding{55} \\
+  & VTool-R1                   &80.7   &68.09  &             & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &75.060  &67.43  &             & \ding{55} \\
 
 \midrule
 
 \multirow{3}{*}{Qwen2.5-VL-32B}
   & Pure Run                   &81.3559  &82.8947  & ---         & \ding{55} \\
   & VTool-R1                   &86.7*  &84.5*  &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &\textcolor{red}{83.3}  &\textcolor{red}{82.9}  &             & \ding{55} \\
+  & Ours (Self-Evolved Skill)  &83.66  &83.55  &             & \ding{55} \\
 
 \bottomrule
 \end{tabular}
@@ -516,6 +515,8 @@ where RL training is infeasible.
 }
 \label{tab:vtoolr1_aligned_full}
 \end{table*}
+
+
 
 
 \textcolor{red}{[TBD: combined skill+RL results pending]}
