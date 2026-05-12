@@ -3,6 +3,19 @@
 % ============================================================
 \label{sec:method}
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/method.pdf}
+  \caption{
+    \textbf{\sysname{} evolution loop.}
+    On each failed attempt, the AnalyzerDecider inspects the original image, intermediate tool
+    outputs, and reasoning trace, then decides whether to generate a reasoning skill, an
+    executable visual tool, or both. Validated capabilities are promoted into the library and
+    reused on later cases.
+  }
+  \label{fig:method}
+\end{figure}
+
 \subsection{Problem Formulation}
 \label{sec:method_formulation}
 
@@ -22,7 +35,7 @@ $\nabla_\theta = 0$ (no weight updates).
 \subsection{Evolution Loop}
 \label{sec:method_loop}
 
-Figure~\ref{fig:hero} (left) illustrates the \sysname{} evolution loop, which processes each
+Figure~\ref{fig:method} illustrates the \sysname{} evolution loop, which processes each
 training case as follows.
 
 \textbf{(1) Attempt.}
@@ -119,10 +132,11 @@ From these inputs, the AnalyzerDecider produces a structured diagnosis comprisin
         model limitations with no recoverable capability).
 \end{itemize}
 
-The visual channel is critical for accurate diagnosis.
-In our experiments, cases where the AnalyzerDecider had access to images produced
-diagnoses that correctly identified perceptual bottlenecks \textcolor{red}{[TBD]\%} of the time,
-vs.\ \textcolor{red}{[TBD]\%} for text-only diagnosis (Section~\ref{sec:ablation}).
+The visual channel is used as an operational safeguard rather than as a separate supervised
+classifier: when a proposed fix requires knowing whether a crop is misaligned, whether labels are
+legible, or whether a processed image introduced artifacts, the AnalyzerDecider must be able to
+inspect the visual evidence directly. Section~\ref{sec:ablation} defines the ablation used to
+measure the effect of removing this multimodal diagnostic channel.
 
 \subsection{Skill Evolution}
 \label{sec:method_skill}

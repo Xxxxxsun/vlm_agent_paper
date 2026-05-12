@@ -2,90 +2,90 @@
 %  §1  Introduction
 % ============================================================
 
-Large vision-language models (VLMs) have made remarkable strides on visual benchmarks, yet they
-still exhibit systematic, repeatable failure modes on tasks that require structured visual reasoning.
-A chart that demands multi-step data extraction, a high-resolution image that requires isolating a
-sub-region, a mathematical diagram that calls for compositional interpretation: these cases expose
-not random errors but consistent gaps in strategy and perception.
-Current approaches to closing these gaps fall into two camps, both expensive.
-Training-based methods such as \citet{vtoolr1_2025} and \citet{pixelreasoner_2025} apply
-reinforcement learning or supervised fine-tuning on large GPU clusters to teach VLMs to use tools.
-Prompt-based methods such as chain-of-thought or few-shot exemplars improve performance on narrow
-distributions but do not generalise across benchmark families and require manual curation.
+Large vision-language models (VLMs) have improved rapidly, but adapting them to a new visual
+reasoning distribution still usually requires either retraining or manual engineering. This is
+costly in settings where model weights are unavailable, training data is small, or the failure
+modes are discovered only after deployment. A more practical alternative is to ask whether a
+frozen VLM agent can use its own failed attempts as supervision: if a case is answered
+incorrectly, can the agent inspect what went wrong, create a reusable capability, and apply that
+capability to future cases?
 
-A third approach — letting the agent learn from its own mistakes — has shown promise in text-only
-domains~\citep{shinn2023reflexion,wang2023voyager}, but it stops short of what visual reasoning
-requires. Reflexion~\citep{shinn2023reflexion} accumulates verbal reflections per case, yet these
-reflections are not persistent across cases, never become reusable capabilities, and cannot encode
-executable visual processing. No prior work achieves training-free generation of \emph{both}
-reusable reasoning strategies \emph{and} executable visual tools that generalise to unseen cases.
-
-We present \sysname{}, a training-free framework in which a VLM agent autonomously evolves two
-complementary capability types from failure.
-\textbf{Skills} are structured reasoning strategies — standard operating procedures (SOPs)
-encoding \emph{when} and \emph{how} to approach a problem class.
-\textbf{Tools} are executable Python programs that expand the agent's visual perception by
-manipulating images directly.
-On each failure, a two-role agent (AnalyzerDecider + Generator) visually diagnoses the root
-cause by inspecting both the original image and any intermediate tool outputs, decides whether
-the bottleneck is cognitive or perceptual, generates the appropriate capability, validates it,
-and accumulates it for future cases — all without updating model weights.
-
-We investigate three facets of training-free evolution through controlled experiments.
-\textbf{(I) From-scratch evolution}: starting with zero capabilities, \sysname{} achieves
-consistent gains of $+$\textcolor{red}{[TBD]}\%--\textcolor{red}{[TBD]}\% across ChartQA,
-MathVista, HRBench, and MMStar~\citep{chen2024mmstar}, with similar relative improvements on
-both Gemini-2.0-Flash and Qwen2.5-VL-7B~\citep{qwen25vl}.
-\textbf{(II) Tool mastery from provided tools}: when given an external tool set,
-naive invocation of all tools yields minimal gain or even degrades accuracy;
-mastery learning — where the agent profiles each tool's applicability boundary on a small
-training set — recovers and exceeds the full potential of the provided tools.
-\textbf{(III) Closing the gap to RL}: training-free skill evolution alone closes approximately
-\textcolor{red}{[TBD]}\% of the gap between direct inference and VTool-R1 (RL-trained) on
-ChartQA, at a fraction of the cost — suggesting that most of what RL learns on
-strategy-bottlenecked benchmarks is capturable as reasoning strategy, not new visual perception.
-
-\paragraph{Contributions.}
-\begin{enumerate}[leftmargin=*, label=(\arabic*)]
-  \item We propose \sysname{}, a training-free framework for VLM self-evolution from scratch,
-        achieving consistent improvements on ChartQA, MathVista, HRBench, and MMStar across
-        multiple VLM architectures, with no weight updates.
-
-  \item We show that \textbf{tool mastery learning} is the decisive factor when pre-provided
-        tools are available: naive tool invocation provides minimal benefit, while learned
-        deployment SOPs recover the tools' full potential.  This distinguishes \sysname{}
-        from tool-augmented VLMs that invoke tools indiscriminately.
-
-  \item We show that \textbf{training-free skill evolution closes $\sim$\textcolor{red}{[TBD]}\%
-        of the RL performance gap} on strategy-bottlenecked benchmarks, revealing that most of
-        what RL training achieves is capturable as structured reasoning strategy without
-        any weight updates.
-
-  \item We demonstrate via ablation that \textbf{visual failure analysis} — the AnalyzerDecider
-        seeing both the original image and tool artifacts — is necessary for accurate bottleneck
-        diagnosis: text-only self-reflection systematically misidentifies perceptual failures
-        as strategy failures.
-\end{enumerate}
-
-\paragraph{Paper organisation.}
-Section~\ref{sec:related_work} positions \sysname{} against related work.
-Section~\ref{sec:method} describes the evolution framework.
-Section~\ref{sec:experiments} presents three experiments.
-Section~\ref{sec:discussion} discusses limitations and future directions, and
-Section~\ref{sec:conclusion} concludes.
+This question is motivated by a simple design distinction. Some failed attempts appear to be
+\emph{cognitive}: the image contains the relevant evidence, but the agent needs a better
+procedure for reading, decomposing, or computing from it. Other failures appear to be
+\emph{perceptual}: the agent needs a transformed view of the input before the relevant evidence
+is accessible at all, such as a crop, zoom, contrast enhancement, or chart rerendering. We do
+not assume that every benchmark failure belongs cleanly to one of these categories. Instead, we
+use the distinction as an operational decision for self-improvement: should a failure produce a
+reasoning skill, a visual tool, or both?
 
 \begin{figure}[t]
   \centering
-  % TODO: replace with generated Figure 1 (two-panel hero figure)
-  \includegraphics[width=\columnwidth]{figures/method.pdf}
+  \includegraphics[width=\columnwidth]{figures/motivation_placeholder.pdf}
   \caption{
-    \textbf{\sysname{} evolution loop and three-experiment overview.}
-    \figleft{}: on each failure, the AnalyzerDecider visually inspects the image and any tool
-    outputs, diagnoses the bottleneck type (cognitive or perceptual), and directs the Generator
-    to produce a reasoning skill (SOP), an executable visual tool (Python), or both.
-    Capabilities are validated and accumulated for future cases.
-    \figright{}: summary of the three experiments — from-scratch evolution (Exp I),
-    mastery learning with pre-provided tools (Exp II), and gap to RL-trained VTool-R1 (Exp III).
+    \textbf{Motivation for skill-tool evolution.}
+    Failed VLM attempts can provide supervision for training-free adaptation.
+    Some failures are better addressed by reusable reasoning skills, while others require
+    executable visual tools that change what the model can inspect. Existing adaptation methods
+    either rely on retraining, manual prompting, or text-only reflection. \sysname{} instead
+    diagnoses failures visually and evolves the capability type that matches the bottleneck.
   }
-  \label{fig:hero}
+  \label{fig:motivation}
 \end{figure}
+
+This distinction matters because the appropriate remedy depends on the bottleneck.
+Training-based methods can learn tool-use or reasoning behavior through supervised fine-tuning
+or reinforcement learning, but they require additional optimization and substantial compute.
+Manual prompt engineering can encode useful heuristics, but it is brittle and does not create
+executable visual operations. Text-only self-reflection can describe a mistake, but it cannot
+inspect image artifacts, decide whether the failure came from perception or reasoning, or
+generate image-processing code that changes what the model can see.
+
+We therefore ask whether a frozen VLM agent can improve itself by turning failed attempts into
+reusable capabilities. Given a failed case, the agent should inspect the image and any
+intermediate visual artifacts, decide whether the missing capability is cognitive, perceptual,
+or both, generate the corresponding capability, validate it, and reuse it on future cases. This
+leads to \sysname{}, a training-free framework for dynamic skill-tool evolution.
+\textbf{Skills} are structured reasoning procedures, written as standard operating procedures
+for recurring problem classes. \textbf{Tools} are executable Python programs that manipulate
+visual inputs through operations such as cropping, zooming, contrast enhancement, or chart
+rerendering. The capability library grows only through validated failures; model weights remain
+frozen throughout.
+
+We evaluate three questions.
+\textbf{(I) Can an agent evolve useful capabilities from scratch?}
+Starting with an empty library, \sysname{} improves over direct inference in 21 of 23 completed
+model-benchmark cells across ChartQA, MathVista, HRBench, and V$^*$, with gains varying by
+benchmark and capability type.
+\textbf{(II) Can an agent learn when to use provided tools?}
+On GTA, mastery-guided capability use improves GPT-5.4 and Gemini3Flash across step-level and
+answer metrics, while a regression on GPT-4o reveals that tool-use policies must match the
+backbone's instruction-following capacity.
+\textbf{(III) How much of RL-trained tool reasoning can be recovered without retraining?}
+On VTool-R1-aligned chart and table splits, skill evolution alone recovers a large fraction of
+the RL gap for Qwen2.5-VL backbones, especially at 3B and 7B scale.
+
+\paragraph{Contributions.}
+\begin{enumerate}[leftmargin=*, label=(\arabic*)]
+  \item We formulate VLM self-improvement as \textbf{failure-driven capability evolution}:
+        a frozen agent diagnoses each failure and accumulates reusable skills and tools without
+        gradient updates.
+
+  \item We introduce an operational \textbf{cognitive--perceptual decision rule} for visual
+        failure handling, connecting reasoning skills to strategy-oriented fixes and
+        executable visual tools to perception-oriented fixes.
+
+  \item We present a validation and mastery mechanism that prevents generated capabilities from
+        being promoted solely because they solve the triggering example; tools must also pass
+        regression checks and acquire applicability SOPs.
+
+  \item We provide empirical evidence across from-scratch evolution, provided-tool mastery, and
+        comparison to RL-trained VTool-R1, showing both the promise and the limits of
+        training-free capability evolution.
+\end{enumerate}
+
+\paragraph{Paper organisation.}
+Section~\ref{sec:related_work} positions \sysname{} against self-improving agents and
+tool-augmented VLMs. Section~\ref{sec:method} describes the evolution framework.
+Section~\ref{sec:experiments} presents the experiments, and
+Sections~\ref{sec:discussion}--\ref{sec:conclusion} discuss limitations and conclude.

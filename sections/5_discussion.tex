@@ -4,13 +4,12 @@
 \label{sec:discussion}
 
 \paragraph{When does evolution help?}
-The bottleneck analysis in Section~\ref{sec:exp1} suggests a practical diagnostic:
-skill evolution is effective whenever the benchmark has a recurring family of problem structures
-that can be captured in an SOP---which appears to be the common case.
-Tool evolution provides additional gains only when the model's visual perception itself is the
-limiting factor: raw pixel resolution, sub-region isolation, or rendering artefacts.
-A practitioner targeting a new benchmark can use a small pilot run ($k{\approx}25$, $N{=}1$)
-to detect which bottleneck type dominates before committing to a full evolution run.
+The results suggest a practical diagnostic rather than a universal taxonomy. If failures can be
+fixed by changing the procedure the agent follows, skill evolution is the lower-cost first
+choice. If the agent needs a different view of the image before the evidence is accessible,
+tool evolution becomes necessary. A practitioner targeting a new benchmark can use a small pilot
+run ($k{\approx}25$, $N{=}1$) to inspect which kinds of capabilities are generated and whether
+they transfer beyond the triggering examples.
 
 \paragraph{Limitations.}
 Several limitations bound the scope of our conclusions.
@@ -24,9 +23,10 @@ For benchmarks requiring specialised computer vision operations beyond standard 
 (e.g.\ learned feature extractors), the Generator may fail to produce valid tools, limiting
 the perceptual gains.
 \textit{(c) Benchmark scope.}
-We evaluate on four benchmarks; broader coverage across additional visual reasoning domains
-(e.g.\ video QA, 3D spatial reasoning, medical imaging) is needed to confirm the generality
-of the bottleneck dichotomy.
+We evaluate on four main visual reasoning benchmarks plus GTA and VTool-R1-aligned splits.
+Broader coverage across additional domains (e.g.\ video QA, 3D spatial reasoning, medical
+imaging) is needed before making stronger claims about the generality of the proposed
+cognitive/perceptual decision rule.
 \textit{(d) API cost.}
 Each training case incurs up to $\sim$15K tokens (attempt + failure analysis + generation +
 validation), summing to $\sim$3M tokens per benchmark run.  While negligible compared to RL

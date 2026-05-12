@@ -9,8 +9,8 @@
 % ============================================================
 
 \paragraph{Benchmarks.}
-We evaluate on four standard visual reasoning benchmarks that collectively span the
-cognitive--perceptual bottleneck spectrum.
+We evaluate on four standard visual reasoning benchmarks that stress different parts of visual
+reasoning.
 \textbf{ChartQA}~\citep{masry2022chartqa} requires multi-step numerical reasoning over
 chart images (test split: 2{,}500 questions; evaluation metric: relaxed accuracy with a
 5\% numeric tolerance).
@@ -22,17 +22,16 @@ disambiguation (accuracy).
 \textbf{V$^*$}~\citep{wu2024vstar} measures visual search ability: given a query about
 an object's property, the agent must locate and attend to the relevant sub-image before
 reasoning (${\approx}500$ questions; accuracy).
-These four benchmarks were chosen to exercise complementary failure modes: ChartQA and
-MathVista are predominantly \emph{cognitive} benchmarks (the raw visual signal is
-legible; the bottleneck lies in reasoning strategy), whereas HRBench and V$^*$ require
-explicit \emph{perceptual} augmentation (sub-region extraction, resolution enhancement)
-that cannot be resolved by strategy alone.
+These benchmarks were chosen because they create different opportunities for capability
+generation: ChartQA and MathVista often require structured extraction and multi-step
+reasoning, while HRBench and V$^*$ often benefit from sub-region inspection or higher-resolution
+visual access.
 
 \paragraph{Foundation models.}
 Experiment~I evaluates six proprietary and open-weight VLMs:
 \textbf{GPT-4o}, \textbf{o4-mini}, \textbf{GPT-5.4}, \textbf{Doubao-Seed-2.0},
-\textbf{Qwen3.5-397B}, and \textbf{Gemini-3.1-Pro-Preview}.
-Experiment~II evaluates \textbf{GPT-4o}, \textbf{GPT-5.4}, and \textbf{Gemini-2.0-Flash}
+\textbf{Qwen3.5-27B}, and \textbf{Gemini-3.1-Pro-Preview}.
+Experiment~II evaluates \textbf{GPT-4o}, \textbf{GPT-5.4}, and \textbf{Gemini3Flash}
 on the GTA benchmark.
 Experiment~III uses the \textbf{Qwen2.5-VL} family (3B, 7B, 32B) to align with the
 VTool-R1 evaluation protocol.
@@ -44,8 +43,7 @@ training split and run the \sysname{} evolution loop for $N{=}3$ iterations.
 At the end of training, the capability set $\mathcal{C}$ is frozen and evaluated on
 the held-out validation / test split.
 We report the average over three independent random seeds (different $k{=}200$ subsets)
-to account for sampling variance; standard deviations are given in
-Appendix~\ref{app:impl}.
+to account for sampling variance where repeated runs are available.
 
 \paragraph{Baselines.}
 For Experiment~I, we compare four evolution configurations that isolate the contribution
@@ -75,33 +73,32 @@ and Table reasoning splits.
 
 \paragraph{Motivation.}
 The central claim of \sysname{} is that a VLM agent can bootstrap useful capabilities
-from failure on a small, unlabelled training subset, without any weight updates.
+from failure on a small training subset, without any weight updates.
 Experiment~I tests this claim in the most challenging setting: the capability library
 is initialised to empty ($\mathcal{S}{=}\emptyset$, $\mathcal{T}{=}\emptyset$), and the
 system must generate, validate, and accumulate all capabilities autonomously.
-By evaluating five foundation models ranging from 3B to frontier scale, we assess
-whether the gains are model-specific or a general property of the failure-driven
-evolution paradigm.
+By evaluating six foundation models, with some ablation cells still pending, we assess
+whether the observed gains are tied to a single backbone or appear across model families.
 
 
-\paragraph{Emergent capabilities: what \sysname{} learns.}
-Beyond aggregate accuracy, inspecting the evolved capability libraries reveals that
-\sysname{} autonomously re-discovers established perceptual strategies \emph{and}
-invents a novel skill form that has not appeared in prior work.
-We highlight three representative examples.
+\paragraph{Generated capabilities: what the library contains.}
+Beyond aggregate accuracy, we inspect representative capabilities produced during evolution.
+These examples are not used as standalone evidence for a dataset-wide failure taxonomy; rather,
+they illustrate the kinds of reusable artifacts the framework can create from individual failed
+attempts.
 
 \textbf{Spatial re-attention tool (HRBench / V$^*$).}
-On HRBench, the AnalyzerDecider repeatedly observed that failed attempts had processed
+In inspected HRBench failures, the AnalyzerDecider observed that failed attempts had processed
 the full 4K image after global downsampling, erasing fine-grained detail in distant
 signs, small labels, and number plates.
 The Generator produced a \texttt{spatial\_refocus} tool that: (i)~parses the question
 for spatial and object keywords (e.g.\ ``door number'', ``licence plate''), (ii)~scores
 nine equal grid tiles for lexical relevance, and (iii)~returns the highest-scoring tile
 at 2$\times$ upsampled resolution with contrast enhancement.
-This solution closely parallels the insight behind ReFocus~\citep{refocus_2025}, which
-likewise identifies question-guided sub-region attention as the primary lever for VLM
-performance on high-resolution tasks — yet here the tool is generated from failure
-evidence alone, with no knowledge of the ReFocus paper in the prompt.
+This solution is aligned with the broader idea behind ReFocus~\citep{refocus_2025}: a VLM may
+benefit from question-guided sub-region attention on high-resolution inputs. In \sysname{}, this
+operation is generated as an executable tool from the observed failure record rather than being
+provided as a fixed action.
 \emph{Example}: given ``What text appears on the door number plate?'', the tool crops
 the upper-left door region; the agent then reads the plate number correctly where it had
 previously returned ``illegible''.
@@ -114,16 +111,15 @@ but described the wrong instance, the Generator produced a \texttt{visual\_searc
 tool: it divides the image into a 4$\times$4 grid, uses the VLM itself as a zero-shot
 relevance scorer (``Does this tile contain \{target description\}?''), and returns the
 top-scoring tile at 3$\times$ resolution for final reasoning.
-The strategy implements coarse-to-fine visual search without any learned detector,
-using the frozen VLM's spatial understanding as a grounding oracle — an approach
-reminiscent of the ZoomEye paradigm of iterative visual refinement.
+The strategy implements coarse-to-fine visual search without a learned detector, using the
+frozen VLM's spatial understanding as a relevance scorer.
 \emph{Example}: given ``What colour are the shoes of the person sitting on the right?'',
 the scan identifies the right-side lower-body tile; the enlarged crop makes the shoe
 colour unambiguous where the full-image view was too small to discriminate.
 
 \textbf{Interleaved visual skills (ChartQA).}
-The most unexpected emergent capability is a class of skills we term
-\emph{interleaved visual skills}: structured reasoning SOPs in which individual steps
+Another observed capability is a class of skills we term \emph{interleaved visual skills}:
+structured reasoning SOPs in which individual steps
 are accompanied by actual image crops embedded directly in the Markdown skill document.
 After several failures on stacked-bar and multi-series line charts where the agent
 conflated visually similar colour segments, the Generator produced a skill whose
@@ -132,42 +128,33 @@ image of the relevant chart type — extracted from the triggering training case
 with segment boundaries superimposed.
 At retrieval time the agent receives this image alongside the textual SOP, effectively
 obtaining a visual template to match against the current input.
-No instruction to embed images was present in the Generator prompt; the behaviour
-emerged because the VLM inferred that the existing text description was insufficient
-to disambiguate the failure.
-This is a training-free analogue of visual instruction tuning, discovered without any
-weight updates: the skill library acts as a persistent visual memory that grows richer
-with each failure the system encounters.
+This suggests that the skill library can act not only as a text memory, but also as a lightweight
+visual memory when the generated SOP includes image evidence from prior failures.
 
 \paragraph{Multi-model comparison.}
-Table~\ref{tab:evolution_full} reports accuracy for all model--strategy combinations.
-Several consistent patterns emerge.
-First, joint Skill~$+$~Tool co-evolution (bottom row of each model block) achieves
-the highest accuracy across all benchmarks and all models, confirming that the two
-capability types are complementary rather than redundant.
-Second, Skill~Only evolution delivers the majority of the gain on ChartQA and
-MathVista: for both benchmarks, the delta from None to Skill~Only is substantially
-larger than the additional delta from Skill~Only to Skill~$+$~Tool.
-This pattern is consistent across all five models and supports the hypothesis that
-ChartQA and MathVista are primarily \emph{strategy-bottlenecked} — the VLM already
-has the visual acuity to perceive the relevant information, but lacks a structured
-reasoning procedure for extracting and operating on it.
-Third, the relative ordering flips on HRBench and V$^*$: Tool~Only provides
-non-trivial gains on both benchmarks, and Skill~Only alone falls measurably short
-of the Skill~$+$~Tool ceiling.
-This asymmetry indicates a \emph{perceptual bottleneck}: the raw image resolution or
-sub-region localisation difficulty exceeds what the frozen VLM can handle without
-external preprocessing, regardless of how refined its reasoning strategy is.
-The cognitive--perceptual decomposition is explored in detail in
-Section~\ref{sec:ablation}.
+Table~\ref{tab:evolution_full} reports the completed model--strategy entries. Blank cells
+indicate runs whose results have not yet been inserted and are excluded from aggregate
+statements. Comparing the full Skill~$+$~Tool row with the base agent, \sysname{} improves
+direct inference in 21 of 23 completed model-benchmark cells, with an average gain of 4.8
+accuracy points. The largest gains occur on Gemini-3.1-Pro-Preview / ChartQA (+14.6),
+o4-mini / HRBench (+11.6), GPT-5.4 / HRBench (+10.3), GPT-5.4 / V$^*$ (+9.9), and
+Doubao-Seed-2.0 / V$^*$ (+8.6).
 
-The absolute magnitude of improvement varies with base model capability.
-Weaker models (e.g.\ lower-scale open-weight variants) benefit more from both skill and
-tool evolution, likely because they have more headroom for improvement and fewer implicit
-reasoning heuristics that the skill library must override.
-Frontier models (GPT-5.4, Gemini-3.0-Pro) show smaller but still consistent absolute
-gains, suggesting that even highly capable VLMs leave performance on the table without
-task-specific strategic knowledge.
+The table also shows why the framework should not be interpreted as a monotonic ``add more
+capabilities'' recipe. Full co-evolution is not the best entry in every cell: for GPT-4o on
+MathVista and ChartQA, Skill Only is slightly higher than Skill~$+$~Tool; for o4-mini on
+ChartQA and Qwen3.5-27B on V$^*$, the base agent remains higher than the full system. Tool Only
+can also be harmful, most visibly for o4-mini on HRBench. These exceptions are important: they
+motivate validation and mastery rather than unconditional tool use, and they suggest that the
+benefit of a generated capability depends on both the benchmark and the backbone's ability to
+follow the resulting SOP or tool policy.
+
+A cautious pattern is nevertheless visible. Skill-only evolution is often competitive on
+ChartQA and MathVista, where improvements can plausibly come from better decomposition and
+calculation procedures. Tool-related variants tend to help more on HRBench and V$^*$, where
+sub-region inspection and visual search are more central. We treat this as evidence that the
+cognitive/perceptual distinction is a useful design rule for capability generation, not as a
+standalone proof that every error in these benchmarks has that structure.
 
 \begin{table*}[t]
 \centering
@@ -233,44 +220,26 @@ task-specific strategic knowledge.
 \end{tabular}
 \caption{%
   \textbf{Exp~I: Autonomous evolution from scratch.}
-  Accuracy (\%) for each evolution strategy across five foundation models and four
+  Accuracy for each evolution strategy across six foundation-model blocks and four
   benchmarks, all starting from an empty capability set.
   \emph{None} is the zero-shot VLM baseline.
   \emph{Skill Only} / \emph{Tool Only} ablate one capability type.
   \emph{Skill~$+$~Tool} is the full \sysname{} system.
-  Bold denotes the best result per model--benchmark pair.
-  Consistent gains of Skill~$+$~Tool over the base agent confirm that training-free
-  evolution is effective across both model families and all four benchmarks.
+  Blank cells indicate runs whose results have not yet been inserted.
 }
 \label{tab:evolution_full}
 \end{table*}
 
 \paragraph{Cumulative streaming setting.}
-A practically important question is whether \sysname{} can adapt \emph{continuously} as
-the task distribution shifts, rather than evolving from scratch for each benchmark
-independently.
-To test this, Table~\ref{tab:streaming_accumulation} evaluates five strategies under a
-\emph{streaming accumulation} protocol: benchmarks are introduced sequentially (HRBench
-$\rightarrow$ MathVista $\rightarrow$ V$^*$ $\rightarrow$ ChartQA), and the capability
-library is never reset between benchmarks.
-Each column reports accuracy on all tasks seen up to that point.
-
-The \emph{Dynamic Skill--Tool Co-Evolution} row (our full system) maintains the highest
-\textbf{Final Avg.} score and shows no catastrophic forgetting on earlier benchmarks as
-new ones are introduced.
-By contrast, \emph{Naive Skill+Tool Accumulation} — which adds capabilities without
-any conflict-resolution or mastery re-profiling — shows degraded accuracy on earlier
-benchmarks after later benchmarks are introduced.
-This suggests that unconstrained accumulation can introduce \emph{capability
-interference}: a skill generalised from one task family may trigger incorrectly on a
-different one.
-The co-evolution framework mitigates this by continuously revalidating existing
-capabilities against the growing training distribution (regression test in
-Section~\ref{sec:method_tool}), ensuring that newly accumulated knowledge does not erode
-prior competencies.
-The skill-only and tool-only ablations behave analogously to Table~\ref{tab:evolution_full}:
-both fall short of the co-evolution baseline on perceptual benchmarks, confirming that
-neither capability type alone is sufficient for a diverse, growing task distribution.
+We also include a streaming accumulation protocol, where benchmarks are introduced
+sequentially (HRBench $\rightarrow$ MathVista $\rightarrow$ V$^*$
+$\rightarrow$ ChartQA) and the capability library is not reset between stages.
+Table~\ref{tab:streaming_accumulation} currently contains the base-agent row and the dynamic
+co-evolution row; the remaining ablation rows are placeholders for pending results.
+The completed rows show that dynamic co-evolution improves the cumulative score at each stage
+relative to the base agent. Once the pending ablations are inserted, this protocol will test
+whether validation and mastery are sufficient to avoid capability interference as the library
+grows across task families.
 
 \begin{table*}[t]
 \centering
@@ -283,12 +252,13 @@ neither capability type alone is sufficient for a diverse, growing task distribu
   & \textbf{HRBench}
   & \textbf{+MathVista}
   & \textbf{+V$^*$}
-  & \textbf{+ChartQA} \\
+  & \textbf{+ChartQA}
+  & \textbf{Final Avg.} \\
 \midrule
 Base Agent                        &0.671  &0.63  &0.637  &0.722  &  \\
-Skill Accumulation Only           &  &  &  &    \\
-Tool Accumulation Only            &  &  &  &    \\
-Naive Skill+Tool Accumulation     &  &  &  &    \\
+Skill Accumulation Only           &  &  &  &  &  \\
+Tool Accumulation Only            &  &  &  &  &  \\
+Naive Skill+Tool Accumulation     &  &  &  &  &  \\
 Dynamic Skill--Tool Co-Evolution  &0.751  &0.733  &0.742  &0.802  &  \\
 \bottomrule
 \end{tabular}
@@ -298,9 +268,7 @@ Dynamic Skill--Tool Co-Evolution  &0.751  &0.733  &0.742  &0.802  &  \\
   on \emph{all benchmarks seen so far}.
   \textbf{Final Avg.} is the mean accuracy over all four benchmarks after the full
   stream.
-  Dynamic co-evolution maintains consistent gains across the growing distribution,
-  whereas naive accumulation degrades on earlier benchmarks as later ones are added —
-  indicating capability interference when no revalidation is applied.
+  Blank cells indicate pending runs.
 }
 \label{tab:streaming_accumulation}
 \end{table*}
@@ -314,19 +282,13 @@ Dynamic Skill--Tool Co-Evolution  &0.751  &0.733  &0.742  &0.802  &  \\
 In many deployment settings, practitioners already have access to a curated tool library
 (e.g.\ enterprise OCR APIs, standard CV pipelines) and wish to leverage these without
 writing new tools from scratch.
-A natural question is: given a high-quality external tool set $\mathcal{T}_0$, does
-a VLM agent benefit more from (a) invoking all tools unconditionally, or (b) learning
-\emph{when} to invoke each tool through mastery profiling?
-Experiment~II addresses this question using the GTA benchmark, which provides a
-structured evaluation of step-level tool-use fidelity in addition to final answer
-accuracy.
-
-The key finding this experiment targets is the \emph{mastery gap}: naive tool invocation
-is insufficient, and can in fact degrade accuracy on inputs where the tool is
-inapplicable.
-\sysname{} Mode~B (Section~\ref{sec:method_mastery_ext}) resolves this by running the
-mastery profiling phase on a small training set, learning per-tool applicability SOPs
-that guide conditional invocation at test time.
+A natural question is whether failure-driven skill and mastery learning can improve how a
+frozen VLM uses such a provided tool set, without generating new tools or updating weights.
+Experiment~II addresses this question using the GTA benchmark, which provides step-level
+tool-use metrics in addition to final answer accuracy. Because the current table compares only
+the base agent and \sysname{} Mode~B, we use it to measure the net effect of mastery-guided
+capability use; a separate unconditional-tool baseline would be needed to isolate naive tool
+overuse directly.
 
 \paragraph{Results on GTA.}
 Table~\ref{tab:gta_detailed} compares \emph{Base Agent} and \emph{Skill Evolution
@@ -338,7 +300,7 @@ evolution proceeds in parallel to refine task-level reasoning strategies.
 
 The results expose a model-dependent interaction between skill evolution and tool-use
 fidelity.
-GPT-5.4 and Gemini-2.0-Flash both improve on all four metrics: GPT-5.4 gains
+GPT-5.4 and Gemini3Flash both improve on all four metrics: GPT-5.4 gains
 $+3.1$ on \textbf{AnsAcc} (72.73 $\to$ 76.03) and Gemini gains $+2.5$ (66.56 $\to$ 69.06),
 accompanied by consistent improvements in \textbf{ToolAcc}, \textbf{ArgAcc}, and
 \textbf{InstAcc}.
@@ -395,17 +357,14 @@ model can deliver.
   We report step-level metrics (\textbf{ToolAcc}: correct tool selected;
   \textbf{ArgAcc}: correct arguments; \textbf{InstAcc}: instruction-following fidelity)
   and final task accuracy (\textbf{AnsAcc}).
-  \emph{Tool Usage Tuning} invokes all tools unconditionally; \emph{Skill Evolution
-  (Ours)} applies \sysname{} Mode~B, which learns per-tool mastery SOPs from the
-  training set without generating new tools.
-  The gap between \emph{Tool Usage Tuning} and \emph{Ours} isolates the benefit of
-  mastery-guided conditional invocation over naive tool deployment.
+  \emph{Skill Evolution (Ours)} applies \sysname{} Mode~B, which learns per-tool mastery SOPs
+  from the training set without generating new tools.
 }
 \label{tab:gta_detailed}
 \end{table*}
 
 
-\textcolor{red}{[TBD: MIRA subset results pending]}
+% TODO: Insert MIRA subset results when available.
 
 % ============================================================
 \subsection{Experiment~III: Closing the Gap to VTool-R1}
@@ -416,16 +375,13 @@ model can deliver.
 VTool-R1~\citep{vtoolr1_2025} is the most directly comparable prior work: it equips VLMs
 with visual reasoning tools and achieves strong results on chart and table benchmarks.
 Crucially, VTool-R1 achieves these results via GRPO-based reinforcement
-learning~\citep{vtoolr1_2025}, requiring a significant compute budget (multiple GPU
-days of RL training) and model weight updates.
+learning~\citep{vtoolr1_2025}, requiring model weight updates.
 Experiment~III asks: how much of VTool-R1's performance gain over a pure-run baseline
-can be recovered by training-free skill evolution alone, at zero training cost?
+can be recovered by training-free skill evolution alone, without gradient updates?
 
-This comparison is deliberately asymmetric in cost: VTool-R1 consumes training
-trajectories and performs gradient-based optimisation, whereas \sysname{} uses only
-in-context API calls with no weight updates.
-The \textbf{\#Train Traj.}\ column in Table~\ref{tab:vtoolr1_aligned_full} makes this
-resource contrast explicit.
+This comparison is deliberately asymmetric in optimization: VTool-R1 consumes training
+trajectories and performs gradient-based optimisation, whereas \sysname{} uses in-context API
+calls with frozen weights.
 We evaluate on the same Qwen2.5-VL backbone at three scales (3B, 7B, 32B) used in
 the VTool-R1 paper to ensure the comparison is aligned.
 
@@ -435,38 +391,26 @@ a substantial fraction of the gap between \emph{Pure Run} and VTool-R1 on both t
 Chart and Table reasoning splits.
 Computing the gap-recovery fraction
 $\frac{\text{Ours} - \text{Pure Run}}{\text{VTool-R1} - \text{Pure Run}}$
-reveals a striking pattern across scales.
-At 3B, \sysname{} recovers $\frac{60.3 - 45.4}{64.0 - 45.4} = 80.1\%$ of VTool-R1's
-Chart-split gain without any weight updates.
-At 7B the recovery is $\frac{75.1 - 56.1}{80.7 - 56.1} = 77.2\%$.
-At 32B, where the pure-run baseline is already strong (81.4), the absolute headroom
-shrinks and the recovery drops to $\frac{83.3 - 81.4}{86.7 - 81.4} = 35.8\%$,
-reflecting a saturation effect: when the base model already solves most chart questions
-correctly, there are fewer strategy failures for skill evolution to address.
+shows the strongest recovery for the 3B and 7B models. On the Chart split, the recovery is
+76.1\% for 3B, 77.1\% for 7B, and 43.1\% for 32B. On the Table split, the corresponding
+recoveries are 60.0\%, 94.1\%, and 40.8\%. The smaller recovery at 32B should be interpreted
+with care: the pure-run baseline is already high, leaving less absolute headroom between direct
+inference and VTool-R1.
 
-Critically, the gap-recovery fraction is \emph{highest at smaller scales}, contradicting
-a simple ``instruction-following capacity'' account.
-A more nuanced explanation is that the 3B and 7B models make more systematic, repeatable
-errors (consistent failure modes that yield generalisable skills), whereas the 32B model's
-residual errors are more diverse and idiosyncratic, making them harder to capture in
-reusable SOPs.
-The remaining gap to VTool-R1 at all scales is plausibly attributable to: (a)~the
-stochastic policy optimisation RL provides, which improves consistency of tool invocation
-across diverse inputs, and (b)~weight-level adaptations to the specific tool library that
-cannot be replicated via in-context guidance alone.
-Together these results suggest that \emph{strategy}, not raw perceptual capacity,
-is the primary bottleneck on chart and table benchmarks, and that in-context skill
-evolution is a computationally efficient path to capturing most of that strategy gap.
+This comparison is not meant to claim that skill evolution replaces RL in all settings.
+VTool-R1 still achieves the highest score in every reported split, and RL can change the
+model's policy in ways that in-context skills cannot. The result instead shows that a
+non-trivial portion of the improvement over direct inference can be recovered without gradient
+updates, especially at smaller backbone scales where the direct-inference baseline leaves more
+room for task-specific procedural guidance.
 
 \paragraph{Cost comparison.}
-\sysname{}'s evolution run on a single benchmark requires approximately 3M input tokens
-(200 training cases $\times$ 3 iterations $\times$ $\sim$5K tokens per case including
-diagnosis and generation calls), amounting to a few USD at current API pricing.
-By contrast, RL training for VTool-R1 requires multiple GPU-days of compute.
-The \textbf{\#Train Traj.}\ column confirms that \sysname{} processes dramatically
-fewer training signals than VTool-R1 while recovering the majority of the performance
-gain, making it practical for low-resource and privacy-sensitive deployment scenarios
-where RL training is infeasible.
+\sysname{} performs no weight updates. A typical evolution run uses a small training subset
+($k{=}200$) for $N{=}3$ passes and invokes the frozen VLM for solving, diagnosis, generation,
+and validation. This is a different resource profile from RL-based methods such as VTool-R1,
+which optimize model parameters from training trajectories. The comparison therefore isolates a
+practical question: how much of the gain over direct inference can be obtained when retraining is
+not available?
 
 \begin{table*}[t]
 \centering
@@ -483,7 +427,7 @@ where RL training is infeasible.
 \multirow{3}{*}{Qwen2.5-VL-3B}
   & Pure Run                   &45.3995  &43.0921  & ---         & \ding{55} \\
   & VTool-R1                   &64.0  &57.9   &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &59.56  &\textcolor{red}{51.97}  &             & \ding{55} \\
+  & Ours (Self-Evolved Skill)  &59.56  &51.97  &             & \ding{55} \\
 
 \midrule
 
@@ -505,13 +449,13 @@ where RL training is infeasible.
   \textbf{Exp~III: Training-free skill evolution vs.\ VTool-R1 (RL).}
   Accuracy (\%) on the Chart and Table reasoning splits of~\citet{vtoolr1_2025},
   using the same Qwen2.5-VL backbone at three scales.
-  \textbf{\#Train Traj.}\ reports training trajectories consumed.
+  \textbf{\#Train Traj.} is reserved for training-trajectory counts when available.
   \ding{51}~RL Update: model weights are updated via GRPO.
   \ding{55}~RL Update: weights are frozen.
   \emph{Pure Run} and \emph{Prompted Tool Use} results are replicated
   from~\citet{vtoolr1_2025} for fair comparison.
   \sysname{} closes a substantial fraction of the gap between \emph{Pure Run}
-  and VTool-R1 without any gradient updates, at dramatically lower computational cost.
+  and VTool-R1 without any gradient updates.
 }
 \label{tab:vtoolr1_aligned_full}
 \end{table*}
@@ -519,7 +463,7 @@ where RL training is infeasible.
 
 
 
-\textcolor{red}{[TBD: combined skill+RL results pending]}
+% TODO: Insert combined skill+RL results when available.
 
 % ============================================================
 \subsection{Ablation Studies}
@@ -527,56 +471,19 @@ where RL training is infeasible.
 % ============================================================
 
 \paragraph{Component ablations.}
-To isolate the contribution of each design decision, Table~\ref{tab:ablation_main}
-evaluates variants of \sysname{} by removing one component at a time.
-We conduct ablations on ChartQA (a representative cognitive benchmark) and HRBench
-(a representative perceptual benchmark), and report results for GPT-4o.
-
-\textbf{w/o Skill Evolution} removes the skill generation pathway, restricting the agent
-to tool evolution only.
-On ChartQA, this ablation incurs the largest accuracy drop, confirming that ChartQA
-is primarily a cognitive benchmark where strategy, not perception, is the binding
-constraint.
-On HRBench, the drop is smaller, consistent with the finding that HRBench requires
-perceptual tools that skill evolution alone cannot provide.
-
-\textbf{w/o Tool Evolution} is the symmetric ablation.
-Its impact is negligible on ChartQA (consistent with the Skill~Only~$\approx$~Skill$+$Tool
-observation from Table~\ref{tab:evolution_full}) but substantial on HRBench, where
-executable image processing is the primary bottleneck.
-
-\textbf{w/o Mastery Phase} disables the mastery profiling step: generated tools are
-deployed unconditionally on all inputs rather than selectively according to their
-mastery SOP.
-The accuracy drop is moderate on ChartQA but pronounced on HRBench.
-Qualitative inspection reveals that unconditional tool application introduces processing
-artefacts (e.g.\ over-cropped sub-regions, over-enhanced contrast) on inputs that would
-be handled correctly by the base agent, degrading cases the base agent already solves.
-This confirms the hypothesis from Experiment~II: tool provision without mastery guidance
-is actively harmful on a non-trivial fraction of inputs.
-
-\textbf{w/o Visual Diagnosis} replaces the multimodal AnalyzerDecider with a text-only
-variant that receives only the question, answer, and reasoning trace — not the original
-image or tool outputs.
-Accuracy drops on both benchmarks, but the drop is larger on HRBench than on ChartQA.
-On HRBench, the text-only diagnostician systematically misattributes perceptual failures
-(which are visible in the image) as cognitive failures (which would be invisible to a
-text-only observer), leading it to generate reasoning skills for cases that actually
-require visual tools.
-This mis-routing wastes capability budget and accumulates the wrong type of knowledge
-in the library.
-The result directly supports Contribution~(4) from the Introduction: visual
-failure analysis is a necessary, not merely convenient, component of accurate bottleneck
-diagnosis.
+Table~\ref{tab:ablation_main} defines the ablation grid used to isolate the contribution of
+each design decision. The numerical entries are pending and are therefore not interpreted here.
+The planned variants remove skill generation, tool generation, mastery profiling, or multimodal
+failure diagnosis while holding the GPT-4o backbone and the $k{=}200$, $N{=}3$ protocol fixed.
+Once populated, this table should answer two questions that the main experiments only address
+indirectly: whether skill/tool generation contributes beyond either capability type alone, and
+whether visual diagnosis and mastery profiling are necessary to avoid promoting capabilities
+that solve the triggering failure but hurt other cases.
 
 \paragraph{Sensitivity analysis.}
-Appendix~\ref{app:results} reports accuracy as a function of (a)~number of evolution
-iterations $N \in \{1, 3, 5, 10\}$ and (b)~training set size $k \in \{10, 25, 50, 100,
-200\}$.
-Both experiments are conducted on ChartQA.
-Key observations: gains plateau around $N{=}5$, and the system achieves ${\geq}80\%$ of
-its final improvement with as few as $k{=}50$ training cases, indicating that the method
-is effective even in extremely low-resource settings.
+Appendix~\ref{app:results} contains placeholders for training-set-size and iteration-count
+sensitivity. We do not draw conclusions from these analyses until the corresponding result files
+are inserted.
 
 \begin{table*}[t]
 \centering
@@ -604,7 +511,7 @@ w/o Visual Diagnosis        &  &  \\
   \emph{w/o Mastery Phase}: tools deployed unconditionally without applicability SOPs.
   \emph{w/o Visual Diagnosis}: AnalyzerDecider receives only text (question, answer,
   trace) with no image input.
-  Accuracy (\%); bold denotes the full system.
+  Accuracy.
 }
 \label{tab:ablation_main}
 \end{table*}

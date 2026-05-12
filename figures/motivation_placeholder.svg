@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="760" viewBox="0 0 1800 760">
+  <defs>
+    <style>
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 38px; font-weight: 700; fill: #111827; }
+      .subtitle { font-family: Arial, Helvetica, sans-serif; font-size: 22px; fill: #4b5563; }
+      .panel-title { font-family: Arial, Helvetica, sans-serif; font-size: 27px; font-weight: 700; fill: #111827; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-weight: 700; fill: #111827; }
+      .body { font-family: Arial, Helvetica, sans-serif; font-size: 18px; fill: #374151; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 15px; fill: #4b5563; }
+      .tag { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 700; fill: #ffffff; }
+      .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 2; rx: 16; }
+      .panel { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; rx: 20; }
+      .arrow { stroke: #374151; stroke-width: 4; fill: none; marker-end: url(#arrowhead); }
+      .soft-arrow { stroke: #64748b; stroke-width: 3; fill: none; marker-end: url(#arrowhead-soft); }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#374151"/>
+    </marker>
+    <marker id="arrowhead-soft" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1800" height="760" fill="#ffffff"/>
+
+  <text x="900" y="58" text-anchor="middle" class="title">Motivation: Failed Attempts as Supervision for Reusable Capabilities</text>
+  <text x="900" y="92" text-anchor="middle" class="subtitle">A frozen VLM agent can adapt by deciding what kind of capability a failure calls for.</text>
+
+  <rect x="55" y="130" width="510" height="560" class="panel"/>
+  <text x="310" y="175" text-anchor="middle" class="panel-title">1. Failures Reveal Bottlenecks</text>
+
+  <rect x="95" y="215" width="430" height="165" class="box"/>
+  <rect x="115" y="235" width="132" height="32" rx="16" fill="#2563eb"/>
+  <text x="181" y="257" text-anchor="middle" class="tag">Cognitive</text>
+  <text x="115" y="300" class="label">Strategy bottleneck</text>
+  <text x="115" y="332" class="body">The visual evidence is present,</text>
+  <text x="115" y="360" class="body">but the reasoning procedure fails.</text>
+  <text x="115" y="392" class="small">Examples: ChartQA, MathVista</text>
+
+  <rect x="95" y="430" width="430" height="165" class="box"/>
+  <rect x="115" y="450" width="132" height="32" rx="16" fill="#059669"/>
+  <text x="181" y="472" text-anchor="middle" class="tag">Perceptual</text>
+  <text x="115" y="515" class="label">Visual access bottleneck</text>
+  <text x="115" y="547" class="body">The model knows what is needed,</text>
+  <text x="115" y="575" class="body">but cannot see the detail reliably.</text>
+  <text x="115" y="607" class="small">Examples: HRBench, V*</text>
+
+  <rect x="645" y="130" width="510" height="560" class="panel"/>
+  <text x="900" y="175" text-anchor="middle" class="panel-title">2. Existing Fixes Are Incomplete</text>
+
+  <rect x="690" y="220" width="420" height="88" class="box"/>
+  <text x="720" y="254" class="label">RL / SFT</text>
+  <text x="720" y="285" class="body">Can improve behavior, but requires</text>
+  <text x="720" y="313" class="body">weight updates and training compute.</text>
+
+  <rect x="690" y="348" width="420" height="88" class="box"/>
+  <text x="720" y="382" class="label">Manual prompting</text>
+  <text x="720" y="413" class="body">Encodes useful heuristics, but is</text>
+  <text x="720" y="441" class="body">human-designed and task-specific.</text>
+
+  <rect x="690" y="476" width="420" height="116" class="box"/>
+  <text x="720" y="510" class="label">Text-only reflection</text>
+  <text x="720" y="541" class="body">Can describe mistakes, but cannot</text>
+  <text x="720" y="569" class="body">inspect visual artifacts or create</text>
+  <text x="720" y="597" class="body">executable image-processing tools.</text>
+
+  <rect x="1235" y="130" width="510" height="560" class="panel"/>
+  <text x="1490" y="175" text-anchor="middle" class="panel-title">3. DYNAMO Evolves the Right Capability</text>
+
+  <rect x="1280" y="220" width="420" height="68" class="box"/>
+  <text x="1490" y="263" text-anchor="middle" class="label">Visual failure diagnosis</text>
+
+  <path d="M 1490 290 L 1490 330" class="soft-arrow"/>
+  <rect x="1280" y="337" width="420" height="76" class="box"/>
+  <text x="1490" y="369" text-anchor="middle" class="body">Is the missing capability</text>
+  <text x="1490" y="397" text-anchor="middle" class="body">a skill, a tool, or both?</text>
+
+  <path d="M 1490 415 L 1490 455" class="soft-arrow"/>
+  <rect x="1275" y="462" width="195" height="92" rx="16" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+  <text x="1372" y="497" text-anchor="middle" class="label">Skill</text>
+  <text x="1372" y="526" text-anchor="middle" class="small">Reusable reasoning SOP</text>
+
+  <rect x="1510" y="462" width="195" height="92" rx="16" fill="#ecfdf5" stroke="#86efac" stroke-width="2"/>
+  <text x="1608" y="497" text-anchor="middle" class="label">Tool</text>
+  <text x="1608" y="526" text-anchor="middle" class="small">Executable visual program</text>
+
+  <path d="M 1372 557 L 1372 610 L 1490 610" class="soft-arrow"/>
+  <path d="M 1608 557 L 1608 610 L 1490 610" class="soft-arrow"/>
+  <rect x="1280" y="625" width="420" height="42" rx="16" fill="#111827"/>
+  <text x="1490" y="652" text-anchor="middle" class="tag">Validate, accumulate, and reuse</text>
+
+  <path d="M 570 410 L 630 410" class="arrow"/>
+  <path d="M 1160 410 L 1220 410" class="arrow"/>
+
+  <text x="900" y="724" text-anchor="middle" class="small">Placeholder figure for Introduction: replace example boxes with real cases or thumbnails before submission.</text>
+</svg>

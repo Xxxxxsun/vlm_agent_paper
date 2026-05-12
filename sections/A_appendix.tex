@@ -47,7 +47,7 @@ Max tokens (gen.) & 2048 & Max tokens for capability generation \\
 \end{table}
 
 \paragraph{Compute.}
-All experiments use Gemini-2.0-Flash via the Google AI API.
+Experiments use the frozen VLM backbones listed in Section~\ref{sec:setup}.
 Total API calls per benchmark: $\leq k \times N \times 3 = 1{,}800$ calls
 (solver + analyzer + generator, upper bound).
 Estimated token usage: $\sim$3M tokens per benchmark.
@@ -61,8 +61,8 @@ No GPU training is performed.
 \begin{figure}[h]
 \centering
 \fbox{\rule{0pt}{3cm}\rule{0.7\columnwidth}{0pt}}
-\caption{ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.
-\textcolor{red}{[TBD: insert figure]}}
+\caption{Placeholder for ChartQA accuracy vs.\ training set size
+$k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.}
 \label{fig:k_sensitivity}
 \end{figure}
 
@@ -71,19 +71,19 @@ $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.
 
 \subsection{Per-Category Analysis on ChartQA}
 
-\textcolor{red}{[TBD: breakdown of accuracy gains by chart type (bar, line, pie, scatter)]}
+% TODO: Insert breakdown of accuracy gains by chart type (bar, line, pie, scatter).
 
 \subsection{Qualitative Examples}
 \label{app:qualitative}
 
 Figure~\ref{fig:casestudy} illustrates \sysname{}'s evolution loop on a representative ChartQA
 failure.
-\textcolor{red}{[TBD: insert side-by-side case study showing before/after skill]}
+% TODO: Insert side-by-side case study showing before/after skill.
 
 \begin{figure}[h]
 \centering
 % TODO: replace with generated Figure 5/6 (case study + skill/tool example)
-\fbox{\rule{0pt}{5cm}\rule{\columnwidth}{0pt}}
+\fbox{\rule{0pt}{5cm}\rule{0.95\columnwidth}{0pt}}
 \caption{
   \textbf{Case study: ChartQA failure before and after skill evolution.}
   \textit{(Left)}: without an evolved skill, the agent attempts direct value reading and
@@ -143,9 +143,9 @@ def enhance_target_region(image_path: str,
 \label{app:reproducibility}
 
 The code, evolved capability files (\texttt{learned/} directory), and all evaluation scripts
-will be released at \url{[anonymised repository]} upon acceptance.
-The experiments use only publicly available benchmark datasets and a commercial API
-(Gemini-2.0-Flash).
+will be released in an anonymised repository upon acceptance.
+The experiments use publicly available benchmark datasets and the VLM backbones described in
+Section~\ref{sec:setup}.
 Evolved capability sets (\texttt{*.skill.md} and \texttt{*.tool.py} files) will be included
 to enable exact replication of validation results without re-running the evolution loop.
 

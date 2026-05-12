@@ -116,31 +116,25 @@
 %  Abstract  (placed before \begin{document} per googledeepmind.cls)
 % ============================================================
 \begin{abstract}
-Visual language models still exhibit systematic failure patterns on standard benchmarks,
-yet closing these gaps currently demands either RL training on dedicated GPU clusters or
-manual prompt engineering.
-We present \sysname{}, a training-free framework in which VLM agents autonomously evolve two
-complementary capability types from failure: \emph{skills}---structured reasoning strategies
-encoding how to approach a problem class---and \emph{tools}---executable Python programs that
-expand the agent's visual perception by manipulating images directly.
-On each failure, \sysname{} visually diagnoses the root cause by inspecting both the original
-image and any tool outputs, decides whether the bottleneck is cognitive or perceptual, generates
-the appropriate capability, validates it, and accumulates it for future cases---all without
-any weight updates.
-We report three experiments.
-\textbf{(I) From-scratch evolution}: starting with zero capabilities, \sysname{} achieves
-consistent gains across ChartQA, MathVista, HRBench, and MMStar on both
-Gemini-2.0-Flash and Qwen2.5-VL-7B, confirming the framework is model-agnostic.
-\textbf{(II) Tool mastery from pre-provided tools}: when given an external tool set,
-naive invocation degrades accuracy on ill-suited inputs; mastery learning---where the agent
-profiles each tool's applicability on a small training set---recovers and exceeds the full
-potential of the provided tools.
-\textbf{(III) Gap to RL}: training-free skill evolution alone closes approximately
-\textcolor{red}{[TBD]}\% of the performance gap between direct inference and RL-trained
-VTool-R1 on ChartQA, suggesting that most of what RL training achieves on
-strategy-bottlenecked benchmarks is capturable as structured reasoning strategy.
-Together, these results show that failure-driven in-context evolution is a viable,
-cost-efficient path to visual reasoning improvement without model retraining.
+Vision-language models (VLMs) remain brittle on visual reasoning tasks, and improving them
+typically requires either retraining or manual prompt/tool design. We ask a different question:
+can a frozen VLM agent use its own failed attempts as supervision for acquiring reusable
+capabilities? We present \sysname{}, a training-free framework that turns diagnosable failures
+into two capability types: \emph{skills}, structured reasoning procedures for task families
+where the visual evidence is available but the reasoning procedure is weak, and \emph{tools},
+executable Python programs for cases where the agent needs to crop, zoom, enhance, or otherwise
+transform the visual input. On each failure, \sysname{} inspects the original image,
+intermediate tool outputs, and reasoning trace; decides whether the missing capability is
+cognitive, perceptual, or both; generates the appropriate capability; validates it; and
+accumulates it for future cases without updating model weights.
+Across completed from-scratch evaluations on ChartQA, MathVista, HRBench, and V$^*$,
+skill-tool co-evolution improves direct inference in 21 of 23 model-benchmark cells, with an
+average gain of 4.8 accuracy points. In a provided-tool setting on GTA, mastery-guided
+capability use improves stronger backbones while showing that over-prescriptive tool-use
+policies can hurt less compatible models. Against RL-trained VTool-R1, skill evolution alone
+recovers 60.0--94.1\% of the RL performance gap on 3B/7B chart and table reasoning splits.
+These results suggest that a substantial part of task-specific VLM adaptation can be recovered
+by failure-driven, in-context capability evolution.
 \end{abstract}
 
 \begin{document}
