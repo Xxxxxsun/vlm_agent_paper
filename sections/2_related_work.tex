@@ -45,8 +45,15 @@ intermediate visual representations, attaining state-of-the-art on MathVista but
 $\sim$14k supervised examples and multi-GPU training.
 V-Thinker~\citep{vthinker_2025} teaches VLMs to interleave visual tool calls with chain-of-thought
 reasoning, again via supervised training on curated datasets.
-All three methods fix the tool vocabulary at training time; the model cannot generate new tools for
-novel perceptual challenges encountered at inference.
+ZoomEye~\citep{zoomeye_2024} is a training-free, model-agnostic tree-search method for
+vision-level reasoning: it treats the image as a hierarchy whose root is the full image and whose
+children are zoomed-in sub-regions. ReFocus~\citep{refocus_2025} instead casts visual editing as
+chain-of-thought, asking an MLLM to generate Python code that draws boxes, highlights sections,
+and masks distractors for structured images such as charts and tables.
+These methods provide important evidence that changing the visual input or visual focus can
+improve reasoning. \sysname{} addresses a complementary problem: rather than assuming a fixed
+zoom/search algorithm or a fixed visual-editing interface, it generates and validates reusable
+skills and tools from failed attempts.
 \sysname{} achieves competitive accuracy without any weight updates, generates tools on demand
 from failure, and remains deployable with only API access to a frozen VLM backbone.
 
@@ -57,7 +64,5 @@ arithmetic modules) via program synthesis to answer visual questions.
 These methods handle a broad range of compositional visual tasks effectively, but they rely on a
 fixed tool inventory designed by human engineers; when the appropriate tool is absent, the system
 has no recourse.
-ReFOCUS~\citep{refocus_2025} augments VLMs with adaptive visual focus operations, again
-requiring a curated action space.
 \sysname{} complements this direction by generating new tools from scratch when the current
 inventory fails---bridging the gap between fixed-tool composition and training-based tool learning.

@@ -81,55 +81,17 @@ By evaluating six foundation models, with some ablation cells still pending, we 
 whether the observed gains are tied to a single backbone or appear across model families.
 
 
-\paragraph{Generated capabilities: what the library contains.}
-Beyond aggregate accuracy, we inspect representative capabilities produced during evolution.
-These examples are not used as standalone evidence for a dataset-wide failure taxonomy; rather,
-they illustrate the kinds of reusable artifacts the framework can create from individual failed
-attempts.
-
-\textbf{Spatial re-attention tool (HRBench / V$^*$).}
-In inspected HRBench failures, the AnalyzerDecider observed that failed attempts had processed
-the full 4K image after global downsampling, erasing fine-grained detail in distant
-signs, small labels, and number plates.
-The Generator produced a \texttt{spatial\_refocus} tool that: (i)~parses the question
-for spatial and object keywords (e.g.\ ``door number'', ``licence plate''), (ii)~scores
-nine equal grid tiles for lexical relevance, and (iii)~returns the highest-scoring tile
-at 2$\times$ upsampled resolution with contrast enhancement.
-This solution is aligned with the broader idea behind ReFocus~\citep{refocus_2025}: a VLM may
-benefit from question-guided sub-region attention on high-resolution inputs. In \sysname{}, this
-operation is generated as an executable tool from the observed failure record rather than being
-provided as a fixed action.
-\emph{Example}: given ``What text appears on the door number plate?'', the tool crops
-the upper-left door region; the agent then reads the plate number correctly where it had
-previously returned ``illegible''.
-
-\textbf{Progressive visual search tool (V$^*$).}
-V$^*$ requires locating an object that may occupy fewer than 5\% of image pixels before
-answering a property question.
-After several failures where the agent correctly identified the target object category
-but described the wrong instance, the Generator produced a \texttt{visual\_search\_zoom}
-tool: it divides the image into a 4$\times$4 grid, uses the VLM itself as a zero-shot
-relevance scorer (``Does this tile contain \{target description\}?''), and returns the
-top-scoring tile at 3$\times$ resolution for final reasoning.
-The strategy implements coarse-to-fine visual search without a learned detector, using the
-frozen VLM's spatial understanding as a relevance scorer.
-\emph{Example}: given ``What colour are the shoes of the person sitting on the right?'',
-the scan identifies the right-side lower-body tile; the enlarged crop makes the shoe
-colour unambiguous where the full-image view was too small to discriminate.
-
-\textbf{Interleaved visual skills (ChartQA).}
-Another observed capability is a class of skills we term \emph{interleaved visual skills}:
-structured reasoning SOPs in which individual steps
-are accompanied by actual image crops embedded directly in the Markdown skill document.
-After several failures on stacked-bar and multi-series line charts where the agent
-conflated visually similar colour segments, the Generator produced a skill whose
-``Worked Example'' field contained both a text walk-through \emph{and} an annotated
-image of the relevant chart type — extracted from the triggering training case —
-with segment boundaries superimposed.
-At retrieval time the agent receives this image alongside the textual SOP, effectively
-obtaining a visual template to match against the current input.
-This suggests that the skill library can act not only as a text memory, but also as a lightweight
-visual memory when the generated SOP includes image evidence from prior failures.
+\paragraph{Qualitative inspection of evolved capabilities.}
+In addition to aggregate accuracy, we inspect three representative forms of evolved capability:
+(i) a ReFocus-style chart/table editing case, where a generated tool marks or masks visual
+evidence before reasoning; (ii) a ZoomEye-style high-resolution search case, where a generated
+tool performs coarse-to-fine region inspection; and (iii) an interleaved visual skill, where the
+retrieved skill contains both a textual SOP and visual evidence from a prior failure. These case
+studies are qualitative: they support the claim that \sysname{} can generate capability
+structures resembling useful prior motifs, not that it reproduces the full algorithms of
+ReFocus~\citep{refocus_2025} or ZoomEye~\citep{zoomeye_2024}. Appendix~\ref{app:capability_cases}
+gives the detailed write-up and marks the exact fields to fill with the corresponding generated
+artifacts.
 
 \paragraph{Multi-model comparison.}
 Table~\ref{tab:evolution_full} reports the completed model--strategy entries. Blank cells

@@ -58,7 +58,7 @@ No GPU training is performed.
 
 \subsection{Training Set Size Sensitivity}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \fbox{\rule{0pt}{3cm}\rule{0.7\columnwidth}{0pt}}
 \caption{Placeholder for ChartQA accuracy vs.\ training set size
@@ -73,71 +73,305 @@ $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.
 
 % TODO: Insert breakdown of accuracy gains by chart type (bar, line, pie, scatter).
 
-\subsection{Qualitative Examples}
-\label{app:qualitative}
+\section{Qualitative Analysis of Evolved Capabilities}
+\label{app:capability_cases}
 
-Figure~\ref{fig:casestudy} illustrates \sysname{}'s evolution loop on a representative ChartQA
-failure.
-% TODO: Insert side-by-side case study showing before/after skill.
+This appendix gives three qualitative case studies of evolved capabilities. The examples are
+intended to make the generated artifacts concrete, not to introduce new quantitative results.
+Each case should be instantiated with the corresponding logged failure, generated skill/tool
+file, visual artifact, and validation record before submission. We use the case studies to make
+one specific point: the atomic operations themselves are not new, but \sysname{} can decide from
+a failed attempt which operation is needed, generate it as a reusable capability, and validate it
+before future use.
 
-\begin{figure}[h]
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{p{0.20\textwidth}p{0.24\textwidth}p{0.25\textwidth}p{0.23\textwidth}}
+\toprule
+\textbf{Case study} & \textbf{Generated capability} & \textbf{Prior motif} & \textbf{Claim supported} \\
+\midrule
+Case A: Structured-image editing
+& A skill that instructs the solver to isolate the relevant chart/table structure, plus a tool
+that highlights, boxes, or masks visual evidence.
+& ReFocus uses Python visual edits as chain-of-thought for structured image understanding
+~\citep{refocus_2025}.
+& \sysname{} can generate a reusable visual-editing capability from failure, rather than relying
+on a fixed visual-editing interface. \\
+\midrule
+Case B: High-resolution visual search
+& A skill that decomposes the question into target-location cues, plus a tool that searches or
+zooms into candidate regions.
+& ZoomEye performs training-free tree-based image exploration over zoomed sub-regions
+~\citep{zoomeye_2024}.
+& \sysname{} can generate a local coarse-to-fine search capability without being given ZoomEye as
+a predefined module. \\
+\midrule
+Case C: Interleaved visual skill
+& A skill whose SOP includes both text steps and a visual worked example or linked crop from the
+triggering failure.
+& Visual-thought methods show that intermediate visual artifacts can guide structured reasoning.
+& \sysname{} can store procedural and visual evidence together as a retrieved capability. \\
+\bottomrule
+\end{tabular}
+\caption{
+  \textbf{Three qualitative forms of evolved capability.}
+  The case studies compare generated artifacts to prior visual-reasoning motifs. They do not
+  claim that \sysname{} reproduces the full prior algorithms.
+}
+\label{tab:capability_prior_motifs}
+\end{table*}
+
+\subsection{Case A: ReFocus-Style Skill and Tool for Structured Images}
+\label{app:refocus_style}
+
+ReFocus~\citep{refocus_2025} proposes visual editing as a form of chain-of-thought for
+structured image understanding. It asks an MLLM to generate Python code that edits the image,
+including drawing boxes, highlighting relevant regions, and masking distractors. A \sysname{}
+case belongs in this category when the generated capability explicitly changes the visual input
+shown to the solver.
+
+\textbf{Triggering failure.}
+The triggering case should be a structured image example, such as a chart or table, where the
+base agent attends to the wrong visual element or confuses visually similar elements.
+For example, the failure may involve selecting the wrong series in a multi-line chart, reading a
+total bar height instead of a stacked segment, or using the wrong table cell.
+\textcolor{red}{[Insert benchmark, case id, question, ground-truth answer, and base answer.]}
+
+\textbf{Generated skill.}
+The evolved skill should describe \emph{when} visual editing is needed before reasoning. A
+typical ReFocus-style skill has the following structure:
+\begin{verbatim}
+## Skill: Edit-Then-Read for Structured Images
+
+When-to-Use:
+Use when the question refers to a specific chart/table element
+that is visually close to distractors, such as one series among
+many lines, one segment in a stacked bar, or one table row/column.
+
+Strategy:
+1. Identify the visual entity named by the question.
+2. Before computing the answer, create an edited view that marks
+   only the relevant region and suppresses likely distractors.
+3. Re-read the edited image and extract the required value.
+4. Perform the requested arithmetic or comparison.
+
+Common Pitfalls:
+- Do not answer from the unedited image if multiple marks are
+  visually similar.
+- Do not treat the visual edit as adding new information; it only
+  exposes the evidence already present in the image.
+\end{verbatim}
+
+\textbf{Generated tool.}
+The paired tool is a small image-editing program. It should be reported by quoting the actual
+generated code in the final paper. A representative form is:
+\begin{verbatim}
+def mark_relevant_region(image_path, region, mode="highlight"):
+    """Return an edited image that highlights or masks
+    chart/table evidence."""
+    from PIL import Image, ImageDraw
+    img = Image.open(image_path).convert("RGB")
+    draw = ImageDraw.Draw(img, "RGBA")
+    x1, y1, x2, y2 = region
+    if mode == "highlight":
+        draw.rectangle([x1, y1, x2, y2], outline=(255, 0, 0, 255), width=6)
+        draw.rectangle([x1, y1, x2, y2], fill=(255, 255, 0, 60))
+    elif mode == "mask_distractors":
+        # final paper should quote the actual generated masking logic
+        pass
+    out_path = image_path.replace(".png", "_marked.png")
+    img.save(out_path)
+    return out_path
+\end{verbatim}
+
+\textbf{Why this matches ReFocus.}
+Like ReFocus, the capability uses visual editing as an intermediate reasoning step: the model
+does not merely write a textual explanation, but creates an edited visual artifact that changes
+the evidence shown to the next solver call. The difference is that ReFocus defines visual editing
+as the reasoning interface, whereas \sysname{} produces this edit skill/tool only after a
+failure analysis decides that the bottleneck is visual disambiguation.
+
+\textbf{Evidence to insert.}
+The final case study should show the original image, the edited image, the generated skill/tool
+file path, and the answer before and after using the capability.
+\textcolor{red}{[Insert validation result and retry answer.]}
+
+\subsection{Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}
+\label{app:zoomeye_style}
+
+ZoomEye~\citep{zoomeye_2024} addresses the loss of fine visual detail by treating image
+understanding as a tree-based exploration process. The full image is the root node, zoomed image
+regions are child nodes, and the model searches over promising regions until it finds the visual
+evidence needed to answer. A \sysname{} case belongs in this category when the generated
+capability performs region selection, cropping, zooming, or coarse-to-fine search.
+
+\textbf{Triggering failure.}
+The triggering case should involve a high-resolution image where the base agent knows the object
+or region type but cannot inspect it accurately from the full image. Examples include small text,
+distant signs, number plates, small object attributes, or a target object occupying a small
+fraction of the image.
+\textcolor{red}{[Insert benchmark, case id, question, ground-truth answer, and base answer.]}
+
+\textbf{Generated skill.}
+The evolved skill should make the search procedure explicit:
+\begin{verbatim}
+## Skill: Coarse-to-Fine Region Search
+
+When-to-Use:
+Use when the question asks about a small object, distant text,
+fine-grained attribute, or localized region in a high-resolution image.
+
+Strategy:
+1. Parse the question for target object, attribute, and spatial cues.
+2. Inspect the full image only to estimate candidate regions.
+3. Divide the image into coarse tiles and score each tile for relevance.
+4. Zoom into the best candidate region and answer from the enlarged view.
+5. If the crop is ambiguous, repeat with a finer crop around the target.
+
+Common Pitfalls:
+- Do not answer from the globally downsampled image when the requested
+  evidence is small.
+- Do not crop solely by image center; use question-specific cues.
+\end{verbatim}
+
+\textbf{Generated tool.}
+The paired tool implements a local search/zoom operation. The final version should quote the
+actual generated code; a representative form is:
+\begin{verbatim}
+def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
+    """Return candidate high-resolution crops for a
+    target described in text."""
+    from PIL import Image
+    img = Image.open(image_path).convert("RGB")
+    w, h = img.size
+    crops = []
+    for gy in range(grid_size):
+        for gx in range(grid_size):
+            box = (gx*w//grid_size, gy*h//grid_size,
+                   (gx+1)*w//grid_size, (gy+1)*h//grid_size)
+            crop = img.crop(box)
+            out = image_path.replace(".png", f"_tile_{gx}_{gy}.png")
+            crop.save(out)
+            crops.append((out, box))
+    return crops
+\end{verbatim}
+
+\textbf{Why this matches ZoomEye.}
+The similarity is the coarse-to-fine visual search motif. Both methods avoid forcing the VLM to
+answer from a single fixed-resolution full image. The difference is scope: ZoomEye is a general
+tree-search algorithm, while the \sysname{} capability is generated from a particular failure and
+may implement only the subset of zoom/search behavior needed for that task family.
+
+\textbf{Evidence to insert.}
+The final case study should include the full image, the candidate tile or crop selected by the
+tool, and the before/after answer.
+\textcolor{red}{[Insert selected crop, validation result, and retry answer.]}
+
+\subsection{Case C: Interleaved Visual Skill}
+\label{app:interleaved_visual_skills}
+
+The third case is different from the previous two because the main artifact is not only an
+executable program. An interleaved visual skill is a retrieved Markdown skill that contains both
+textual reasoning instructions and visual evidence, such as an embedded crop, annotated chart, or
+linked processed image from the triggering failure.
+
+\textbf{Triggering failure.}
+This case should involve a problem where a text-only SOP is underspecified because the visual
+pattern itself matters. A common example is chart reasoning: the agent may know that it should
+subtract segment boundaries in a stacked bar chart, but still confuse which boundary belongs to
+the target segment.
+\textcolor{red}{[Insert benchmark, case id, question, ground-truth answer, and base answer.]}
+
+\textbf{Generated skill.}
+The generated skill should be quoted directly if available. A representative interleaved form is:
+\begin{verbatim}
+## Skill: Stacked-Bar Segment Reading with Visual Anchor
+
+When-to-Use:
+Use when the question asks for a value, difference, or comparison
+involving a segment of a stacked bar chart.
+
+Strategy:
+1. Locate the target bar using the x-axis label.
+2. Locate the target segment using the legend colour.
+3. Read the lower and upper boundaries of the segment.
+4. Subtract lower from upper to obtain the segment value.
+5. Verify the result against the visual anchor below.
+
+Visual Anchor:
+[embedded crop or linked image showing the annotated segment boundaries]
+
+Common Pitfalls:
+- Do not read the total bar height when the question asks for one segment.
+- Do not use a nearby segment with a visually similar colour.
+\end{verbatim}
+
+\textbf{Optional generated tool.}
+In this case, the paired tool may be simple: it produces the crop or annotation that is embedded
+in the skill.
+\begin{verbatim}
+def make_visual_anchor(image_path, crop_box, annotations):
+    """Create an annotated crop used as the visual anchor in a skill."""
+    from PIL import Image, ImageDraw
+    img = Image.open(image_path).convert("RGB")
+    crop = img.crop(crop_box)
+    draw = ImageDraw.Draw(crop)
+    for ann in annotations:
+        draw.rectangle(ann["box"], outline=ann.get("color", "red"), width=4)
+        if "label" in ann:
+            draw.text((ann["box"][0], ann["box"][1]), ann["label"],
+                      fill=ann.get("color", "red"))
+    out_path = image_path.replace(".png", "_visual_anchor.png")
+    crop.save(out_path)
+    return out_path
+\end{verbatim}
+
+\textbf{Why this is interleaved.}
+The retrieved capability is not purely textual and not purely executable. The skill tells the
+agent how to reason, while the visual anchor shows what the relevant visual configuration looks
+like. This is related to visual-thought methods, but the visual artifact is stored persistently
+inside the capability library and retrieved on later cases.
+
+\textbf{Evidence to insert.}
+The final case study should include the generated Markdown skill, the visual anchor image, and a
+before/after answer showing how the retrieved interleaved skill changes the solver's behavior.
+\textcolor{red}{[Insert validation result and retry answer.]}
+
+\begin{figure}[ht]
 \centering
 % TODO: replace with generated Figure 5/6 (case study + skill/tool example)
 \fbox{\rule{0pt}{5cm}\rule{0.95\columnwidth}{0pt}}
 \caption{
-  \textbf{Case study: ChartQA failure before and after skill evolution.}
-  \textit{(Left)}: without an evolved skill, the agent attempts direct value reading and
-  misreads a stacked bar chart.
-  \textit{(Right)}: with the evolved ``stacked chart extraction'' skill, the agent applies
-  a structured subtraction strategy and answers correctly.
+  \textbf{Placeholder for a concrete before/after case study.}
+  The final version should insert the original image, the failed base answer, the generated
+  skill/tool artifact, the processed visual output if any, and the validated retry answer.
 }
 \label{fig:casestudy}
 \end{figure}
 
-\section{Example Generated Skill and Tool}
-\label{app:examples}
+\section{Case Study Artifact Checklist}
+\label{app:case_artifact_checklist}
 
-\subsection{Example Skill: ChartQA Multi-Step Data Extraction}
-
-\begin{verbatim}
-## Skill: Stacked Bar Chart Extraction
-
-**When-to-Use**: Question asks for a specific segment value or
-difference in a stacked bar chart.
-
-**Strategy**:
-1. Identify the target bar and segment colour from the legend.
-2. Read the bottom boundary value of the target segment.
-3. Read the top boundary value of the target segment.
-4. Subtract bottom from top to obtain the segment value.
-5. If asked for a difference, apply the operation to two segments.
-
-**Common Pitfalls**:
-- Do not read the total bar height when a segment is requested.
-- Verify legend colour matches—similar colours may be confused.
-
-**Worked Example**: [see training case #47]
-\end{verbatim}
-
-\subsection{Example Tool: Sub-Region Contrast Enhancer (V*)}
-
-\begin{verbatim}
-def enhance_target_region(image_path: str,
-                          x: int, y: int, w: int, h: int) -> str:
-    """Crop and contrast-enhance a region of interest."""
-    import cv2, numpy as np, tempfile, os
-    img = cv2.imread(image_path)
-    region = img[y:y+h, x:x+w]
-    lab = cv2.cvtColor(region, cv2.COLOR_BGR2LAB)
-    l, a, b = cv2.split(lab)
-    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8,8))
-    l = clahe.apply(l)
-    enhanced = cv2.merge([l, a, b])
-    enhanced = cv2.cvtColor(enhanced, cv2.COLOR_LAB2BGR)
-    out_path = tempfile.mktemp(suffix='.png')
-    cv2.imwrite(out_path, enhanced)
-    return out_path
-\end{verbatim}
+To avoid conflating qualitative analysis with unreported experiments, we instantiate each case
+study only from artifacts produced by the evolution loop. For each of the three cases above, the
+final appendix should include:
+\begin{itemize}
+  \item the triggering failure record: benchmark, example id, question, ground-truth answer,
+  and base-agent answer;
+  \item the generated skill file, quoted or summarized without changing its operative steps;
+  \item the generated tool file when one exists, including the exact operation it performs;
+  \item the visual artifact produced by the tool, such as a marked chart, selected crop, or
+  embedded visual anchor;
+  \item the validation record showing whether the capability was accepted and whether the retry
+  answer changed.
+\end{itemize}
+If a case lacks one of these artifacts, we mark the missing field explicitly rather than
+inferring it from the intended behavior. This keeps the case studies as evidence for the form of
+the evolved capabilities, while the quantitative claims remain grounded in the tables in
+Section~\ref{sec:experiments}.
 
 \section{Reproducibility Statement}
 \label{app:reproducibility}
