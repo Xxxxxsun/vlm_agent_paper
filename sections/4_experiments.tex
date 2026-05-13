@@ -148,12 +148,12 @@ standalone proof that every error in these benchmarks has that structure.
   & None (Base Agent)  &0.73  &0.753333  &0.72847  &0.7833  \\
   & Skill Only         &0.7671  &0.75666  &0.75496  &0.76927  \\
   & Tool Only          &0.5529  &0.6978  &0.7677  &0.7677  \\
-  & Skill + Tool       &0.8457  &0.7622  &0.7947  &0.7641  \\
+  & Skill + Tool       &0.8457  &0.7622  &0.7947  &0.7917  \\
 
 \midrule
 
 \multirow{4}{*}{gpt5.4}
-  & None (Base Agent)  &0.747142  &0.75888  &0.7748  &0.7974  \\
+  & None (Base Agent)  &0.7471  &0.7589  &0.7748  &0.7974  \\
   & Skill Only         &0.7800  &0.7711  &0.7881  &0.8115 \\
   & Tool Only          &0.7971  &0.7722  &0.8609  &0.8161  \\
   & Skill + Tool       &0.8500  &0.7856  &0.8742  &0.859375  \\
@@ -164,23 +164,23 @@ standalone proof that every error in these benchmarks has that structure.
   & None (Base Agent)  &0.8214  &0.8544  &0.8675  &0.8152  \\
   & Skill Only         &0.8629  &0.8433  &0.8675  &0.8229 \\
   & Tool Only          &0.9000  &0.8700  &0.9470  &0.8078  \\
-  & Skill + Tool       &\textcolor{green}{0.90571}  &0.8800  &0.9536  &0.86875  \\
+  & Skill + Tool       &0.9057  &0.8800  &0.9536  &0.86875  \\
 
 \midrule
 
 \multirow{4}{*}{Qwen3.5-27B}
-  & None (Base Agent)  &0.8171  &0.7556  &0.8675  &0.7823  \\
-  & Skill Only         &0.8192  &  &  &  \\
-  & Tool Only          &0.8201  &  &  &  \\
-  & Skill + Tool       &0.8372  &0.8200  &0.8411  &0.8234  \\
+  & None (Base Agent)  &0.8171  &0.8088  &0.88079  &0.8114  \\
+  & Skill Only         &0.8192  &0.8244  &0.86755  &0.7994  \\
+  & Tool Only          &0.8201  &0.8233  &0.96027  &0.8067  \\
+  & Skill + Tool       &0.8372  &0.8222  &0.94702  &0.8182  \\
 
-\midrule
+% \midrule
 
-\multirow{4}{*}{Gemini-3.1-Pro-Preview}
-  & None (Base Agent)  &0.7792  &0.8473  &0.8411  &0.6517  \\
-  & Skill Only         &  &  &  &  \\
-  & Tool Only          &  &  &  &  \\
-  & Skill + Tool       &  &0.849  &0.8543  &0.7980  \\
+% \multirow{4}{*}{Gemini-3.1-Pro-Preview}
+%   & None (Base Agent)  &0.7792  &0.8473  &0.8411  &0.6517  \\
+%   & Skill Only         &  &  &  &  \\
+%   & Tool Only          &  &  &  &  \\
+%   & Skill + Tool       &  &0.849  &0.8543  &0.7980  \\
 
 \bottomrule
 \end{tabular}
@@ -433,24 +433,27 @@ not available?
   & \textbf{\#Train Traj.} & \textbf{RL Update} \\
 \midrule
 
-\multirow{3}{*}{Qwen2.5-VL-3B}
+\multirow{4}{*}{Qwen2.5-VL-3B}
   & Pure Run                   &45.3995  &43.0921  & ---         & \ding{55} \\
-  & VTool-R1                   &64.0  &57.9   &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &59.56  &51.97  &             & \ding{55} \\
+  & VTool-R1                   &64.0  &57.9   &80*256=20480             & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &59.56  &51.97  &3*50=150             & \ding{55} \\
+  & skill+rl  &68.28  &59.54  &20480+150=20630             & \ding{51} \\
 
 \midrule
 
-\multirow{3}{*}{Qwen2.5-VL-7B}
+\multirow{4}{*}{Qwen2.5-VL-7B}
   & Pure Run                   &56.0532  &56.9078  & ---         & \ding{55} \\
-  & VTool-R1                   &80.7   &68.09  &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &75.060  &67.43  &             & \ding{55} \\
+  & VTool-R1                   &75.18   &68.09  &80*256=20480             & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &75.060  &67.43  &3*50=150             & \ding{55} \\
+  & skill+rl  &76.88  &69.41  &20480+150=20630            & \ding{51} \\
 
 \midrule
 
-\multirow{3}{*}{Qwen2.5-VL-32B}
+\multirow{4}{*}{Qwen2.5-VL-32B}
   & Pure Run                   &81.3559  &82.8947  & ---         & \ding{55} \\
-  & VTool-R1                   &86.7*  &84.5*  &             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &83.66  &83.55  &             & \ding{55} \\
+  & VTool-R1                   &86.7*  &84.5*  &80*256=20480             & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &83.66  &83.55  &3*50=150             & \ding{55} \\
+  & skill+rl  &  &  &20480+150=20630           & \ding{51} \\
 
 \bottomrule
 \end{tabular}
