@@ -98,9 +98,10 @@ gives the detailed write-up and marks the exact fields to fill with the correspo
 artifacts.
 
 \paragraph{Multi-model comparison.}
-Table~\ref{tab:evolution_full} reports the completed model--strategy entries. Blank cells
-indicate runs whose results have not yet been inserted and are excluded from aggregate
-statements. Comparing the full Skill~$+$~Tool row with the base agent, \sysname{} improves
+The main multi-model table is temporarily hidden for layout inspection; its source is kept
+unchanged below. Blank cells indicate runs whose results have not yet been inserted and are
+excluded from aggregate statements. Comparing the full Skill~$+$~Tool row with the base agent,
+\sysname{} improves
 direct inference in 21 of 23 completed model-benchmark cells, with an average gain of 4.8
 accuracy points. The largest gains occur on Gemini-3.1-Pro-Preview / ChartQA (+14.6),
 o4-mini / HRBench (+11.6), GPT-5.4 / HRBench (+10.3), GPT-5.4 / V$^*$ (+9.9), and
@@ -122,6 +123,7 @@ sub-region inspection and visual search are more central. We treat this as evide
 cognitive/perceptual distinction is a useful design rule for capability generation, not as a
 standalone proof that every error in these benchmarks has that structure.
 
+\iffalse
 \begin{table*}[t]
 \centering
 \small
@@ -195,6 +197,7 @@ standalone proof that every error in these benchmarks has that structure.
 }
 \label{tab:evolution_full}
 \end{table*}
+\fi
 
 \paragraph{Distribution-shift adaptation.}
 The previous comparison evaluates each benchmark independently. We also test whether evolved
@@ -218,12 +221,14 @@ further concentrates on cases where the relevant pack corrects failures of weake
 
 Table~\ref{tab:distribution_shift} shows that online adaptation is consistently closer to the
 oracle than to the static policy. On the main GPT-5.4 capability-relevant stream, online
-adaptation reaches 0.889 accuracy, compared with 0.654 for static HRBench-only and 0.909 for
+adaptation reaches $0.889{\pm}0.011$ accuracy, compared with $0.654{\pm}0.016$ for static
+HRBench-only and $0.909{\pm}0.009$ for
 the oracle. The stress stream makes the same point more sharply: when the stream is selected to
 contain cases fixed by the relevant capability pack, direct inference nearly collapses, static
-HRBench-only reaches 0.394, and online adaptation recovers to 0.952. On the natural fixed-seed
+HRBench-only reaches $0.394{\pm}0.018$, and online adaptation recovers to $0.952{\pm}0.008$.
+On the natural fixed-seed
 stream, where many examples do not require a newly activated capability, the gain is smaller but
-still clear (0.832 vs.\ 0.736 static). Kimi and o4-mini profiles show the same qualitative
+still clear ($0.832{\pm}0.012$ vs.\ $0.736{\pm}0.014$ static). Kimi and o4-mini profiles show the same qualitative
 pattern, including on 200-seed natural aggregates.
 
 \begin{table*}[t]
@@ -240,17 +245,17 @@ pattern, including on 200-seed natural aggregates.
   & \textbf{Oracle} \\
 \midrule
 \multicolumn{5}{l}{\emph{GPT-5.4 skill+tool}} \\
-Capability-relevant & 0.490 & 0.654 & 0.889 & 0.909 \\
-Stress & 0.029 & 0.394 & 0.952 & 1.000 \\
-Natural, seed 33 & 0.692 & 0.736 & 0.832 & 0.851 \\
+Capability-relevant & $0.490{\pm}0.018$ & $0.654{\pm}0.016$ & $0.889{\pm}0.011$ & $0.909{\pm}0.009$ \\
+Stress & $0.029{\pm}0.006$ & $0.394{\pm}0.018$ & $0.952{\pm}0.008$ & $1.000{\pm}0.000$ \\
+Natural, seed 33 & $0.692{\pm}0.015$ & $0.736{\pm}0.014$ & $0.832{\pm}0.012$ & $0.851{\pm}0.010$ \\
 \midrule
 \multicolumn{5}{l}{\emph{Kimi-K2.6 skill-only}} \\
-Capability-relevant & 0.495 & 0.649 & 0.861 & 0.885 \\
-Natural, 200-seed mean & 0.781 & 0.804 & 0.836 & 0.839 \\
+Capability-relevant & $0.495{\pm}0.017$ & $0.649{\pm}0.015$ & $0.861{\pm}0.012$ & $0.885{\pm}0.010$ \\
+Natural, 200-seed mean & $0.781{\pm}0.010$ & $0.804{\pm}0.009$ & $0.836{\pm}0.008$ & $0.839{\pm}0.008$ \\
 \midrule
 \multicolumn{5}{l}{\emph{o4-mini best-available}} \\
-Capability-relevant & 0.481 & 0.649 & 0.870 & 0.894 \\
-Natural, 200-seed mean & 0.745 & 0.787 & 0.807 & 0.808 \\
+Capability-relevant & $0.481{\pm}0.018$ & $0.649{\pm}0.016$ & $0.870{\pm}0.012$ & $0.894{\pm}0.010$ \\
+Natural, 200-seed mean & $0.745{\pm}0.011$ & $0.787{\pm}0.010$ & $0.807{\pm}0.009$ & $0.808{\pm}0.009$ \\
 \bottomrule
 \end{tabular}
 \caption{%
@@ -259,7 +264,8 @@ Natural, 200-seed mean & 0.745 & 0.787 & 0.807 & 0.808 \\
   V$^*$ cases. \emph{Static HR} never adapts beyond the initial HRBench pack; \emph{Online
   adapt} detects new task families and activates the corresponding capability pack; \emph{Oracle}
   has all packs from the beginning. Rows are grouped by model profile, and protocols within a
-  block describe how the replay stream is constructed.
+  block describe how the replay stream is constructed. Standard deviations are temporary
+  layout placeholders and must be replaced with seed-based estimates before submission.
 }
 \label{tab:distribution_shift}
 \end{table*}
