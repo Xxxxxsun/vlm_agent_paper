@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  13 MAY 2026 12:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  13 MAY 2026 12:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2185,13 +2185,13 @@ LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
 (Font)              scaled to size 13.0pt on input line 144.
 
 (./sections/1_introduction.tex
-<figures/motivation_placeholder.pdf, id=158, 1355.0625pt x 572.1375pt>
+<figures/motivation_placeholder.pdf, id=154, 1355.0625pt x 572.1375pt>
 File: figures/motivation_placeholder.pdf Graphic file (type pdf)
 <use figures/motivation_placeholder.pdf>
 Package pdftex.def Info: figures/motivation_placeholder.pdf  used on input line
  24.
 (pdftex.def)             Requested size: 472.31595pt x 199.42175pt.
-<./figures/QABG5.png, id=159, 602.25pt x 40.077pt>
+<./figures/QABG5.png, id=155, 602.25pt x 40.077pt>
 File: ./figures/QABG5.png Graphic file (type png)
 <use ./figures/QABG5.png>
 Package pdftex.def Info: ./figures/QABG5.png  used on input line 54.
@@ -2203,7 +2203,7 @@ LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figur
 es/QABG5.png>]) (./sections/2_related_work.tex [2 <./figures/motivation_placeho
 lder.pdf>]) (./sections/3_method.tex
-<figures/method.pdf, id=271, 753.81625pt x 409.53pt>
+<figures/method.pdf, id=267, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
@@ -2242,19 +2242,19 @@ Package microtype Info: Character `textbardbl ' is missing
 Package microtype Info: Character `textcelsius ' is missing
 (microtype)             in font `TS1/XCharter-TLF/m/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
- [5] [6]) (./sections/4_experiments.tex [7] [8]
+ [5] [6]) (./sections/4_experiments.tex [7] [8] [9]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 346.
+(Font)              scaled to size 7.0pt on input line 363.
 
-Underfull \hbox (badness 2735) in paragraph at lines 358--359
+Underfull \hbox (badness 2735) in paragraph at lines 375--376
 []|\T1/pcr/m/n/7 VisualArithmeticSolver \T1/XCharter-TLF/m/n/7 (+20) in 30/30
  []
 
-[9] [10]
+[10] [11]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/sc' will be
-(Font)              scaled to size 9.0pt on input line 506.
-) (./sections/5_discussion.tex [11]) (./sections/6_conclusion.tex)
-(./main.bbl [12]
+(Font)              scaled to size 9.0pt on input line 526.
+) (./sections/5_discussion.tex) (./sections/6_conclusion.tex [12])
+(./main.bbl
 Underfull \hbox (badness 4441) in paragraph at lines 72--81
 []\T1/XCharter-TLF/m/n/10 (+20) Pan Lu, Baolin Peng, Hao Cheng, Michel Gal-ley,
  Kai-Wei Chang, Ying Nian Wu, Song-Chun
@@ -2346,14 +2346,14 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DF4DD1F79D00722B1E69D42F709A6767;5564.
+(rerunfilecheck)             Checksum: 28D80BF680306EAB31650AB64AA96BEA;5388.
  ) 
 Here is how much of TeX's memory you used:
  42314 strings out of 478994
- 803941 string characters out of 5858184
- 1195725 words of memory out of 5000000
- 58038 multiletter control sequences out of 15000+600000
- 750551 words of font info for 598 fonts, out of 8000000 for 9000
+ 803983 string characters out of 5858184
+ 1187656 words of memory out of 5000000
+ 58036 multiletter control sequences out of 15000+600000
+ 750936 words of font info for 600 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,26n,131p,1038b,936s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_fpvofg.enc}{
@@ -2373,10 +2373,10 @@ ve/2021/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2021
 ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/zapfding/uzdr.pfb>
-Output written on main.pdf (20 pages, 5462516 bytes).
+Output written on main.pdf (20 pages, 4338843 bytes).
 PDF statistics:
- 694 PDF objects out of 1000 (max. 8388607)
- 505 compressed objects within 6 object streams
- 113 named destinations out of 1000 (max. 500000)
- 147352 words of extra memory for PDF output out of 154059 (max. 10000000)
+ 689 PDF objects out of 1000 (max. 8388607)
+ 501 compressed objects within 6 object streams
+ 112 named destinations out of 1000 (max. 500000)
+ 147344 words of extra memory for PDF output out of 154059 (max. 10000000)
 

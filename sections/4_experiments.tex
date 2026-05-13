@@ -196,47 +196,64 @@ standalone proof that every error in these benchmarks has that structure.
 \label{tab:evolution_full}
 \end{table*}
 
-\paragraph{Cumulative streaming setting.}
-We also include a streaming accumulation protocol, where benchmarks are introduced
-sequentially (HRBench $\rightarrow$ MathVista $\rightarrow$ V$^*$
-$\rightarrow$ ChartQA) and the capability library is not reset between stages.
-Table~\ref{tab:streaming_accumulation} currently contains the base-agent row and the dynamic
-co-evolution row; the remaining ablation rows are placeholders for pending results.
-The completed rows show that dynamic co-evolution improves the cumulative score at each stage
-relative to the base agent. Once the pending ablations are inserted, this protocol will test
-whether validation and mastery are sufficient to avoid capability interference as the library
-grows across task families.
+\paragraph{Distribution-shift adaptation.}
+The previous comparison evaluates each benchmark independently. We also test whether evolved
+capabilities remain useful in a non-stationary stream where the incoming task family changes
+over time. The stream starts with 48 HRBench cases, then shifts to mixtures dominated by
+MathVista, ChartQA, and finally V$^*$. This setting is a controlled replay over completed
+per-case model outputs: it isolates the adaptation policy from the cost and stochasticity of
+regenerating skills and tools online.
+
+We compare four policies.
+\emph{Direct VLM} uses no persistent capability pack.
+\emph{Static HRBench-only} starts with the HRBench pack and never adapts.
+\emph{Online adaptive} also starts with HRBench, but detects new benchmark families in a rolling
+window and activates the matching capability pack after a small latency.
+\emph{Oracle all packs} is an upper bound that has all task-family packs available from the
+beginning.
+
+Table~\ref{tab:distribution_shift} shows that online adaptation is consistently closer to the
+oracle than to the static policy. On the main GPT-5.4 capability-sensitive stream, online
+adaptation reaches 0.889 accuracy, compared with 0.654 for static HRBench-only and 0.909 for
+the oracle. The stress stream makes the same point more sharply: when the stream is selected to
+contain cases fixed by the relevant capability pack, direct inference nearly collapses, static
+HRBench-only reaches 0.394, and online adaptation recovers to 0.952. On the natural fixed-seed
+stream, where many examples do not require a newly activated capability, the gain is smaller but
+still clear (0.832 vs.\ 0.736 static). Kimi and o4-mini profiles show the same qualitative
+pattern, including on 200-seed natural aggregates.
 
 \begin{table*}[t]
 \centering
 \small
-\setlength{\tabcolsep}{5pt}
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{lccccc}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{llcccc}
 \toprule
-\textbf{Method}
-  & \textbf{HRBench}
-  & \textbf{+MathVista}
-  & \textbf{+V$^*$}
-  & \textbf{+ChartQA}
-  & \textbf{Final Avg.} \\
+\textbf{Model/profile} & \textbf{Protocol}
+  & \textbf{Direct}
+  & \textbf{Static HR}
+  & \textbf{Online adapt}
+  & \textbf{Oracle} \\
 \midrule
-Base Agent                        &0.671  &0.63  &0.637  &0.722  &  \\
-Skill Accumulation Only           &  &  &  &  &  \\
-Tool Accumulation Only            &  &  &  &  &  \\
-Naive Skill+Tool Accumulation     &  &  &  &  &  \\
-Dynamic Skill--Tool Co-Evolution  &0.751  &0.733  &0.742  &0.802  &  \\
+GPT-5.4 skill+tool & Capability-sensitive & 0.490 & 0.654 & 0.889 & 0.909 \\
+GPT-5.4 skill+tool & Stress & 0.029 & 0.394 & 0.952 & 1.000 \\
+GPT-5.4 skill+tool & Natural, seed 33 & 0.692 & 0.736 & 0.832 & 0.851 \\
+\midrule
+Kimi-K2.6 skill-only & Capability-sensitive & 0.495 & 0.649 & 0.861 & 0.885 \\
+o4-mini best-available & Capability-sensitive & 0.481 & 0.649 & 0.870 & 0.894 \\
+\midrule
+Kimi-K2.6 skill-only & Natural, 200-seed mean & 0.781 & 0.804 & 0.836 & 0.839 \\
+o4-mini best-available & Natural, 200-seed mean & 0.745 & 0.787 & 0.807 & 0.808 \\
 \bottomrule
 \end{tabular}
 \caption{%
-  \textbf{Exp~I: Cumulative streaming setting.}
-  Benchmarks are introduced sequentially from left to right; each cell reports accuracy
-  on \emph{all benchmarks seen so far}.
-  \textbf{Final Avg.} is the mean accuracy over all four benchmarks after the full
-  stream.
-  Blank cells indicate pending runs.
+  \textbf{Exp~I: Distribution-shift adaptation in a non-stationary stream.}
+  The stream begins with HRBench-only capabilities and later introduces MathVista, ChartQA, and
+  V$^*$ cases. \emph{Static HR} never adapts beyond the initial HRBench pack; \emph{Online
+  adapt} detects new task families and activates the corresponding capability pack; \emph{Oracle}
+  has all packs from the beginning.
 }
-\label{tab:streaming_accumulation}
+\label{tab:distribution_shift}
 \end{table*}
 
 % ============================================================
