@@ -40,6 +40,8 @@ A parallel direction equips VLMs with visual processing tools to improve reasoni
 VTool-R1~\citep{vtoolr1_2025} trains a VLM via RL to invoke a fixed set of visual tools
 (zoom, crop, contrast adjustment), achieving strong gains on high-resolution benchmarks but
 requiring GPU-intensive RL training.
+Adaptive-CoF~\citep{adaptivecof_2025} trains Qwen2.5-VL-7B to decide when to search and zoom,
+using task-specific SFT trajectories followed by RL for adaptive visual focusing.
 PixelReasoner~\citep{pixelreasoner_2025} uses SFT and RL to train models to reason over
 intermediate visual representations, attaining state-of-the-art on MathVista but demanding
 $\sim$14k supervised examples and multi-GPU training.

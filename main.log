@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  13 MAY 2026 13:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  13 MAY 2026 13:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2203,7 +2203,7 @@ LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figur
 es/QABG5.png>]) (./sections/2_related_work.tex [2 <./figures/motivation_placeho
 lder.pdf>]) (./sections/3_method.tex
-<figures/method.pdf, id=267, 753.81625pt x 409.53pt>
+<figures/method.pdf, id=269, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
@@ -2258,10 +2258,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 388--389
 []|\T1/pcr/m/n/7 OCR -> Search -> OCR -> Search
  []
 
-[10] [11]
+[10]
+Underfull \hbox (badness 2073) in paragraph at lines 529--530
+[]|\T1/XCharter-TLF/b/n/9 (+20) Task-specific con-struc-
+ []
+
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/sc' will be
-(Font)              scaled to size 9.0pt on input line 534.
-) (./sections/5_discussion.tex) (./sections/6_conclusion.tex [12])
+(Font)              scaled to size 9.0pt on input line 552.
+
+Underfull \hbox (badness 4013) in paragraph at lines 554--555
+\T1/XCharter-TLF/m/n/9 (+20) lu-tion cases; no task-
+ []
+
+[11]) (./sections/5_discussion.tex) [12] (./sections/6_conclusion.tex) [13]
 (./main.bbl
 Underfull \hbox (badness 4441) in paragraph at lines 72--81
 []\T1/XCharter-TLF/m/n/10 (+20) Pan Lu, Baolin Peng, Hao Cheng, Michel Gal-ley,
@@ -2294,7 +2303,7 @@ Underfull \hbox (badness 1107) in paragraph at lines 72--81
  paper / 2023 / hash /
  []
 
-[13]) [14] (./sections/A_appendix.tex [15
+[14]) [15] (./sections/A_appendix.tex [16
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 96--97
@@ -2346,9 +2355,9 @@ Underfull \hbox (badness 1688) in paragraph at lines 113--115
 \T1/XCharter-TLF/m/n/9 (+20) worked ex-am-ple or linked
  []
 
-[16] [17] [18] [19]) 
+[17] [18] [19] [20]) 
 AED: lastpage setting LastPage
-[20] (./main.aux)
+[21] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -2357,18 +2366,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 28D80BF680306EAB31650AB64AA96BEA;5388.
  ) 
 Here is how much of TeX's memory you used:
- 42326 strings out of 478994
- 804301 string characters out of 5858184
- 1188353 words of memory out of 5000000
- 58038 multiletter control sequences out of 15000+600000
- 758068 words of font info for 606 fonts, out of 8000000 for 9000
+ 42350 strings out of 478994
+ 804884 string characters out of 5858184
+ 1192348 words of memory out of 5000000
+ 58042 multiletter control sequences out of 15000+600000
+ 762209 words of font info for 619 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,26n,131p,1038b,936s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_fpvofg.enc}{
 /usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texl
-ive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_mos65x.enc}{/usr/local/texlive
-/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_abgjzu.enc}{/usr/local/texlive/20
-21/texmf-dist/fonts/enc/dvips/xcharter/xch_bxmb3o.enc}{/usr/local/texlive/2021/
+ive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_abgjzu.enc}{/usr/local/texlive
+/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_bxmb3o.enc}{/usr/local/texlive/20
+21/texmf-dist/fonts/enc/dvips/xcharter/xch_mos65x.enc}{/usr/local/texlive/2021/
 texmf-dist/fonts/enc/dvips/xcharter/xch_rydp4l.enc}{/usr/local/texlive/2021/tex
 mf-dist/fonts/enc/dvips/xcharter/xch_axzxh7.enc}{/usr/local/texlive/2021/texmf-
 dist/fonts/enc/dvips/xcharter/xch1_co4ru4.enc}</usr/local/texlive/2021/texmf-di
@@ -2381,10 +2390,10 @@ ve/2021/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2021
 ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/zapfding/uzdr.pfb>
-Output written on main.pdf (20 pages, 4339436 bytes).
+Output written on main.pdf (21 pages, 4343730 bytes).
 PDF statistics:
- 689 PDF objects out of 1000 (max. 8388607)
- 501 compressed objects within 6 object streams
- 112 named destinations out of 1000 (max. 500000)
- 151440 words of extra memory for PDF output out of 154059 (max. 10000000)
+ 704 PDF objects out of 1000 (max. 8388607)
+ 515 compressed objects within 6 object streams
+ 115 named destinations out of 1000 (max. 500000)
+ 153488 words of extra memory for PDF output out of 154059 (max. 10000000)
 

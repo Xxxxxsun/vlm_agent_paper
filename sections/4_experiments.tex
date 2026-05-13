@@ -438,6 +438,26 @@ non-trivial portion of the improvement over direct inference can be recovered wi
 updates, especially at smaller backbone scales where the direct-inference baseline leaves more
 room for task-specific procedural guidance.
 
+\paragraph{Adaptive visual focusing.}
+VTool-R1 is not the only RL-based evidence that visual tool use matters. Adaptive-CoF
+trains Qwen2.5-VL-7B to decide when to search and zoom into an image, using a two-stage
+SFT+RL pipeline for adaptive chain-of-focus reasoning~\citep{adaptivecof_2025}.
+Table~\ref{tab:adaptive_cof_positioning} summarizes the comparison target. Adaptive-CoF
+reports a large gain over its Qwen2.5-VL-7B base model on V$^\star$ (71.2 to 90.1 overall)
+and MME-RealWorld-Lite (42.3 to 50.9 overall), but obtains this behavior by constructing
+5K supervised visual-search trajectories and a 10K-sample RL dataset specialized for adaptive
+zooming.
+
+This result supports the same high-level premise as VTool-R1: task-specific visual interaction
+policies can substantially improve a VLM. The difference is the resource and deployment model.
+Different RL systems require different data construction and reward design---chart/table tool
+use for VTool-R1, and high-resolution search/zoom trajectories for Adaptive-CoF. In contrast,
+\sysname{} treats the same behavior as a capability to be discovered from failures and
+implemented as reusable skills and tools around a frozen backbone. The final row of
+Table~\ref{tab:adaptive_cof_positioning} is therefore a same-protocol evaluation slot rather
+than a claimed number; the Adaptive-CoF-aligned accuracy should be filled only after the
+corresponding Qwen2.5-VL-7B run is complete.
+
 \paragraph{Cost comparison.}
 \sysname{} performs no weight updates. A typical evolution run uses a small training subset
 ($k{=}200$) for $N{=}3$ passes and invokes the frozen VLM for solving, diagnosis, generation,
@@ -495,6 +515,58 @@ not available?
   and VTool-R1 without any gradient updates.
 }
 \label{tab:vtoolr1_aligned_full}
+\end{table*}
+
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{llp{3.4cm}ccc}
+\toprule
+\textbf{Method} & \textbf{Backbone}
+  & \textbf{Task-specific construction}
+  & \textbf{Weight update}
+  & \textbf{V$^\star$}
+  & \textbf{MME-RW} \\
+\midrule
+Qwen2.5-VL base
+  & Qwen2.5-VL-7B
+  & None
+  & Frozen
+  & 71.2
+  & 42.3 \\
+Adaptive-CoF cold-start
+  & Qwen2.5-VL-7B
+  & 5K SFT visual-search trajectories
+  & SFT
+  & 89.5
+  & 50.1 \\
+Adaptive-CoF
+  & Qwen2.5-VL-7B
+  & 5K SFT trajectories + 10K RL samples
+  & SFT+RL
+  & 90.1
+  & 50.9 \\
+\sysname{} focus skill+tool
+  & Qwen2.5-VL-7B
+  & $3{\times}50$ failure-driven evolution cases; no task-specific SFT/RL dataset
+  & Frozen
+  & TBD
+  & TBD \\
+\bottomrule
+\end{tabular}
+\caption{%
+  \textbf{Exp~III: Positioning against Adaptive-CoF.}
+  V$^\star$ and MME-RealWorld-Lite overall scores for Qwen2.5-VL-7B variants are reported
+  from~\citet{adaptivecof_2025}. The final row specifies the intended frozen-backbone
+  \sysname{} evaluation and is intentionally left as a placeholder until the same-protocol
+  run is available. This comparison isolates a resource distinction: Adaptive-CoF learns
+  adaptive zooming through task-specific SFT+RL data construction, whereas \sysname{} aims
+  to express the same class of behavior through self-evolved skills and tools.
+}
+\label{tab:adaptive_cof_positioning}
 \end{table*}
 
 
