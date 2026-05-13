@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  13 MAY 2026 03:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  13 MAY 2026 12:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2242,12 +2242,19 @@ Package microtype Info: Character `textbardbl ' is missing
 Package microtype Info: Character `textcelsius ' is missing
 (microtype)             in font `TS1/XCharter-TLF/m/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
- [5] [6]) (./sections/4_experiments.tex [7] [8] [9]
+ [5] [6]) (./sections/4_experiments.tex [7] [8]
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 346.
+
+Underfull \hbox (badness 2735) in paragraph at lines 358--359
+[]|\T1/pcr/m/n/7 VisualArithmeticSolver \T1/XCharter-TLF/m/n/7 (+20) in 30/30
+ []
+
+[9] [10]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/sc' will be
-(Font)              scaled to size 9.0pt on input line 459.
- [10])
-(./sections/5_discussion.tex [11]) (./sections/6_conclusion.tex) (./main.bbl
-[12]
+(Font)              scaled to size 9.0pt on input line 506.
+) (./sections/5_discussion.tex [11]) (./sections/6_conclusion.tex)
+(./main.bbl [12]
 Underfull \hbox (badness 4441) in paragraph at lines 72--81
 []\T1/XCharter-TLF/m/n/10 (+20) Pan Lu, Baolin Peng, Hao Cheng, Michel Gal-ley,
  Kai-Wei Chang, Ying Nian Wu, Song-Chun
@@ -2279,7 +2286,7 @@ Underfull \hbox (badness 1107) in paragraph at lines 72--81
  paper / 2023 / hash /
  []
 
-) [13] (./sections/A_appendix.tex [14
+[13]) [14] (./sections/A_appendix.tex [15
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 96--97
@@ -2331,9 +2338,9 @@ Underfull \hbox (badness 1688) in paragraph at lines 113--115
 \T1/XCharter-TLF/m/n/9 (+20) worked ex-am-ple or linked
  []
 
-[15] [16] [17] [18]) 
+[16] [17] [18] [19]) 
 AED: lastpage setting LastPage
-[19] (./main.aux)
+[20] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -2342,11 +2349,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: DF4DD1F79D00722B1E69D42F709A6767;5564.
  ) 
 Here is how much of TeX's memory you used:
- 42294 strings out of 478994
- 803503 string characters out of 5858184
- 1187328 words of memory out of 5000000
- 58033 multiletter control sequences out of 15000+600000
- 742557 words of font info for 589 fonts, out of 8000000 for 9000
+ 42314 strings out of 478994
+ 803941 string characters out of 5858184
+ 1195725 words of memory out of 5000000
+ 58038 multiletter control sequences out of 15000+600000
+ 750551 words of font info for 598 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,26n,131p,1038b,936s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_fpvofg.enc}{
@@ -2366,10 +2373,10 @@ ve/2021/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2021
 ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/zapfding/uzdr.pfb>
-Output written on main.pdf (19 pages, 5459612 bytes).
+Output written on main.pdf (20 pages, 5462516 bytes).
 PDF statistics:
- 686 PDF objects out of 1000 (max. 8388607)
- 499 compressed objects within 5 object streams
- 111 named destinations out of 1000 (max. 500000)
- 142744 words of extra memory for PDF output out of 154059 (max. 10000000)
+ 694 PDF objects out of 1000 (max. 8388607)
+ 505 compressed objects within 6 object streams
+ 113 named destinations out of 1000 (max. 500000)
+ 147352 words of extra memory for PDF output out of 154059 (max. 10000000)
 

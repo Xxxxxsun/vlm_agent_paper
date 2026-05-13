@@ -33,6 +33,8 @@ Experiment~I evaluates six proprietary and open-weight VLMs:
 \textbf{Qwen3.5-27B}, and \textbf{Gemini-3.1-Pro-Preview}.
 Experiment~II evaluates \textbf{GPT-4o}, \textbf{GPT-5.4}, and \textbf{Gemini3Flash}
 on the GTA benchmark.
+We additionally report a controlled Doubao-Seed-2.0-Pro GTA analysis to inspect how
+provided-tool skills change with tool abstraction and task environment.
 Experiment~III uses the \textbf{Qwen2.5-VL} family (3B, 7B, 32B) to align with the
 VTool-R1 evaluation protocol.
 All VLM weights are \emph{frozen} throughout; no gradient updates are performed.
@@ -63,6 +65,8 @@ Experiment~II additionally reports four step-level metrics on the GTA benchmark:
 \textbf{ArgAcc} (correct argument specification given the correct tool),
 \textbf{InstAcc} (overall instruction-following fidelity), and
 \textbf{AnsAcc} (final answer accuracy).
+For the supplementary controlled GTA analysis, we also report tool usage rate, average number
+of tool calls, and dominant tool-call chains.
 Experiment~III follows the VTool-R1 evaluation protocol~\citep{vtoolr1_2025} on Chart
 and Table reasoning splits.
 
@@ -323,6 +327,49 @@ model can deliver.
   from the training set without generating new tools.
 }
 \label{tab:gta_detailed}
+\end{table*}
+
+\paragraph{Controlled tool-policy analysis.}
+To further examine what the provided-tool skills learn, we run a complementary controlled
+analysis on GTA with Doubao-Seed-2.0-Pro. These runs are not a replacement for the main
+multi-model comparison in Table~\ref{tab:gta_detailed}; they isolate how the learned policy
+changes when either the tool abstraction or the task environment changes.
+Table~\ref{tab:gta_controlled} summarizes two findings from the report.
+First, when the OCR+Calculator environment is fixed, stronger composite tools compress the
+policy: atomic tools improve over direct answering but use an extract-then-compute chain, while
+\texttt{VisualArithmeticSolver} reaches higher accuracy with a one-call policy.
+Second, when the same \texttt{OCR} tool appears in different environments, its role changes:
+in OCR+Calc it feeds arithmetic, while in OCR+Search it feeds external lookup.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{llccccp{0.27\textwidth}}
+\toprule
+\textbf{Study} & \textbf{Condition} & \textbf{Cases} & \textbf{Acc.}
+& \textbf{Tool use} & \textbf{Avg. calls} & \textbf{Dominant downstream behavior} \\
+\midrule
+Tool strength & Direct, no tools & 30 & 83.3 & 0.0 & 0.00 & \texttt{<none>} \\
+Tool strength & Atomic OCR+Calc tools & 30 & 86.7 & 100.0 & 1.83
+& \texttt{OCR -> Calculator} in 22/30 cases \\
+Tool strength & Composite visual-arithmetic tool & 30 & 90.0 & 100.0 & 1.00
+& \texttt{VisualArithmeticSolver} in 30/30 cases \\
+\midrule
+Same OCR tool & OCR+Calc environment & 20 & 80.0 & 100.0 & 2.20
+& \texttt{Calculator} in 19/20 cases \\
+Same OCR tool & OCR+Search environment & 20 & 85.0 & 100.0 & 2.35
+& \texttt{GoogleSearch} in 20/20 cases \\
+\bottomrule
+\end{tabular}
+\caption{%
+  \textbf{Supplementary controlled GTA analysis for Exp~II.}
+  Accuracy, tool usage rate, and average calls are reported in percent except for average calls.
+  The first block fixes the task environment and changes tool strength; the second fixes the
+  shared \texttt{OCR} tool and changes the downstream environment.
+}
+\label{tab:gta_controlled}
 \end{table*}
 
 
