@@ -98,10 +98,11 @@ gives the detailed write-up and marks the exact fields to fill with the correspo
 artifacts.
 
 \paragraph{Multi-model comparison.}
-The main multi-model table is temporarily hidden for layout inspection; its source is kept
-unchanged below. Blank cells indicate runs whose results have not yet been inserted and are
-excluded from aggregate statements. Comparing the full Skill~$+$~Tool row with the base agent,
-\sysname{} improves
+Table~\ref{tab:evolution_full} reports the completed model--strategy entries with temporary
+standard-deviation placeholders for layout inspection; the original no-std table source is kept
+hidden below unchanged. Blank cells indicate runs whose results have not yet been inserted and
+are excluded from aggregate statements. Comparing the full Skill~$+$~Tool row with the base
+agent, \sysname{} improves
 direct inference in 21 of 23 completed model-benchmark cells, with an average gain of 4.8
 accuracy points. The largest gains occur on Gemini-3.1-Pro-Preview / ChartQA (+14.6),
 o4-mini / HRBench (+11.6), GPT-5.4 / HRBench (+10.3), GPT-5.4 / V$^*$ (+9.9), and
@@ -198,6 +199,75 @@ standalone proof that every error in these benchmarks has that structure.
 \label{tab:evolution_full}
 \end{table*}
 \fi
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.12}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Model} & \textbf{Evolution Strategy}
+  & \textbf{HRBench}
+  & \textbf{MathVista}
+  & \textbf{V$^*$}
+  & \textbf{ChartQA} \\
+\midrule
+
+\multirow{4}{*}{GPT-4o}
+  & None (Base Agent)  &$0.6386{\pm}0.014$  &$0.6711{\pm}0.012$  &$0.5828{\pm}0.016$  &$0.7552{\pm}0.011$  \\
+  & Skill Only         &$0.6614{\pm}0.013$  &$0.7077{\pm}0.011$  &$0.6358{\pm}0.015$  &$0.7796{\pm}0.010$  \\
+  & Tool Only          &$0.6414{\pm}0.014$  &$0.6922{\pm}0.012$  &$0.6159{\pm}0.015$  &$0.7693{\pm}0.011$  \\
+  & Skill + Tool       &$0.6600{\pm}0.013$  &$0.7078{\pm}0.011$  &$0.6423{\pm}0.014$  &$0.7750{\pm}0.010$  \\
+
+\midrule
+
+\multirow{4}{*}{o4-mini}
+  & None (Base Agent)  &$0.7300{\pm}0.012$  &$0.7533{\pm}0.010$  &$0.7285{\pm}0.012$  &$0.7833{\pm}0.010$  \\
+  & Skill Only         &$0.7671{\pm}0.011$  &$0.7567{\pm}0.010$  &$0.7550{\pm}0.011$  &$0.7693{\pm}0.011$  \\
+  & Tool Only          &$0.5529{\pm}0.018$  &$0.6978{\pm}0.013$  &$0.7677{\pm}0.011$  &$0.7677{\pm}0.011$  \\
+  & Skill + Tool       &$0.8457{\pm}0.009$  &$0.7622{\pm}0.010$  &$0.7947{\pm}0.010$  &$0.7917{\pm}0.010$  \\
+
+\midrule
+
+\multirow{4}{*}{GPT-5.4}
+  & None (Base Agent)  &$0.7471{\pm}0.012$  &$0.7589{\pm}0.010$  &$0.7748{\pm}0.011$  &$0.7974{\pm}0.010$  \\
+  & Skill Only         &$0.7800{\pm}0.011$  &$0.7711{\pm}0.010$  &$0.7881{\pm}0.010$  &$0.8115{\pm}0.009$ \\
+  & Tool Only          &$0.7971{\pm}0.010$  &$0.7722{\pm}0.010$  &$0.8609{\pm}0.008$  &$0.8161{\pm}0.009$  \\
+  & Skill + Tool       &$0.8500{\pm}0.009$  &$0.7856{\pm}0.009$  &$0.8742{\pm}0.008$  &$0.8594{\pm}0.008$  \\
+
+\midrule
+
+\multirow{4}{*}{Doubao-Seed-2.0}
+  & None (Base Agent)  &$0.8214{\pm}0.010$  &$0.8544{\pm}0.009$  &$0.8675{\pm}0.008$  &$0.8152{\pm}0.009$  \\
+  & Skill Only         &$0.8629{\pm}0.009$  &$0.8433{\pm}0.009$  &$0.8675{\pm}0.008$  &$0.8229{\pm}0.009$ \\
+  & Tool Only          &$0.9000{\pm}0.007$  &$0.8700{\pm}0.008$  &$0.9470{\pm}0.006$  &$0.8078{\pm}0.010$  \\
+  & Skill + Tool       &$0.9057{\pm}0.007$  &$0.8800{\pm}0.008$  &$0.9536{\pm}0.006$  &$0.8688{\pm}0.008$  \\
+
+\midrule
+
+\multirow{4}{*}{Qwen3.5-27B}
+  & None (Base Agent)  &$0.8171{\pm}0.010$  &$0.8088{\pm}0.010$  &$0.8808{\pm}0.008$  &$0.8114{\pm}0.009$  \\
+  & Skill Only         &$0.8192{\pm}0.010$  &$0.8244{\pm}0.009$  &$0.8676{\pm}0.008$  &$0.7994{\pm}0.010$  \\
+  & Tool Only          &$0.8201{\pm}0.010$  &$0.8233{\pm}0.009$  &$0.9603{\pm}0.005$  &$0.8067{\pm}0.009$  \\
+  & Skill + Tool       &$0.8372{\pm}0.009$  &$0.8222{\pm}0.009$  &$0.9470{\pm}0.006$  &$0.8182{\pm}0.009$  \\
+
+\bottomrule
+\end{tabular}%
+}
+\caption{%
+  \textbf{Exp~I: Autonomous evolution from scratch.}
+  Accuracy for each evolution strategy across foundation-model blocks and four benchmarks,
+  all starting from an empty capability set.
+  \emph{None} is the zero-shot VLM baseline.
+  \emph{Skill Only} / \emph{Tool Only} ablate one capability type.
+  \emph{Skill~$+$~Tool} is the full \sysname{} system.
+  Standard deviations are temporary layout placeholders and must be replaced with seed-based
+  estimates before submission.
+}
+\label{tab:evolution_full}
+\end{table*}
 
 \paragraph{Distribution-shift adaptation.}
 The previous comparison evaluates each benchmark independently. We also test whether evolved
