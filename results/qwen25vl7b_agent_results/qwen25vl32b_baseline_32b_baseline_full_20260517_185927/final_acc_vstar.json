@@ -1,0 +1,186 @@
+{
+    "direct_attributes": 80.8695652173913,
+    "relative_position": 82.89473684210526,
+    "overall": 81.67539267015707,
+    "error_nums": {
+        "direct_attributes": 0,
+        "relative_position": 0
+    },
+    "error_preds": [
+        {
+            "pred_ans": "C. The color of the earring is silver.",
+            "question": "What is the color of the earring?",
+            "answer": "The color of the earring is blue."
+        },
+        {
+            "pred_ans": "C. The color of the clock is red.",
+            "question": "What is the color of the clock?",
+            "answer": "The color of the clock is green."
+        },
+        {
+            "pred_ans": "C. The color of the watch is silver.",
+            "question": "What is the color of the watch?",
+            "answer": "The color of the watch is white."
+        },
+        {
+            "pred_ans": "C. The color of the woman's dress is white.",
+            "question": "What is the color of the woman's dress?",
+            "answer": "The color of the woman's dress is black."
+        },
+        {
+            "pred_ans": "None of the options can be confirmed as there is no helmet visible in the image.",
+            "question": "What is the color of the helmet?",
+            "answer": "The color of the helmet is red."
+        },
+        {
+            "pred_ans": "C",
+            "question": "What is the breed of the dog?",
+            "answer": "The breed of the dog is golden retriever."
+        },
+        {
+            "pred_ans": "B. The color of the suitcase is black.",
+            "question": "What is the color of the suitcase?",
+            "answer": "The color of the suitcase is brown."
+        },
+        {
+            "pred_ans": "D. The color of the trash can is silver.",
+            "question": "What is the color of the trash can?",
+            "answer": "The color of the trash can is black."
+        },
+        {
+            "pred_ans": "D",
+            "question": "What is the color of the telephone?",
+            "answer": "The color of the telephone is orange."
+        },
+        {
+            "pred_ans": "C. The color of the bicycle is white.",
+            "question": "What is the color of the bicycle?",
+            "answer": "The color of the bicycle is red."
+        },
+        {
+            "pred_ans": "B. The color of the Apple logo is white.",
+            "question": "What is the color of the Apple logo?",
+            "answer": "The color of the Apple logo is polychromatic."
+        },
+        {
+            "pred_ans": "B. The pose of the woman with yellow backpack is standing.",
+            "question": "What is the pose of the woman with yellow backpack?",
+            "answer": "The pose of the woman with yellow backpack is squatting."
+        },
+        {
+            "pred_ans": "B. The color of the car is white.",
+            "question": "What is the color of the car?",
+            "answer": "The color of the car is black."
+        },
+        {
+            "pred_ans": "D. The color of the tissue box is white.",
+            "question": "What is the color of the tissue box?",
+            "answer": "The color of the tissue box is blue."
+        },
+        {
+            "pred_ans": "D. The color of the helmet is red.",
+            "question": "What is the color of the helmet?",
+            "answer": "The color of the helmet is green."
+        },
+        {
+            "pred_ans": "C. The color of the guard's glove is black.",
+            "question": "What is the color of the guard's glove?",
+            "answer": "The color of the guard's glove is white."
+        },
+        {
+            "pred_ans": "C. The color of the slippers is black.",
+            "question": "What is the color of the slippers?",
+            "answer": "The color of the slippers is blue."
+        },
+        {
+            "pred_ans": "C. The color of the umbrella is black.",
+            "question": "What is the color of the umbrella?",
+            "answer": "The color of the umbrella is purple."
+        },
+        {
+            "pred_ans": "C. The color of the soda can is red.",
+            "question": "What is the color of the soda can?",
+            "answer": "The color of the soda can is green."
+        },
+        {
+            "pred_ans": "D. The color of the toothbrush is blue.",
+            "question": "What is the color of the toothbrush?",
+            "answer": "The color of the toothbrush is red."
+        },
+        {
+            "pred_ans": "B. The color of the straw is white.",
+            "question": "What is the color of the straw?",
+            "answer": "The color of the straw is black."
+        },
+        {
+            "pred_ans": "C. The color of the broom is red.",
+            "question": "What is the color of the broom?",
+            "answer": "The color of the broom is black."
+        },
+        {
+            "pred_ans": "B. The small red car is on the right side of the baby carriage.",
+            "question": "Is the small red car on the left or right side of the baby carriage?",
+            "answer": "The small red car is on the left side of the baby carriage."
+        },
+        {
+            "pred_ans": "Neither option is correct as there is no dog in the image.",
+            "question": "Is the dog on the left or right side of the river?",
+            "answer": "The dog is on the right side of the river."
+        },
+        {
+            "pred_ans": "B. The blue truck is on the left side of the white vehicle.",
+            "question": "Is the blue truck on the left or right side of the white vehicle?",
+            "answer": "The blue truck is on the right side of the white vehicle."
+        },
+        {
+            "pred_ans": "B. The man with yellow cap is on the right side of the lamp post.",
+            "question": "Is the man with yellow cap on the left or right side of the lamp post?",
+            "answer": "The man with yellow cap is on the left side of the lamp post."
+        },
+        {
+            "pred_ans": "B. The dog is on the right side of the scooter.",
+            "question": "Is the dog on the left or right side of the scooter?",
+            "answer": "The dog is on the left side of the scooter."
+        },
+        {
+            "pred_ans": "B. The suitcase is on the right side of the river.",
+            "question": "Is the suitcase on the left or right side of the river?",
+            "answer": "The suitcase is on the left side of the river."
+        },
+        {
+            "pred_ans": "B. The yellow umbrella is on the right side of the pink umbrella.",
+            "question": "Is the yellow umbrella on the left or right side of the pink umbrella?",
+            "answer": "The yellow umbrella is on the left side of the pink umbrella."
+        },
+        {
+            "pred_ans": "B. The blue bottle is on the right side of the carton.",
+            "question": "Is the blue bottle on the left or right side of the carton?",
+            "answer": "The blue bottle is on the left side of the carton."
+        },
+        {
+            "pred_ans": "Neither option is correct as there is no soccer ball in the image.",
+            "question": "Is the soccer ball on the left or right side of the long bench?",
+            "answer": "The soccer ball is on the left side of the long bench."
+        },
+        {
+            "pred_ans": "B. The motorcycle is on the right side of the street.",
+            "question": "Is the motorcycle on the left or right side of the street?",
+            "answer": "The motorcycle is on the left side of the street."
+        },
+        {
+            "pred_ans": "B. The red suitcase is on the right side of the red stool.",
+            "question": "Is the red suitcase on the left or right side of the red stool?",
+            "answer": "The red suitcase is on the left side of the red stool."
+        },
+        {
+            "pred_ans": "B. The person with white trousers is on the right side of the person in blue.",
+            "question": "Is the person with white trousers on the left or right side of the person in blue?",
+            "answer": "The person with white trousers is on the left side of the person in blue."
+        },
+        {
+            "pred_ans": "B. The blue luggage is on the left side of the bus.",
+            "question": "Is the blue luggage on the left or right side of the bus?",
+            "answer": "The blue luggage is on the right side of the bus."
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+Judging HRBench hr_bench_4k:   0%|          | 0/800 [00:00<?, ?it/s]Judging HRBench hr_bench_4k:   0%|          | 1/800 [00:01<24:12,  1.82s/it]Judging HRBench hr_bench_4k:   4%|▎         | 29/800 [00:06<02:44,  4.68it/s]Judging HRBench hr_bench_4k:   4%|▍         | 30/800 [00:11<05:33,  2.31it/s]Judging HRBench hr_bench_4k:   8%|▊         | 62/800 [00:12<01:53,  6.48it/s]Judging HRBench hr_bench_4k:  10%|█         | 84/800 [00:20<02:47,  4.28it/s]Judging HRBench hr_bench_4k:  11%|█         | 88/800 [00:40<02:46,  4.28it/s]Judging HRBench hr_bench_4k:  11%|█         | 89/800 [00:45<09:18,  1.27it/s] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging HRBench hr_bench_4k:  12%|█▏        | 92/800 [01:11<17:54,  1.52s/it]Judging HRBench hr_bench_4k:  69%|██████▊   | 549/800 [01:53<00:40,  6.23it/s]Judging HRBench hr_bench_4k:  90%|█████████ | 724/800 [02:10<00:12,  6.23it/s]Judging HRBench hr_bench_4k:  91%|█████████ | 725/800 [02:22<00:12,  6.21it/s] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging HRBench hr_bench_4k:  91%|█████████ | 727/800 [02:36<00:14,  5.00it/s]Judging HRBench hr_bench_4k: 100%|██████████| 800/800 [02:36<00:00,  5.11it/s]
+Accuracy for hr_bench_4k single: 88.75%
+Accuracy for hr_bench_4k cross: 62.50%
+Overall Accuracy for hr_bench_4k: 75.62%
+{'hr_bench_4k': 0}
