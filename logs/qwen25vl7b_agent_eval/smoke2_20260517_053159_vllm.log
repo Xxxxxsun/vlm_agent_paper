@@ -1,0 +1,44 @@
+(APIServer pid=770967) INFO 05-17 05:32:12 [utils.py:302] 
+(APIServer pid=770967) INFO 05-17 05:32:12 [utils.py:302]        █     █     █▄   ▄█
+(APIServer pid=770967) INFO 05-17 05:32:12 [utils.py:302]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.17.1
+(APIServer pid=770967) INFO 05-17 05:32:12 [utils.py:302]   █▄█▀ █     █     █     █  model   /root/Qwen2.5-VL-7B-Instruct
+(APIServer pid=770967) INFO 05-17 05:32:12 [utils.py:302]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=770967) INFO 05-17 05:32:12 [utils.py:302] 
+(APIServer pid=770967) INFO 05-17 05:32:12 [utils.py:238] non-default args: {'model_tag': '/root/Qwen2.5-VL-7B-Instruct', 'chat_template': '/root/training-v2/eval/deepeyes_tool_chat_template.jinja', 'host': '127.0.0.1', 'port': 18080, 'model': '/root/Qwen2.5-VL-7B-Instruct', 'trust_remote_code': True, 'max_model_len': 32768, 'served_model_name': ['qwen25vl7b_agent_eval'], 'tensor_parallel_size': 8, 'gpu_memory_utilization': 0.7, 'limit_mm_per_prompt': {'image': 32}}
+(APIServer pid=770967) WARNING 05-17 05:32:12 [envs.py:1710] Unknown vLLM environment variable detected: VLLM_USE_V1
+(APIServer pid=770967) The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+(APIServer pid=770967) The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+(APIServer pid=770967) INFO 05-17 05:32:12 [model.py:531] Resolved architecture: Qwen2_5_VLForConditionalGeneration
+(APIServer pid=770967) INFO 05-17 05:32:12 [model.py:1554] Using max model len 32768
+(APIServer pid=770967) INFO 05-17 05:32:12 [scheduler.py:231] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(APIServer pid=770967) Traceback (most recent call last):
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/bin/vllm", line 10, in <module>
+(APIServer pid=770967)     sys.exit(main())
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/vllm/entrypoints/cli/main.py", line 73, in main
+(APIServer pid=770967)     args.dispatch_function(args)
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/vllm/entrypoints/cli/serve.py", line 112, in cmd
+(APIServer pid=770967)     uvloop.run(run_server(args))
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/uvloop/__init__.py", line 69, in run
+(APIServer pid=770967)     return loop.run_until_complete(wrapper())
+(APIServer pid=770967)   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/uvloop/__init__.py", line 48, in wrapper
+(APIServer pid=770967)     return await main
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/vllm/entrypoints/openai/api_server.py", line 471, in run_server
+(APIServer pid=770967)     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/vllm/entrypoints/openai/api_server.py", line 490, in run_server_worker
+(APIServer pid=770967)     async with build_async_engine_client(
+(APIServer pid=770967)   File "/root/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/contextlib.py", line 199, in __aenter__
+(APIServer pid=770967)     return await anext(self.gen)
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/vllm/entrypoints/openai/api_server.py", line 96, in build_async_engine_client
+(APIServer pid=770967)     async with build_async_engine_client_from_engine_args(
+(APIServer pid=770967)   File "/root/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/contextlib.py", line 199, in __aenter__
+(APIServer pid=770967)     return await anext(self.gen)
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/vllm/entrypoints/openai/api_server.py", line 122, in build_async_engine_client_from_engine_args
+(APIServer pid=770967)     vllm_config = engine_args.create_engine_config(usage_context=usage_context)
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/vllm/engine/arg_utils.py", line 1890, in create_engine_config
+(APIServer pid=770967)     config = VllmConfig(
+(APIServer pid=770967)   File "/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+(APIServer pid=770967)     s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+(APIServer pid=770967) pydantic_core._pydantic_core.ValidationError: 1 validation error for VllmConfig
+(APIServer pid=770967)   Value error, Total number of attention heads (28) must be divisible by tensor parallel size (8). [type=value_error, input_value=ArgsKwargs((), {'model_co...transfer_config': None}), input_type=ArgsKwargs]
+(APIServer pid=770967)     For further information visit https://errors.pydantic.dev/2.13/v/value_error

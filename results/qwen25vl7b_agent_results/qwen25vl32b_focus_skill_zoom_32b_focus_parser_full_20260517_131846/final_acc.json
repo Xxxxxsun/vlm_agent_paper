@@ -1,0 +1,892 @@
+{
+    "hr_bench_4k": {
+        "single": 0.9275,
+        "cross": 0.6325,
+        "overall": 0.78
+    },
+    "error_preds": [
+        {
+            "pred_ans": "C. CeVaY",
+            "question": "What is written on the white board in front of the girl in purple shorts?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. Back (trunk)",
+            "question": "Which side of the car is the person sitting on?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Back (trunk)",
+            "question": "Which side of the car is the person sitting on?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. Back (trunk)",
+            "question": "Which side of the car is the person sitting on?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "B. epoc MIX",
+            "question": "What is the text written above the logo on the jacket's sleeve?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. epic MIX",
+            "question": "What is the text written above the logo on the jacket's sleeve?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "D. To the left of the recycle bin",
+            "question": "Where is the person standing in relation to the recycle bin?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "B. To the left of the recycle bin",
+            "question": "Where is the person standing in relation to the recycle bin?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "B. To the left of the recycle bin",
+            "question": "Where is the person standing in relation to the recycle bin?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. White and red",
+            "question": "What is the color of the sign in the image?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. White and red",
+            "question": "What is the color of the sign in the image?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. White and red",
+            "question": "What is the color of the sign in the image?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "B. Three",
+            "question": "How many dogs are being walked in the image?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. Three",
+            "question": "How many dogs are being walked in the image?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. Three",
+            "question": "How many dogs are being walked in the image?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. Three",
+            "question": "How many dogs are being walked in the image?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "B. Black",
+            "question": "What's color of the bike in the image?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "C. Black",
+            "question": "What's color of the bike in the image?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. frankfurt botschaft",
+            "question": "What's the text written on the signboard in the image?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "C. frankfurt botschaft",
+            "question": "What's the text written on the signboard in the image?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. Approximately 11:10",
+            "question": "What is the time shown on the clock?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "B. Approximately 11:10",
+            "question": "What is the time shown on the clock?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Approximately 11:10",
+            "question": "What is the time shown on the clock?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "C. Away from the clock tower",
+            "question": "Which direction is the river flowing relative to the clock tower?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. Away from the clock tower",
+            "question": "Which direction is the river flowing relative to the clock tower?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Away from the clock tower",
+            "question": "Which direction is the river flowing relative to the clock tower?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. A small island with a gazebo",
+            "question": "What's located in the middle of the water?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "C. A small island with a gazebo",
+            "question": "What's located in the middle of the water?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. A small island with a gazebo",
+            "question": "What's located in the middle of the water?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. 1",
+            "question": "What are the hazard numbers displayed on the left side storage container's label?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. 1",
+            "question": "What are the hazard numbers displayed on the left side storage container's label?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Behind the car",
+            "question": "What is the position of the person relative to the car?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "C. bottom right",
+            "question": "What is the position of the person relative to the car?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Behind the car",
+            "question": "What is the position of the person relative to the car?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. On the right",
+            "question": "What is the position of the person relative to the car?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "D. Both left and right arrows",
+            "question": "What direction arrows are shown on the black sign?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. Both left and right arrows",
+            "question": "What direction arrows are shown on the black sign?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. Both left and right arrows",
+            "question": "What direction arrows are shown on the black sign?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. The text on the white building is \"CB\"",
+            "question": "Tell me the text on the white building.",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "None of the provided options can be confirmed based on the visible text on the white building.",
+            "question": "Tell me the text on the white building.",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "C. A light",
+            "question": "What is the object mounted on the wall in the background?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. A light",
+            "question": "What is the object mounted on the wall in the background?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. A light",
+            "question": "What is the object mounted on the wall in the background?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. To the right and slightly in front of the green trash bin",
+            "question": "What is the relative position of the pink banner compared to the green trash bin?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. To the right and slightly in front of the green trash bin",
+            "question": "What is the relative position of the pink banner compared to the green trash bin?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "C. To the right and slightly in front of the green trash bin",
+            "question": "What is the relative position of the pink banner compared to the green trash bin?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. To the right and slightly in front of the green trash bin",
+            "question": "What is the relative position of the pink banner compared to the green trash bin?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. To the left and in front of the large white building",
+            "question": "What is the relative position of the white car compared to the large white building?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. To the left and in front of the large white building",
+            "question": "What is the relative position of the white car compared to the large white building?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. To the left and in front of the large white building",
+            "question": "What is the relative position of the white car compared to the large white building?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. To the left and in front of the large white building",
+            "question": "What is the relative position of the white car compared to the large white building?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "B. Behind the silver car",
+            "question": "What is the relative position of the black motorcycle compared to the silver car?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. Behind the water",
+            "question": "What is the relative position of the small white building compared to the water?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Four computers",
+            "question": "How many computers are visible on the table?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "B. Four computers",
+            "question": "How many computers are visible on the table?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "B. Behind the water",
+            "question": "What is the relative position of the small white building compared to the water?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. Behind the water",
+            "question": "What is the relative position of the small white building compared to the water?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. Four computers",
+            "question": "How many computers are visible on the table?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "C. Four computers",
+            "question": "How many computers are visible on the table?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "B. trash can",
+            "question": "What is the object placed directly in front of the bench on the left side of the image?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. trash can",
+            "question": "What is the object placed directly in front of the bench on the left side of the image?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "C. Two people",
+            "question": "How many people are seated at the table on the right side of the image where a woman in a striped shirt is standing?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Two people",
+            "question": "How many people are seated at the table on the right side of the image where a woman in a striped shirt is standing?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. Two people",
+            "question": "How many people are seated at the table on the right side of the image where a woman in a striped shirt is standing?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Two people",
+            "question": "How many people are seated at the table on the right side of the image where a woman in a striped shirt is standing?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. A plastic bag",
+            "question": "What object can be seen inside the partially built brick structure?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. A plastic bag",
+            "question": "What object can be seen inside the partially built brick structure?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Two",
+            "question": "How many bicycles are visible near the building's entrance?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "D. Two",
+            "question": "How many bicycles are visible near the building's entrance?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Two",
+            "question": "How many bicycles are visible near the building's entrance?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. Two",
+            "question": "How many bicycles are visible near the building's entrance?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. Right",
+            "question": "What is the position of the car relative to the central tower of the building?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Right",
+            "question": "What is the position of the car relative to the central tower of the building?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. Right",
+            "question": "What is the position of the car relative to the central tower of the building?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. Right",
+            "question": "What is the position of the car relative to the central tower of the building?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. The label indicates that the water is 100% pure with no additives",
+            "question": "What does the label in the red circle signify?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "C. The label indicates that the water is 100% pure with no additives",
+            "question": "What does the label in the red circle signify?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "C. The label indicates that the water is 100% pure with no additives",
+            "question": "What does the label in the red circle signify?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. The label indicates that the water is 100% pure with no additives",
+            "question": "What does the label in the red circle signify?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. Locations 1 and 2",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. Locations 1 and 2",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. Locations 1 and 2",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "C. Locations 1 and 2",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Locations 2 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Locations 2 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. Locations 2 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "B. Locations 2 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "B. Locations 3 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. Locations 3 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Locations 3 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. Locations 3 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Locations 3 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "B. Locations 3 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. Locations 3 and 4",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "B. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "C. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Locations 1 and 2",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "D. Locations 1 and 2",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "B. Locations 1 and 2",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "B. Locations 1 and 2",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "C. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "D. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. Locations 2 and 3",
+            "question": "On the provided map, which two numbered locations belong to the same country?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. Theodore Roosevelt",
+            "question": "Which president's face is highlighted in the red rectangle on Mount Rushmore?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "B. Theodore Roosevelt",
+            "question": "Which president's face is highlighted in the red rectangle on Mount Rushmore?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Theodore Roosevelt",
+            "question": "Which president's face is highlighted in the red rectangle on Mount Rushmore?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. Theodore Roosevelt",
+            "question": "Which president's face is highlighted in the red rectangle on Mount Rushmore?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. Thomas Jefferson",
+            "question": "Which president's face is highlighted in the red rectangle on Mount Rushmore?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. Theodore Roosevelt",
+            "question": "Which president's face is highlighted in the red rectangle on Mount Rushmore?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "C. Theodore Roosevelt",
+            "question": "Which president's face is highlighted in the red rectangle on Mount Rushmore?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. 94",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. 94",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. 96",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "B. 15",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "None of the provided options are correct.",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "D. 15",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "B. 94",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "C. 94",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "B. 15",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. 95",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. 9",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. 15",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "None of the provided options accurately reflect the calculated average of 47.5.",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. 9",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "C. 9",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. 96",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. 9",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "B. 9",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "C. 9",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. 95",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. 95",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "None of the options are correct based on the sum of 72.",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. 9",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. 9",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "D. 9",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "None of the provided options are correct.",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "None of the options are correct.",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "None of the provided options are correct.",
+            "question": "What is the sum of the sales for Item 1 and Item 6?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. 12",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "B. 15",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. 15",
+            "question": "What is the average sales of Item 10 and Item 15?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. blue",
+            "question": "What is the color of the flag?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "C. red",
+            "question": "What is the color of the flag?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. blue",
+            "question": "What is the color of the flag?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. red",
+            "question": "What is the color of the flag?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "C. Three",
+            "question": "How many people are there in the boat?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "A. Three",
+            "question": "How many people are there in the boat?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "A. Three",
+            "question": "How many people are there in the boat?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "B. Three",
+            "question": "How many people are there in the boat?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "C. Sweden",
+            "question": "In which country is this license plate registered?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "C. Sweden",
+            "question": "In which country is this license plate registered?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "There are none.",
+            "question": "What is the position of the blue backpack relative to the airplane?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "There are none.",
+            "question": "What is the position of the blue backpack relative to the airplane?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "There are none.",
+            "question": "What is the position of the blue backpack relative to the airplane?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "There are none.",
+            "question": "What is the position of the blue backpack relative to the airplane?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. The chairs are facing the window",
+            "question": "What direction are the chairs facing in the image?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "C. The chairs are facing the window",
+            "question": "What direction are the chairs facing in the image?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "B. The chairs are facing towards the staircase",
+            "question": "What direction are the chairs facing in the image?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "D. To the left of the tram",
+            "question": "What is the position of the black car relative to the tram?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "D. To the right of the tram",
+            "question": "What is the position of the black car relative to the tram?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. Four",
+            "question": "How many people are there in the image?",
+            "answer": "A"
+        },
+        {
+            "pred_ans": "C. Four",
+            "question": "How many people are there in the image?",
+            "answer": "B"
+        },
+        {
+            "pred_ans": "B. Four",
+            "question": "How many people are there in the image?",
+            "answer": "C"
+        },
+        {
+            "pred_ans": "A. Four",
+            "question": "How many people are there in the image?",
+            "answer": "D"
+        },
+        {
+            "pred_ans": "A. One",
+            "question": "How many people are there in the image?",
+            "answer": "B"
+        }
+    ],
+    "error_nums": {
+        "hr_bench_4k": 0
+    }
+}

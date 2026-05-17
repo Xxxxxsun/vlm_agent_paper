@@ -1,0 +1,231 @@
+Judging HRBench hr_bench_4k:   0%|          | 0/800 [00:00<?, ?it/s]Judging HRBench hr_bench_4k:   0%|          | 1/800 [00:01<23:48,  1.79s/it] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:   2%|▏         | 13/800 [00:02<01:52,  7.02it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:   6%|▌         | 49/800 [00:02<00:23, 32.16it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  11%|█         | 88/800 [00:02<00:13, 54.28it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  13%|█▎        | 101/800 [00:02<00:12, 56.57it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  14%|█▍        | 114/800 [00:03<00:12, 55.05it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  15%|█▌        | 123/800 [00:03<00:13, 51.45it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  16%|█▋        | 131/800 [00:03<00:14, 45.51it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  19%|█▉        | 151/800 [00:03<00:10, 63.07it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  20%|██        | 160/800 [00:04<00:12, 52.73it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  22%|██▏       | 175/800 [00:04<00:09, 63.50it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  23%|██▎       | 184/800 [00:04<00:09, 66.37it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  30%|██▉       | 239/800 [00:04<00:04, 127.18it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  32%|███▏      | 258/800 [00:04<00:04, 130.20it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  34%|███▍      | 272/800 [00:05<00:05, 99.56it/s]  [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  35%|███▌      | 283/800 [00:05<00:06, 85.53it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  37%|███▋      | 293/800 [00:05<00:07, 70.48it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  42%|████▏     | 336/800 [00:05<00:03, 128.51it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  44%|████▍     | 354/800 [00:05<00:04, 105.35it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  46%|████▌     | 369/800 [00:06<00:04, 104.41it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  48%|████▊     | 383/800 [00:06<00:04, 93.37it/s]  [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  49%|████▉     | 395/800 [00:06<00:07, 52.75it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  50%|█████     | 404/800 [00:06<00:07, 50.04it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  52%|█████▏    | 412/800 [00:07<00:09, 41.23it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  54%|█████▎    | 429/800 [00:07<00:06, 53.62it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  55%|█████▍    | 437/800 [00:07<00:06, 56.15it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  56%|█████▌    | 445/800 [00:07<00:06, 56.89it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  58%|█████▊    | 464/800 [00:07<00:04, 67.43it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  61%|██████    | 489/800 [00:08<00:03, 80.18it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  69%|██████▉   | 551/800 [00:08<00:01, 138.49it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  71%|███████   | 565/800 [00:08<00:02, 89.60it/s]  [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  72%|███████▏  | 576/800 [00:08<00:02, 90.73it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  74%|███████▎  | 589/800 [00:09<00:02, 95.56it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  75%|███████▌  | 600/800 [00:09<00:03, 56.47it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  76%|███████▌  | 609/800 [00:09<00:04, 44.40it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  77%|███████▋  | 618/800 [00:10<00:03, 46.95it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  78%|███████▊  | 625/800 [00:10<00:04, 42.56it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  79%|███████▉  | 631/800 [00:10<00:03, 44.58it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  80%|███████▉  | 637/800 [00:10<00:04, 33.29it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  81%|████████  | 646/800 [00:11<00:04, 34.62it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  81%|████████▏ | 651/800 [00:11<00:04, 31.71it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  82%|████████▏ | 657/800 [00:11<00:04, 30.91it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  83%|████████▎ | 661/800 [00:11<00:04, 32.35it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  83%|████████▎ | 667/800 [00:11<00:03, 33.37it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  84%|████████▍ | 674/800 [00:11<00:03, 35.86it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  85%|████████▍ | 678/800 [00:12<00:03, 34.78it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  85%|████████▌ | 682/800 [00:12<00:03, 30.22it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  86%|████████▌ | 686/800 [00:12<00:04, 28.21it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  86%|████████▌ | 689/800 [00:12<00:04, 26.88it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  87%|████████▋ | 695/800 [00:12<00:03, 29.12it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  88%|████████▊ | 700/800 [00:12<00:03, 32.53it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  88%|████████▊ | 704/800 [00:13<00:03, 28.82it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  88%|████████▊ | 708/800 [00:13<00:03, 30.08it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  90%|█████████ | 723/800 [00:13<00:01, 51.29it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  91%|█████████ | 729/800 [00:13<00:01, 53.24it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  94%|█████████▍| 755/800 [00:13<00:00, 86.68it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  96%|█████████▌| 769/800 [00:13<00:00, 80.97it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  97%|█████████▋| 777/800 [00:13<00:00, 77.04it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  98%|█████████▊| 785/800 [00:14<00:00, 56.35it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k:  99%|█████████▉| 792/800 [00:14<00:00, 42.00it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k: 100%|█████████▉| 798/800 [00:14<00:00, 42.39it/s] [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging HRBench hr_bench_4k: 100%|██████████| 800/800 [00:14<00:00, 54.26it/s]
+Accuracy for hr_bench_4k single: 86.50%
+Accuracy for hr_bench_4k cross: 54.50%
+Overall Accuracy for hr_bench_4k: 70.50%
+{'hr_bench_4k': 0}

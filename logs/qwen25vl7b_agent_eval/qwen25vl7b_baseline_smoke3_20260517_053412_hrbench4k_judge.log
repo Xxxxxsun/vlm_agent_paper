@@ -1,0 +1,9 @@
+Judging HRBench hr_bench_4k:   0%|          | 0/1 [00:00<?, ?it/s]Judging HRBench hr_bench_4k: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it]Judging HRBench hr_bench_4k: 100%|██████████| 1/1 [00:01<00:00,  1.72s/it]
+Accuracy for hr_bench_4k single: 100.00%
+/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/numpy/_core/fromnumeric.py:3860: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/root/.venvs/vtool-r1-v2/lib/python3.10/site-packages/numpy/_core/_methods.py:145: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+Accuracy for hr_bench_4k cross: nan%
+Overall Accuracy for hr_bench_4k: nan%
+{'hr_bench_4k': 0}

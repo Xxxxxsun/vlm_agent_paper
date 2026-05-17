@@ -1,0 +1,10 @@
+{
+    "direct_attributes": 100.0,
+    "relative_position": 100.0,
+    "overall": 100.0,
+    "error_nums": {
+        "direct_attributes": 0,
+        "relative_position": 0
+    },
+    "error_preds": []
+}

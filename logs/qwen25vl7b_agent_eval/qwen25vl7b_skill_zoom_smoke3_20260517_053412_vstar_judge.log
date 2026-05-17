@@ -1,0 +1,24 @@
+Judging V* direct_attributes:   0%|          | 0/1 [00:00<?, ?it/s]Judging V* direct_attributes:   0%|          | 0/1 [00:01<?, ?it/s]
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/root/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/root/DeepEyes/eval/judge_result.py", line 136, in process
+    question = data['question']
+KeyError: 'question'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/DeepEyes/eval/judge_result.py", line 218, in <module>
+    for result in pool.imap(process, lines):
+  File "/root/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/multiprocessing/pool.py", line 873, in next
+    raise value
+KeyError: 'question'
+Exception ignored in: <function Pool.__del__ at 0x7f0fef3ca050>
+Traceback (most recent call last):
+  File "/root/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/multiprocessing/pool.py", line 271, in __del__
+  File "/root/.local/share/uv/python/cpython-3.10-linux-x86_64-gnu/lib/python3.10/multiprocessing/queues.py", line 371, in put
+AttributeError: 'NoneType' object has no attribute 'dumps'

@@ -1,0 +1,6 @@
+Judging V* direct_attributes:   0%|          | 0/1 [00:00<?, ?it/s]Judging V* direct_attributes: 100%|██████████| 1/1 [00:01<00:00,  1.69s/it]Judging V* direct_attributes: 100%|██████████| 1/1 [00:01<00:00,  1.69s/it]
+Judging V* relative_position:   0%|          | 0/1 [00:00<?, ?it/s]Judging V* relative_position: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it]Judging V* relative_position: 100%|██████████| 1/1 [00:01<00:00,  1.66s/it]
+Accuracy for direct_attributes: 100.00%
+Accuracy for relative_position: 100.00%
+Overall Accuracy: 100.00%
+{'direct_attributes': 0, 'relative_position': 0}

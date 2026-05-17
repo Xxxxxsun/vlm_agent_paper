@@ -1,0 +1,183 @@
+diff --git a/eval/judge_result.py b/eval/judge_result.py
+index a5c267e..2326061 100644
+--- a/eval/judge_result.py
++++ b/eval/judge_result.py
+@@ -28,6 +28,8 @@ openai_api_base = args.api_url
+ client = OpenAI(
+     api_key=openai_api_key,
+     base_url=openai_api_base,
++    timeout=float(os.environ.get("OPENAI_JUDGE_TIMEOUT", "30")),
++    max_retries=int(os.environ.get("OPENAI_JUDGE_MAX_RETRIES", "1")),
+ )
+ if args.eval_model_name is None:
+     response = requests.get(f"{openai_api_base}/models")
+@@ -136,6 +138,7 @@ def process(line):
+     question = data['question']
+     answer = data['answer']
+     pred_ans = data['pred_ans']
++    pred_had_error = 'ERROR' in pred_ans
+     pred_output = data['pred_output']
+     answer = 'A. ' + answer
+ 
+@@ -159,17 +162,19 @@ def process(line):
+     else:
+         full_prompt = get_prompt(pred_ans, answer, question)
+ 
+-        chat_response = client.chat.completions.create(
+-            model=eval_model_name,
+-            messages=[
+-                {"role": "system", "content": "You are a helpful assistant."},
+-                {"role": "user", "content": full_prompt},
+-            ],
+-            temperature=0.0,
+-        )
+-        response = chat_response.choices[0].message.content.strip()
+-        if 'ERROR' in pred_ans:
+-            error_nums_type[test_type] += 1
++        try:
++            chat_response = client.chat.completions.create(
++                model=eval_model_name,
++                messages=[
++                    {"role": "system", "content": "You are a helpful assistant."},
++                    {"role": "user", "content": full_prompt},
++                ],
++                temperature=0.0,
++            )
++            response = chat_response.choices[0].message.content.strip()
++        except Exception as e:
++            print(f' [WARNING] judge request failed {e=}')
++            response = '0'
+ 
+         if 'Judgement:' in response:
+             response = response.split('Judgement:')[-1].strip()
+@@ -200,7 +205,7 @@ def process(line):
+                     p_content_msg = _p_content['text']
+ 
+ 
+-    return acc_reward, data
++    return acc_reward, data, pred_had_error
+ 
+ 
+ 
+@@ -218,10 +223,12 @@ if __name__ == '__main__':
+         with tqdm(total=len(lines), desc="Judging V* "+test_type) as pbar:
+             for result in pool.imap(process, lines):
+                 if result is not None:
+-                    acc_reward, data = result
++                    acc_reward, data, pred_had_error = result
+                     acc = acc_reward
+                     all_acc.append(acc)
+                     per_type_acc[test_type].append(acc)
++                    if pred_had_error:
++                        error_nums_type[test_type] += 1
+                     if acc_reward != 1.0:
+                         error_preds.append({'pred_ans': data['pred_ans'], 'question': data['question'], 'answer': data['answer']})
+                     
+@@ -248,4 +255,4 @@ if __name__ == '__main__':
+     final_acc['error_nums'] = error_nums_type
+     final_acc['error_preds'] = error_preds
+     with open(os.path.join(result_root_path, 'final_acc.json'), 'w') as f:
+-        json.dump(final_acc, f, indent=4)
+\ No newline at end of file
++        json.dump(final_acc, f, indent=4)
+diff --git a/eval/judge_result_hrbench.py b/eval/judge_result_hrbench.py
+index c6ff1a3..a11b99d 100644
+--- a/eval/judge_result_hrbench.py
++++ b/eval/judge_result_hrbench.py
+@@ -21,6 +21,7 @@ parser.add_argument('--hrbench_path', type=str, default=None, help='Path to the
+ parser.add_argument('--save_path', type=str, default=None, help='Path to save the results')
+ parser.add_argument('--eval_model_name', type=str, default=None, help='Model name for evaluation')
+ parser.add_argument('--num_workers', type=int, default=8)
++parser.add_argument('--test_types', type=str, default='hr_bench_4k,hr_bench_8k')
+ args = parser.parse_args()
+ 
+ openai_api_key = args.api_key
+@@ -28,6 +29,8 @@ openai_api_base = args.api_url
+ client = OpenAI(
+     api_key=openai_api_key,
+     base_url=openai_api_base,
++    timeout=float(os.environ.get("OPENAI_JUDGE_TIMEOUT", "30")),
++    max_retries=int(os.environ.get("OPENAI_JUDGE_MAX_RETRIES", "1")),
+ )
+ if args.eval_model_name is None:
+     response = requests.get(f"{openai_api_base}/models")
+@@ -36,11 +39,11 @@ if args.eval_model_name is None:
+ else:
+     eval_model_name = args.eval_model_name
+ 
+-hrbench_path = args.vstar_bench_path
++hrbench_path = args.hrbench_path
+ result_root_path = args.save_path
+ result_root_path = os.path.join(result_root_path, args.model_name)
+ 
+-test_types = ['hr_bench_4k', 'hr_bench_8k']
++test_types = [item.strip() for item in args.test_types.split(',') if item.strip()]
+ per_type_acc = {}
+ for test_type in test_types:
+     per_type_acc[test_type] = []
+@@ -130,6 +133,7 @@ def process(line):
+     question = data['question']
+     answer = data['answer']
+     pred_ans = data['pred_ans']
++    pred_had_error = 'ERROR' in pred_ans
+     pred_output = data['pred_output']
+     category = data['category']
+ 
+@@ -153,17 +157,19 @@ def process(line):
+     else:
+         full_prompt = get_prompt(pred_ans, answer, question)
+ 
+-        chat_response = client.chat.completions.create(
+-            model=eval_model_name,
+-            messages=[
+-                {"role": "system", "content": "You are a helpful assistant."},
+-                {"role": "user", "content": full_prompt},
+-            ],
+-            temperature=0.0,
+-        )
+-        response = chat_response.choices[0].message.content.strip()
+-        if 'ERROR' in pred_ans:
+-            error_nums_type[test_type] += 1
++        try:
++            chat_response = client.chat.completions.create(
++                model=eval_model_name,
++                messages=[
++                    {"role": "system", "content": "You are a helpful assistant."},
++                    {"role": "user", "content": full_prompt},
++                ],
++                temperature=0.0,
++            )
++            response = chat_response.choices[0].message.content.strip()
++        except Exception as e:
++            print(f' [WARNING] judge request failed {e=}')
++            response = '0'
+ 
+         if 'Judgement:' in response:
+             response = response.split('Judgement:')[-1].strip()
+@@ -182,7 +188,7 @@ def process(line):
+             else:
+                 print(f' [WARNING] resp format error {response=}')
+                 acc_reward = 0.0
+-    return acc_reward, category, data
++    return acc_reward, category, data, pred_had_error
+ 
+ 
+ if __name__ == '__main__':
+@@ -206,7 +212,9 @@ if __name__ == '__main__':
+         with tqdm(total=len(lines), desc="Judging HRBench "+test_type) as pbar:
+             for result in pool.imap(process, lines):
+                 if result is not None:
+-                    acc_reward, task, data = result
++                    acc_reward, task, data, pred_had_error = result
++                    if pred_had_error:
++                        error_nums_type[test_type] += 1
+                     if acc_reward != 1.0:
+                         error_preds.append({'pred_ans': data['pred_ans'], 'question': data['question'], 'answer': data['answer']})
+                     
+@@ -244,4 +252,4 @@ if __name__ == '__main__':
+     print (error_nums_type)
+ 
+     with open(os.path.join(result_root_path, 'final_acc.json'), 'w') as f:
+-        json.dump(final_acc, f, indent=4)
+\ No newline at end of file
++        json.dump(final_acc, f, indent=4)

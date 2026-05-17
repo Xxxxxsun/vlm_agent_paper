@@ -1,0 +1,43 @@
+Judging V* direct_attributes:   0%|          | 0/115 [00:00<?, ?it/s]Judging V* direct_attributes:   1%|          | 1/115 [00:01<03:28,  1.83s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:   9%|▊         | 10/115 [01:02<11:10,  6.39s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  36%|███▌      | 41/115 [02:02<03:23,  2.74s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  46%|████▌     | 53/115 [02:03<01:57,  1.89s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  68%|██████▊   | 78/115 [02:20<01:10,  1.89s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  69%|██████▊   | 79/115 [03:03<01:15,  2.10s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  81%|████████  | 93/115 [03:03<00:33,  1.53s/it]Judging V* direct_attributes: 100%|██████████| 115/115 [03:03<00:00,  1.60s/it]
+Judging V* relative_position:   0%|          | 0/76 [00:00<?, ?it/s]Judging V* relative_position:   1%|▏         | 1/76 [00:01<02:16,  1.82s/it] [WARNING] judge request failed e=InternalServerError("Error code: 500 - {'error': {'message': 'EngineCore encountered an issue. See stack trace (above) for the root cause.', 'type': 'InternalServerError', 'param': None, 'code': 500}}")
+ [WARNING] judge request failed e=InternalServerError("Error code: 500 - {'error': {'message': 'EngineCore encountered an issue. See stack trace (above) for the root cause.', 'type': 'InternalServerError', 'param': None, 'code': 500}}")
+ [WARNING] judge request failed e=InternalServerError("Error code: 500 - {'error': {'message': 'EngineCore encountered an issue. See stack trace (above) for the root cause.', 'type': 'InternalServerError', 'param': None, 'code': 500}}")
+ [WARNING] judge request failed e=InternalServerError("Error code: 500 - {'error': {'message': 'EngineCore encountered an issue. See stack trace (above) for the root cause.', 'type': 'InternalServerError', 'param': None, 'code': 500}}")
+ [WARNING] judge request failed e=InternalServerError("Error code: 500 - {'error': {'message': 'EngineCore encountered an issue. See stack trace (above) for the root cause.', 'type': 'InternalServerError', 'param': None, 'code': 500}}")
+ [WARNING] judge request failed e=InternalServerError("Error code: 500 - {'error': {'message': 'EngineCore encountered an issue. See stack trace (above) for the root cause.', 'type': 'InternalServerError', 'param': None, 'code': 500}}")
+ [WARNING] judge request failed e=InternalServerError("Error code: 500 - {'error': {'message': 'EngineCore encountered an issue. See stack trace (above) for the root cause.', 'type': 'InternalServerError', 'param': None, 'code': 500}}")
+Judging V* relative_position:  12%|█▏        | 9/76 [00:41<05:17,  4.74s/it] [WARNING] judge request failed e=InternalServerError("Error code: 500 - {'error': {'message': 'EngineCore encountered an issue. See stack trace (above) for the root cause.', 'type': 'InternalServerError', 'param': None, 'code': 500}}")
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+ [WARNING] judge request failed e=APIConnectionError('Connection error.')
+Judging V* relative_position:  58%|█████▊    | 44/76 [00:42<00:22,  1.40it/s]Judging V* relative_position: 100%|██████████| 76/76 [00:42<00:00,  1.80it/s]
+Accuracy for direct_attributes: 80.87%
+Accuracy for relative_position: 76.32%
+Overall Accuracy: 79.06%
+{'direct_attributes': 0, 'relative_position': 0}

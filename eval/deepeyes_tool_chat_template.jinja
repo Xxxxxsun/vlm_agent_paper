@@ -1,0 +1,48 @@
+{% set image_count = namespace(value=0) %}{% set video_count = namespace(value=0) %}
+{% set first_message = messages[0] if messages|length > 0 else none %}
+{% set has_system = first_message is not none and first_message['role'] == 'system' %}
+{% if tools %}
+<|im_start|>system
+{% if has_system %}
+{% if first_message['content'] is string %}{{ first_message['content'] }}{% else %}{% for content in first_message['content'] %}{% if content['type'] == 'text' or 'text' in content %}{{ content['text'] }}{% endif %}{% endfor %}{% endif %}
+{% else %}
+You are a helpful assistant.
+{% endif %}
+
+# Tools
+
+You may call one or more functions to assist with the user query.
+
+You are provided with function signatures within <tools></tools> XML tags:
+<tools>
+{% for tool in tools %}{{ tool | tojson }}
+{% endfor %}</tools>
+
+For each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:
+<tool_call>
+{"name": <function-name>, "arguments": <args-json-object>}
+</tool_call><|im_end|>
+{% elif not has_system %}
+<|im_start|>system
+You are a helpful assistant.<|im_end|>
+{% endif %}
+{% for message in messages %}
+{% if tools and loop.first and message['role'] == 'system' %}
+{% elif message['role'] == 'user' or (message['role'] == 'system' and not loop.first) or (message['role'] == 'assistant' and not message.get('tool_calls')) %}
+<|im_start|>{{ message['role'] }}
+{% if message['content'] is string %}{{ message['content'] }}{% else %}{% for content in message['content'] %}{% if content['type'] == 'image' or 'image' in content or 'image_url' in content %}{% set image_count.value = image_count.value + 1 %}{% if add_vision_id %}Picture {{ image_count.value }}: {% endif %}<|vision_start|><|image_pad|><|vision_end|>{% elif content['type'] == 'video' or 'video' in content %}{% set video_count.value = video_count.value + 1 %}{% if add_vision_id %}Video {{ video_count.value }}: {% endif %}<|vision_start|><|video_pad|><|vision_end|>{% elif content['type'] == 'text' or 'text' in content %}{{ content['text'] }}{% endif %}{% endfor %}{% endif %}<|im_end|>
+{% elif message['role'] == 'assistant' %}
+<|im_start|>assistant{% if message['content'] %}
+{{ message['content'] }}{% endif %}{% for tool_call in message['tool_calls'] %}{% if tool_call.function is defined %}{% set fn = tool_call.function %}{% else %}{% set fn = tool_call['function'] %}{% endif %}{% set fn_name = fn.name if fn.name is defined else fn['name'] %}{% set fn_args = fn.arguments if fn.arguments is defined else fn['arguments'] %}
+<tool_call>
+{"name": "{{ fn_name }}", "arguments": {% if fn_args is string %}{{ fn_args }}{% else %}{{ fn_args | tojson }}{% endif %}}
+</tool_call>{% endfor %}<|im_end|>
+{% elif message['role'] == 'tool' %}
+<|im_start|>user
+<tool_response>
+{% if message['content'] is string %}{{ message['content'] }}{% else %}{% for content in message['content'] %}{% if content['type'] == 'image' or 'image' in content or 'image_url' in content %}{% set image_count.value = image_count.value + 1 %}{% if add_vision_id %}Picture {{ image_count.value }}: {% endif %}<|vision_start|><|image_pad|><|vision_end|>{% elif content['type'] == 'video' or 'video' in content %}{% set video_count.value = video_count.value + 1 %}{% if add_vision_id %}Video {{ video_count.value }}: {% endif %}<|vision_start|><|video_pad|><|vision_end|>{% elif content['type'] == 'text' or 'text' in content %}{{ content['text'] }}{% endif %}{% endfor %}{% endif %}
+</tool_response><|im_end|>
+{% endif %}
+{% endfor %}
+{% if add_generation_prompt %}<|im_start|>assistant
+{% endif %}

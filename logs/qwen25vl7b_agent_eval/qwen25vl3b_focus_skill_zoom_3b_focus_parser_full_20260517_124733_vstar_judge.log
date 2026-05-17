@@ -1,0 +1,7 @@
+Judging V* direct_attributes:   0%|          | 0/115 [00:00<?, ?it/s]Judging V* direct_attributes:   1%|          | 1/115 [00:01<03:26,  1.81s/it]Judging V* direct_attributes:   8%|▊         | 9/115 [00:04<00:49,  2.15it/s]Judging V* direct_attributes:  14%|█▍        | 16/115 [00:25<02:57,  1.79s/it]Judging V* direct_attributes: 100%|██████████| 115/115 [00:25<00:00,  4.56it/s]
+Judging V* relative_position:   0%|          | 0/76 [00:00<?, ?it/s]Judging V* relative_position:   1%|▏         | 1/76 [00:01<02:16,  1.82s/it]Judging V* relative_position:   4%|▍         | 3/76 [00:36<16:05, 13.23s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* relative_position:  71%|███████   | 54/76 [01:04<00:22,  1.01s/it]Judging V* relative_position: 100%|██████████| 76/76 [01:04<00:00,  1.18it/s]
+Accuracy for direct_attributes: 86.09%
+Accuracy for relative_position: 81.58%
+Overall Accuracy: 84.29%
+{'direct_attributes': 0, 'relative_position': 0}

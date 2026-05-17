@@ -1,0 +1,20 @@
+Judging V* direct_attributes:   0%|          | 0/115 [00:00<?, ?it/s]Judging V* direct_attributes:   1%|          | 1/115 [00:01<03:31,  1.85s/it] [WARNING] resp format error response='B. The color of the motorcycle is red.\n    *   Note: The Model_answer contains some noise ("<think>...</think>"), but the core content is "B. The color of the motorcycle is red."\n\n3.  **Compare Standard Answer and Model Answer:**\n    *   Standard Answer says: Blue.\n    *   Model Answer says: Red.\n    *   These are contradictory colors.\n\n4.  **Determine Consistency:**\n    *   Since Blue != Red, the answers are not consistent.\n    *   Judgement should be 0.\n\n5.  **Format Output:**\n    *   Just output "0".\n\n6.  **Final Check:**\n    *   Previous examples show that contradictory answers (e.g., Boy vs Girl, Yes vs No, Blue vs Pink) result in Judgement 0.\n    *   This case is Blue vs Red.\n    *   Result: 0.\n\n7.  **Construct Final Output:**\n    *   0\n</think>\n\n0'
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:   8%|▊         | 9/115 [01:02<12:35,  7.13s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  23%|██▎       | 27/115 [01:05<02:47,  1.91s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  24%|██▍       | 28/115 [01:05<02:37,  1.81s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  41%|████      | 47/115 [01:20<01:22,  1.21s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  45%|████▌     | 52/115 [01:23<01:09,  1.10s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* direct_attributes:  76%|███████▌  | 87/115 [01:43<00:21,  1.32it/s]Judging V* direct_attributes: 100%|██████████| 115/115 [01:43<00:00,  1.11it/s]
+Judging V* relative_position:   0%|          | 0/76 [00:00<?, ?it/s]Judging V* relative_position:   1%|▏         | 1/76 [00:01<02:17,  1.83s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* relative_position:   4%|▍         | 3/76 [01:02<27:53, 22.93s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+ [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* relative_position:  16%|█▌        | 12/76 [01:02<04:15,  3.99s/it]Judging V* relative_position:  57%|█████▋    | 43/76 [01:15<02:11,  3.99s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* relative_position:  58%|█████▊    | 44/76 [01:15<00:35,  1.10s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* relative_position:  63%|██████▎   | 48/76 [01:21<00:31,  1.13s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* relative_position:  72%|███████▏  | 55/76 [01:25<00:21,  1.03s/it]Judging V* relative_position:  95%|█████████▍| 72/76 [01:45<00:04,  1.03s/it] [WARNING] judge request failed e=APITimeoutError('Request timed out.')
+Judging V* relative_position:  96%|█████████▌| 73/76 [02:06<00:04,  1.60s/it]Judging V* relative_position: 100%|██████████| 76/76 [02:06<00:00,  1.66s/it]
+Accuracy for direct_attributes: 61.74%
+Accuracy for relative_position: 52.63%
+Overall Accuracy: 58.12%
+{'direct_attributes': 0, 'relative_position': 0}

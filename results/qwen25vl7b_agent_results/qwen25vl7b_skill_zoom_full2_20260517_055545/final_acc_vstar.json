@@ -1,0 +1,316 @@
+{
+    "direct_attributes": 65.21739130434783,
+    "relative_position": 72.36842105263158,
+    "overall": 68.06282722513089,
+    "error_nums": {
+        "direct_attributes": 0,
+        "relative_position": 0
+    },
+    "error_preds": [
+        {
+            "pred_ans": "The image does not contain a van, so it's not possible to determine its color.",
+            "question": "What is the color of the van?",
+            "answer": "The color of the van is red."
+        },
+        {
+            "pred_ans": "C. There are no person in the oil painting.",
+            "question": "How many people are in the oil painting?",
+            "answer": "There are 2 people in the oil painting."
+        },
+        {
+            "pred_ans": "B. The color of the SUV car is black.",
+            "question": "What is the color of the SUV car?",
+            "answer": "The color of the SUV car is silver."
+        },
+        {
+            "pred_ans": "The question cannot be answered based on the information provided in the image.",
+            "question": "What is the color of the messenger bag?",
+            "answer": "The color of the messenger bag is black."
+        },
+        {
+            "pred_ans": "None of the provided options can be confirmed as the correct color of the watch.",
+            "question": "What is the color of the watch?",
+            "answer": "The color of the watch is white."
+        },
+        {
+            "pred_ans": "The image does not provide sufficient detail to determine the breed of the dog.",
+            "question": "What is the breed of the dog?",
+            "answer": "The breed of the dog is golden retriever."
+        },
+        {
+            "pred_ans": "C. The color of the woman's dress is white.",
+            "question": "What is the color of the woman's dress?",
+            "answer": "The color of the woman's dress is black."
+        },
+        {
+            "pred_ans": "The image does not contain a helmet, so it's not possible to determine its color. The correct answer cannot be determined from the given options.",
+            "question": "What is the color of the helmet?",
+            "answer": "The color of the helmet is red."
+        },
+        {
+            "pred_ans": "None of the provided options can be confirmed as correct based on the image.",
+            "question": "What is the color of the motorcycle?",
+            "answer": "The color of the motorcycle is orange."
+        },
+        {
+            "pred_ans": "There is no flag in the image, so it's not possible to determine its color.",
+            "question": "What is the color of the flag?",
+            "answer": "The color of the flag is red."
+        },
+        {
+            "pred_ans": "The image does not provide enough detail to determine the color of the cyclist's box.",
+            "question": "What is the color of the cyclist's box?",
+            "answer": "The color of the cyclist's box is green."
+        },
+        {
+            "pred_ans": "The image does not contain a pink-haired woman, so the color of her handbag cannot be determined.",
+            "question": "What is the color of the pink-haired woman's handbag?",
+            "answer": "The color of the pink-haired woman's handbag is white."
+        },
+        {
+            "pred_ans": "The image does not provide enough information to determine the color of the backpack.",
+            "question": "What is the color of the backpack?",
+            "answer": "The color of the backpack is gray."
+        },
+        {
+            "pred_ans": "The image does not contain a plastic stool, so it's impossible to determine its color.",
+            "question": "What is the color of the plastic stool?",
+            "answer": "The color of the plastic stool is white."
+        },
+        {
+            "pred_ans": "The image does not provide enough detail to determine the color of the trash can. Therefore, the correct answer cannot be determined from the given options.",
+            "question": "What is the color of the trash can?",
+            "answer": "The color of the trash can is black."
+        },
+        {
+            "pred_ans": "",
+            "question": "What is the color of the telephone?",
+            "answer": "The color of the telephone is orange."
+        },
+        {
+            "pred_ans": "None of the above",
+            "question": "What is the color of the bicycle?",
+            "answer": "The color of the bicycle is red."
+        },
+        {
+            "pred_ans": "B. The color of the Apple logo is white.",
+            "question": "What is the color of the Apple logo?",
+            "answer": "The color of the Apple logo is polychromatic."
+        },
+        {
+            "pred_ans": "The image does not provide enough information to determine the color of the handbag.",
+            "question": "What is the color of the handbag?",
+            "answer": "The color of the handbag is yellow."
+        },
+        {
+            "pred_ans": "B. The pose of the woman with yellow backpack is standing.",
+            "question": "What is the pose of the woman with yellow backpack?",
+            "answer": "The pose of the woman with yellow backpack is squatting."
+        },
+        {
+            "pred_ans": "The image does not contain a scooter, so the color cannot be determined.",
+            "question": "What is the color of the scooter?",
+            "answer": "The color of the scooter is orange."
+        },
+        {
+            "pred_ans": "There is no car in the image, so we cannot determine its color.",
+            "question": "What is the color of the car?",
+            "answer": "The color of the car is black."
+        },
+        {
+            "pred_ans": "None of the options are correct.",
+            "question": "What is the color of the cyclist's bag?",
+            "answer": "The color of the cyclist's bag is orange and black."
+        },
+        {
+            "pred_ans": "The image does not contain a tissue box.",
+            "question": "What is the color of the tissue box?",
+            "answer": "The color of the tissue box is blue."
+        },
+        {
+            "pred_ans": "The color of the helmet is not clearly identifiable from the image, but it appears to be dark.",
+            "question": "What is the color of the helmet?",
+            "answer": "The color of the helmet is green."
+        },
+        {
+            "pred_ans": "The question cannot be answered based on the image content.",
+            "question": "What is the color of the guard's glove?",
+            "answer": "The color of the guard's glove is white."
+        },
+        {
+            "pred_ans": "The image does not provide enough information to determine the color of the woman's scarf.",
+            "question": "What is the color of the woman's scarf?",
+            "answer": "The color of the woman's scarf is red."
+        },
+        {
+            "pred_ans": "The image resolution and distance do not allow for a clear identification of the handbag's color.",
+            "question": "What is the color of the handbag?",
+            "answer": "The color of the handbag is white."
+        },
+        {
+            "pred_ans": "To determine the color of the plastic stool, I need to locate it in the image. The stool appears to be near the bottom right corner of the image, on the stone wall next to the water. It's a small object, so it might be difficult to see clearly. Let's use the image_zoom_in_tool to get a closer look at this area.\n\n<image_zoom_in_tool bbox_2d=\"[1980,1146,2135,1278]\">",
+            "question": "What is the color of the plastic stool?",
+            "answer": "The color of the plastic stool is blue."
+        },
+        {
+            "pred_ans": "C. The color of the slippers is black.",
+            "question": "What is the color of the slippers?",
+            "answer": "The color of the slippers is blue."
+        },
+        {
+            "pred_ans": "The question cannot be answered based on the information provided in the image.",
+            "question": "What is the color of the flute?",
+            "answer": "The color of the flute is black."
+        },
+        {
+            "pred_ans": "The question cannot be answered based on the information provided in the image.",
+            "question": "What is the color of the tablecloth?",
+            "answer": "The color of the tablecloth is green."
+        },
+        {
+            "pred_ans": "The question cannot be answered based on the information provided in the image.",
+            "question": "What is the color of the dog?",
+            "answer": "The color of the dog is black and white."
+        },
+        {
+            "pred_ans": "The image does not contain a soda can, so the color cannot be determined.",
+            "question": "What is the color of the soda can?",
+            "answer": "The color of the soda can is green."
+        },
+        {
+            "pred_ans": "The image does not provide information about the color of a toothbrush.",
+            "question": "What is the color of the toothbrush?",
+            "answer": "The color of the toothbrush is red."
+        },
+        {
+            "pred_ans": "B. The color of the straw is white.",
+            "question": "What is the color of the straw?",
+            "answer": "The color of the straw is black."
+        },
+        {
+            "pred_ans": "The image does not contain any motorcycles.",
+            "question": "What is the color of the motorcycle?",
+            "answer": "The color of the motorcycle is black."
+        },
+        {
+            "pred_ans": "Since the image does not provide a clear view of the bus, I cannot determine its color. Therefore, I cannot select the correct option based on the given information.",
+            "question": "Is the color of the bus red or yellow?",
+            "answer": "The color of the bus is red."
+        },
+        {
+            "pred_ans": "There is no information available to determine the color of the mailbox based on this image.",
+            "question": "What is the color of the mailbox?",
+            "answer": "The color of the mailbox is black."
+        },
+        {
+            "pred_ans": "The color of the backpack is red.",
+            "question": "What is the color of the backpack?",
+            "answer": "The color of the backpack is red."
+        },
+        {
+            "pred_ans": "There are no red cars or police cars in the image.",
+            "question": "Is the red car on the left or right side of the police car?",
+            "answer": "The red car is on the left side of the police car."
+        },
+        {
+            "pred_ans": "There is insufficient information in the image to answer the question.",
+            "question": "Is the blue truck on the left or right side of the white vehicle?",
+            "answer": "The blue truck is on the right side of the white vehicle."
+        },
+        {
+            "pred_ans": "B. The baby carriage is on the left side of the cone.",
+            "question": "Is the baby carriage on the left or right side of the cone?",
+            "answer": "The baby carriage is on the right side of the cone."
+        },
+        {
+            "pred_ans": "The question cannot be answered based on the image content.",
+            "question": "Is the suitcase on the left or right side of the river?",
+            "answer": "The suitcase is on the left side of the river."
+        },
+        {
+            "pred_ans": "B. The telephone booth is on the left side of the yellow van.",
+            "question": "Is the telephone booth on the left or right side of the yellow van?",
+            "answer": "The telephone booth is on the right side of the yellow van."
+        },
+        {
+            "pred_ans": "There is no cyclist or scooter in the image.",
+            "question": "Is the scooter on the left or right side of the cyclist?",
+            "answer": "The scooter is on the right side of the cyclist."
+        },
+        {
+            "pred_ans": "It is not possible to determine the exact position of the soccer ball relative to the water dispenser from this image.",
+            "question": "Is the soccer ball on the left or right side of the water dispenser?",
+            "answer": "The soccer ball is on the right side of the water dispenser."
+        },
+        {
+            "pred_ans": "A. The red balloon is above the white balloon.",
+            "question": "Is the red balloon above or below the white balloon?",
+            "answer": "The red balloon is below the white balloon."
+        },
+        {
+            "pred_ans": "B. The bowl is on the left side of the faucet.",
+            "question": "Is the bowl on the left or right side of the faucet?",
+            "answer": "The bowl is on the right side of the faucet."
+        },
+        {
+            "pred_ans": "B. The trash can is on the right side of the black chair.",
+            "question": "Is the trash can on the left or right side of the black chair?",
+            "answer": "The trash can is on the left side of the black chair."
+        },
+        {
+            "pred_ans": "The image does not contain a soccer ball, so the question cannot be answered based on the provided image.",
+            "question": "Is the soccer ball on the left or right side of the long bench?",
+            "answer": "The soccer ball is on the left side of the long bench."
+        },
+        {
+            "pred_ans": "B. The bucket is on the left side of the plunger.",
+            "question": "Is the bucket on the left or right side of the plunger?",
+            "answer": "The bucket is on the right side of the plunger."
+        },
+        {
+            "pred_ans": "B. The motorcycle is on the right side of the street.",
+            "question": "Is the motorcycle on the left or right side of the street?",
+            "answer": "The motorcycle is on the left side of the street."
+        },
+        {
+            "pred_ans": "B. The pillar box is on the left side of the telephone booth.",
+            "question": "Is the pillar box on the left or right side of the telephone booth?",
+            "answer": "The pillar box is on the right side of the telephone booth."
+        },
+        {
+            "pred_ans": "B. The motorcycle is on the right side of the dog.",
+            "question": "Is the motorcycle on the left or right side of the dog?",
+            "answer": "The motorcycle is on the left side of the dog."
+        },
+        {
+            "pred_ans": "It is not possible to determine the relative positions of the cyclist and the baby carriage from this image.",
+            "question": "Is the baby carriage on the left or right side of the cyclist?",
+            "answer": "The baby carriage is on the right side of the cyclist."
+        },
+        {
+            "pred_ans": "B. The yellow car is on the right side of the pool.",
+            "question": "Is the yellow car on the left or right side of the pool?",
+            "answer": "The yellow car is on the left side of the pool."
+        },
+        {
+            "pred_ans": "B. The white truck is on the left side of the red truck.",
+            "question": "Is the white truck on the left or right side of the red truck?",
+            "answer": "The white truck is on the right side of the red truck."
+        },
+        {
+            "pred_ans": "The question cannot be answered based on the image content.",
+            "question": "Is the white chair on the left or right side of the street?",
+            "answer": "The white chair is on the right side of the street."
+        },
+        {
+            "pred_ans": "There is no blue luggage visible in the image, so it cannot be determined whether it is on the left or right side of the bus.",
+            "question": "Is the blue luggage on the left or right side of the bus?",
+            "answer": "The blue luggage is on the right side of the bus."
+        },
+        {
+            "pred_ans": "Since the image does not provide enough detail to determine the position of the steel ladder relative to the wagon, the answer cannot be determined from this image alone.",
+            "question": "Is the steel ladder on the left or right side of the wagon?",
+            "answer": "The steel ladder is on the left side of the wagon."
+        }
+    ]
+}

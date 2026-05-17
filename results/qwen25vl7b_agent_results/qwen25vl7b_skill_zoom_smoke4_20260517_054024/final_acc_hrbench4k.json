@@ -1,0 +1,11 @@
+{
+    "hr_bench_4k": {
+        "single": 1.0,
+        "cross": NaN,
+        "overall": NaN
+    },
+    "error_preds": [],
+    "error_nums": {
+        "hr_bench_4k": 0
+    }
+}
