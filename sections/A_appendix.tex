@@ -28,9 +28,13 @@ Table~\ref{tab:hyperparams} lists all hyperparameter settings.
 
 \begin{table}[h]
 \centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
 \caption{Hyperparameter settings.}
 \label{tab:hyperparams}
-\begin{tabular}{lll}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.28\columnwidth}
+                >{\raggedright\arraybackslash}p{0.16\columnwidth}
+                >{\raggedright\arraybackslash}p{0.44\columnwidth}@{}}
 \toprule
 \textbf{Parameter} & \textbf{Value} & \textbf{Description} \\
 \midrule
@@ -143,7 +147,7 @@ total bar height instead of a stacked segment, or using the wrong table cell.
 \textbf{Generated skill.}
 The evolved skill should describe \emph{when} visual editing is needed before reasoning. A
 typical ReFocus-style skill has the following structure:
-\begin{verbatim}
+\begin{lstlisting}[style=appendixsnippet]
 ## Skill: Edit-Then-Read for Structured Images
 
 When-to-Use:
@@ -163,12 +167,12 @@ Common Pitfalls:
   visually similar.
 - Do not treat the visual edit as adding new information; it only
   exposes the evidence already present in the image.
-\end{verbatim}
+\end{lstlisting}
 
 \textbf{Generated tool.}
 The paired tool is a small image-editing program. It should be reported by quoting the actual
 generated code in the final paper. A representative form is:
-\begin{verbatim}
+\begin{lstlisting}[style=appendixsnippet]
 def mark_relevant_region(image_path, region, mode="highlight"):
     """Return an edited image that highlights or masks
     chart/table evidence."""
@@ -185,7 +189,7 @@ def mark_relevant_region(image_path, region, mode="highlight"):
     out_path = image_path.replace(".png", "_marked.png")
     img.save(out_path)
     return out_path
-\end{verbatim}
+\end{lstlisting}
 
 \textbf{Why this matches ReFocus.}
 Like ReFocus, the capability uses visual editing as an intermediate reasoning step: the model
@@ -217,7 +221,7 @@ fraction of the image.
 
 \textbf{Generated skill.}
 The evolved skill should make the search procedure explicit:
-\begin{verbatim}
+\begin{lstlisting}[style=appendixsnippet]
 ## Skill: Coarse-to-Fine Region Search
 
 When-to-Use:
@@ -235,12 +239,12 @@ Common Pitfalls:
 - Do not answer from the globally downsampled image when the requested
   evidence is small.
 - Do not crop solely by image center; use question-specific cues.
-\end{verbatim}
+\end{lstlisting}
 
 \textbf{Generated tool.}
 The paired tool implements a local search/zoom operation. The final version should quote the
 actual generated code; a representative form is:
-\begin{verbatim}
+\begin{lstlisting}[style=appendixsnippet]
 def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
     """Return candidate high-resolution crops for a
     target described in text."""
@@ -257,7 +261,7 @@ def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
             crop.save(out)
             crops.append((out, box))
     return crops
-\end{verbatim}
+\end{lstlisting}
 
 \textbf{Why this matches ZoomEye.}
 The similarity is the coarse-to-fine visual search motif. Both methods avoid forcing the VLM to
@@ -287,7 +291,7 @@ the target segment.
 
 \textbf{Generated skill.}
 The generated skill should be quoted directly if available. A representative interleaved form is:
-\begin{verbatim}
+\begin{lstlisting}[style=appendixsnippet]
 ## Skill: Stacked-Bar Segment Reading with Visual Anchor
 
 When-to-Use:
@@ -307,12 +311,12 @@ Visual Anchor:
 Common Pitfalls:
 - Do not read the total bar height when the question asks for one segment.
 - Do not use a nearby segment with a visually similar colour.
-\end{verbatim}
+\end{lstlisting}
 
 \textbf{Optional generated tool.}
 In this case, the paired tool may be simple: it produces the crop or annotation that is embedded
 in the skill.
-\begin{verbatim}
+\begin{lstlisting}[style=appendixsnippet]
 def make_visual_anchor(image_path, crop_box, annotations):
     """Create an annotated crop used as the visual anchor in a skill."""
     from PIL import Image, ImageDraw
@@ -327,7 +331,7 @@ def make_visual_anchor(image_path, crop_box, annotations):
     out_path = image_path.replace(".png", "_visual_anchor.png")
     crop.save(out_path)
     return out_path
-\end{verbatim}
+\end{lstlisting}
 
 \textbf{Why this is interleaved.}
 The retrieved capability is not purely textual and not purely executable. The skill tells the
@@ -382,4 +386,3 @@ The experiments use publicly available benchmark datasets and the VLM backbones 
 Section~\ref{sec:setup}.
 Evolved capability sets (\texttt{*.skill.md} and \texttt{*.tool.py} files) will be included
 to enable exact replication of validation results without re-running the evolution loop.
-

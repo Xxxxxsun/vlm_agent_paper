@@ -10,8 +10,8 @@
 \PassOptionsToPackage{table}{xcolor}
 
 % ---- layout: uncomment ONE of these two lines ----
-\documentclass[10pt, a4paper, logo]{googledeepmind}
-% \documentclass[10pt, a4paper, twocolumn, logo]{googledeepmind}
+% \documentclass[10pt, a4paper, logo]{googledeepmind}
+\documentclass[10pt, a4paper, twocolumn, logo]{googledeepmind}
 % --------------------------------------------------
 
 \usepackage{times}
@@ -26,6 +26,7 @@
 
 % Standard packages
 \usepackage{url}
+\usepackage{xurl}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{subcaption}
@@ -44,6 +45,7 @@
 \usepackage{stfloats}
 \usepackage{float}
 \usepackage{verbatim}
+\usepackage{listings}
 \usepackage[ruled, linesnumbered, lined]{algorithm2e}
 \usepackage{multirow}
 \usepackage{enumitem}
@@ -59,6 +61,15 @@
 \definecolor{SecondBestColor}{HTML}{FFF9C4}
 \definecolor{impcolor}{HTML}{2E8B57}
 \definecolor{mygray}{gray}{0.9}
+
+\lstdefinestyle{appendixsnippet}{
+  basicstyle=\ttfamily\scriptsize,
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false
+}
 
 % ---- Table helpers ----
 \newcommand{\best}[1]{\cellcolor{BestColor}\textbf{#1}}
