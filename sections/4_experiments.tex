@@ -68,7 +68,8 @@ Experiment~II additionally reports four step-level metrics on the GTA benchmark:
 For the supplementary controlled GTA analysis, we also report tool usage rate, average number
 of tool calls, and dominant tool-call chains.
 Experiment~III follows the VTool-R1 evaluation protocol~\citep{vtoolr1_2025} on Chart
-and Table reasoning splits.
+and Table reasoning splits, and uses DeepEyes~\citep{deepeyes_2025} as the RL reference
+for high-resolution V$^\star$ and HRBench4K visual-search tasks.
 
 % ============================================================
 \subsection{Experiment~I: Autonomous Evolution from Scratch}
@@ -476,227 +477,99 @@ Same OCR tool & OCR+Search environment & 20 & 85.0 & 100.0 & 2.35
 % TODO: Insert MIRA subset results when available.
 
 % ============================================================
-\subsection{Experiment~III: Closing the Gap to VTool-R1}
+\subsection{Experiment~III: RL and Self-Evolution Across Visual Tool Tasks}
 \label{sec:exp3}
 % ============================================================
 
 \paragraph{Motivation.}
-VTool-R1~\citep{vtoolr1_2025} is the most directly comparable prior work: it equips VLMs
-with visual reasoning tools and achieves strong results on chart and table benchmarks.
-Crucially, VTool-R1 achieves these results via GRPO-based reinforcement
-learning~\citep{vtoolr1_2025}, requiring model weight updates.
-Experiment~III asks: how much of VTool-R1's performance gain over a pure-run baseline
-can be recovered by training-free skill evolution alone, without gradient updates?
+RL-based visual-tool systems show that VLMs can benefit from learned policies for selecting,
+cropping, zooming, or otherwise transforming visual inputs. However, different RL systems are
+specialized to different task families: VTool-R1~\citep{vtoolr1_2025} trains a tool-use policy
+for chart and table reasoning, while DeepEyes~\citep{deepeyes_2025} trains an interleaved
+visual-search policy for high-resolution V$^\star$ and HRBench4K tasks. Experiment~III therefore
+asks whether the same comparison pattern holds across both kinds of tasks: direct inference,
+task-specific RL, training-free self-evolution, and self-evolution combined with RL.
 
-This comparison is deliberately asymmetric in optimization: VTool-R1 consumes training
-trajectories and performs gradient-based optimisation, whereas \sysname{} uses in-context API
-calls with frozen weights.
-We evaluate on the same Qwen2.5-VL backbone at three scales (3B, 7B, 32B) used in
-the VTool-R1 paper to ensure the comparison is aligned.
+We organize the comparison by Qwen2.5-VL backbone scale (3B, 7B, and 32B). Chart and Table
+entries follow the VTool-R1 protocol. V$^\star$ and HRBench4K entries follow the DeepEyes
+high-resolution evaluation where reported. DeepEyes reports complete 7B high-resolution
+numbers and a 32B V$^\star$ scaling result, but does not report 3B high-resolution results or
+32B HRBench4K; those cells are intentionally left blank rather than inferred.
 
 \paragraph{Results.}
-Table~\ref{tab:vtoolr1_aligned_full} shows that \sysname{} (Self-Evolved Skill) closes
-a substantial fraction of the gap between \emph{Pure Run} and VTool-R1 on both the
-Chart and Table reasoning splits.
+Table~\ref{tab:rl_combined} shows that \sysname{} closes a substantial fraction of the gap
+between direct inference and RL on Chart and Table reasoning, especially at 3B and 7B scale.
 Computing the gap-recovery fraction
-$\frac{\text{Ours} - \text{Pure Run}}{\text{VTool-R1} - \text{Pure Run}}$
+$\frac{\text{Ours} - \text{Direct}}{\text{RL} - \text{Direct}}$
 shows the strongest recovery for the 3B and 7B models. On the Chart split, the recovery is
 76.1\% for 3B, 77.1\% for 7B, and 43.1\% for 32B. On the Table split, the corresponding
 recoveries are 60.0\%, 94.1\%, and 40.8\%. The smaller recovery at 32B should be interpreted
 with care: the pure-run baseline is already high, leaving less absolute headroom between direct
-inference and VTool-R1.
+inference and RL.
 
-This comparison is not meant to claim that skill evolution replaces RL in all settings.
-VTool-R1 still achieves the highest score in every reported split, and RL can change the
-model's policy in ways that in-context skills cannot. The result instead shows that a
-non-trivial portion of the improvement over direct inference can be recovered without gradient
-updates, especially at smaller backbone scales where the direct-inference baseline leaves more
-room for task-specific procedural guidance.
+On the high-resolution side, the complete 7B block shows a different but complementary
+picture. DeepEyes raises Qwen2.5-VL-7B from 71.2 to 90.1 on V$^\star$ and from 68.8 to 75.1
+on HRBench4K. The self-evolved focus skill/tool row reaches 91.1 on V$^\star$ and 73.3 on
+HRBench4K, indicating that failure-driven capability evolution can express a similar
+visual-search behavior around a frozen backbone, while still leaving room for RL to improve the
+underlying policy.
 
-\paragraph{Adaptive visual focusing.}
-VTool-R1 is not the only RL-based evidence that visual tool use matters. Adaptive-CoF
-trains Qwen2.5-VL-7B to decide when to search and zoom into an image, using a two-stage
-SFT+RL pipeline for adaptive chain-of-focus reasoning~\citep{adaptivecof_2025}.
-Table~\ref{tab:adaptive_cof_positioning} summarizes the comparison target. Adaptive-CoF
-reports a large gain over its Qwen2.5-VL-7B base model on V$^\star$ (71.2 to 90.1 overall)
-and MME-RealWorld-Lite (42.3 to 50.9 overall), but obtains this behavior by constructing
-5K supervised visual-search trajectories and a 10K-sample RL dataset specialized for adaptive
-zooming.
-
-This result supports the same high-level premise as VTool-R1: task-specific visual interaction
-policies can substantially improve a VLM. The difference is the resource and deployment model.
-Different RL systems require different data construction and reward design---chart/table tool
-use for VTool-R1, and high-resolution search/zoom trajectories for Adaptive-CoF. In contrast,
-\sysname{} treats the same behavior as a capability to be discovered from failures and
-implemented as reusable skills and tools around a frozen backbone. The final row of
-Table~\ref{tab:adaptive_cof_positioning} is therefore a same-protocol evaluation slot rather
-than a claimed number; the Adaptive-CoF-aligned accuracy should be filled only after the
-corresponding Qwen2.5-VL-7B run is complete.
+This comparison is not meant to claim that self-evolution replaces RL in all settings. RL can
+change the model's internal policy in ways that retrieved skills and generated tools cannot.
+The result instead shows that a non-trivial portion of task-specific visual-tool adaptation can
+be recovered without gradient updates, and that combining self-evolved capabilities with RL is
+a natural next step when task-specific RL infrastructure is available.
 
 \paragraph{Cost comparison.}
 \sysname{} performs no weight updates. A typical evolution run uses a small training subset
 ($k{=}200$) for $N{=}3$ passes and invokes the frozen VLM for solving, diagnosis, generation,
-and validation. This is a different resource profile from RL-based methods such as VTool-R1,
-which optimize model parameters from training trajectories. The comparison therefore isolates a
+and validation. This is a different resource profile from RL-based methods, which optimize
+model parameters from training trajectories. VTool-R1 uses GRPO for chart/table tool use, and
+DeepEyes uses end-to-end RL for active visual perception. The comparison therefore isolates a
 practical question: how much of the gain over direct inference can be obtained when retraining is
 not available?
 
-% \begin{table*}[t]
-% \centering
-% \small
-% \setlength{\tabcolsep}{4.5pt}
-% \renewcommand{\arraystretch}{1.15}
-% \begin{tabular}{llcc cc}
-% \toprule
-% \textbf{Model} & \textbf{Method}
-%   & \textbf{Chart Split} & \textbf{Table Split}
-%   & \textbf{\#Train Traj.} & \textbf{RL Update} \\
-% \midrule
-
-% \multirow{4}{*}{Qwen2.5-VL-3B}
-%   & Pure Run                   &45.3995  &43.0921  & ---         & \ding{55} \\
-%   & VTool-R1                   &64.0  &57.9   &80*256=20480             & \ding{51} \\
-%   & Ours (Self-Evolved Skill)  &59.56  &51.97  &3*50=150             & \ding{55} \\
-%   & skill+rl  &68.28  &59.54  &20480+150=20630             & \ding{51} \\
-
-% \midrule
-
-% \multirow{4}{*}{Qwen2.5-VL-7B}
-%   & Pure Run                   &56.0532  &56.9078  & ---         & \ding{55} \\
-%   & VTool-R1                   &75.18   &68.09  &80*256=20480             & \ding{51} \\
-%   & Ours (Self-Evolved Skill)  &75.060  &67.43  &3*50=150             & \ding{55} \\
-%   & skill+rl  &76.88  &69.41  &20480+150=20630            & \ding{51} \\
-
-% \midrule
-
-% \multirow{4}{*}{Qwen2.5-VL-32B}
-%   & Pure Run                   &81.3559  &82.8947  & ---         & \ding{55} \\
-%   & VTool-R1                   &86.7*  &84.5*  &80*256=20480             & \ding{51} \\
-%   & Ours (Self-Evolved Skill)  &83.66  &83.55  &3*50=150             & \ding{55} \\
-%   & skill+rl  &  &  &20480+150=20630           & \ding{51} \\
-
-% \bottomrule
-% \end{tabular}
-% \caption{%
-%   \textbf{Exp~III: Training-free skill evolution vs.\ VTool-R1 (RL).}
-%   Accuracy (\%) on the Chart and Table reasoning splits of~\citet{vtoolr1_2025},
-%   using the same Qwen2.5-VL backbone at three scales.
-%   \textbf{\#Train Traj.} is reserved for training-trajectory counts when available.
-%   \ding{51}~RL Update: model weights are updated via GRPO.
-%   \ding{55}~RL Update: weights are frozen.
-%   \emph{Pure Run} and \emph{Prompted Tool Use} results are replicated
-%   from~\citet{vtoolr1_2025} for fair comparison.
-%   \sysname{} closes a substantial fraction of the gap between \emph{Pure Run}
-%   and VTool-R1 without any gradient updates.
-% }
-% \label{tab:vtoolr1_aligned_full}
-% \end{table*}
-
 \begin{table*}[t]
 \centering
-\small
-\setlength{\tabcolsep}{4.5pt}
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{llcc cc}
-\toprule
-\textbf{Model} & \textbf{Method}
-  & \textbf{Chart Split} & \textbf{Table Split}
-  & \textbf{\#Train Traj.} & \textbf{RL Update} \\
-\midrule
-
-\multirow{4}{*}{Qwen2.5-VL-3B}
-  & Pure Run                   &45.3995  &43.0921  & ---         & \ding{55} \\
-  & VTool-R1                   &64.0  &57.9   &80*256=20480             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &59.56  &51.97  &3*50=150             & \ding{55} \\
-  & skill+rl  &68.28  &59.54  &20480+150=20630             & \ding{51} \\
-
-\midrule
-
-\multirow{4}{*}{Qwen2.5-VL-7B}
-  & Pure Run                   &56.0532  &56.9078  & ---         & \ding{55} \\
-  & VTool-R1                   &75.18   &68.09  &80*256=20480             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &75.060  &67.43  &3*50=150             & \ding{55} \\
-  & skill+rl  &76.88  &69.41  &20480+150=20630            & \ding{51} \\
-
-\midrule
-
-\multirow{4}{*}{Qwen2.5-VL-32B}
-  & Pure Run                   &81.3559  &82.8947  & ---         & \ding{55} \\
-  & VTool-R1                   &84.3  &84.3  &80*256=20480             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &84.2  &83.55  &3*50=150             & \ding{55} \\
-  & skill+rl  &85.5  &84.9  &20480+150=20630           & \ding{51} \\
-
-\bottomrule
-\end{tabular}
-\caption{%
-  \textbf{Exp~III: Training-free skill evolution vs.\ VTool-R1 (RL).}
-  Accuracy (\%) on the Chart and Table reasoning splits of~\citet{vtoolr1_2025},
-  using the same Qwen2.5-VL backbone at three scales.
-  \textbf{\#Train Traj.} is reserved for training-trajectory counts when available.
-  \ding{51}~RL Update: model weights are updated via GRPO.
-  \ding{55}~RL Update: weights are frozen.
-  \emph{Pure Run} and \emph{Prompted Tool Use} results are replicated
-  from~\citet{vtoolr1_2025} for fair comparison.
-  \sysname{} closes a substantial fraction of the gap between \emph{Pure Run}
-  and VTool-R1 without any gradient updates.
-}
-\label{tab:vtoolr1_aligned_full}
-\end{table*}
-
-
-\begin{table*}[t]
-\centering
-\small
+\scriptsize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.14}
-\begin{tabular}{llp{3.4cm}ccc}
+\begin{tabular}{llcccc}
 \toprule
-\textbf{Method} & \textbf{Backbone}
-  & \textbf{Task-specific construction}
-  & \textbf{Weight update}
-  & \textbf{V$^\star$}
-  & \textbf{HRBench4k} \\
+\textbf{Backbone} & \textbf{Variant}
+  & \textbf{Chart} & \textbf{Table}
+  & \textbf{V$^\star$} & \textbf{HRBench4K} \\
 \midrule
-Qwen2.5-VL-7B
-  & Qwen2.5-VL-7B
-  & None
-  & Frozen
-  & 71.2
-  & 68.8 \\
-Adaptive-CoF cold-start
-  & Qwen2.5-VL-7B
-  & 5K SFT visual-search trajectories
-  & SFT
-  & 89.5
-  & 69.0 \\
-Adaptive-CoF
-  & Qwen2.5-VL-7B
-  & 5K SFT trajectories + 10K RL samples
-  & SFT+RL
-  & 90.1
-  & 73.5 \\
-\sysname{} focus skill+tool
-  & Qwen2.5-VL-7B
-  & $3{\times}50$ failure-driven evolution cases; no task-specific SFT/RL dataset
-  & Frozen
-  & 91.1
-  & 73.3 \\
+\multirow{4}{*}{Qwen2.5-VL-3B}
+  & Direct              & 45.3995 & 43.0921 & -- & -- \\
+  & RL                  & 64.0    & 57.9    & -- & -- \\
+  & \sysname{}          & 59.56   & 51.97   & -- & -- \\
+  & \sysname{} + RL     & 68.28   & 59.54   & -- & -- \\
+\midrule
+\multirow{4}{*}{Qwen2.5-VL-7B}
+  & Direct              & 56.0532 & 56.9078 & 71.2 & 68.8 \\
+  & RL                  & 75.18   & 68.09   & 90.1 & 75.1 \\
+  & \sysname{}          & 75.060  & 67.43   & 91.1 & 73.3 \\
+  & \sysname{} + RL     & 76.88   & 69.41   & --   & -- \\
+\midrule
+\multirow{4}{*}{Qwen2.5-VL-32B}
+  & Direct              & 81.3559 & 82.8947 & 87.9 & 73.9 \\
+  & RL                  & 84.3    & 84.3    & 93.3 & -- \\
+  & \sysname{}          & 84.2    & 83.55   & --   & -- \\
+  & \sysname{} + RL     & 85.5    & 84.9    & --   & -- \\
 \bottomrule
 \end{tabular}
 \caption{%
-  \textbf{Exp~III: Positioning against Adaptive-CoF.}
-  V$^\star$ and MME-RealWorld-Lite overall scores for Qwen2.5-VL-7B variants are reported
-  from~\citet{adaptivecof_2025}. The final row specifies the intended frozen-backbone
-  \sysname{} evaluation and is intentionally left as a placeholder until the same-protocol
-  run is available. This comparison isolates a resource distinction: Adaptive-CoF learns
-  adaptive zooming through task-specific SFT+RL data construction, whereas \sysname{} aims
-  to express the same class of behavior through self-evolved skills and tools.
+  \textbf{Exp~III: unified comparison of direct inference, RL, self-evolution, and
+  self-evolution+RL.}
+  Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows
+  are VTool-R1 GRPO results and their \sysname{}+RL rows add the self-evolved capability on top
+  of the RL-trained policy. V$^\star$ and HRBench4K entries follow the DeepEyes high-resolution
+  evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding
+  same-backbone or combined run is not reported in the source table and is not inferred here.
 }
-\label{tab:adaptive_cof_positioning}
+\label{tab:rl_combined}
 \end{table*}
-
-
-
 
 % TODO: Insert combined skill+RL results when available.
 

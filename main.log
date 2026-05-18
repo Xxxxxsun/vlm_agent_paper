@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  18 MAY 2026 13:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  18 MAY 2026 13:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2189,12 +2189,11 @@ LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
 (./sections/1_introduction.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<figures/motivation_placeholder.pdf, id=154, 1355.0625pt x 572.1375pt>
-File: figures/motivation_placeholder.pdf Graphic file (type pdf)
-<use figures/motivation_placeholder.pdf>
-Package pdftex.def Info: figures/motivation_placeholder.pdf  used on input line
- 24.
-(pdftex.def)             Requested size: 228.65797pt x 96.53748pt.
+<figures/Picture2.pdf, id=154, 269.005pt x 316.18124pt>
+File: figures/Picture2.pdf Graphic file (type pdf)
+<use figures/Picture2.pdf>
+Package pdftex.def Info: figures/Picture2.pdf  used on input line 24.
+(pdftex.def)             Requested size: 228.65797pt x 268.76015pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -2209,6 +2208,9 @@ LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
 
 
  <./figures/QABG5.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 74--77
 []\T1/XCharter-TLF/m/n/10 (+20) We in-tro-duce an op-er-a-tional \T1/XCharter-T
 LF/b/n/10 (+20) cognitive--
@@ -2226,9 +2228,9 @@ Underfull \hbox (badness 1939) in paragraph at lines 82--85
 -
  []
 
-) (./sections/2_related_work.tex [2 <./figures/motivation_placeholder.pdf>])
+) (./sections/2_related_work.tex [2 <./figures/Picture2.pdf>])
 (./sections/3_method.tex
-<figures/method.pdf, id=280, 753.81625pt x 409.53pt>
+<figures/method.pdf, id=285, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
@@ -2272,6 +2274,8 @@ XCharter-TLF/m/n/10 (+20) .
  []
 
 [3]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/b/n' will be
 (Font)              scaled to size 7.0pt on input line 88.
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/it' will be
@@ -2290,13 +2294,7 @@ Package microtype Info: Character `textbardbl ' is missing
 Package microtype Info: Character `textcelsius ' is missing
 (microtype)             in font `TS1/XCharter-TLF/m/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4 <./figures/method.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5]
+ [4 <./figures/method.pdf>] [5]
 Underfull \hbox (badness 10000) in paragraph at lines 207--207
 |[]\T1/XCharter-TLF/b/n/10 (+20) Tool Mas-tery from Ex-ter-nal Tool Sets
  []
@@ -2308,58 +2306,38 @@ Underfull \hbox (badness 1117) in paragraph at lines 31--41
  []
 
 [6]
-Underfull \hbox (badness 4454) in paragraph at lines 101--110
+Underfull \hbox (badness 4454) in paragraph at lines 102--111
 [] []\T1/XCharter-TLF/b/n/10 (+20) Mul-ti---model com-par-i-son.[] \T1/XCharter
 -TLF/m/n/10 (+20) Ta-ble [][]1[][] re-ports the
  []
 
+[7]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 316.
-[7] [8]
+(Font)              scaled to size 9.0pt on input line 317.
+ [8]
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 446.
+(Font)              scaled to size 7.0pt on input line 447.
 
-Underfull \hbox (badness 2735) in paragraph at lines 458--459
+Underfull \hbox (badness 2735) in paragraph at lines 459--460
 []|\T1/pcr/m/n/7 VisualArithmeticSolver \T1/XCharter-TLF/m/n/7 (+20) in 30/30
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 463--464
+Underfull \hbox (badness 10000) in paragraph at lines 464--465
 []|\T1/pcr/m/n/7 OCR -> Search -> OCR -> Search
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \hbox (badness 1484) in paragraph at lines 498--508
-[] []\T1/XCharter-TLF/b/n/10 (+20) Re-sults.[] \T1/XCharter-TLF/m/n/10 (+20) Ta
--ble [][]5[][] shows that \T1/XCharter-TLF/m/sc/10/100ls (+20) EvoA-gent \T1/XC
-harter-TLF/m/n/10 (+20) (Self-
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [9]
-Underfull \hbox (badness 1852) in paragraph at lines 517--525
-[] []\T1/XCharter-TLF/b/n/10 (+20) Adap-tive vi-sual fo-cus-ing.[] \T1/XCharter
--TLF/m/n/10 (+20) VTool-R1 is not the
- []
-
-
-Underfull \hbox (badness 2073) in paragraph at lines 655--656
-[]|\T1/XCharter-TLF/b/n/9 (+20) Task-specific con-struc-
- []
-
 LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/sc' will be
-(Font)              scaled to size 9.0pt on input line 678.
+(Font)              scaled to size 7.0pt on input line 546.
 
-Underfull \hbox (badness 4013) in paragraph at lines 680--681
-\T1/XCharter-TLF/m/n/9 (+20) lu-tion cases; no task-
- []
-
-) (./sections/5_discussion.tex [10]) (./sections/6_conclusion.tex [11])
+[10]
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/sc' will be
+(Font)              scaled to size 9.0pt on input line 605.
+) (./sections/5_discussion.tex) [11] (./sections/6_conclusion.tex)
 (./main.bbl [12]
 Underfull \hbox (badness 2027) in paragraph at lines 127--133
 []\T1/XCharter-TLF/m/n/10 (+20) Haozhan Shen, Kangjia Zhao, Tiancheng Zhao,
@@ -2371,9 +2349,7 @@ Underfull \hbox (badness 2189) in paragraph at lines 147--154
 
  []
 
-[13]) [14
-
-] (./sections/A_appendix.tex
+) [13] (./sections/A_appendix.tex
 Underfull \hbox (badness 10000) in paragraph at lines 100--101
 []|\T1/XCharter-TLF/m/n/9 (+20) Case A: Structured-
  []
@@ -2423,24 +2399,24 @@ Underfull \hbox (badness 1688) in paragraph at lines 117--119
 \T1/XCharter-TLF/m/n/9 (+20) worked ex-am-ple or linked
  []
 
-[15
+[14
 
-] [16] [17]) 
+] [15] [16]) 
 AED: lastpage setting LastPage
-[18] (./main.aux)
+[17] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 28D80BF680306EAB31650AB64AA96BEA;5388.
+(rerunfilecheck)             Checksum: C065301843B2E0E53580D02D5A8C2DF4;5489.
  ) 
 Here is how much of TeX's memory you used:
- 42754 strings out of 478994
- 809206 string characters out of 5858184
- 1437740 words of memory out of 5000000
- 58319 multiletter control sequences out of 15000+600000
- 766028 words of font info for 632 fonts, out of 8000000 for 9000
+ 42772 strings out of 478994
+ 809725 string characters out of 5858184
+ 1436097 words of memory out of 5000000
+ 58323 multiletter control sequences out of 15000+600000
+ 780974 words of font info for 641 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,26n,131p,1038b,2362s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/xcharter/xch_fpvofg.enc}{
@@ -2458,12 +2434,11 @@ texmf-dist/fonts/type1/public/xcharter/XCharter-Roman.pfb></usr/local/texlive/2
 ve/2021/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2021
 /texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2021/texmf-d
 ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/font
-s/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
-/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (18 pages, 4353375 bytes).
+s/type1/urw/courier/ucrro8a.pfb>
+Output written on main.pdf (17 pages, 4944982 bytes).
 PDF statistics:
- 841 PDF objects out of 1000 (max. 8388607)
- 654 compressed objects within 7 object streams
- 219 named destinations out of 1000 (max. 500000)
- 155536 words of extra memory for PDF output out of 184870 (max. 10000000)
+ 838 PDF objects out of 1000 (max. 8388607)
+ 622 compressed objects within 7 object streams
+ 218 named destinations out of 1000 (max. 500000)
+ 161680 words of extra memory for PDF output out of 184870 (max. 10000000)
 

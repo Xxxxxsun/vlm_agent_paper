@@ -27,9 +27,6 @@
 \citation{zhao2023expel}
 \citation{chen2024automanual}
 \citation{evolver_2025}
-\citation{tang2023creator}
-\citation{cai2024latm}
-\citation{qin2024toolllm}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  \textbf  {Motivation for skill-tool evolution.} Failed VLM attempts can provide supervision for training-free adaptation. Some failures are better addressed by reusable reasoning skills, while others require executable visual tools that change what the model can inspect. Existing adaptation methods either rely on retraining, manual prompting, or text-only reflection. \textsc  {EvoAgent}{} instead diagnoses failures visually and evolves the capability type that matches the bottleneck. \relax }}{2}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:motivation}{{1}{2}{\textbf {Motivation for skill-tool evolution.} Failed VLM attempts can provide supervision for training-free adaptation. Some failures are better addressed by reusable reasoning skills, while others require executable visual tools that change what the model can inspect. Existing adaptation methods either rely on retraining, manual prompting, or text-only reflection. \sysname {} instead diagnoses failures visually and evolves the capability type that matches the bottleneck. \relax }{figure.caption.1}{}}
@@ -38,8 +35,11 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
 \newlabel{sec:related_work}{{2}{2}{Related Work}{section.2}{}}
 \@writefile{toc}{\contentsline {paragraph}{Self-improving agents.}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Tool creation for language models.}{2}{section.2}\protected@file@percent }
+\citation{tang2023creator}
+\citation{cai2024latm}
+\citation{qin2024toolllm}
 \citation{vtoolr1_2025}
+\citation{deepeyes_2025}
 \citation{adaptivecof_2025}
 \citation{pixelreasoner_2025}
 \citation{vthinker_2025}
@@ -48,6 +48,7 @@
 \citation{gupta2023visprog}
 \citation{suris2023vipergpt}
 \citation{lu2024chameleon}
+\@writefile{toc}{\contentsline {paragraph}{Tool creation for language models.}{3}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{``Think with images'': visual reasoning via tools.}{3}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Tool-augmented VLMs with predefined tool sets.}{3}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Method}{3}{section.3}\protected@file@percent }
@@ -60,7 +61,6 @@
 \newlabel{fig:method}{{2}{4}{\textbf {\sysname {} evolution loop.} On each failed attempt, the AnalyzerDecider inspects the original image, intermediate tool outputs, and reasoning trace, then decides whether to generate a reasoning skill, an executable visual tool, or both. Validated capabilities are promoted into the library and reused on later cases. \relax }{figure.caption.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Visual Failure Diagnosis}{4}{subsection.3.3}\protected@file@percent }
 \newlabel{sec:method_diagnosis}{{3.3}{4}{Visual Failure Diagnosis}{subsection.3.3}{}}
-\citation{tang2023creator,cai2024latm}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces \textsc  {EvoAgent}{} Evolution Loop\relax }}{5}{algocf.1}\protected@file@percent }
 \newlabel{alg:main}{{1}{5}{Evolution Loop}{algocf.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Skill Evolution}{5}{subsection.3.4}\protected@file@percent }
@@ -68,11 +68,13 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Tool Evolution and Progressive Mastery}{5}{subsection.3.5}\protected@file@percent }
 \newlabel{sec:method_tool}{{3.5}{5}{Tool Evolution and Progressive Mastery}{subsection.3.5}{}}
 \newlabel{sec:method_mastery}{{3.5}{5}{Tool Evolution and Progressive Mastery}{subsection.3.5}{}}
+\citation{tang2023creator,cai2024latm}
 \citation{masry2022chartqa}
 \citation{lu2023mathvista}
 \citation{chen2024hrbench}
 \citation{wu2024vstar}
 \citation{vtoolr1_2025}
+\citation{deepeyes_2025}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Tool Mastery from External Tool Sets (\textsc  {EvoAgent}{} Mode B)}{6}{subsection.3.6}\protected@file@percent }
 \newlabel{sec:method_mastery_ext}{{3.6}{6}{Tool Mastery from External Tool Sets (\sysname {} Mode B)}{subsection.3.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{6}{section.4}\protected@file@percent }
@@ -84,53 +86,48 @@
 \@writefile{toc}{\contentsline {paragraph}{Evolution protocol.}{6}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Baselines.}{6}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Evaluation metrics.}{6}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experiment~I: Autonomous Evolution from Scratch}{6}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:exp1}{{4.2}{6}{Experiment~I: Autonomous Evolution from Scratch}{subsection.4.2}{}}
-\@writefile{toc}{\contentsline {paragraph}{Motivation.}{6}{subsection.4.2}\protected@file@percent }
 \citation{refocus_2025}
 \citation{zoomeye_2024}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experiment~I: Autonomous Evolution from Scratch}{7}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:exp1}{{4.2}{7}{Experiment~I: Autonomous Evolution from Scratch}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Motivation.}{7}{subsection.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Qualitative inspection of evolved capabilities.}{7}{subsection.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Multi-model comparison.}{7}{subsection.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Distribution-shift adaptation.}{7}{table.caption.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Experiment~II: Learning to Use Pre-Provided Tools}{7}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:exp2}{{4.3}{7}{Experiment~II: Learning to Use Pre-Provided Tools}{subsection.4.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Motivation.}{7}{subsection.4.3}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textbf  {Exp~I: Autonomous evolution from scratch.} Accuracy for each evolution strategy across six foundation-model blocks and four benchmarks, all starting from an empty capability set. \emph  {None} is the zero-shot VLM baseline. \emph  {Skill Only} / \emph  {Tool Only} ablate one capability type. \emph  {Skill~$+$~Tool} is the full \textsc  {EvoAgent}{} system. Blank cells indicate runs whose results have not yet been inserted. \relax }}{8}{table.caption.4}\protected@file@percent }
 \newlabel{tab:evolution_full}{{1}{8}{\textbf {Exp~I: Autonomous evolution from scratch.} Accuracy for each evolution strategy across six foundation-model blocks and four benchmarks, all starting from an empty capability set. \emph {None} is the zero-shot VLM baseline. \emph {Skill Only} / \emph {Tool Only} ablate one capability type. \emph {Skill~$+$~Tool} is the full \sysname {} system. Blank cells indicate runs whose results have not yet been inserted. \relax }{table.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Experiment~II: Learning to Use Pre-Provided Tools}{8}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:exp2}{{4.3}{8}{Experiment~II: Learning to Use Pre-Provided Tools}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Motivation.}{8}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Results on GTA.}{8}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Controlled tool-policy analysis.}{8}{table.caption.6}\protected@file@percent }
 \citation{vtoolr1_2025}
-\citation{vtoolr1_2025}
+\citation{deepeyes_2025}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {Exp~I: Distribution-shift adaptation in a non-stationary stream.} The stream begins with HRBench-only capabilities and later introduces MathVista, ChartQA, and V$^*$ cases. \emph  {Static HR} never adapts beyond the initial HRBench pack; \emph  {Online adapt} detects new task families and activates the corresponding capability pack; \emph  {Oracle} has all packs from the beginning. Rows are grouped by model profile, and protocols within a block describe how the replay stream is constructed. Standard deviations are temporary layout placeholders and must be replaced with seed-based estimates before submission. \relax }}{9}{table.caption.5}\protected@file@percent }
 \newlabel{tab:distribution_shift}{{2}{9}{\textbf {Exp~I: Distribution-shift adaptation in a non-stationary stream.} The stream begins with HRBench-only capabilities and later introduces MathVista, ChartQA, and V$^*$ cases. \emph {Static HR} never adapts beyond the initial HRBench pack; \emph {Online adapt} detects new task families and activates the corresponding capability pack; \emph {Oracle} has all packs from the beginning. Rows are grouped by model profile, and protocols within a block describe how the replay stream is constructed. Standard deviations are temporary layout placeholders and must be replaced with seed-based estimates before submission. \relax }{table.caption.5}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {Exp~II: Learning to use pre-provided tools on GTA.} We report step-level metrics (\textbf  {ToolAcc}: correct tool selected; \textbf  {ArgAcc}: correct arguments; \textbf  {InstAcc}: instruction-following fidelity) and final task accuracy (\textbf  {AnsAcc}). \emph  {Skill Evolution (Ours)} applies \textsc  {EvoAgent}{} Mode~B, which learns per-tool mastery SOPs from the training set without generating new tools. \relax }}{9}{table.caption.6}\protected@file@percent }
 \newlabel{tab:gta_detailed}{{3}{9}{\textbf {Exp~II: Learning to use pre-provided tools on GTA.} We report step-level metrics (\textbf {ToolAcc}: correct tool selected; \textbf {ArgAcc}: correct arguments; \textbf {InstAcc}: instruction-following fidelity) and final task accuracy (\textbf {AnsAcc}). \emph {Skill Evolution (Ours)} applies \sysname {} Mode~B, which learns per-tool mastery SOPs from the training set without generating new tools. \relax }{table.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Experiment~III: Closing the Gap to VTool-R1}{9}{subsection.4.4}\protected@file@percent }
-\newlabel{sec:exp3}{{4.4}{9}{Experiment~III: Closing the Gap to VTool-R1}{subsection.4.4}{}}
-\@writefile{toc}{\contentsline {paragraph}{Motivation.}{9}{subsection.4.4}\protected@file@percent }
-\citation{adaptivecof_2025}
-\citation{vtoolr1_2025}
-\citation{vtoolr1_2025}
-\citation{adaptivecof_2025}
+\@writefile{toc}{\contentsline {paragraph}{Controlled tool-policy analysis.}{9}{table.caption.6}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textbf  {Supplementary controlled GTA analysis for Exp~II.} Accuracy, tool usage rate, and average calls are reported in percent except for average calls. The first block fixes the task environment and changes tool strength; the second fixes the shared \texttt  {OCR} tool and changes the downstream environment. \relax }}{10}{table.caption.7}\protected@file@percent }
 \newlabel{tab:gta_controlled}{{4}{10}{\textbf {Supplementary controlled GTA analysis for Exp~II.} Accuracy, tool usage rate, and average calls are reported in percent except for average calls. The first block fixes the task environment and changes tool strength; the second fixes the shared \texttt {OCR} tool and changes the downstream environment. \relax }{table.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Experiment~III: RL and Self-Evolution Across Visual Tool Tasks}{10}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:exp3}{{4.4}{10}{Experiment~III: RL and Self-Evolution Across Visual Tool Tasks}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Motivation.}{10}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Results.}{10}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Adaptive visual focusing.}{10}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Cost comparison.}{10}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Ablation Studies}{10}{subsection.4.5}\protected@file@percent }
 \newlabel{sec:ablation}{{4.5}{10}{Ablation Studies}{subsection.4.5}{}}
 \@writefile{toc}{\contentsline {paragraph}{Component ablations.}{10}{subsection.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Sensitivity analysis.}{10}{subsection.4.5}\protected@file@percent }
 \citation{vtoolr1_2025}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textbf  {Exp~III: Training-free skill evolution vs.\ VTool-R1 (RL).} Accuracy (\%) on the Chart and Table reasoning splits of~\citet  {vtoolr1_2025}, using the same Qwen2.5-VL backbone at three scales. \textbf  {\#Train Traj.} is reserved for training-trajectory counts when available. {\fontfamily  {pzd}\fontencoding  {U}\fontseries  {m}\fontshape  {n}\selectfont  \char 51}~RL Update: model weights are updated via GRPO. {\fontfamily  {pzd}\fontencoding  {U}\fontseries  {m}\fontshape  {n}\selectfont  \char 55}~RL Update: weights are frozen. \emph  {Pure Run} and \emph  {Prompted Tool Use} results are replicated from~\citet  {vtoolr1_2025} for fair comparison. \textsc  {EvoAgent}{} closes a substantial fraction of the gap between \emph  {Pure Run} and VTool-R1 without any gradient updates. \relax }}{11}{table.caption.8}\protected@file@percent }
-\newlabel{tab:vtoolr1_aligned_full}{{5}{11}{\textbf {Exp~III: Training-free skill evolution vs.\ VTool-R1 (RL).} Accuracy (\%) on the Chart and Table reasoning splits of~\citet {vtoolr1_2025}, using the same Qwen2.5-VL backbone at three scales. \textbf {\#Train Traj.} is reserved for training-trajectory counts when available. \ding {51}~RL Update: model weights are updated via GRPO. \ding {55}~RL Update: weights are frozen. \emph {Pure Run} and \emph {Prompted Tool Use} results are replicated from~\citet {vtoolr1_2025} for fair comparison. \sysname {} closes a substantial fraction of the gap between \emph {Pure Run} and VTool-R1 without any gradient updates. \relax }{table.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textbf  {Exp~III: unified comparison of direct inference, RL, self-evolution, and self-evolution+RL.} Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows are VTool-R1 GRPO results and their \textsc  {EvoAgent}{}+RL rows add the self-evolved capability on top of the RL-trained policy. V$^\star $ and HRBench4K entries follow the DeepEyes high-resolution evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding same-backbone or combined run is not reported in the source table and is not inferred here. \relax }}{11}{table.caption.8}\protected@file@percent }
+\newlabel{tab:rl_combined}{{5}{11}{\textbf {Exp~III: unified comparison of direct inference, RL, self-evolution, and self-evolution+RL.} Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows are VTool-R1 GRPO results and their \sysname {}+RL rows add the self-evolved capability on top of the RL-trained policy. V$^\star $ and HRBench4K entries follow the DeepEyes high-resolution evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding same-backbone or combined run is not reported in the source table and is not inferred here. \relax }{table.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces \textbf  {Ablation study.} Each row removes one component of \textsc  {EvoAgent}{} while holding all others fixed (GPT-4o backbone; $k{=}200$, $N{=}3$). \emph  {w/o Skill Evolution}: tool evolution only. \emph  {w/o Tool Evolution}: skill evolution only. \emph  {w/o Mastery Phase}: tools deployed unconditionally without applicability SOPs. \emph  {w/o Visual Diagnosis}: AnalyzerDecider receives only text (question, answer, trace) with no image input. Accuracy. \relax }}{11}{table.caption.9}\protected@file@percent }
+\newlabel{tab:ablation_main}{{6}{11}{\textbf {Ablation study.} Each row removes one component of \sysname {} while holding all others fixed (GPT-4o backbone; $k{=}200$, $N{=}3$). \emph {w/o Skill Evolution}: tool evolution only. \emph {w/o Tool Evolution}: skill evolution only. \emph {w/o Mastery Phase}: tools deployed unconditionally without applicability SOPs. \emph {w/o Visual Diagnosis}: AnalyzerDecider receives only text (question, answer, trace) with no image input. Accuracy. \relax }{table.caption.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{Sensitivity analysis.}{11}{subsection.4.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{11}{section.5}\protected@file@percent }
 \newlabel{sec:discussion}{{5}{11}{Discussion}{section.5}{}}
 \@writefile{toc}{\contentsline {paragraph}{When does evolution help?}{11}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Limitations.}{11}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Future directions.}{11}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{11}{section.6}\protected@file@percent }
-\newlabel{sec:conclusion}{{6}{11}{Conclusion}{section.6}{}}
 \bibdata{references}
 \bibcite{chen2024hrbench}{{1}{2024}{{Anonymous}}{{}}}
 \bibcite{evolver_2025}{{2}{2025{a}}{{Anonymous}}{{}}}
@@ -138,15 +135,13 @@
 \bibcite{vthinker_2025}{{4}{2025{c}}{{Anonymous}}{{}}}
 \bibcite{vtoolr1_2025}{{5}{2025{d}}{{Anonymous}}{{}}}
 \bibcite{cai2024latm}{{6}{2023}{{Cai et~al.}}{{Cai, Wang, Ma, Chen, and Zhou}}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces \textbf  {Exp~III: Positioning against Adaptive-CoF.} V$^\star $ and MME-RealWorld-Lite overall scores for Qwen2.5-VL-7B variants are reported from~\citet  {adaptivecof_2025}. The final row specifies the intended frozen-backbone \textsc  {EvoAgent}{} evaluation and is intentionally left as a placeholder until the same-protocol run is available. This comparison isolates a resource distinction: Adaptive-CoF learns adaptive zooming through task-specific SFT+RL data construction, whereas \textsc  {EvoAgent}{} aims to express the same class of behavior through self-evolved skills and tools. \relax }}{12}{table.caption.9}\protected@file@percent }
-\newlabel{tab:adaptive_cof_positioning}{{6}{12}{\textbf {Exp~III: Positioning against Adaptive-CoF.} V$^\star $ and MME-RealWorld-Lite overall scores for Qwen2.5-VL-7B variants are reported from~\citet {adaptivecof_2025}. The final row specifies the intended frozen-backbone \sysname {} evaluation and is intentionally left as a placeholder until the same-protocol run is available. This comparison isolates a resource distinction: Adaptive-CoF learns adaptive zooming through task-specific SFT+RL data construction, whereas \sysname {} aims to express the same class of behavior through self-evolved skills and tools. \relax }{table.caption.9}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces \textbf  {Ablation study.} Each row removes one component of \textsc  {EvoAgent}{} while holding all others fixed (GPT-4o backbone; $k{=}200$, $N{=}3$). \emph  {w/o Skill Evolution}: tool evolution only. \emph  {w/o Tool Evolution}: skill evolution only. \emph  {w/o Mastery Phase}: tools deployed unconditionally without applicability SOPs. \emph  {w/o Visual Diagnosis}: AnalyzerDecider receives only text (question, answer, trace) with no image input. Accuracy. \relax }}{12}{table.caption.10}\protected@file@percent }
-\newlabel{tab:ablation_main}{{7}{12}{\textbf {Ablation study.} Each row removes one component of \sysname {} while holding all others fixed (GPT-4o backbone; $k{=}200$, $N{=}3$). \emph {w/o Skill Evolution}: tool evolution only. \emph {w/o Tool Evolution}: skill evolution only. \emph {w/o Mastery Phase}: tools deployed unconditionally without applicability SOPs. \emph {w/o Visual Diagnosis}: AnalyzerDecider receives only text (question, answer, trace) with no image input. Accuracy. \relax }{table.caption.10}{}}
 \bibcite{chen2024automanual}{{7}{2024}{{Chen et~al.}}{{Chen, Li, Yang, Yu, Lin, and He}}}
 \bibcite{refocus_2025}{{8}{2025}{{Fu et~al.}}{{Fu, Liu, Yang, Corring, Lu, Yang, Roth, Florencio, and Zhang}}}
 \bibcite{gupta2023visprog}{{9}{2023}{{Gupta \& Kembhavi}}{{Gupta and Kembhavi}}}
 \bibcite{lu2024chameleon}{{10}{2023}{{Lu et~al.}}{{Lu, Peng, Cheng, Galley, Chang, Wu, Zhu, and Gao}}}
 \bibcite{lu2023mathvista}{{11}{2024}{{Lu et~al.}}{{Lu, Bansal, Xia, Liu, Li, Hajishirzi, Cheng, Chang, Galley, and Gao}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{12}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{12}{Conclusion}{section.6}{}}
 \bibcite{masry2022chartqa}{{12}{2022}{{Masry et~al.}}{{Masry, Long, Tan, Joty, and Hoque}}}
 \bibcite{tang2023creator}{{13}{2023}{{Qian et~al.}}{{Qian, Han, Fung, Qin, Liu, and Ji}}}
 \bibcite{qin2024toolllm}{{14}{2024}{{Qin et~al.}}{{Qin, Liang, Ye, Zhu, Yan, Lu, Lin, Cong, Tang, Qian, Zhao, Hong, Tian, Xie, Zhou, Gerstein, Li, Liu, and Sun}}}
@@ -157,43 +152,44 @@
 \bibcite{wu2024vstar}{{19}{2023}{{Wu \& Xie}}{{Wu and Xie}}}
 \bibcite{adaptivecof_2025}{{20}{2025}{{Zhang et~al.}}{{Zhang, Gao, Zhang, Li, Zhang, Liu, Yuan, Wu, Jia, Zhu, and Li}}}
 \bibcite{zhao2023expel}{{21}{2024}{{Zhao et~al.}}{{Zhao, Huang, Xu, Lin, Liu, and Huang}}}
+\bibcite{deepeyes_2025}{{22}{2025}{{Zheng et~al.}}{{Zheng, Yang, Hong, Zhao, Xu, Yang, Shen, and Yu}}}
 \bibstyle{conference}
 \citation{refocus_2025}
 \citation{zoomeye_2024}
 \citation{refocus_2025}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Implementation Details}{15}{appendix.A}\protected@file@percent }
-\newlabel{app:impl}{{A}{15}{Implementation Details}{appendix.A}{}}
-\@writefile{toc}{\contentsline {paragraph}{Role prompts.}{15}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Skill retrieval.}{15}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Tool invocation.}{15}{appendix.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Hyperparameters.}{15}{appendix.A}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Hyperparameter settings.\relax }}{15}{table.caption.11}\protected@file@percent }
-\newlabel{tab:hyperparams}{{8}{15}{Hyperparameter settings.\relax }{table.caption.11}{}}
-\@writefile{toc}{\contentsline {paragraph}{Compute.}{15}{table.caption.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Additional Results}{15}{appendix.B}\protected@file@percent }
-\newlabel{app:results}{{B}{15}{Additional Results}{appendix.B}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Training Set Size Sensitivity}{15}{subsection.B.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Per-Category Analysis on ChartQA}{15}{subsection.B.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Placeholder for ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.\relax }}{15}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:k_sensitivity}{{3}{15}{Placeholder for ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.\relax }{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {C}Qualitative Analysis of Evolved Capabilities}{15}{appendix.C}\protected@file@percent }
-\newlabel{app:capability_cases}{{C}{15}{Qualitative Analysis of Evolved Capabilities}{appendix.C}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Case A: ReFocus-Style Skill and Tool for Structured Images}{15}{subsection.C.1}\protected@file@percent }
-\newlabel{app:refocus_style}{{C.1}{15}{Case A: ReFocus-Style Skill and Tool for Structured Images}{subsection.C.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Implementation Details}{14}{appendix.A}\protected@file@percent }
+\newlabel{app:impl}{{A}{14}{Implementation Details}{appendix.A}{}}
+\@writefile{toc}{\contentsline {paragraph}{Role prompts.}{14}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Skill retrieval.}{14}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Tool invocation.}{14}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Hyperparameters.}{14}{appendix.A}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Hyperparameter settings.\relax }}{14}{table.caption.10}\protected@file@percent }
+\newlabel{tab:hyperparams}{{7}{14}{Hyperparameter settings.\relax }{table.caption.10}{}}
+\@writefile{toc}{\contentsline {paragraph}{Compute.}{14}{table.caption.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Additional Results}{14}{appendix.B}\protected@file@percent }
+\newlabel{app:results}{{B}{14}{Additional Results}{appendix.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Training Set Size Sensitivity}{14}{subsection.B.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Per-Category Analysis on ChartQA}{14}{subsection.B.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Placeholder for ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.\relax }}{14}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:k_sensitivity}{{3}{14}{Placeholder for ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.\relax }{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Qualitative Analysis of Evolved Capabilities}{14}{appendix.C}\protected@file@percent }
+\newlabel{app:capability_cases}{{C}{14}{Qualitative Analysis of Evolved Capabilities}{appendix.C}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Case A: ReFocus-Style Skill and Tool for Structured Images}{14}{subsection.C.1}\protected@file@percent }
+\newlabel{app:refocus_style}{{C.1}{14}{Case A: ReFocus-Style Skill and Tool for Structured Images}{subsection.C.1}{}}
 \citation{zoomeye_2024}
-\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces  \textbf  {Three qualitative forms of evolved capability.} The case studies compare generated artifacts to prior visual-reasoning motifs. They do not claim that \textsc  {EvoAgent}{} reproduces the full prior algorithms. \relax }}{16}{table.caption.13}\protected@file@percent }
-\newlabel{tab:capability_prior_motifs}{{9}{16}{\textbf {Three qualitative forms of evolved capability.} The case studies compare generated artifacts to prior visual-reasoning motifs. They do not claim that \sysname {} reproduces the full prior algorithms. \relax }{table.caption.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}{16}{subsection.C.2}\protected@file@percent }
-\newlabel{app:zoomeye_style}{{C.2}{16}{Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}{subsection.C.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}Case C: Interleaved Visual Skill}{17}{subsection.C.3}\protected@file@percent }
-\newlabel{app:interleaved_visual_skills}{{C.3}{17}{Case C: Interleaved Visual Skill}{subsection.C.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  \textbf  {Placeholder for a concrete before/after case study.} The final version should insert the original image, the failed base answer, the generated skill/tool artifact, the processed visual output if any, and the validated retry answer. \relax }}{18}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:casestudy}{{4}{18}{\textbf {Placeholder for a concrete before/after case study.} The final version should insert the original image, the failed base answer, the generated skill/tool artifact, the processed visual output if any, and the validated retry answer. \relax }{figure.caption.14}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {D}Case Study Artifact Checklist}{18}{appendix.D}\protected@file@percent }
-\newlabel{app:case_artifact_checklist}{{D}{18}{Case Study Artifact Checklist}{appendix.D}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {E}Reproducibility Statement}{18}{appendix.E}\protected@file@percent }
-\newlabel{app:reproducibility}{{E}{18}{Reproducibility Statement}{appendix.E}{}}
-\newlabel{LastPage}{{}{18}{}{page.18}{}}
-\xdef\lastpage@lastpage{18}
-\xdef\lastpage@lastpageHy{18}
-\gdef \@abspage@last{18}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces  \textbf  {Three qualitative forms of evolved capability.} The case studies compare generated artifacts to prior visual-reasoning motifs. They do not claim that \textsc  {EvoAgent}{} reproduces the full prior algorithms. \relax }}{15}{table.caption.12}\protected@file@percent }
+\newlabel{tab:capability_prior_motifs}{{8}{15}{\textbf {Three qualitative forms of evolved capability.} The case studies compare generated artifacts to prior visual-reasoning motifs. They do not claim that \sysname {} reproduces the full prior algorithms. \relax }{table.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}{15}{subsection.C.2}\protected@file@percent }
+\newlabel{app:zoomeye_style}{{C.2}{15}{Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}{subsection.C.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}Case C: Interleaved Visual Skill}{16}{subsection.C.3}\protected@file@percent }
+\newlabel{app:interleaved_visual_skills}{{C.3}{16}{Case C: Interleaved Visual Skill}{subsection.C.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  \textbf  {Placeholder for a concrete before/after case study.} The final version should insert the original image, the failed base answer, the generated skill/tool artifact, the processed visual output if any, and the validated retry answer. \relax }}{17}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:casestudy}{{4}{17}{\textbf {Placeholder for a concrete before/after case study.} The final version should insert the original image, the failed base answer, the generated skill/tool artifact, the processed visual output if any, and the validated retry answer. \relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Case Study Artifact Checklist}{17}{appendix.D}\protected@file@percent }
+\newlabel{app:case_artifact_checklist}{{D}{17}{Case Study Artifact Checklist}{appendix.D}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {E}Reproducibility Statement}{17}{appendix.E}\protected@file@percent }
+\newlabel{app:reproducibility}{{E}{17}{Reproducibility Statement}{appendix.E}{}}
+\newlabel{LastPage}{{}{17}{}{page.17}{}}
+\xdef\lastpage@lastpage{17}
+\xdef\lastpage@lastpageHy{17}
+\gdef \@abspage@last{17}
