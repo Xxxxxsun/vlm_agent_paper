@@ -54,7 +54,7 @@ All raw result JSONL files and final accuracy JSON files are under:
 
 `eval/qwen25vl7b_agent_results/`
 
-The full directory is about 47 MB with 108 files. Largest individual files are about 4.3 MB, so they are suitable for normal Git storage.
+The full directory is about 49 MB with 118 files. Largest individual files are about 4.3 MB, so they are suitable for normal Git storage.
 
 Important final runs:
 
@@ -66,6 +66,8 @@ Important final runs:
   - `qwen25vl7b_focus_skill_zoom_hrbench4k_focus_full_20260517_103534`
 - 3B final focus:
   - `qwen25vl3b_focus_skill_zoom_3b_focus_parser_full_20260517_124733`
+- 3B baseline V*:
+  - `qwen25vl3b_baseline_3b_baseline_vstar_20260518_121644`
 - 3B baseline HRBench4K:
   - `qwen25vl3b_baseline_3b_baseline_hrbench4k_20260517_192248`
 - 32B baseline:
@@ -92,10 +94,10 @@ These are reference numbers only. The official DeepEyes evaluation loop was not 
 | Qwen2.5-VL-7B | DeepEyes paper | - | - | 71.2 | - | - | 68.8 | Reference only |
 | Qwen2.5-VL-7B | Local baseline | 80.87 | 76.32 | 79.06 | 86.50 | 54.50 | 70.50 | `qwen25vl7b_baseline_full2_20260517_055545` |
 | Qwen2.5-VL-7B | Early skill/tool | 65.22 | 72.37 | 68.06 | 77.25 | 57.00 | 67.12 | Tool prompt existed but parser/behavior was weak |
-| Qwen2.5-VL-7B | Focus skill/tool | 90.43 | 78.95 | 85.86 | 89.50 | 60.75 | 75.12 | V* from local exact/answer-text fused judge; HRBench from official judge |
-| Qwen2.5-VL-3B | Baseline | - | - | - | 79.00 | 48.25 | 63.62 | HRBench4K baseline only |
+| Qwen2.5-VL-7B | Focus skill/tool | 90.43 | 78.95 | 85.86 | 89.50 | 60.75 | 75.12 | V* official judge matched local fused score; HRBench from official judge |
+| Qwen2.5-VL-3B | Baseline | 74.78 | 65.79 | 71.20 | 79.00 | 48.25 | 63.62 | V* baseline added 2026-05-18 |
 | Qwen2.5-VL-3B | Early focus/tool | 61.74 | 52.63 | 58.12 | - | - | - | Parser missed most tool calls |
-| Qwen2.5-VL-3B | Hardened focus/tool | 86.09 | 81.58 | 84.29 | 89.50 | 51.50 | 70.50 | HRBench +6.88 vs baseline |
+| Qwen2.5-VL-3B | Hardened focus/tool | 86.09 | 81.58 | 84.29 | 89.50 | 51.50 | 70.50 | V* +13.09, HRBench +6.88 vs baseline |
 | Qwen2.5-VL-32B | Baseline | 80.87 | 82.89 | 81.68 | 88.75 | 62.50 | 75.62 | Official judge outputs |
 | Qwen2.5-VL-32B | Hardened focus/tool | 86.96 | 90.79 | 88.48 | 92.75 | 63.25 | 78.00 | V* +6.81, HRBench +2.38 vs baseline |
 
@@ -148,8 +150,8 @@ After the final run, the all-card filler was restored:
 ## Caveats
 
 - The remote judge endpoint produced intermittent 502 errors. The patched judge scripts use timeout, retry, and conservative `0` fallback so judging completes instead of hanging.
-- The 7B V* 85.86 number is not from the official LLM judge run; it is the local fused exact/answer-text score. HRBench4K 7B, 3B, and 32B numbers listed as official came from the judge output JSONs.
-- The 3B V* baseline was not run. The requested 3B baseline backfill was HRBench4K only.
+- The 7B V* 85.86 number was re-judged with the official LLM judge on 2026-05-18 and matched the earlier local fused exact/answer-text score.
+- The 3B baseline row combines the V* baseline run from 2026-05-18 and the HRBench4K baseline run from 2026-05-17.
 - The focused skill is very aggressive: it forces one zoom before answering. That helps V* and HRBench4K but may be wasteful for easy examples.
 - The result folder name still says `qwen25vl7b_agent_results` even though it contains 3B and 32B runs. It was kept to avoid moving already-generated artifacts.
 

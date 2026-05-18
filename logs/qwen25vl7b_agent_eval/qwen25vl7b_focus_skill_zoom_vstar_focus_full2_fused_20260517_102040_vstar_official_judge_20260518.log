@@ -1,0 +1,6 @@
+Judging V* direct_attributes:   0%|          | 0/115 [00:00<?, ?it/s]Judging V* direct_attributes:   1%|          | 1/115 [00:01<03:27,  1.82s/it]Judging V* direct_attributes:   5%|▌         | 6/115 [00:05<01:25,  1.28it/s]Judging V* direct_attributes:  17%|█▋        | 19/115 [00:06<00:25,  3.71it/s]Judging V* direct_attributes:  45%|████▌     | 52/115 [00:22<00:27,  2.31it/s]Judging V* direct_attributes: 100%|██████████| 115/115 [00:22<00:00,  5.07it/s]
+Judging V* relative_position:   0%|          | 0/76 [00:00<?, ?it/s]Judging V* relative_position:   1%|▏         | 1/76 [00:01<02:20,  1.87s/it]Judging V* relative_position:   9%|▉         | 7/76 [00:04<00:42,  1.62it/s]Judging V* relative_position:  12%|█▏        | 9/76 [00:27<04:13,  3.78s/it]Judging V* relative_position:  92%|█████████▏| 70/76 [00:45<00:03,  1.82it/s]Judging V* relative_position: 100%|██████████| 76/76 [00:45<00:00,  1.67it/s]
+Accuracy for direct_attributes: 90.43%
+Accuracy for relative_position: 78.95%
+Overall Accuracy: 85.86%
+{'direct_attributes': 0, 'relative_position': 0}

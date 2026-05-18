@@ -1,0 +1,286 @@
+{
+    "direct_attributes": 74.78260869565217,
+    "relative_position": 65.78947368421053,
+    "overall": 71.20418848167539,
+    "error_nums": {
+        "direct_attributes": 0,
+        "relative_position": 0
+    },
+    "error_preds": [
+        {
+            "pred_ans": "C. There are no person in the oil painting.",
+            "question": "How many people are in the oil painting?",
+            "answer": "There are 2 people in the oil painting."
+        },
+        {
+            "pred_ans": "C.",
+            "question": "What is the color of the earring?",
+            "answer": "The color of the earring is blue."
+        },
+        {
+            "pred_ans": "None of the above",
+            "question": "What is the color of the woman's bikini?",
+            "answer": "The color of the woman's bikini is black."
+        },
+        {
+            "pred_ans": "D",
+            "question": "What is the color of the clock?",
+            "answer": "The color of the clock is green."
+        },
+        {
+            "pred_ans": "C",
+            "question": "What is the color of the watch?",
+            "answer": "The color of the watch is white."
+        },
+        {
+            "pred_ans": "None of the above",
+            "question": "What is the color of the pink-haired woman's handbag?",
+            "answer": "The color of the pink-haired woman's handbag is white."
+        },
+        {
+            "pred_ans": "<think>Based on the description, there is a backpack mentioned in the image. However, the specific color of the backpack is not provided. Therefore, it's impossible to determine the exact color of the backpack from the given information.</think> A",
+            "question": "What is the color of the backpack?",
+            "answer": "The color of the backpack is gray."
+        },
+        {
+            "pred_ans": "B",
+            "question": "What is the color of the trash can?",
+            "answer": "The color of the trash can is black."
+        },
+        {
+            "pred_ans": "D",
+            "question": "What is the color of the telephone?",
+            "answer": "The color of the telephone is orange."
+        },
+        {
+            "pred_ans": "<think>There are no hats visible in the image description.</think>",
+            "question": "What is the color of the hat?",
+            "answer": "The color of the hat is white."
+        },
+        {
+            "pred_ans": "B",
+            "question": "What is the color of the Apple logo?",
+            "answer": "The color of the Apple logo is polychromatic."
+        },
+        {
+            "pred_ans": "<think>Based on the image description, there is no mention of a handbag. The focus is on the building and its surroundings.</think>",
+            "question": "What is the color of the handbag?",
+            "answer": "The color of the handbag is yellow."
+        },
+        {
+            "pred_ans": "C. The pose of the woman with yellow backpack is walking.",
+            "question": "What is the pose of the woman with yellow backpack?",
+            "answer": "The pose of the woman with yellow backpack is squatting."
+        },
+        {
+            "pred_ans": "None of the above",
+            "question": "What is the color of the cyclist's bag?",
+            "answer": "The color of the cyclist's bag is orange and black."
+        },
+        {
+            "pred_ans": "D",
+            "question": "What is the color of the tissue box?",
+            "answer": "The color of the tissue box is blue."
+        },
+        {
+            "pred_ans": "C",
+            "question": "What is the color of the guard's glove?",
+            "answer": "The color of the guard's glove is white."
+        },
+        {
+            "pred_ans": "<think>There are no helmets visible in the image description.</think>",
+            "question": "What is the color of the helmet?",
+            "answer": "The color of the helmet is white."
+        },
+        {
+            "pred_ans": "<think>Based on the description provided, there is no mention of a plastic stool in the image. The focus is on the canal, buildings, and trees. Therefore, it's not possible to determine the color of any object like a plastic stool.</think>",
+            "question": "What is the color of the plastic stool?",
+            "answer": "The color of the plastic stool is blue."
+        },
+        {
+            "pred_ans": "<think>Based on the description provided, there is no mention of a cart in the image. The focus is on the river, bridge, and surrounding buildings.</think>",
+            "question": "What is the color of the cart?",
+            "answer": "The color of the cart is green."
+        },
+        {
+            "pred_ans": "<think>There are no visible buckets in the image description.</think>",
+            "question": "What is the color of the bucket?",
+            "answer": "The color of the bucket is white."
+        },
+        {
+            "pred_ans": "B",
+            "question": "Does the flag have two or three colors?",
+            "answer": "The flag has three colors."
+        },
+        {
+            "pred_ans": "<think>Based on the description provided, there is no mention of a man's cap in the image. The focus is on the vineyard and the distant town. Therefore, it is not possible to determine the color of the man's cap.</think>",
+            "question": "What is the color of the man's cap?",
+            "answer": "The color of the man's cap is gray."
+        },
+        {
+            "pred_ans": "B. The color of the dress is pink.",
+            "question": "What is the color of the dress?",
+            "answer": "The color of the dress is red."
+        },
+        {
+            "pred_ans": "<think>There is no mention of a soda can in the image description. The focus is on the statue and surrounding area.</think>",
+            "question": "What is the color of the soda can?",
+            "answer": "The color of the soda can is green."
+        },
+        {
+            "pred_ans": "C",
+            "question": "What is the color of the bottle cap?",
+            "answer": "The color of the bottle cap is red."
+        },
+        {
+            "pred_ans": "<think>There is no existence of a straw in the image description.</think>",
+            "question": "What is the color of the straw?",
+            "answer": "The color of the straw is black."
+        },
+        {
+            "pred_ans": "B. The color of the lock is red.",
+            "question": "What is the color of the lock?",
+            "answer": "The color of the lock is silver."
+        },
+        {
+            "pred_ans": "C. The color of the bottle cap is red.",
+            "question": "What is the color of the bottle cap?",
+            "answer": "The color of the bottle cap is blue."
+        },
+        {
+            "pred_ans": "C. The color of the broom is red.",
+            "question": "What is the color of the broom?",
+            "answer": "The color of the broom is black."
+        },
+        {
+            "pred_ans": "None of the options provided can be confirmed based on the given information.",
+            "question": "Is the woman with a backpack on the left or right side of the person with a beanie?",
+            "answer": "The woman with a backpack is on the left side of the person with a beanie."
+        },
+        {
+            "pred_ans": "None of the above",
+            "question": "Is the dog on the left or right side of the river?",
+            "answer": "The dog is on the right side of the river."
+        },
+        {
+            "pred_ans": "B. The blue truck is on the left side of the white vehicle.",
+            "question": "Is the blue truck on the left or right side of the white vehicle?",
+            "answer": "The blue truck is on the right side of the white vehicle."
+        },
+        {
+            "pred_ans": "None of the above",
+            "question": "Is the baby carriage on the left or right side of the cone?",
+            "answer": "The baby carriage is on the right side of the cone."
+        },
+        {
+            "pred_ans": "B",
+            "question": "Is the red chair on the left or right side of the road?",
+            "answer": "The red chair is on the right side of the road."
+        },
+        {
+            "pred_ans": "B",
+            "question": "Is the dog on the left or right side of the scooter?",
+            "answer": "The dog is on the left side of the scooter."
+        },
+        {
+            "pred_ans": "B.",
+            "question": "Is the red backpack on the left or right side of the clock?",
+            "answer": "The red backpack is on the right side of the clock."
+        },
+        {
+            "pred_ans": "B. The trash can is on the right side of the black chair.",
+            "question": "Is the trash can on the left or right side of the black chair?",
+            "answer": "The trash can is on the left side of the black chair."
+        },
+        {
+            "pred_ans": "B. The seesaw is on the left side of the red vehicle.",
+            "question": "Is the seesaw on the left or right side of the red vehicle?",
+            "answer": "The seesaw is on the right side of the red vehicle."
+        },
+        {
+            "pred_ans": "B. The bucket is on the left side of the plunger.",
+            "question": "Is the bucket on the left or right side of the plunger?",
+            "answer": "The bucket is on the right side of the plunger."
+        },
+        {
+            "pred_ans": "B. The orange luggage is on the left side of the purple umbrella.",
+            "question": "Is the orange luggage on the left or right side of the purple umbrella?",
+            "answer": "The orange luggage is on the right side of the purple umbrella."
+        },
+        {
+            "pred_ans": "None of the above",
+            "question": "Is the red suitcase on the left or right side of the red stool?",
+            "answer": "The red suitcase is on the left side of the red stool."
+        },
+        {
+            "pred_ans": "B. The motorcycle is on the right side of the street.",
+            "question": "Is the motorcycle on the left or right side of the street?",
+            "answer": "The motorcycle is on the left side of the street."
+        },
+        {
+            "pred_ans": "None of the above",
+            "question": "Is the trash can on the left or right side of the baby carriage?",
+            "answer": "The trash can is on the right side of the baby carriage."
+        },
+        {
+            "pred_ans": "B",
+            "question": "Is the shopping cart on the left or right side of the dog?",
+            "answer": "The shopping cart is on the left side of the dog."
+        },
+        {
+            "pred_ans": "B. The keyboard is on the right side of the guitar.",
+            "question": "Is the keyboard on the left or right side of the guitar?",
+            "answer": "The keyboard is on the left side of the guitar."
+        },
+        {
+            "pred_ans": "B",
+            "question": "Is the switch on the left or right side of the towel?",
+            "answer": "The switch is on the right side of the towel."
+        },
+        {
+            "pred_ans": "<think>There is no existence of a baby carriage in the image information.</th>",
+            "question": "Is the baby carriage on the left or right side of the cyclist?",
+            "answer": "The baby carriage is on the right side of the cyclist."
+        },
+        {
+            "pred_ans": "B. The dog is on the left side of the blue bicycle.",
+            "question": "Is the dog on the left or right side of the blue bicycle?",
+            "answer": "The dog is on the right side of the blue bicycle."
+        },
+        {
+            "pred_ans": "B. The yellow car is on the right side of the pool.",
+            "question": "Is the yellow car on the left or right side of the pool?",
+            "answer": "The yellow car is on the left side of the pool."
+        },
+        {
+            "pred_ans": "B. The white truck is on the left side of the red truck.",
+            "question": "Is the white truck on the left or right side of the red truck?",
+            "answer": "The white truck is on the right side of the red truck."
+        },
+        {
+            "pred_ans": "None of the above",
+            "question": "Is the slide on the left or right side of the life buoy?",
+            "answer": "The slide is on the right side of the life buoy."
+        },
+        {
+            "pred_ans": "B. The baby stroller is on the left side of the person in orange.",
+            "question": "Is the baby stroller on the left or right side of the person in orange?",
+            "answer": "The baby stroller is on the right side of the person in orange."
+        },
+        {
+            "pred_ans": "<think>There are no chairs visible in the image description. The question about a white chair is misleading and does not provide enough information to determine its position.</think>",
+            "question": "Is the white chair on the left or right side of the street?",
+            "answer": "The white chair is on the right side of the street."
+        },
+        {
+            "pred_ans": "B",
+            "question": "Is the blue luggage on the left or right side of the bus?",
+            "answer": "The blue luggage is on the right side of the bus."
+        },
+        {
+            "pred_ans": "B",
+            "question": "Is the bucket on the left or right side of the cyclist?",
+            "answer": "The bucket is on the right side of the cyclist."
+        }
+    ]
+}
