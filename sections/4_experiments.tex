@@ -124,7 +124,7 @@ sub-region inspection and visual search are more central. We treat this as evide
 cognitive/perceptual distinction is a useful design rule for capability generation, not as a
 standalone proof that every error in these benchmarks has that structure.
 
-\iffalse
+% \iffalse
 \begin{table*}[t]
 \centering
 \small
@@ -198,76 +198,75 @@ standalone proof that every error in these benchmarks has that structure.
 }
 \label{tab:evolution_full}
 \end{table*}
-\fi
 
-\begin{table*}[t]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{2.5pt}
-\renewcommand{\arraystretch}{1.12}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{llcccc}
-\toprule
-\textbf{Model} & \textbf{Evolution Strategy}
-  & \textbf{HRBench}
-  & \textbf{MathVista}
-  & \textbf{V$^*$}
-  & \textbf{ChartQA} \\
-\midrule
+% \begin{table*}[t]
+% \centering
+% \scriptsize
+% \setlength{\tabcolsep}{2.5pt}
+% \renewcommand{\arraystretch}{1.12}
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{llcccc}
+% \toprule
+% \textbf{Model} & \textbf{Evolution Strategy}
+%   & \textbf{HRBench}
+%   & \textbf{MathVista}
+%   & \textbf{V$^*$}
+%   & \textbf{ChartQA} \\
+% \midrule
 
-\multirow{4}{*}{GPT-4o}
-  & None (Base Agent)  &$0.6386{\pm}0.014$  &$0.6711{\pm}0.012$  &$0.5828{\pm}0.016$  &$0.7552{\pm}0.011$  \\
-  & Skill Only         &$0.6614{\pm}0.013$  &$0.7077{\pm}0.011$  &$0.6358{\pm}0.015$  &$0.7796{\pm}0.010$  \\
-  & Tool Only          &$0.6414{\pm}0.014$  &$0.6922{\pm}0.012$  &$0.6159{\pm}0.015$  &$0.7693{\pm}0.011$  \\
-  & Skill + Tool       &$0.6600{\pm}0.013$  &$0.7078{\pm}0.011$  &$0.6423{\pm}0.014$  &$0.7750{\pm}0.010$  \\
+% \multirow{4}{*}{GPT-4o}
+%   & None (Base Agent)  &$0.6386{\pm}0.014$  &$0.6711{\pm}0.012$  &$0.5828{\pm}0.016$  &$0.7552{\pm}0.011$  \\
+%   & Skill Only         &$0.6614{\pm}0.013$  &$0.7077{\pm}0.011$  &$0.6358{\pm}0.015$  &$0.7796{\pm}0.010$  \\
+%   & Tool Only          &$0.6414{\pm}0.014$  &$0.6922{\pm}0.012$  &$0.6159{\pm}0.015$  &$0.7693{\pm}0.011$  \\
+%   & Skill + Tool       &$0.6600{\pm}0.013$  &$0.7078{\pm}0.011$  &$0.6423{\pm}0.014$  &$0.7750{\pm}0.010$  \\
 
-\midrule
+% \midrule
 
-\multirow{4}{*}{o4-mini}
-  & None (Base Agent)  &$0.7300{\pm}0.012$  &$0.7533{\pm}0.010$  &$0.7285{\pm}0.012$  &$0.7833{\pm}0.010$  \\
-  & Skill Only         &$0.7671{\pm}0.011$  &$0.7567{\pm}0.010$  &$0.7550{\pm}0.011$  &$0.7693{\pm}0.011$  \\
-  & Tool Only          &$0.5529{\pm}0.018$  &$0.6978{\pm}0.013$  &$0.7677{\pm}0.011$  &$0.7677{\pm}0.011$  \\
-  & Skill + Tool       &$0.8457{\pm}0.009$  &$0.7622{\pm}0.010$  &$0.7947{\pm}0.010$  &$0.7917{\pm}0.010$  \\
+% \multirow{4}{*}{o4-mini}
+%   & None (Base Agent)  &$0.7300{\pm}0.012$  &$0.7533{\pm}0.010$  &$0.7285{\pm}0.012$  &$0.7833{\pm}0.010$  \\
+%   & Skill Only         &$0.7671{\pm}0.011$  &$0.7567{\pm}0.010$  &$0.7550{\pm}0.011$  &$0.7693{\pm}0.011$  \\
+%   & Tool Only          &$0.5529{\pm}0.018$  &$0.6978{\pm}0.013$  &$0.7677{\pm}0.011$  &$0.7677{\pm}0.011$  \\
+%   & Skill + Tool       &$0.8457{\pm}0.009$  &$0.7622{\pm}0.010$  &$0.7947{\pm}0.010$  &$0.7917{\pm}0.010$  \\
 
-\midrule
+% \midrule
 
-\multirow{4}{*}{GPT-5.4}
-  & None (Base Agent)  &$0.7471{\pm}0.012$  &$0.7589{\pm}0.010$  &$0.7748{\pm}0.011$  &$0.7974{\pm}0.010$  \\
-  & Skill Only         &$0.7800{\pm}0.011$  &$0.7711{\pm}0.010$  &$0.7881{\pm}0.010$  &$0.8115{\pm}0.009$ \\
-  & Tool Only          &$0.7971{\pm}0.010$  &$0.7722{\pm}0.010$  &$0.8609{\pm}0.008$  &$0.8161{\pm}0.009$  \\
-  & Skill + Tool       &$0.8500{\pm}0.009$  &$0.7856{\pm}0.009$  &$0.8742{\pm}0.008$  &$0.8594{\pm}0.008$  \\
+% \multirow{4}{*}{GPT-5.4}
+%   & None (Base Agent)  &$0.7471{\pm}0.012$  &$0.7589{\pm}0.010$  &$0.7748{\pm}0.011$  &$0.7974{\pm}0.010$  \\
+%   & Skill Only         &$0.7800{\pm}0.011$  &$0.7711{\pm}0.010$  &$0.7881{\pm}0.010$  &$0.8115{\pm}0.009$ \\
+%   & Tool Only          &$0.7971{\pm}0.010$  &$0.7722{\pm}0.010$  &$0.8609{\pm}0.008$  &$0.8161{\pm}0.009$  \\
+%   & Skill + Tool       &$0.8500{\pm}0.009$  &$0.7856{\pm}0.009$  &$0.8742{\pm}0.008$  &$0.8594{\pm}0.008$  \\
 
-\midrule
+% \midrule
 
-\multirow{4}{*}{Doubao-Seed-2.0}
-  & None (Base Agent)  &$0.8214{\pm}0.010$  &$0.8544{\pm}0.009$  &$0.8675{\pm}0.008$  &$0.8152{\pm}0.009$  \\
-  & Skill Only         &$0.8629{\pm}0.009$  &$0.8433{\pm}0.009$  &$0.8675{\pm}0.008$  &$0.8229{\pm}0.009$ \\
-  & Tool Only          &$0.9000{\pm}0.007$  &$0.8700{\pm}0.008$  &$0.9470{\pm}0.006$  &$0.8078{\pm}0.010$  \\
-  & Skill + Tool       &$0.9057{\pm}0.007$  &$0.8800{\pm}0.008$  &$0.9536{\pm}0.006$  &$0.8688{\pm}0.008$  \\
+% \multirow{4}{*}{Doubao-Seed-2.0}
+%   & None (Base Agent)  &$0.8214{\pm}0.010$  &$0.8544{\pm}0.009$  &$0.8675{\pm}0.008$  &$0.8152{\pm}0.009$  \\
+%   & Skill Only         &$0.8629{\pm}0.009$  &$0.8433{\pm}0.009$  &$0.8675{\pm}0.008$  &$0.8229{\pm}0.009$ \\
+%   & Tool Only          &$0.9000{\pm}0.007$  &$0.8700{\pm}0.008$  &$0.9470{\pm}0.006$  &$0.8078{\pm}0.010$  \\
+%   & Skill + Tool       &$0.9057{\pm}0.007$  &$0.8800{\pm}0.008$  &$0.9536{\pm}0.006$  &$0.8688{\pm}0.008$  \\
 
-\midrule
+% \midrule
 
-\multirow{4}{*}{Qwen3.5-27B}
-  & None (Base Agent)  &$0.8171{\pm}0.010$  &$0.8088{\pm}0.010$  &$0.8808{\pm}0.008$  &$0.8114{\pm}0.009$  \\
-  & Skill Only         &$0.8192{\pm}0.010$  &$0.8244{\pm}0.009$  &$0.8676{\pm}0.008$  &$0.7994{\pm}0.010$  \\
-  & Tool Only          &$0.8201{\pm}0.010$  &$0.8233{\pm}0.009$  &$0.9603{\pm}0.005$  &$0.8067{\pm}0.009$  \\
-  & Skill + Tool       &$0.8372{\pm}0.009$  &$0.8222{\pm}0.009$  &$0.9470{\pm}0.006$  &$0.8182{\pm}0.009$  \\
+% \multirow{4}{*}{Qwen3.5-27B}
+%   & None (Base Agent)  &$0.8171{\pm}0.010$  &$0.8088{\pm}0.010$  &$0.8808{\pm}0.008$  &$0.8114{\pm}0.009$  \\
+%   & Skill Only         &$0.8192{\pm}0.010$  &$0.8244{\pm}0.009$  &$0.8676{\pm}0.008$  &$0.7994{\pm}0.010$  \\
+%   & Tool Only          &$0.8201{\pm}0.010$  &$0.8233{\pm}0.009$  &$0.9603{\pm}0.005$  &$0.8067{\pm}0.009$  \\
+%   & Skill + Tool       &$0.8372{\pm}0.009$  &$0.8222{\pm}0.009$  &$0.9470{\pm}0.006$  &$0.8182{\pm}0.009$  \\
 
-\bottomrule
-\end{tabular}%
-}
-\caption{%
-  \textbf{Exp~I: Autonomous evolution from scratch.}
-  Accuracy for each evolution strategy across foundation-model blocks and four benchmarks,
-  all starting from an empty capability set.
-  \emph{None} is the zero-shot VLM baseline.
-  \emph{Skill Only} / \emph{Tool Only} ablate one capability type.
-  \emph{Skill~$+$~Tool} is the full \sysname{} system.
-  Standard deviations are temporary layout placeholders and must be replaced with seed-based
-  estimates before submission.
-}
-\label{tab:evolution_full}
-\end{table*}
+% \bottomrule
+% \end{tabular}%
+% }
+% \caption{%
+%   \textbf{Exp~I: Autonomous evolution from scratch.}
+%   Accuracy for each evolution strategy across foundation-model blocks and four benchmarks,
+%   all starting from an empty capability set.
+%   \emph{None} is the zero-shot VLM baseline.
+%   \emph{Skill Only} / \emph{Tool Only} ablate one capability type.
+%   \emph{Skill~$+$~Tool} is the full \sysname{} system.
+%   Standard deviations are temporary layout placeholders and must be replaced with seed-based
+%   estimates before submission.
+% }
+% \label{tab:evolution_full}
+% \end{table*}
 
 \paragraph{Distribution-shift adaptation.}
 The previous comparison evaluates each benchmark independently. We also test whether evolved
@@ -542,6 +541,57 @@ which optimize model parameters from training trajectories. The comparison there
 practical question: how much of the gain over direct inference can be obtained when retraining is
 not available?
 
+% \begin{table*}[t]
+% \centering
+% \small
+% \setlength{\tabcolsep}{4.5pt}
+% \renewcommand{\arraystretch}{1.15}
+% \begin{tabular}{llcc cc}
+% \toprule
+% \textbf{Model} & \textbf{Method}
+%   & \textbf{Chart Split} & \textbf{Table Split}
+%   & \textbf{\#Train Traj.} & \textbf{RL Update} \\
+% \midrule
+
+% \multirow{4}{*}{Qwen2.5-VL-3B}
+%   & Pure Run                   &45.3995  &43.0921  & ---         & \ding{55} \\
+%   & VTool-R1                   &64.0  &57.9   &80*256=20480             & \ding{51} \\
+%   & Ours (Self-Evolved Skill)  &59.56  &51.97  &3*50=150             & \ding{55} \\
+%   & skill+rl  &68.28  &59.54  &20480+150=20630             & \ding{51} \\
+
+% \midrule
+
+% \multirow{4}{*}{Qwen2.5-VL-7B}
+%   & Pure Run                   &56.0532  &56.9078  & ---         & \ding{55} \\
+%   & VTool-R1                   &75.18   &68.09  &80*256=20480             & \ding{51} \\
+%   & Ours (Self-Evolved Skill)  &75.060  &67.43  &3*50=150             & \ding{55} \\
+%   & skill+rl  &76.88  &69.41  &20480+150=20630            & \ding{51} \\
+
+% \midrule
+
+% \multirow{4}{*}{Qwen2.5-VL-32B}
+%   & Pure Run                   &81.3559  &82.8947  & ---         & \ding{55} \\
+%   & VTool-R1                   &86.7*  &84.5*  &80*256=20480             & \ding{51} \\
+%   & Ours (Self-Evolved Skill)  &83.66  &83.55  &3*50=150             & \ding{55} \\
+%   & skill+rl  &  &  &20480+150=20630           & \ding{51} \\
+
+% \bottomrule
+% \end{tabular}
+% \caption{%
+%   \textbf{Exp~III: Training-free skill evolution vs.\ VTool-R1 (RL).}
+%   Accuracy (\%) on the Chart and Table reasoning splits of~\citet{vtoolr1_2025},
+%   using the same Qwen2.5-VL backbone at three scales.
+%   \textbf{\#Train Traj.} is reserved for training-trajectory counts when available.
+%   \ding{51}~RL Update: model weights are updated via GRPO.
+%   \ding{55}~RL Update: weights are frozen.
+%   \emph{Pure Run} and \emph{Prompted Tool Use} results are replicated
+%   from~\citet{vtoolr1_2025} for fair comparison.
+%   \sysname{} closes a substantial fraction of the gap between \emph{Pure Run}
+%   and VTool-R1 without any gradient updates.
+% }
+% \label{tab:vtoolr1_aligned_full}
+% \end{table*}
+
 \begin{table*}[t]
 \centering
 \small
@@ -572,9 +622,9 @@ not available?
 
 \multirow{4}{*}{Qwen2.5-VL-32B}
   & Pure Run                   &81.3559  &82.8947  & ---         & \ding{55} \\
-  & VTool-R1                   &86.7*  &84.5*  &80*256=20480             & \ding{51} \\
-  & Ours (Self-Evolved Skill)  &83.66  &83.55  &3*50=150             & \ding{55} \\
-  & skill+rl  &  &  &20480+150=20630           & \ding{51} \\
+  & VTool-R1                   &84.3  &84.3  &80*256=20480             & \ding{51} \\
+  & Ours (Self-Evolved Skill)  &84.2  &83.55  &3*50=150             & \ding{55} \\
+  & skill+rl  &85.5  &84.9  &20480+150=20630           & \ding{51} \\
 
 \bottomrule
 \end{tabular}
@@ -607,7 +657,7 @@ not available?
   & \textbf{V$^\star$}
   & \textbf{HRBench4k} \\
 \midrule
-Qwen2.5-VL base
+Qwen2.5-VL-7B
   & Qwen2.5-VL-7B
   & None
   & Frozen
