@@ -8,11 +8,10 @@
   \includegraphics[width=\textwidth]{figures/method.pdf}
   \caption{
     \textbf{\sysname{} evolution loop.}
-    On each failed attempt, the AnalyzerDecider inspects the original image, intermediate tool
-    outputs, and reasoning trace, then decides whether to generate a reasoning skill, an
-    executable visual tool, or both. Validated capabilities are promoted into the library and
-    reused on later cases.
-z  }
+    On a sampled sub-training set, \sysname{} diagnoses both correct and incorrect attempts,
+    explores candidate skill$+$tool capabilities, and promotes the best by validation into a
+    persistent library.
+  }
   \label{fig:method}
 \end{figure*}
 
