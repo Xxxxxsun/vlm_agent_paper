@@ -2,22 +2,11 @@
 %  §1  Introduction
 % ============================================================
 
-Large vision-language models (VLMs) have improved rapidly, but adapting them to a new visual
-reasoning distribution still usually requires either retraining or manual engineering. This is
-costly in settings where model weights are unavailable, training data is small, or the failure
-modes are discovered only after deployment. A more practical alternative is to ask whether a
-frozen VLM agent can use its own failed attempts as supervision: if a case is answered
-incorrectly, can the agent inspect what went wrong, create a reusable capability, and apply that
-capability to future cases?
-
-This question is motivated by a simple design distinction. Some failed attempts appear to be
-\emph{cognitive}: the image contains the relevant evidence, but the agent needs a better
-procedure for reading, decomposing, or computing from it. Other failures appear to be
-\emph{perceptual}: the agent needs a transformed view of the input before the relevant evidence
-is accessible at all, such as a crop, zoom, contrast enhancement, or chart rerendering. We do
-not assume that every benchmark failure belongs cleanly to one of these categories. Instead, we
-use the distinction as an operational decision for self-improvement: should a failure produce a
-reasoning skill, a visual tool, or both?
+Vision-language models (VLMs) have improved rapidly, yet adapting a frozen VLM to a new
+visual-reasoning task family still typically requires manually curated SFT data or a
+hand-designed RL pipeline---per task and per backbone. We ask whether the agent can build
+its own task-family-specific capability set instead, by inspecting its own behaviour on a
+small training subset and without any weight updates.
 
 \begin{figure}[t]
   \centering
@@ -32,59 +21,40 @@ reasoning skill, a visual tool, or both?
   \label{fig:motivation}
 \end{figure}
 
-This distinction matters because the appropriate remedy depends on the bottleneck.
-Training-based methods can learn tool-use or reasoning behavior through supervised fine-tuning
-or reinforcement learning, but they require additional optimization and substantial compute.
-Manual prompt engineering can encode useful heuristics, but it is brittle and does not create
-executable visual operations. Text-only self-reflection can describe a mistake, but it cannot
-inspect image artifacts, decide whether the failure came from perception or reasoning, or
-generate image-processing code that changes what the model can see.
-
-We therefore ask whether a frozen VLM agent can improve itself by turning failed attempts into
-reusable capabilities. Given a failed case, the agent should inspect the image and any
-intermediate visual artifacts, decide whether the missing capability is cognitive, perceptual,
-or both, generate the corresponding capability, validate it, and reuse it on future cases. This
-leads to \sysname{}, a training-free framework for dynamic skill-tool evolution.
-\textbf{Skills} are structured reasoning procedures, written as standard operating procedures
-for recurring problem classes. \textbf{Tools} are executable Python programs that manipulate
-visual inputs through operations such as cropping, zooming, contrast enhancement, or chart
-rerendering. The capability library grows only through validated failures; model weights remain
-frozen throughout.
+We instantiate this idea in \sysname{}, a training-free framework that evolves two
+complementary capability types and dynamically equips them at inference. \textbf{Skills} are
+structured Markdown SOPs for \emph{cognitive} bottlenecks, where the visual evidence is
+available but the agent's reasoning procedure is weak. \textbf{Tools} are short Python
+programs for \emph{perceptual} bottlenecks, where the agent needs a transformed view---a
+crop, zoom, contrast adjustment, or rerendering---before the evidence becomes legible. On
+each iteration over a sampled sub-training set, \sysname{} diagnoses both the correct and
+the incorrect attempts using their images and reasoning traces, proposes multiple candidate
+skill$+$tool combinations, and promotes the highest-validation-accuracy candidate into a
+persistent library. A mastery phase further learns when each tool is safe to invoke, so
+that promoted capabilities are deployed selectively rather than indiscriminately.
 
 We evaluate three questions.
-\textbf{(I) Can an agent evolve useful capabilities from scratch?}
-Starting with an empty library, \sysname{} improves over direct inference in 21 of 23 completed
-model-benchmark cells across ChartQA, MathVista, HRBench, and V$^*$, with gains varying by
-benchmark and capability type.
-\textbf{(II) Can an agent learn when to use provided tools?}
-On GTA, mastery-guided capability use improves GPT-5.4 and Gemini3Flash across step-level and
-answer metrics, while a regression on GPT-4o reveals that tool-use policies must match the
-backbone's instruction-following capacity.
-\textbf{(III) How much of RL-trained tool reasoning can be recovered without retraining?}
-On VTool-R1-aligned chart and table splits, skill evolution alone recovers a large fraction of
-the RL gap for Qwen2.5-VL backbones, especially at 3B and 7B scale.
+\textbf{(I) Does \sysname{} work across diverse benchmarks and backbones?}
+On ChartQA, MathVista, HRBench, and V$^*$ across six VLM backbones, skill-tool co-evolution
+improves direct inference in 21 of 23 model--benchmark settings, averaging $+4.8$ accuracy
+points.
+\textbf{(II) Does the framework extend to a tool-mastery setting with a curated tool set?}
+On GTA, mastery profiling lifts step-level tool selection, argument, and instruction-following
+accuracy across all tested backbones.
+\textbf{(III) How does \sysname{} compare to task-specific RL?}
+Against VTool-R1 and DeepEyes, \sysname{} matches or approaches RL accuracy at a fraction of
+the compute (60--94\% gap recovery on chart/table; 91.1 vs.\ 90.1 on V$^*$-7B), and combines
+additively with RL when both are available.
 
 \paragraph{Contributions.}
-\begin{enumerate}[leftmargin=*, label=(\arabic*)]
-  \item We formulate VLM self-improvement as \textbf{failure-driven capability evolution}:
-        a frozen agent diagnoses each failure and accumulates reusable skills and tools without
-        gradient updates.
-
-  \item We introduce an operational \textbf{cognitive--perceptual decision rule} for visual
-        failure handling, connecting reasoning skills to strategy-oriented fixes and
-        executable visual tools to perception-oriented fixes.
-
-  \item We present a validation and mastery mechanism that prevents generated capabilities from
-        being promoted solely because they solve the triggering example; tools must also pass
-        regression checks and acquire applicability SOPs.
-
-  \item We provide empirical evidence across from-scratch evolution, provided-tool mastery, and
-        comparison to RL-trained VTool-R1, showing both the promise and the limits of
-        training-free capability evolution.
+\begin{enumerate}[leftmargin=*, label=(\arabic*), noitemsep]
+  \item A \textbf{training-free} framework for VLM task adaptation that evolves a
+        task-family-specific library of reasoning skills and visual tools from a small
+        training subset, with no weight updates.
+  \item A \textbf{multi-candidate evolution loop} that diagnoses both correct and incorrect
+        attempts, generates multiple candidate skill$+$tool combinations, selects the best by
+        validation accuracy, and learns per-tool applicability boundaries via a mastery phase.
+  \item Empirical evidence across four visual-reasoning benchmarks, six VLM backbones, the
+        GTA tool-mastery benchmark, and two RL baselines (VTool-R1, DeepEyes) that capability
+        evolution is a viable training-free alternative---and add-on---to task-specific RL.
 \end{enumerate}
-
-\paragraph{Paper organisation.}
-Section~\ref{sec:related_work} positions \sysname{} against self-improving agents and
-tool-augmented VLMs. Section~\ref{sec:method} describes the evolution framework.
-Section~\ref{sec:experiments} presents the experiments, and
-Sections~\ref{sec:discussion}--\ref{sec:conclusion} discuss limitations and conclude.
