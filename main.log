@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  20 MAY 2026 13:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  20 MAY 2026 13:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1247,7 +1247,7 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 139.
 
 (./sections/1_introduction.tex
-<figures/Picture2.pdf, id=151, 269.005pt x 316.18124pt>
+<figures/Picture2.pdf, id=183, 269.005pt x 316.18124pt>
 File: figures/Picture2.pdf Graphic file (type pdf)
 <use figures/Picture2.pdf>
 Package pdftex.def Info: figures/Picture2.pdf  used on input line 24.
@@ -1283,7 +1283,7 @@ Underfull \hbox (badness 1924) in paragraph at lines 65--155
  []
 
 (./sections/3_method.tex
-<figures/method.pdf, id=278, 753.81625pt x 409.53pt>
+<figures/method.pdf, id=311, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
@@ -1364,122 +1364,161 @@ Underfull \hbox (badness 2698) in paragraph at lines 273--279
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
+[9]
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 7.0pt on input line 467.
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 10.0pt on input line 484.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9]
-LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 7.0pt on input line 455.
-LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 472.
-
-Underfull \vbox (badness 1281) has occurred while \output is active []
-
  [10]
-Underfull \hbox (badness 1888) in paragraph at lines 524--531
+Underfull \hbox (badness 1888) in paragraph at lines 536--625
  []\T1/ptm/b/n/10.95 (+20) Cost com-par-i-son.[] \T1/ptm/m/sc/10.95 (+20) EvoA-
 gent \T1/ptm/m/n/10.95 (+20) per-forms no
  []
 
-
-Underfull \vbox (badness 6944) has occurred while \output is active []
-
-)
-(./sections/5_discussion.tex [11]) (./sections/6_conclusion.tex) (./main.bbl
+) (./sections/5_discussion.tex [11]) (./sections/6_conclusion.tex) (./main.bbl
 [12]
 Underfull \hbox (badness 3354) in paragraph at lines 125--132
 []\T1/ptm/m/n/10 (+20) Haozhan Shen, Kangjia Zhao, Tiancheng Zhao,
  []
 
-[13]
+
 Underfull \hbox (badness 1077) in paragraph at lines 185--191
 \T1/ptm/m/n/10 (+20) Yu. 2025.  [][]Deep-Eyes: In-cen-tiviz-ing ``think-ing
  []
 
-) [14
-
-] (./sections/A_appendix.tex
+) [13] (./sections/A_appendix.tex
 Underfull \hbox (badness 1661) in paragraph at lines 9--14
  []\T1/ptm/b/n/10.95 (+20) Role prompts.[] \T1/ptm/m/sc/10.95 (+20) EvoA-gent \
 T1/ptm/m/n/10.95 (+20) uses three role-
  []
 
+[14
 
-Underfull \hbox (badness 6493) in paragraph at lines 101--103
+]
+Underfull \hbox (badness 2027) in paragraph at lines 146--148
+ []\T1/ptm/b/n/10.95 (+20) Question.[] \T1/ptm/m/n/10.95 (+20) Are the gains ca
+used by failure-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--170
+ []\T1/ptm/b/n/10.95 (+20) Expected in-ter-pre-ta-tion.[] \T1/ptm/m/n/10.95 (+2
+0) A pure prompt-
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 160--170
+\T1/ptm/m/n/10.95 (+20) are them-selves ex-pressed as natural-language
+ []
+
+[15]
+Underfull \hbox (badness 4024) in paragraph at lines 236--239
+ []\T1/ptm/b/n/10.95 (+20) Writing hook.[] \T1/ptm/m/n/10.95 (+20) Mas-tery im-
+proves pre-ci-sion
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 244--246
+ []\T1/ptm/b/n/10.95 (+20) Question.[] \T1/ptm/m/n/10.95 (+20) Does stor-ing re
+usable ca-pa-bil-i-ties
+ []
+
+[16]
+Underfull \hbox (badness 1845) in paragraph at lines 281--288
+[]\T1/ptm/m/n/10.95 (+20) Origin-only is ex-pected to pro-duce higher
+ []
+
+
+Underfull \hbox (badness 2351) in paragraph at lines 292--303
+\T1/ptm/m/n/10.95 (+20) The main pa-per fixes $\OML/cmm/m/it/10.95 k[]\OT1/cmr/
+m/n/10.95 200$ \T1/ptm/m/n/10.95 (+20) train-ing cases
+ []
+
+
+Underfull \hbox (badness 1082) in paragraph at lines 292--303
+\T1/ptm/m/n/10.95 (+20) and $\OML/cmm/m/it/10.95 N[]\OT1/cmr/m/n/10.95 3$ \T1/p
+tm/m/n/10.95 (+20) evo-lu-tion it-er-a-tions. The sen-si-tiv-
+ []
+
+
+Underfull \hbox (badness 6493) in paragraph at lines 359--361
 []|\T1/ptm/m/n/9 (+20) A skill that in-structs the
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 101--103
+Underfull \hbox (badness 1168) in paragraph at lines 359--361
 \T1/ptm/m/n/9 (+20) chart/table struc-ture, plus a
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 105--107
+Underfull \hbox (badness 2020) in paragraph at lines 363--365
 \T1/ptm/m/n/9 (+20) re-ly-ing on a fixed visual-
  []
 
 
-Underfull \hbox (badness 1092) in paragraph at lines 109--111
+Underfull \hbox (badness 1092) in paragraph at lines 367--369
 \T1/ptm/m/n/9 (+20) ques-tion into target-location
  []
 
 
-Underfull \hbox (badness 4832) in paragraph at lines 111--113
+Underfull \hbox (badness 4832) in paragraph at lines 369--371
 []|\T1/ptm/m/n/9 (+20) ZoomEye per-forms training-
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 111--113
+Underfull \hbox (badness 1902) in paragraph at lines 369--371
 \T1/ptm/m/n/9 (+20) free tree-based im-age ex-plo-
  []
 
 
-Underfull \hbox (badness 2158) in paragraph at lines 113--115
+Underfull \hbox (badness 2158) in paragraph at lines 371--373
 \T1/ptm/m/n/9 (+20) Zoom-Eye as a pre-de-fined
  []
 
-[15
-
-] [16] [17]) [18] (./main.aux)
+[17] [18] [19]) [20] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C065301843B2E0E53580D02D5A8C2DF4;5489.
+(rerunfilecheck)             Checksum: AB66C1D3F783BA76389D4D2CBFA2363E;7295.
  ) 
 Here is how much of TeX's memory you used:
- 36677 strings out of 478994
- 704643 string characters out of 5858184
- 1334649 words of memory out of 5000000
- 52501 multiletter control sequences out of 15000+600000
- 550183 words of font info for 615 fonts, out of 8000000 for 9000
+ 36762 strings out of 478994
+ 705610 string characters out of 5858184
+ 1286253 words of memory out of 5000000
+ 52524 multiletter control sequences out of 15000+600000
+ 552486 words of font info for 638 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,26n,108p,799b,2346s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,26n,108p,859b,2342s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
 /usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
 ive/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
 ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/lo
 cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/loc
 al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
-/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dis
-t/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts
-/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw
-/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utm
-ri8a.pfb>
-Output written on main.pdf (18 pages, 4873201 bytes).
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/tex
+live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texli
+ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
+ype1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/t
+imes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri
+8a.pfb>
+Output written on main.pdf (20 pages, 4899488 bytes).
 PDF statistics:
- 915 PDF objects out of 1000 (max. 8388607)
- 705 compressed objects within 8 object streams
- 251 named destinations out of 1000 (max. 500000)
- 117631 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 993 PDF objects out of 1000 (max. 8388607)
+ 778 compressed objects within 8 object streams
+ 278 named destinations out of 1000 (max. 500000)
+ 117695 words of extra memory for PDF output out of 128383 (max. 10000000)
 

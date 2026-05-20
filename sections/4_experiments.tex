@@ -630,48 +630,12 @@ not available?
 \label{sec:ablation}
 % ============================================================
 
-\paragraph{Component ablations.}
-Table~\ref{tab:ablation_main} defines the ablation grid used to isolate the contribution of
-each design decision. The numerical entries are pending and are therefore not interpreted here.
-The planned variants remove skill generation, tool generation, mastery profiling, or multimodal
-failure diagnosis while holding the GPT-4o backbone and the $k{=}200$, $N{=}3$ protocol fixed.
-Once populated, this table should answer two questions that the main experiments only address
-indirectly: whether skill/tool generation contributes beyond either capability type alone, and
-whether visual diagnosis and mastery profiling are necessary to avoid promoting capabilities
-that solve the triggering failure but hurt other cases.
-
-\paragraph{Sensitivity analysis.}
-Appendix~\ref{app:results} contains placeholders for training-set-size and iteration-count
-sensitivity. We do not draw conclusions from these analyses until the corresponding result files
-are inserted.
-
-\begin{table*}[t]
-\centering
-\small
-\setlength{\tabcolsep}{5.5pt}
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Variant} & \textbf{ChartQA} & \textbf{HRBench} \\
-\midrule
-\sysname{} (Full)           &  &  \\
-\midrule
-w/o Skill Evolution         &  &  \\
-w/o Tool Evolution          &  &  \\
-w/o Mastery Phase           &  &  \\
-w/o Visual Diagnosis        &  &  \\
-\bottomrule
-\end{tabular}
-\caption{%
-  \textbf{Ablation study.}
-  Each row removes one component of \sysname{} while holding all others fixed (GPT-4o
-  backbone; $k{=}200$, $N{=}3$).
-  \emph{w/o Skill Evolution}: tool evolution only.
-  \emph{w/o Tool Evolution}: skill evolution only.
-  \emph{w/o Mastery Phase}: tools deployed unconditionally without applicability SOPs.
-  \emph{w/o Visual Diagnosis}: AnalyzerDecider receives only text (question, answer,
-  trace) with no image input.
-  Accuracy.
-}
-\label{tab:ablation_main}
-\end{table*}
+The \emph{Skill Only} and \emph{Tool Only} rows of Table~\ref{tab:evolution_full} already isolate
+the contribution of each capability type, so we use the remaining ablation budget to study the
+\emph{mechanisms} that drive those gains rather than rerunning the same capability-type
+comparison. Specifically, we ask whether the improvement comes from (i) failure-specific
+capability generation as opposed to generic prompting, (ii) multimodal failure diagnosis as
+opposed to text-only reflection, (iii) mastery-gated tool exposure as opposed to unconditional
+deployment, and (iv) persistent cross-case capability reuse as opposed to per-case retry. The
+full mechanism table, per-ablation discussion, and sensitivity curves are deferred to
+Appendix~\ref{app:ablation_mechanisms} for space.
