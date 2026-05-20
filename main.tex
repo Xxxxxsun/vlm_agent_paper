@@ -78,7 +78,7 @@
 
 % ---- Agent / notation macros ----
 % Change \sysname to your preferred system name before submission
-\newcommand{\sysname}{\textsc{DYNAMO}}
+\newcommand{\sysname}{Dynamo}
 
 % Paper-specific math notation
 \newcommand{\Dtrain}{\mathcal{D}_{\text{train}}}
@@ -112,7 +112,7 @@
 % ============================================================
 %  Title, authors (anonymous for submission)
 % ============================================================
-\title{DYNAMO: Dynamic Skill-Tool Evolution for Vision-Language Agents}
+\title{Dynamo: Dynamic Skill-Tool Evolution for Vision-Language Agents}
 
 % Anonymous submission; the ACL review option replaces this with an anonymous header.
 \author{Anonymous ACL submission}
@@ -125,24 +125,18 @@
 \maketitle
 
 \begin{abstract}
-Vision-language models (VLMs) remain brittle on visual reasoning, and improving them
-typically requires retraining or hand-designed prompts and tools. We present \sysname{},
-a training-free framework in which a frozen VLM agent acquires reusable capabilities from
-a small training subset. \sysname{} samples a sub-training set, diagnoses \emph{both}
-correct and incorrect attempts---using the original images, intermediate tool outputs, and
-reasoning traces---and an evolution planner decides whether each missing capability is
-\emph{cognitive} (a reusable reasoning skill) or \emph{perceptual} (an executable visual
-tool). The Generator proposes multiple candidate skill$+$tool combinations; validation on
-the training subset selects the best, and a mastery phase further learns when each tool is
-safe to deploy. Promoted capabilities accumulate in a persistent library without any
-weight updates. Across ChartQA, MathVista, HRBench, and V$^*$ on six foundation models,
-skill-tool co-evolution improves direct inference in 21 of 23 model--benchmark settings,
-averaging $+4.8$ accuracy points. On the GTA benchmark, mastery profiling improves
-step-level tool selection, argument, and instruction-following accuracy across all tested
-backbones. Compared with task-specific RL (VTool-R1, DeepEyes), \sysname{} closes
-60--94\% of the gap on chart and table reasoning without any gradient updates, and at 7B
-matches DeepEyes on V$^*$ (91.1 vs.\ 90.1). These results suggest that capability evolution
-is a viable training-free alternative to task-specific RL.
+Improving vision-language models (VLMs) on visual reasoning typically requires retraining
+or hand-designed prompts and tools. We present \sysname{}, a training-free framework in
+which a frozen VLM agent inspects its own correct and incorrect attempts on a small
+training subset and evolves two complementary capabilities: reusable reasoning skills for
+cognitive bottlenecks, and executable visual tools---gated by learned applicability---for
+perceptual ones, accumulating them in a persistent library without weight updates.
+Across four visual reasoning benchmarks and six VLM backbones, \sysname{} improves direct
+inference in 21 of 23 settings (avg.\ $+4.8$ acc). The same framework extends to the
+tool-mastery setting on GTA, where mastery profiling lifts step-level tool selection
+across all tested backbones. Against task-specific RL (VTool-R1, DeepEyes), \sysname{}
+matches or approaches RL accuracy at a fraction of the compute (60--94\% gap recovery on
+chart/table; 91.1 vs.\ 90.1 on V$^*$-7B) and combines additively with RL when available.
 \end{abstract}
 
 % ---- Main sections ----
