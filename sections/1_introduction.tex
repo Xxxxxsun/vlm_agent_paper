@@ -24,11 +24,11 @@ reasoning skill, a visual tool, or both?
   \includegraphics[width=\columnwidth]{figures/Picture2.pdf}
   \caption{
     \textbf{Motivation for skill-tool evolution.}
-    Failed VLM attempts can provide supervision for training-free adaptation.
-    Some failures are better addressed by reusable reasoning skills, while others require
-    executable visual tools that change what the model can inspect. Existing adaptation methods
-    either rely on retraining, manual prompting, or text-only reflection. \sysname{} instead
-    diagnoses failures visually and evolves the capability type that matches the bottleneck.
+    Visual-reasoning bottlenecks split into cognitive ones, addressed by reusable reasoning
+    skills, and perceptual ones, addressed by executable visual tools that transform what the
+    model can inspect. Unlike retraining, manual prompting, or text-only reflection,
+    \sysname{} diagnoses the bottleneck visually from the agent's own attempts and evolves the
+    matching capability.
   }
   \label{fig:motivation}
 \end{figure}
