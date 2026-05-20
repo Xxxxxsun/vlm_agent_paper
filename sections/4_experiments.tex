@@ -142,17 +142,17 @@ standalone proof that every error in these benchmarks has that structure.
 
 \multirow{4}{*}{GPT-4o}
   & None (Base Agent)  &0.6386  &0.6711  &0.5828  &0.7552  \\
-  & Skill Only         &0.66142  &0.7077  &0.63576  &0.7796  \\
-  & Tool Only          &0.6414  &0.6922  &0.6159  &0.7693  \\
-  & Skill + Tool       &0.66  &0.70777  &0.6423  &0.775  \\
+  & Skill Only         &$0.6733 {\pm} 0.0121$  &$0.7122 {\pm} 0.0038$  &$0.6424 {\pm} 0.0066$  &$0.7785 {\pm} 0.0026$  \\
+  & Tool Only          &$0.6452 {\pm} 0.0044$  &$0.6900 {\pm} 0.0029$  &$0.6225 {\pm} 0.0066$  & $0.7722 {\pm} 0.0029$  \\
+  & Skill + Tool       &$0.6643 {\pm} 0.0052$  &$0.7011 {\pm} 0.0067$  &$0.6313 {\pm} 0.0101$  &$0.7799 {\pm} 0.0045$  \\
 
 \midrule
 
-\multirow{4}{*}{o4-mini?}
+\multirow{4}{*}{o4-mini}
   & None (Base Agent)  &0.73  &0.753333  &0.72847  &0.7833  \\
-  & Skill Only         &0.7671  &0.75666  &0.75496  &0.76927  \\
-  & Tool Only          &0.5529  &0.6978  &0.7677  &0.7677  \\
-  & Skill + Tool       &0.8457  &0.7622  &0.7947  &0.7917  \\
+  & Skill Only         &$0.7724 {\pm} 0.0058$  &$0.7470 {\pm} 0.0107$  &$0.7616 {\pm} 0.0066$  &$0.7866 {\pm} 0.0151$  \\
+  & Tool Only          &$0.7457 {\pm} 0.1670$  &$0.7356 {\pm} 0.0328$  &$0.8387 {\pm} 0.0629$  & $0.7920 {\pm} 0.0213$  \\
+  & Skill + Tool       &$0.8571 {\pm} 0.0099$  &$0.7559 {\pm} 0.0055$  &$0.7991 {\pm} 0.0399$  &$0.8007 {\pm} 0.0081$  \\
 
 \midrule
 
@@ -166,9 +166,9 @@ standalone proof that every error in these benchmarks has that structure.
 
 \multirow{4}{*}{Doubao-Seed-2.0}
   & None (Base Agent)  &0.8214  &0.8544  &0.8675  &0.8152  \\
-  & Skill Only         &0.8629  &0.8433  &0.8675  &0.8229 \\
-  & Tool Only          &0.9000  &0.8700  &0.9470  &0.8078  \\
-  & Skill + Tool       &0.9057  &0.8800  &0.9536  &0.86875  \\
+  & Skill Only         &$0.8600 {\pm} 0.0049$  &$0.8556{\pm} 0.0109$  &$0.8609 {\pm} 0.0115$  &$0.8198 {\pm} 0.0031$  \\
+  & Tool Only          &$0.9005 {\pm} 0.0022$  &$0.8659 {\pm} 0.0061$  &$0.9448 {\pm} 0.0038$  & $0.8156 {\pm} 0.0068$  \\
+  & Skill + Tool       &$0.8990 {\pm} 0.0064$  &$0.8681 {\pm} 0.0105$  &$0.9558 {\pm} 0.0038$  &$0.8347 {\pm} 0.0295$  \\
 
 \midrule
 
@@ -314,18 +314,30 @@ pattern, including on 200-seed natural aggregates.
   & \textbf{Online adapt}
   & \textbf{Oracle} \\
 \midrule
+\multicolumn{5}{l}{\emph{GPT-4o skill+tool}} \\
+Capability-relevant & $0.418{\pm}0.020$ & $0.558{\pm}0.023$ & $0.789{\pm}0.025$ & $0.818{\pm}0.022$ \\
+Stress & $0.068{\pm}0.009$ & $0.347{\pm}0.011$ & $0.912{\pm}0.008$ & $0.961{\pm} 0.010$ \\
+Natural & $0.664{\pm}0.032$ & $0.673{\pm}0.030$ & $0.702{\pm}0.028$ & $0.705{\pm}0.028$ \\
+\midrule
+\multicolumn{5}{l}{\emph{o4mini skill+tool}} \\
+Capability-relevant & $0.467{\pm}0.019$ & $0.626{\pm}0.019$ & $0.852{\pm}0.019$ & $0.881{\pm}0.016$ \\
+Stress & $0.047{\pm}0.006$ & $0.412{\pm}0.006$ & $ 0.940{\pm}0.009$ & $0.984{\pm}0.007$ \\
+Natural & $0.745{\pm}0.029$ & $0.787{\pm}0.028$ & $0.807{\pm}0.027$ & $0.808{\pm}0.027$ \\
+\midrule
 \multicolumn{5}{l}{\emph{GPT-5.4 skill+tool}} \\
-Capability-relevant & $0.490{\pm}0.018$ & $0.654{\pm}0.016$ & $0.889{\pm}0.011$ & $0.909{\pm}0.009$ \\
-Stress & $0.029{\pm}0.006$ & $0.394{\pm}0.018$ & $0.952{\pm}0.008$ & $1.000{\pm}0.000$ \\
-Natural, seed 33 & $0.692{\pm}0.015$ & $0.736{\pm}0.014$ & $0.832{\pm}0.012$ & $0.851{\pm}0.010$ \\
+Capability-relevant & $0.479{\pm}0.021$ & $0.636{\pm}0.020$ & $0.870{\pm}0.020$ & $0.899{\pm}0.018$ \\
+Stress & $0.026{\pm}0.004$ & $0.391{\pm}0.004$ & $ 0.947{\pm}0.007$ & $0.995{\pm}0.005$ \\
+Natural & $0.761{\pm}0.029$ & $0.800{\pm}0.029$ & $0.830{\pm}0.026$ & $0.833{\pm}0.025$ \\
 \midrule
-\multicolumn{5}{l}{\emph{Kimi-K2.6 skill+tool}} \\
-Capability-relevant & $0.495{\pm}0.017$ & $0.649{\pm}0.015$ & $0.861{\pm}0.012$ & $0.885{\pm}0.010$ \\
-Natural, 200-seed mean & $0.781{\pm}0.010$ & $0.804{\pm}0.009$ & $0.836{\pm}0.008$ & $0.839{\pm}0.008$ \\
+\multicolumn{5}{l}{\emph{Qwen3.5-27B skill+tool}} \\
+Capability-relevant & $0.514{\pm}0.015$ & $0.667{\pm}0.016$ & $ 0.888{\pm}0.020$ & $ 0.917{\pm}0.018$ \\
+Stress & $0.122{\pm}0.007$ & $0.488{\pm}0.007$ & $0.940{\pm}0.009$ & $0.984{\pm}0.008$ \\
+Natural & $0.821{\pm}0.026$ & $0.847{\pm}0.023$ & $0.861{\pm}0.022$ & $0.862{\pm}0.022$ \\
 \midrule
-\multicolumn{5}{l}{\emph{o4-mini skill+tool}} \\
-Capability-relevant & $0.481{\pm}0.018$ & $0.649{\pm}0.016$ & $0.870{\pm}0.012$ & $0.894{\pm}0.010$ \\
-Natural, 200-seed mean & $0.745{\pm}0.011$ & $0.787{\pm}0.010$ & $0.807{\pm}0.009$ & $0.808{\pm}0.009$ \\
+\multicolumn{5}{l}{\emph{Doubao-Seed-2.0 skill+tool}} \\
+Capability-relevant & $0.635{\pm}0.014$ & $0.773{\pm}0.015$ & $0.900{\pm}0.018$ & $ 0.917{\pm}0.016$ \\
+Stress & $0.621{\pm}0.013$ & $0.768{\pm}0.014$ & $0.902{\pm}0.014$ & $0.920{\pm}0.014$ \\
+Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm}0.019$ \\
 \bottomrule
 \end{tabular}
 \caption{%
@@ -402,20 +414,20 @@ model can deliver.
 \midrule
 
 \multirow{2}{*}{GPT-4o}
-  & Base Agent             & 76.4 & 69.8 & 66.2 & 62.81 \\
-  & Skill Evolution (Ours) & 74.9 & 68.1 & 64.7 & 61.16 \\
+  & Base Agent             & 80.3 & 62.0 & 52.0 & 66.1 \\
+  & Skill Evolution (Ours) & 85.3 & 67.4 & 57.3 & 57.9 \\
 
 \midrule
 
 \multirow{2}{*}{GPT-5.4}
-  & Base Agent             & 84.7 & 79.5 & 75.8 & 72.73 \\
-  & Skill Evolution (Ours) & 87.9 & 82.8 & 79.1 & 76.03 \\
+  & Base Agent             & 53.0 & 36.9 & 33.3 &  66.1 \\
+  & Skill Evolution (Ours) & 85.7 & 63.4 & 59.9 & 68.6 \\
 
 \midrule
 
-\multirow{2}{*}{Gemini3Flash}
-  & Base Agent             & 79.3 & 73.1 & 69.4 & 66.56 \\
-  & Skill Evolution (Ours) & 81.8 & 75.7 & 71.9 & 69.06 \\
+\multirow{2}{*}{Doubao-Seed-2.0}
+  & Base Agent             & 67.7 & 45.5 & 41.6 & 76.9 \\
+  & Skill Evolution (Ours) & 86.4 & 61.3 & 57.7 & 81.8 \\
 
 \bottomrule
 \end{tabular}
@@ -528,7 +540,6 @@ model parameters from training trajectories. VTool-R1 uses GRPO for chart/table 
 DeepEyes uses end-to-end RL for active visual perception. The comparison therefore isolates a
 practical question: how much of the gain over direct inference can be obtained when retraining is
 not available?
-
 \begin{table*}[t]
 \centering
 \scriptsize
@@ -541,22 +552,22 @@ not available?
   & \textbf{V$^\star$} & \textbf{HRBench4K} \\
 \midrule
 \multirow{4}{*}{Qwen2.5-VL-3B}
-  & Direct              & 45.3995 & 43.0921 & 56.6 & 47.4 \\
-  & RL                  & 64.0    & 57.9    & 82.8 & 70.1 \\
-  & \sysname{}          & 59.56   & 51.97   & 81.1 & 70.0 \\
-  & \sysname{} + RL     & 68.28   & 59.54   & 83.3 & 71.1 \\
+  & Direct              & 45.3995 & 43.0921 & 71.20 & 63.62 \\
+  & RL                  & 66.95    & 56.25    &  &  \\
+  & \sysname{}          & 59.56   & 51.97   & 84.29 & 70.50 \\
+  & \sysname{} + RL     & 68.28   & 59.54   &  &  \\
 \midrule
 \multirow{4}{*}{Qwen2.5-VL-7B}
-  & Direct              & 56.0532 & 56.9078 & 71.2 & 68.8 \\
-  & RL                  & 75.18   & 68.09   & 88.8 & 73.1 \\
-  & \sysname{}          & 75.060  & 67.43   & 85.8 & 75.3 \\
-  & \sysname{} + RL     & 76.88   & 69.41   & 91.1  & 77.7 \\
+  & Direct              & 56.0532 & 56.9078 & 79.06 & 70.50 \\
+  & RL                  & 75.18   & 68.42   &84.82  &74.38  \\
+  & \sysname{}          & 75.060  & 67.43   & 85.86 &75.12 \\
+  & \sysname{} + RL     & 76.88   & 69.41   &   &  \\
 \midrule
 \multirow{4}{*}{Qwen2.5-VL-32B}
-  & Direct              & 81.3559 & 82.8947 & 87.9 & 73.9 \\
-  & RL                  & 84.3    & 84.3    & 93.3 & 75.2 \\
-  & \sysname{}          & 84.2    & 83.55   & 93.2   & 75.1 \\
-  & \sysname{} + RL     & 85.5    & 84.9    &    &  \\
+  & Direct              & 81.3559 & 82.8947 & 81.68 & 75.62 \\
+  & RL                  & 84.3    & 84.3    &  &  \\
+  & \sysname{}          & 86.44    & 83.55   & 88.48   & 78.00 \\
+  & \sysname{} + RL     &     &    &    &  \\
 \bottomrule
 \end{tabular}
 \caption{%
@@ -570,6 +581,47 @@ not available?
 }
 \label{tab:rl_combined}
 \end{table*}
+% \begin{table*}[t]
+% \centering
+% \scriptsize
+% \setlength{\tabcolsep}{4pt}
+% \renewcommand{\arraystretch}{1.14}
+% \begin{tabular}{llcccc}
+% \toprule
+% \textbf{Backbone} & \textbf{Variant}
+%   & \textbf{Chart} & \textbf{Table}
+%   & \textbf{V$^\star$} & \textbf{HRBench4K} \\
+% \midrule
+% \multirow{4}{*}{Qwen2.5-VL-3B}
+%   & Direct              & 45.3995 & 43.0921 & 56.6 & 47.4 \\
+%   & RL                  & 64.0    & 57.9    & 82.8 & 70.1 \\
+%   & \sysname{}          & 59.56   & 51.97   & 81.1 & 70.0 \\
+%   & \sysname{} + RL     & 68.28   & 59.54   & 83.3 & 71.1 \\
+% \midrule
+% \multirow{4}{*}{Qwen2.5-VL-7B}
+%   & Direct              & 56.0532 & 56.9078 & 71.2 & 68.8 \\
+%   & RL                  & 75.18   & 68.09   & 88.8 & 73.1 \\
+%   & \sysname{}          & 75.060  & 67.43   & 85.8 & 75.3 \\
+%   & \sysname{} + RL     & 76.88   & 69.41   & 91.1  & 77.7 \\
+% \midrule
+% \multirow{4}{*}{Qwen2.5-VL-32B}
+%   & Direct              & 81.3559 & 82.8947 & 87.9 & 73.9 \\
+%   & RL                  & 84.3    & 84.3    & 93.3 & 75.2 \\
+%   & \sysname{}          & 84.2    & 83.55   & 93.2   & 75.1 \\
+%   & \sysname{} + RL     & 85.5    & 84.9    &    &  \\
+% \bottomrule
+% \end{tabular}
+% \caption{%
+%   \textbf{Exp~III: unified comparison of direct inference, RL, self-evolution, and
+%   self-evolution+RL.}
+%   Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows
+%   are VTool-R1 GRPO results and their \sysname{}+RL rows add the self-evolved capability on top
+%   of the RL-trained policy. V$^\star$ and HRBench4K entries follow the DeepEyes high-resolution
+%   evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding
+%   same-backbone or combined run is not reported in the source table and is not inferred here.
+% }
+% \label{tab:rl_combined}
+% \end{table*}
 
 % TODO: Insert combined skill+RL results when available.
 
