@@ -4,69 +4,41 @@
 \label{sec:related_work}
 
 \paragraph{Self-improving agents.}
-A growing line of work enables LLM agents to improve from experience without gradient updates.
-Reflexion~\citep{shinn2023reflexion} maintains a verbal reflection buffer that the agent can
-consult on future attempts, but reflections are case-specific and non-persistent: once the episode
-ends, the buffer resets, so no reusable capability accumulates.
-Voyager~\citep{wang2023voyager} and ExpeL~\citep{zhao2023expel} build libraries of executable
-skills from experience in game and tool-use domains, demonstrating that cross-case skill transfer
-is feasible and valuable.
-AutoManual~\citep{chen2024automanual} automatically constructs structured instruction manuals for
-agent behaviour, and EvolveR~\citep{evolver_2025} iteratively refines reasoning strategies via
-self-play.
-These methods operate exclusively in text, code-execution, or game domains; none generates
-executable \emph{visual processing} tools, and none confronts the dual-modality challenge of
-deciding whether a given failure is cognitive or perceptual in nature.
-\sysname{} extends the persistent skill-library paradigm into the visual domain, adding a
-visual-modality diagnostic that text-only frameworks structurally cannot perform.
+A growing line of work lets LLM agents improve from experience without gradient updates:
+Reflexion~\citep{shinn2023reflexion} keeps a verbal reflection buffer that resets between
+episodes; Voyager~\citep{wang2023voyager} and ExpeL~\citep{zhao2023expel} accumulate
+persistent skill libraries in game and tool-use domains;
+AutoManual~\citep{chen2024automanual} and EvolveR~\citep{evolver_2025} refine instruction
+manuals or reasoning strategies via self-play. All operate in text, code, or game domains,
+never generating executable visual processing nor deciding whether a bottleneck is cognitive
+or perceptual. \sysname{} extends the persistent-library paradigm into the visual domain
+with a multimodal diagnostic that text-only frameworks cannot perform.
 
 \paragraph{Tool creation for language models.}
-Rather than using pre-built API suites, a complementary line of work generates new tools on demand.
-CREATOR~\citep{tang2023creator} prompts an LLM to write Python functions to solve problems it
-cannot answer directly.
-LATM~\citep{cai2024latm} and ToolLLM~\citep{qin2024toolllm} extend this to large API collections,
-demonstrating that models can learn to create and invoke tools dynamically.
-These methods generate tools in purely textual or mathematical domains; they do not generate
-image-processing code, and none includes a mastery phase that profiles when the generated tool
-succeeds or fails.
-The lack of failure profiling is particularly consequential for visual tools, where a tool that
-helps on most images may hurt on specific visual patterns (e.g.\ a sharpening filter degrading
-low-contrast charts).
-Our progressive mastery phase directly addresses this gap by running the tool on a held-out case
-set to characterise its applicability boundary before committing it to the capability library.
+A complementary line generates new tools on demand:
+CREATOR~\citep{tang2023creator} prompts an LLM to write Python helpers for problems it
+cannot solve directly; LATM~\citep{cai2024latm} and ToolLLM~\citep{qin2024toolllm} scale
+this to large API collections. These methods generate tools in textual or mathematical
+domains and do not profile when a generated tool succeeds or fails---a gap that matters for
+visual tools, where the same operation can help on most images but hurt on specific patterns
+(e.g.\ a sharpening filter degrading low-contrast charts). \sysname{}'s mastery phase
+profiles each tool on a held-out case set to characterise its applicability before
+promotion.
 
-\paragraph{``Think with images'': visual reasoning via tools.}
-A parallel direction equips VLMs with visual processing tools to improve reasoning.
-VTool-R1~\citep{vtoolr1_2025} trains a VLM via RL to invoke a fixed set of visual tools
-(zoom, crop, contrast adjustment), achieving strong gains on high-resolution benchmarks but
-requiring GPU-intensive RL training.
-DeepEyes~\citep{deepeyes_2025} similarly uses end-to-end RL to incentivize interleaved
-``thinking with images'' through active visual perception and zoom-in operations.
-Adaptive-CoF~\citep{adaptivecof_2025} trains Qwen2.5-VL-7B to decide when to search and zoom,
-using task-specific SFT trajectories followed by RL for adaptive visual focusing.
-PixelReasoner~\citep{pixelreasoner_2025} uses SFT and RL to train models to reason over
-intermediate visual representations, attaining state-of-the-art on MathVista but demanding
-$\sim$14k supervised examples and multi-GPU training.
-V-Thinker~\citep{vthinker_2025} teaches VLMs to interleave visual tool calls with chain-of-thought
-reasoning, again via supervised training on curated datasets.
-ZoomEye~\citep{zoomeye_2024} is a training-free, model-agnostic tree-search method for
-vision-level reasoning: it treats the image as a hierarchy whose root is the full image and whose
-children are zoomed-in sub-regions. ReFocus~\citep{refocus_2025} instead casts visual editing as
-chain-of-thought, asking an MLLM to generate Python code that draws boxes, highlights sections,
-and masks distractors for structured images such as charts and tables.
-These methods provide important evidence that changing the visual input or visual focus can
-improve reasoning. \sysname{} addresses a complementary problem: rather than assuming a fixed
-zoom/search algorithm or a fixed visual-editing interface, it generates and validates reusable
-skills and tools from failed attempts.
-\sysname{} achieves competitive accuracy without any weight updates, generates tools on demand
-from failure, and remains deployable with only API access to a frozen VLM backbone.
+\paragraph{Visual reasoning with tools.}
+Several recent systems equip VLMs with visual processing tools. VTool-R1~\citep{vtoolr1_2025},
+DeepEyes~\citep{deepeyes_2025}, Adaptive-CoF~\citep{adaptivecof_2025},
+PixelReasoner~\citep{pixelreasoner_2025}, and V-Thinker~\citep{vthinker_2025} all rely on
+SFT and/or RL with curated trajectories to teach a VLM when and how to invoke a fixed tool
+inventory. ZoomEye~\citep{zoomeye_2024} and ReFocus~\citep{refocus_2025} are training-free
+but assume a fixed zoom/search algorithm or visual-editing interface. \sysname{} instead
+generates and validates the skills and tools themselves from the agent's own behaviour on a
+small training subset, with no weight updates and no predefined tool inventory.
 
 \paragraph{Tool-augmented VLMs with predefined tool sets.}
 VisProg~\citep{gupta2023visprog}, ViperGPT~\citep{suris2023vipergpt}, and
-Chameleon~\citep{lu2024chameleon} compose predefined tool libraries (object detectors, OCR,
-arithmetic modules) via program synthesis to answer visual questions.
-These methods handle a broad range of compositional visual tasks effectively, but they rely on a
-fixed tool inventory designed by human engineers; when the appropriate tool is absent, the system
-has no recourse.
-\sysname{} complements this direction by generating new tools from scratch when the current
-inventory fails---bridging the gap between fixed-tool composition and training-based tool learning.
+Chameleon~\citep{lu2024chameleon} compose hand-curated tool libraries (detectors, OCR,
+arithmetic modules) via program synthesis. They handle broad compositional visual tasks
+effectively but cannot recover when the required tool is missing from the human-designed
+inventory. \sysname{} fills this gap by generating new tools when the current set is
+insufficient, bridging fixed-tool composition and training-based tool learning.
