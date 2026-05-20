@@ -3,20 +3,21 @@
 %  Training-Free Self-Evolution of Visual Agents
 %  via Skill and Tool Generation
 %
-%  Target venue: ICLR 2027  |  Page budget: 9 pages (main body)
+%  Target venue: *ACL submission  |  Page budget: 8 pages (main content)
 % ============================================================
 
 % Pass xcolor options before documentclass to avoid option clash
 \PassOptionsToPackage{table}{xcolor}
 
-% ---- layout: uncomment ONE of these two lines ----
-% \documentclass[10pt, a4paper, logo]{googledeepmind}
-\documentclass[10pt, a4paper, twocolumn, logo]{googledeepmind}
-% --------------------------------------------------
+\documentclass[11pt]{article}
+\usepackage[review]{acl}
 
 \usepackage{times}
-\usepackage{hyperref}
-\usepackage[leftcaption]{sidecap}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
 
 % Provide \laplace before math_commands.tex attempts \renewcommand
 \providecommand{\laplace}{\mathcal{L}}
@@ -36,10 +37,8 @@
 \tcbuselibrary{breakable}
 \usepackage{siunitx}
 \usepackage{colortbl}
-\usepackage{microtype}
 \usepackage{color}
 \usepackage{wrapfig}
-\usepackage{natbib}
 \usepackage{array}
 \usepackage{textcomp}
 \usepackage{stfloats}
@@ -50,8 +49,6 @@
 \usepackage{multirow}
 \usepackage{enumitem}
 \usepackage{pifont}       % for \ding{51} / \ding{55} checkmarks
-\usepackage[T1]{fontenc}
-\usepackage[table]{xcolor}
 \usepackage{etoolbox}
 \usepackage[normalem]{ulem}
 % Note: xcolor already loaded via \PassOptionsToPackage above
@@ -117,15 +114,16 @@
 % ============================================================
 \title{DYNAMO: Dynamic Skill-Tool Evolution for Vision-Language Agents}
 
-% Anonymous submission — do NOT add real names or affiliations
-\author[1]{Anonymous Author 1}
-\author[1]{Anonymous Author 2}
-\author[1]{Anonymous Author 3}
-\affil[1]{Anonymous Institution}
+% Anonymous submission; the ACL review option replaces this with an anonymous header.
+\author{Anonymous ACL submission}
 
 % ============================================================
-%  Abstract  (placed before \begin{document} per googledeepmind.cls)
+%  Abstract
 % ============================================================
+
+\begin{document}
+\maketitle
+
 \begin{abstract}
 Vision-language models (VLMs) remain brittle on visual reasoning tasks, and improving them
 typically requires either retraining or manual prompt/tool design. We ask a different question:
@@ -148,9 +146,6 @@ These results suggest that a substantial part of task-specific VLM adaptation ca
 by failure-driven, in-context capability evolution.
 \end{abstract}
 
-\begin{document}
-\maketitle
-
 % ---- Main sections ----
 \section{Introduction}
 \input{sections/1_introduction.tex}
@@ -172,7 +167,6 @@ by failure-driven, in-context capability evolution.
 
 % ---- Bibliography ----
 \bibliography{references}
-\bibliographystyle{conference}
 
 % ---- Appendix ----
 \appendix
