@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  20 MAY 2026 23:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  20 MAY 2026 23:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1260,13 +1260,9 @@ Underfull \vbox (badness 4779) has occurred while \output is active []
 
 
  <./figures/Picture2.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 57--60
-[]\T1/ptm/m/n/10.95 (+20) Empirical ev-i-dence across four visual-
- []
-
-
-Underfull \hbox (badness 1668) in paragraph at lines 57--60
-\T1/ptm/m/n/10.95 (+20) RL base-lines (VTool-R1, Deep-Eyes) that
+Underfull \hbox (badness 6708) in paragraph at lines 60--65
+[]\T1/ptm/b/n/10.95 (+20) Empirical ev-i-dence \T1/ptm/m/n/10.95 (+20) across f
+our visual-
  []
 
 ) (./sections/2_related_work.tex
@@ -1286,13 +1282,12 @@ Underfull \hbox (badness 1924) in paragraph at lines 39--148
  Kem-b-havi[][], [][]2023[][]),
  []
 
-(./sections/3_method.tex
-<figures/method.pdf, id=292, 753.81625pt x 409.53pt>
+[2] (./sections/3_method.tex
+<figures/method.pdf, id=330, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
 (pdftex.def)             Requested size: 455.24411pt x 247.31961pt.
- [2]
 LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 55
 .
 
@@ -1318,6 +1313,9 @@ $\T1/ptm/m/n/10.95 (+20) .
  []
 
 
+Underfull \vbox (badness 2359) has occurred while \output is active []
+
+ [3 <./figures/method.pdf>]
 Overfull \hbox (10.45752pt too wide) in paragraph at lines 108--108
 []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^N[]; \OT1/cmr/bx/n/10.95 v[]\OT1/cm
 r/m/n/10.95 ;  \OML/cmm/m/it/10.95 ^^Y[]\OT1/cmr/m/n/10.95 )$\T1/ptm/m/n/10.95 
@@ -1343,19 +1341,15 @@ n/10.95 ;  \OML/cmm/m/it/10.95 ^^Y[]\OT1/cmr/m/n/10.95 )$\T1/ptm/m/n/10.95 (-20
 ) ; 
  []
 
-
-Underfull \vbox (badness 2359) has occurred while \output is active []
-
- [3 <./figures/method.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 25.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [4]
-Underfull \vbox (badness 2781) has occurred while \output is active []
+) [4])
+(./sections/4_experiments.tex [5]
+Underfull \vbox (badness 2980) has occurred while \output is active []
 
-)
-(./sections/4_experiments.tex [5] [6]
+ [6]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 134.
 
@@ -1373,12 +1367,8 @@ LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 7.0pt on input line 467.
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 484.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9])
-(./sections/5_discussion.tex [10]) (./sections/6_conclusion.tex) (./main.bbl
-[11]
+ [9]) (./sections/5_discussion.tex [10]) (./sections/6_conclusion.tex)
+(./main.bbl [11]
 Underfull \hbox (badness 3354) in paragraph at lines 125--132
 []\T1/ptm/m/n/10 (+20) Haozhan Shen, Kangjia Zhao, Tiancheng Zhao,
  []
@@ -1482,7 +1472,12 @@ Underfull \hbox (badness 2158) in paragraph at lines 375--377
 \T1/ptm/m/n/9 (+20) Zoom-Eye as a pre-de-fined
  []
 
-[16] [17] [18]) [19] (./main.aux)
+[16] [17] [18])
+
+Package lineno Warning: Linenumber reference failed, 
+(lineno)                rerun to get it right.
+
+[19] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1493,11 +1488,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 2DBAC948458BEF8293D966A754178668;7285.
  ) 
 Here is how much of TeX's memory you used:
- 36774 strings out of 478994
- 705771 string characters out of 5858184
- 1268866 words of memory out of 5000000
- 52525 multiletter control sequences out of 15000+600000
- 558326 words of font info for 649 fonts, out of 8000000 for 9000
+ 36768 strings out of 478994
+ 705722 string characters out of 5858184
+ 1268826 words of memory out of 5000000
+ 52523 multiletter control sequences out of 15000+600000
+ 558103 words of font info for 646 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,26n,108p,982b,1620s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
@@ -1522,7 +1517,7 @@ fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
 ype1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/t
 imes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri
 8a.pfb>
-Output written on main.pdf (19 pages, 4893376 bytes).
+Output written on main.pdf (19 pages, 4893489 bytes).
 PDF statistics:
  987 PDF objects out of 1000 (max. 8388607)
  773 compressed objects within 8 object streams

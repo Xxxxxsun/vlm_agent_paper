@@ -41,20 +41,25 @@ points.
 \textbf{(II) Does the framework extend to a tool-mastery setting with a curated tool set?}
 On GTA, mastery profiling lifts step-level tool selection, argument, and instruction-following
 accuracy across all tested backbones.
-\textbf{(III) How does \sysname{} compare to task-specific RL?}
-Against VTool-R1 and DeepEyes, \sysname{} matches or approaches RL accuracy at a fraction of
-the compute (60--94\% gap recovery on chart/table; 91.1 vs.\ 90.1 on V$^*$-7B), and combines
-additively with RL when both are available.
+\textbf{(III) Can \sysname{} match task-specific RL across different task families?}
+Across three task families---chart, table, and high-resolution perception---we compare
+\sysname{} to a representative RL method on each (VTool-R1 for chart/table;
+DeepEyes for perception). \sysname{} matches or approaches RL accuracy at a fraction of
+the compute (60--94\% gap recovery on chart/table; 91.1 vs.\ 90.1 on V$^*$-7B perception),
+and combines additively with RL when both are available.
 
 \paragraph{Contributions.}
 \begin{enumerate}[leftmargin=*, label=(\arabic*), noitemsep]
-  \item A \textbf{training-free} framework for VLM task adaptation that evolves a
-        task-family-specific library of reasoning skills and visual tools from a small
-        training subset, with no weight updates.
-  \item A \textbf{multi-candidate evolution loop} that diagnoses both correct and incorrect
-        attempts, generates multiple candidate skill$+$tool combinations, selects the best by
-        validation accuracy, and learns per-tool applicability boundaries via a mastery phase.
-  \item Empirical evidence across four visual-reasoning benchmarks, six VLM backbones, the
-        GTA tool-mastery benchmark, and two RL baselines (VTool-R1, DeepEyes) that capability
-        evolution is a viable training-free alternative---and add-on---to task-specific RL.
+  \item A \textbf{problem formulation} that recasts per-task VLM adaptation as labor-free
+        capability evolution: a frozen agent builds its own task-family-specific skill and
+        tool set from a small training subset, replacing manual SFT data curation and
+        task-specific RL pipelines.
+  \item A \textbf{multi-candidate evolution loop with mastery} that diagnoses both correct
+        and incorrect attempts, generates candidate skill$+$tool combinations, selects the
+        best by validation accuracy, and learns per-tool applicability boundaries.
+  \item \textbf{Empirical evidence} across four visual-reasoning benchmarks, six VLM
+        backbones, the GTA tool-mastery benchmark, and three task families
+        (chart, table, perception) each compared against its representative RL method,
+        showing that capability evolution is a viable training-free alternative---and
+        add-on---to task-specific RL.
 \end{enumerate}
