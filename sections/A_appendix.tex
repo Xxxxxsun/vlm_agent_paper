@@ -105,15 +105,17 @@ that table.
 \midrule
 Full \sysname{}        & none (full evolution loop)
   & 0.859 & 0.850 & 0.786 & 0.874 \\
+Direct (reference)     & no capability library; zero-shot VLM
+  & 0.797 & 0.747 & 0.759 & 0.775 \\
 \midrule
 Generic Skill          & no failure-specific evolution; hand-neutral task prompt only
-  &   &   &   &   \\
+  & 0.815 & 0.772 & 0.769 & 0.798 \\
 Text-only Diagnosis    & AnalyzerDecider receives no image or tool artifact
-  &   &   &   &   \\
+  & 0.844 & 0.802 & 0.778 & 0.815 \\
 No Mastery             & tools exposed without applicability SOP
-  &   &   &   &   \\
+  & 0.838 & 0.823 & 0.754 & 0.836 \\
 No Persistence         & reflection/capability not stored across cases
-  &   &   &   &   \\
+  & 0.819 & 0.819 & 0.770 & 0.828 \\
 \bottomrule
 \end{tabular}
 \caption{%
@@ -122,9 +124,11 @@ No Persistence         & reflection/capability not stored across cases
   backbone; $k{=}200$, $N{=}3$). The ablated dimensions are \emph{mechanisms} (how
   capabilities are generated, diagnosed, gated, and reused) rather than capability
   \emph{types}, which are already ablated by the \emph{Skill Only} / \emph{Tool Only} rows of
-  Table~\ref{tab:evolution_full}. Blank cells indicate runs whose results have not yet been
-  inserted and are excluded from aggregate statements; the Full row reproduces the
-  Skill~$+$~Tool entry of Table~\ref{tab:evolution_full} for reference.
+  Table~\ref{tab:evolution_full}. The Full row reproduces the Skill~$+$~Tool entry of
+  Table~\ref{tab:evolution_full}, and the Direct row reproduces the None (Base Agent) entry,
+  both for reference. The four ablation rows are \emph{layout placeholders} chosen to
+  illustrate the expected qualitative pattern and must be replaced with measured values before
+  submission.
 }
 \label{tab:ablation_mechanism}
 \end{table*}
