@@ -249,28 +249,25 @@ algorithms of ReFocus~\citep{refocus_2025} or ZoomEye~\citep{zoomeye_2024}.
 % \end{table*}
 
 \paragraph{Online adaptation to distribution shift.}
-To test the online adaptation in Section~\ref{sec:method_adaptation}, we replay a
-non-stationary stream that begins with 48 HRBench cases and then shifts to mixtures
-dominated by MathVista, ChartQA, and finally V$^*$. The replay uses completed per-case
-model outputs, which isolates the adaptation policy from the cost of regenerating
-capabilities online. We compare four policies:
-\emph{Direct} (no capabilities);
-\emph{Static HR} (capabilities evolved on HRBench, never updated);
-\emph{Online adapt} (\sysname{} detects the shift in a rolling window and updates its
-skills and tools accordingly); and
-\emph{Oracle} (capabilities pre-evolved on every family encountered in the stream, served
-as an upper bound).
-For each backbone we report three stream protocols: \emph{Capability-relevant} (cases whose
-outcome depends on the matching capability), \emph{Stress} (cases the matching capability
-fixes), and \emph{Natural} (fixed-seed mixture).
+To simulate real online user traffic---where the task distribution shifts over time as
+different users and requests arrive---we replay a non-stationary stream that begins on one
+family (HRBench) and then drifts into mixtures dominated by MathVista, ChartQA, and
+finally V$^*$. The replay reuses completed per-case outputs, isolating the adaptation
+policy from the cost of regenerating capabilities online. We compare \emph{Direct} (no
+capabilities), \emph{Static} (capabilities evolved on the initial distribution only and
+never updated), \emph{Online adapt} (\sysname{} detects the shift and updates skills and
+tools on the new sub-stream), and \emph{Oracle} (capabilities pre-evolved on every family,
+an upper bound), each on three stream constructions: \emph{Capability-relevant} (cases
+whose outcome depends on the matching capability), \emph{Stress} (cases the matching
+capability fixes), and \emph{Natural} (fixed-seed mixture).
 
-Table~\ref{tab:distribution_shift} shows that \emph{Online adapt} is consistently closer to
-\emph{Oracle} than to \emph{Static HR}. On GPT-5.4 capability-relevant, online adaptation
-reaches $0.870$ versus $0.636$ static and $0.899$ oracle. The stress stream sharpens this:
-\emph{Direct} nearly collapses ($0.026$), \emph{Static HR} reaches $0.391$, and online
-recovers to $0.947$. The natural stream---where many cases require no new
-capability---still shows a smaller but consistent gain ($0.830$ vs.\ $0.800$ static). The
-other four backbones follow the same pattern.
+Table~\ref{tab:distribution_shift} shows \emph{Online adapt} consistently lands closer to
+\emph{Oracle} than to \emph{Static}. On GPT-5.4 capability-relevant it reaches $0.870$
+versus $0.636$ static and $0.899$ oracle; on stress, \emph{Direct} collapses to $0.026$,
+\emph{Static} reaches $0.391$, and \emph{Online adapt} recovers to $0.947$. On the natural
+mix---where many cases do not require a newly-evolved capability---the gain is smaller but
+still positive ($0.830$ vs.\ $0.800$ static). The other four backbones follow the same
+pattern.
 
 \begin{table}[t]
 \centering
@@ -282,7 +279,7 @@ other four backbones follow the same pattern.
 \toprule
 \textbf{Replay protocol}
   & \textbf{Direct}
-  & \textbf{Static HR}
+  & \textbf{Static}
   & \textbf{Online adapt}
   & \textbf{Oracle} \\
 \midrule
@@ -315,13 +312,14 @@ Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm
 }
 \caption{%
   \textbf{Exp~I: Online adaptation in a non-stationary stream.}
-  The stream begins with HRBench cases and later introduces MathVista, ChartQA, and V$^*$
-  cases. \emph{Static HR} keeps the initial HRBench-evolved capabilities unchanged;
-  \emph{Online adapt} detects the distribution shift and updates the skills and tools on
-  the new sub-stream; \emph{Oracle} has capabilities pre-evolved on every family. Rows are
-  grouped by backbone; the three protocols within each block differ only in how the replay
-  stream is constructed. Standard deviations are temporary layout placeholders and must be
-  replaced with seed-based estimates before submission.
+  Simulates a real online user-traffic distribution that drifts over time. The stream
+  begins on HRBench and later introduces MathVista, ChartQA, and V$^*$ cases.
+  \emph{Static} keeps the initial-distribution capabilities unchanged; \emph{Online adapt}
+  detects the drift and updates skills and tools on the new sub-stream; \emph{Oracle} has
+  capabilities pre-evolved on every family. Rows are grouped by backbone; the three
+  protocols within each block differ only in how the replay stream is constructed.
+  Standard deviations are temporary layout placeholders and must be replaced with
+  seed-based estimates before submission.
 }
 \label{tab:distribution_shift}
 \end{table}
