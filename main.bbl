@@ -1,13 +1,8 @@
 \begin{thebibliography}{23}
 \providecommand{\natexlab}[1]{#1}
 
-\bibitem[{{Anonymous}(2024{\natexlab{a}})}]{gta_2024}
-{Anonymous}. 2024{\natexlab{a}}.
-\newblock {GTA}: A benchmark for general tool agents (placeholder).
-\newblock [VERIFY] Replace with final citation upon confirmation.
-
-\bibitem[{{Anonymous}(2024{\natexlab{b}})}]{chen2024hrbench}
-{Anonymous}. 2024{\natexlab{b}}.
+\bibitem[{{Anonymous}(2024)}]{chen2024hrbench}
+{Anonymous}. 2024.
 \newblock {HRBench}: A high-resolution visual benchmark for multimodal models
   (placeholder).
 \newblock [VERIFY] Replace with correct citation upon confirmation.
@@ -154,13 +149,22 @@ D{\'{i}}dac Sur{\'{i}}s, Sachit Menon, and Carl Vondrick. 2023.
 \newblock In \emph{{IEEE/CVF} International Conference on Computer Vision,
   {ICCV} 2023, Paris, France, October 1-6, 2023}, pages 11854--11864. {IEEE}.
 
-\bibitem[{Wang et~al.(2024)Wang, Xie, Jiang, Mandlekar, Xiao, Zhu, Fan, and
-  Anandkumar}]{wang2023voyager}
+\bibitem[{Wang et~al.(2024{\natexlab{a}})Wang, Xie, Jiang, Mandlekar, Xiao,
+  Zhu, Fan, and Anandkumar}]{wang2023voyager}
 Guanzhi Wang, Yuqi Xie, Yunfan Jiang, Ajay Mandlekar, Chaowei Xiao, Yuke Zhu,
-  Linxi Fan, and Anima Anandkumar. 2024.
+  Linxi Fan, and Anima Anandkumar. 2024{\natexlab{a}}.
 \newblock \href {https://openreview.net/forum?id=ehfRiF0R3a} {Voyager: An
   open-ended embodied agent with large language models}.
 \newblock \emph{Trans. Mach. Learn. Res.}, 2024.
+
+\bibitem[{Wang et~al.(2024{\natexlab{b}})Wang, Ma, Li, Zhang, Chen, Chen, and
+  Le}]{gta_2024}
+Jize Wang, Zerun Ma, Yining Li, Songyang Zhang, Cailian Chen, Kai Chen, and
+  Xinyi Le. 2024{\natexlab{b}}.
+\newblock \href {https://openreview.net/forum?id=akEt8QAa6V} {{GTA}: A
+  benchmark for general tool agents}.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, pages 75749--75790.
 
 \bibitem[{Wu and Xie(2023)}]{wu2024vstar}
 Penghao Wu and Saining Xie. 2023.

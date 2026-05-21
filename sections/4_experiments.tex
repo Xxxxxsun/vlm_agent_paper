@@ -19,9 +19,10 @@ accuracy), and
 \textbf{V$^*$}~\citep{wu2024vstar} (visual search for an object's property;
 ${\approx}500$ questions, accuracy); the first two stress \emph{cognitive} bottlenecks
 while the latter two stress \emph{perceptual} ones.
-For the tool-mastery setting (Exp~II) we use \textbf{GTA}~\citep{gta_2024}, a general
-tool-agent benchmark that exposes a curated tool set and reports step-level metrics for
-tool selection, argument, instruction-following, and final-answer accuracy.
+For the tool-mastery setting (Exp~II) we use \textbf{GTA}~\citep{gta_2024}, a benchmark of
+229 real-world tasks with tools across perception, operation, logic, and creativity
+categories. GTA reports step-by-step accuracy on tool selection, argument prediction, and
+instruction following, plus an end-to-end answer accuracy.
 For the RL comparison (Exp~III) we follow the VTool-R1
 protocol~\citep{vtoolr1_2025} on its \textbf{Chart} and \textbf{Table} reasoning splits and
 reuse \textbf{V$^*$} and \textbf{HRBench4K} as the high-resolution splits of the DeepEyes
@@ -60,13 +61,14 @@ each case whether to generate a skill, a tool, or both.
 
 \paragraph{Evaluation metrics.}
 All primary metrics are task-level accuracy on the held-out split.
-Experiment~II additionally reports four step-level metrics on the GTA benchmark:
-\textbf{ToolAcc} (fraction of steps with correct tool selection),
-\textbf{ArgAcc} (correct argument specification given the correct tool),
-\textbf{InstAcc} (overall instruction-following fidelity), and
-\textbf{AnsAcc} (final answer accuracy).
-For the supplementary controlled GTA analysis, we also report tool usage rate, average number
-of tool calls, and dominant tool-call chains.
+For Experiment~II we report four of GTA's five canonical metrics: three
+step-by-step metrics---\textbf{InstAcc} (Instruction-Following Accuracy: fraction of
+steps executed without errors), \textbf{ToolAcc} (Tool Selection Accuracy), and
+\textbf{ArgAcc} (Argument Prediction Accuracy)---and the end-to-end \textbf{AnsAcc}
+(Answer Accuracy on full tool-using execution). GTA's fifth metric \textbf{SummAcc}
+(Summary Accuracy) requires per-step summary scoring and is not run here.
+For the supplementary controlled GTA analysis, we also report tool usage rate, average
+number of tool calls, and dominant tool-call chains.
 Experiment~III follows the VTool-R1 evaluation protocol~\citep{vtoolr1_2025} on Chart
 and Table reasoning splits, and uses DeepEyes~\citep{deepeyes_2025} as the RL reference
 for high-resolution V$^\star$ and HRBench4K visual-search tasks.
@@ -433,9 +435,10 @@ model can deliver.
 \end{tabular}
 \caption{%
   \textbf{Exp~II: Learning to use pre-provided tools on GTA.}
-  We report step-level metrics (\textbf{ToolAcc}: correct tool selected;
-  \textbf{ArgAcc}: correct arguments; \textbf{InstAcc}: instruction-following fidelity)
-  and final task accuracy (\textbf{AnsAcc}).
+  We report three of GTA's step-by-step metrics (\textbf{InstAcc}: Instruction-Following;
+  \textbf{ToolAcc}: Tool Selection; \textbf{ArgAcc}: Argument Prediction) and the
+  end-to-end \textbf{AnsAcc} (Answer Accuracy). GTA's \textbf{SummAcc} requires per-step
+  summary scoring and is not reported.
   \emph{Skill Evolution (Ours)} applies \sysname{} Mode~B, which learns per-tool mastery SOPs
   from the training set without generating new tools.
 }
