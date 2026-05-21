@@ -100,13 +100,27 @@ selective by construction rather than indiscriminate---a property that distingui
 \sysname{} from prior tool-creation methods~\citep{tang2023creator, cai2024latm} that expose
 generated tools without learned applicability boundaries.
 
-\subsection{Tool Mastery from External Tool Sets (Mode B)}
-\label{sec:method_mastery_ext}
-
-The loop above (\textbf{Mode A}) generates both tools and their paired mastery skills. When
-a curated tool set $\mathcal{T}_0 \neq \emptyset$ is already provided, \sysname{} can
+\paragraph{External tool sets (Mode B).}
+When a curated tool set $\mathcal{T}_0 \neq \emptyset$ is already provided, \sysname{} can
 operate in \textbf{Mode B}: skip tool generation and instead synthesise a mastery skill for
 each provided tool $t_j \in \mathcal{T}_0$, learning when to invoke it from the agent's own
 behaviour on $\mathcal{D}_{\text{train}}$. Mode B requires no code generation, making it
 practical when tool quality is already high but deployment strategy is unknown.
 Experiment~II (Section~\ref{sec:exp2}) evaluates this mode.
+
+\subsection{Inference-time Adaptation}
+\label{sec:method_adaptation}
+
+Because evolution proceeds per task family, the library $\mathcal{C}$ is naturally organised
+into \emph{task-family packs} $\{\mathcal{C}_f\}_{f}$, each containing the skills and tools
+that emerged from training on family $f$. At inference, \sysname{} equips only the pack
+matching the incoming case rather than exposing the entire library, keeping retrieval scope
+and tool surface focused.
+
+In a streaming setting where the task family shifts over time, \sysname{} maintains a
+rolling window over recent cases and identifies the dominant family from their question and
+image features. When the detected family differs from the currently active pack, the system
+swaps to the matching $\mathcal{C}_f$ after a small confirmation latency, with no weight
+updates. This online policy is evaluated against a static-pack baseline and an oracle that
+has all packs available from the start (Section~\ref{sec:exp1}, distribution-shift
+adaptation).
