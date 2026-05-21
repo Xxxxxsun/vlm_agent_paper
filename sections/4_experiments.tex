@@ -28,16 +28,15 @@ reuse \textbf{V$^*$} and \textbf{HRBench4K} as the high-resolution splits of the
 protocol~\citep{deepeyes_2025}.
 
 \paragraph{Foundation models.}
-Experiment~I evaluates six proprietary and open-weight VLMs:
-\textbf{GPT-4o}, \textbf{o4-mini}, \textbf{GPT-5.4}, \textbf{Doubao-Seed-2.0},
-\textbf{Qwen3.5-27B}, and \textbf{Gemini-3.1-Pro-Preview}.
-Experiment~II evaluates \textbf{GPT-4o}, \textbf{GPT-5.4}, and \textbf{Gemini3Flash}
-on the GTA benchmark.
-We additionally report a controlled Doubao-Seed-2.0-Pro GTA analysis to inspect how
-provided-tool skills change with tool abstraction and task environment.
+Experiment~I evaluates five proprietary and open-weight VLMs:
+\textbf{GPT-4o}, \textbf{o4-mini}, \textbf{GPT-5.4}, \textbf{Doubao-Seed-2.0}, and
+\textbf{Qwen3.5-27B}.
+Experiment~II evaluates \textbf{GPT-4o}, \textbf{GPT-5.4}, and \textbf{Doubao-Seed-2.0}
+on the GTA benchmark, plus a controlled \textbf{Doubao-Seed-2.0-Pro} analysis that
+inspects how provided-tool skills change with tool abstraction and task environment.
 Experiment~III uses the \textbf{Qwen2.5-VL} family (3B, 7B, 32B) to align with the
-VTool-R1 evaluation protocol.
-All VLM weights are \emph{frozen} throughout; no gradient updates are performed.
+VTool-R1 evaluation protocol. All VLM weights are \emph{frozen} throughout; no gradient
+updates are performed.
 
 \paragraph{Evolution protocol.}
 For each benchmark, we sample a training subset of $k{=}200$ cases from the official
@@ -105,9 +104,8 @@ hidden below unchanged. Blank cells indicate runs whose results have not yet bee
 are excluded from aggregate statements. Comparing the full Skill~$+$~Tool row with the base
 agent, \sysname{} improves
 direct inference in 21 of 23 completed model-benchmark cells, with an average gain of 4.8
-accuracy points. The largest gains occur on Gemini-3.1-Pro-Preview / ChartQA (+14.6),
-o4-mini / HRBench (+11.6), GPT-5.4 / HRBench (+10.3), GPT-5.4 / V$^*$ (+9.9), and
-Doubao-Seed-2.0 / V$^*$ (+8.6).
+accuracy points. The largest gains occur on o4-mini / HRBench (+11.6), GPT-5.4 / HRBench
+(+10.3), GPT-5.4 / V$^*$ (+9.9), and Doubao-Seed-2.0 / V$^*$ (+8.6).
 
 The table also shows why the framework should not be interpreted as a monotonic ``add more
 capabilities'' recipe. Full co-evolution is not the best entry in every cell: for GPT-4o on
