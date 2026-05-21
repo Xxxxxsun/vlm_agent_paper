@@ -9,7 +9,7 @@
 % ============================================================
 
 \paragraph{Benchmarks.}
-We use four visual reasoning benchmarks:
+For the evolution-from-scratch setting (Exp~I) we use four visual reasoning benchmarks:
 \textbf{ChartQA}~\citep{masry2022chartqa} (multi-step numerical reasoning over charts;
 2{,}500 test questions, relaxed accuracy with 5\% tolerance),
 \textbf{MathVista}~\citep{lu2023mathvista} (math reasoning grounded in figures and plots;
@@ -17,10 +17,15 @@ We use four visual reasoning benchmarks:
 \textbf{HRBench}~\citep{chen2024hrbench} (perception on $\geq$4K-resolution images;
 accuracy), and
 \textbf{V$^*$}~\citep{wu2024vstar} (visual search for an object's property;
-${\approx}500$ questions, accuracy).
-ChartQA and MathVista emphasise \emph{cognitive} bottlenecks (structured extraction,
-multi-step reasoning); HRBench and V$^*$ emphasise \emph{perceptual} ones (sub-region
-inspection, fine-grained disambiguation).
+${\approx}500$ questions, accuracy); the first two stress \emph{cognitive} bottlenecks
+while the latter two stress \emph{perceptual} ones.
+For the tool-mastery setting (Exp~II) we use \textbf{GTA}~\citep{gta_2024}, a general
+tool-agent benchmark that exposes a curated tool set and reports step-level metrics for
+tool selection, argument, instruction-following, and final-answer accuracy.
+For the RL comparison (Exp~III) we follow the VTool-R1
+protocol~\citep{vtoolr1_2025} on its \textbf{Chart} and \textbf{Table} reasoning splits and
+reuse \textbf{V$^*$} and \textbf{HRBench4K} as the high-resolution splits of the DeepEyes
+protocol~\citep{deepeyes_2025}.
 
 \paragraph{Foundation models.}
 Experiment~I evaluates six proprietary and open-weight VLMs:

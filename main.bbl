@@ -1,0 +1,197 @@
+\begin{thebibliography}{23}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{{Anonymous}(2024{\natexlab{a}})}]{gta_2024}
+{Anonymous}. 2024{\natexlab{a}}.
+\newblock {GTA}: A benchmark for general tool agents (placeholder).
+\newblock [VERIFY] Replace with final citation upon confirmation.
+
+\bibitem[{{Anonymous}(2024{\natexlab{b}})}]{chen2024hrbench}
+{Anonymous}. 2024{\natexlab{b}}.
+\newblock {HRBench}: A high-resolution visual benchmark for multimodal models
+  (placeholder).
+\newblock [VERIFY] Replace with correct citation upon confirmation.
+
+\bibitem[{{Anonymous}(2025{\natexlab{a}})}]{evolver_2025}
+{Anonymous}. 2025{\natexlab{a}}.
+\newblock {EvolveR}: Iterative self-evolution of reasoning strategies
+  (placeholder).
+\newblock [VERIFY] Replace with correct arXiv ID / venue upon confirmation.
+
+\bibitem[{{Anonymous}(2025{\natexlab{b}})}]{pixelreasoner_2025}
+{Anonymous}. 2025{\natexlab{b}}.
+\newblock {PixelReasoner}: Pixel-level reasoning for visual language models
+  (placeholder).
+\newblock [VERIFY] Replace with final NeurIPS 2025 citation upon confirmation.
+
+\bibitem[{{Anonymous}(2025{\natexlab{c}})}]{vthinker_2025}
+{Anonymous}. 2025{\natexlab{c}}.
+\newblock {V-Thinker}: Visual thinking for multimodal language models
+  (placeholder).
+\newblock [VERIFY] Replace with correct arXiv ID upon confirmation.
+
+\bibitem[{{Anonymous}(2025{\natexlab{d}})}]{vtoolr1_2025}
+{Anonymous}. 2025{\natexlab{d}}.
+\newblock {VTool-R1}: Visual tool reasoning via reinforcement learning
+  (placeholder).
+\newblock [VERIFY] Replace with final ICLR 2026 citation upon confirmation.
+
+\bibitem[{Cai et~al.(2023)Cai, Wang, Ma, Chen, and Zhou}]{cai2024latm}
+Tianle Cai, Xuezhi Wang, Tengyu Ma, Xinyun Chen, and Denny Zhou. 2023.
+\newblock \href {https://arxiv.org/abs/2305.17126} {Large language models as
+  tool makers}.
+\newblock \emph{Preprint}, arXiv:2305.17126.
+
+\bibitem[{Chen et~al.(2024)Chen, Li, Yang, Yu, Lin, and
+  He}]{chen2024automanual}
+Minghao Chen, Yihang Li, Yanting Yang, Shiyu Yu, Binbin Lin, and Xiaofei He.
+  2024.
+\newblock \href
+  {http://papers.nips.cc/paper_files/paper/2024/hash/0142921fad7ef9192bd87229cdafa9d4-Abstract-Conference.html}
+  {{AutoManual}: Constructing instruction manuals by {LLM} agents via
+  interactive environmental learning}.
+\newblock In \emph{Advances in Neural Information Processing Systems 38: Annual
+  Conference on Neural Information Processing Systems 2024, NeurIPS 2024,
+  Vancouver, BC, Canada, December 10-15, 2024}.
+
+\bibitem[{Fu et~al.(2025)Fu, Liu, Yang, Corring, Lu, Yang, Roth, Florencio, and
+  Zhang}]{refocus_2025}
+Xingyu Fu, Minqian Liu, Zhengyuan Yang, John Corring, Yijuan Lu, Jianwei Yang,
+  Dan Roth, Dinei Florencio, and Cha Zhang. 2025.
+\newblock \href {https://arxiv.org/abs/2501.05452} {{ReFocus}: Visual editing
+  as a chain of thought for structured image understanding}.
+\newblock \emph{Preprint}, arXiv:2501.05452.
+
+\bibitem[{Gupta and Kembhavi(2023)}]{gupta2023visprog}
+Tanmay Gupta and Aniruddha Kembhavi. 2023.
+\newblock \href {https://doi.org/10.1109/CVPR52729.2023.01436} {Visual
+  programming: Compositional visual reasoning without training}.
+\newblock In \emph{{IEEE/CVF} Conference on Computer Vision and Pattern
+  Recognition, {CVPR} 2023, Vancouver, BC, Canada, June 17-24, 2023}, pages
+  14953--14962. {IEEE}.
+
+\bibitem[{Lu et~al.(2024)Lu, Bansal, Xia, Liu, Li, Hajishirzi, Cheng, Chang,
+  Galley, and Gao}]{lu2023mathvista}
+Pan Lu, Hritik Bansal, Tony Xia, Jiacheng Liu, Chunyuan Li, Hannaneh
+  Hajishirzi, Hao Cheng, Kai{-}Wei Chang, Michel Galley, and Jianfeng Gao.
+  2024.
+\newblock \href {https://openreview.net/forum?id=KUNzEQMWU7} {{MathVista}:
+  Evaluating mathematical reasoning of foundation models in visual contexts}.
+\newblock In \emph{The Twelfth International Conference on Learning
+  Representations, {ICLR} 2024, Vienna, Austria, May 7-11, 2024}.
+  OpenReview.net.
+
+\bibitem[{Lu et~al.(2023)Lu, Peng, Cheng, Galley, Chang, Wu, Zhu, and
+  Gao}]{lu2024chameleon}
+Pan Lu, Baolin Peng, Hao Cheng, Michel Galley, Kai{-}Wei Chang, Ying~Nian Wu,
+  Song{-}Chun Zhu, and Jianfeng Gao. 2023.
+\newblock \href
+  {http://papers.nips.cc/paper_files/paper/2023/hash/871ed095b734818cfba48db6aeb25a62-Abstract-Conference.html}
+  {Chameleon: Plug-and-play compositional reasoning with large language
+  models}.
+\newblock In \emph{Advances in Neural Information Processing Systems 36: Annual
+  Conference on Neural Information Processing Systems 2023, NeurIPS 2023, New
+  Orleans, LA, USA, December 10 - 16, 2023}.
+
+\bibitem[{Masry et~al.(2022)Masry, Long, Tan, Joty, and
+  Hoque}]{masry2022chartqa}
+Ahmed Masry, Do~Xuan Long, Jia~Qing Tan, Shafiq~R. Joty, and Enamul Hoque.
+  2022.
+\newblock \href {https://doi.org/10.18653/V1/2022.FINDINGS-ACL.177} {{ChartQA}:
+  {A} benchmark for question answering about charts with visual and logical
+  reasoning}.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  {ACL} 2022, Dublin, Ireland, May 22-27, 2022}, Findings of {ACL}, pages
+  2263--2279. Association for Computational Linguistics.
+
+\bibitem[{Qian et~al.(2023)Qian, Han, Fung, Qin, Liu, and Ji}]{tang2023creator}
+Cheng Qian, Chi Han, Yi~Ren Fung, Yujia Qin, Zhiyuan Liu, and Heng Ji. 2023.
+\newblock \href {https://doi.org/10.18653/V1/2023.FINDINGS-EMNLP.462}
+  {{CREATOR}: Tool creation for disentangling abstract and concrete reasoning
+  of large language models}.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  {EMNLP} 2023, Singapore, December 6-10, 2023}, Findings of {ACL}, pages
+  6922--6939. Association for Computational Linguistics.
+
+\bibitem[{Qin et~al.(2024)Qin, Liang, Ye, Zhu, Yan, Lu, Lin, Cong, Tang, Qian,
+  Zhao, Hong, Tian, Xie, Zhou, Gerstein, Li, Liu, and Sun}]{qin2024toolllm}
+Yujia Qin, Shihao Liang, Yining Ye, Kunlun Zhu, Lan Yan, Yaxi Lu, Yankai Lin,
+  Xin Cong, Xiangru Tang, Bill Qian, Sihan Zhao, Lauren Hong, Runchu Tian,
+  Ruobing Xie, Jie Zhou, Mark Gerstein, Dahai Li, Zhiyuan Liu, and Maosong Sun.
+  2024.
+\newblock \href {https://openreview.net/forum?id=dHng2O0Jjr} {{ToolLLM}:
+  Facilitating large language models to master 16000+ real-world {APIs}}.
+\newblock In \emph{The Twelfth International Conference on Learning
+  Representations, {ICLR} 2024, Vienna, Austria, May 7-11, 2024}.
+  OpenReview.net.
+
+\bibitem[{Shen et~al.(2024)Shen, Zhao, Zhao, Xu, Zhang, Zhu, and
+  Yin}]{zoomeye_2024}
+Haozhan Shen, Kangjia Zhao, Tiancheng Zhao, Ruochen Xu, Zilun Zhang, Mingwei
+  Zhu, and Jianwei Yin. 2024.
+\newblock \href {https://arxiv.org/abs/2411.16044} {{ZoomEye}: Enhancing
+  multimodal {LLMs} with human-like zooming capabilities through tree-based
+  image exploration}.
+\newblock \emph{Preprint}, arXiv:2411.16044.
+\newblock Accepted by EMNLP 2025.
+
+\bibitem[{Shinn et~al.(2023)Shinn, Cassano, Gopinath, Narasimhan, and
+  Yao}]{shinn2023reflexion}
+Noah Shinn, Federico Cassano, Ashwin Gopinath, Karthik Narasimhan, and Shunyu
+  Yao. 2023.
+\newblock \href
+  {http://papers.nips.cc/paper_files/paper/2023/hash/1b44b878bb782e6954cd888628510e90-Abstract-Conference.html}
+  {Reflexion: language agents with verbal reinforcement learning}.
+\newblock In \emph{Advances in Neural Information Processing Systems 36: Annual
+  Conference on Neural Information Processing Systems 2023, NeurIPS 2023, New
+  Orleans, LA, USA, December 10 - 16, 2023}.
+
+\bibitem[{Sur{\'{i}}s et~al.(2023)Sur{\'{i}}s, Menon, and
+  Vondrick}]{suris2023vipergpt}
+D{\'{i}}dac Sur{\'{i}}s, Sachit Menon, and Carl Vondrick. 2023.
+\newblock \href {https://doi.org/10.1109/ICCV51070.2023.01092} {{ViperGPT}:
+  Visual inference via python execution for reasoning}.
+\newblock In \emph{{IEEE/CVF} International Conference on Computer Vision,
+  {ICCV} 2023, Paris, France, October 1-6, 2023}, pages 11854--11864. {IEEE}.
+
+\bibitem[{Wang et~al.(2024)Wang, Xie, Jiang, Mandlekar, Xiao, Zhu, Fan, and
+  Anandkumar}]{wang2023voyager}
+Guanzhi Wang, Yuqi Xie, Yunfan Jiang, Ajay Mandlekar, Chaowei Xiao, Yuke Zhu,
+  Linxi Fan, and Anima Anandkumar. 2024.
+\newblock \href {https://openreview.net/forum?id=ehfRiF0R3a} {Voyager: An
+  open-ended embodied agent with large language models}.
+\newblock \emph{Trans. Mach. Learn. Res.}, 2024.
+
+\bibitem[{Wu and Xie(2023)}]{wu2024vstar}
+Penghao Wu and Saining Xie. 2023.
+\newblock \href {https://arxiv.org/abs/2312.14135} {{V*}: Guided visual search
+  as a core mechanism in multimodal {LLMs}}.
+\newblock \emph{Preprint}, arXiv:2312.14135.
+
+\bibitem[{Zhang et~al.(2025)Zhang, Gao, Zhang, Li, Zhang, Liu, Yuan, Wu, Jia,
+  Zhu, and Li}]{adaptivecof_2025}
+Xintong Zhang, Zhi Gao, Bofei Zhang, Pengxiang Li, Xiaowen Zhang, Yang Liu, Tao
+  Yuan, Yuwei Wu, Yunde Jia, Song-Chun Zhu, and Qing Li. 2025.
+\newblock \href {https://arxiv.org/abs/2505.15436} {Adaptive chain-of-focus
+  reasoning via dynamic visual search and zooming for efficient {VLMs}}.
+\newblock \emph{Preprint}, arXiv:2505.15436.
+
+\bibitem[{Zhao et~al.(2024)Zhao, Huang, Xu, Lin, Liu, and
+  Huang}]{zhao2023expel}
+Andrew Zhao, Daniel Huang, Quentin Xu, Matthieu Lin, Yong{-}Jin Liu, and Gao
+  Huang. 2024.
+\newblock \href {https://doi.org/10.1609/aaai.v38i17.29936} {{ExpeL}: {LLM}
+  agents are experiential learners}.
+\newblock In \emph{Thirty-Eighth {AAAI} Conference on Artificial Intelligence,
+  {AAAI} 2024, February 20-27, 2024, Vancouver, Canada}.
+
+\bibitem[{Zheng et~al.(2025)Zheng, Yang, Hong, Zhao, Xu, Yang, Shen, and
+  Yu}]{deepeyes_2025}
+Ziwei Zheng, Michael Yang, Jack Hong, Chenxiao Zhao, Guohai Xu, Le~Yang, Chao
+  Shen, and Xing Yu. 2025.
+\newblock \href {https://arxiv.org/abs/2505.14362} {{DeepEyes}: Incentivizing
+  ``thinking with images'' via reinforcement learning}.
+\newblock \emph{Preprint}, arXiv:2505.14362.
+\newblock Accepted by ICLR 2026.
+
+\end{thebibliography}
