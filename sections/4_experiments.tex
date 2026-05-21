@@ -9,23 +9,18 @@
 % ============================================================
 
 \paragraph{Benchmarks.}
-We evaluate on four standard visual reasoning benchmarks that stress different parts of visual
-reasoning.
-\textbf{ChartQA}~\citep{masry2022chartqa} requires multi-step numerical reasoning over
-chart images (test split: 2{,}500 questions; evaluation metric: relaxed accuracy with a
-5\% numeric tolerance).
-\textbf{MathVista}~\citep{lu2023mathvista} tests mathematical reasoning grounded in
-figures, diagrams, and scientific plots (testmini split: 1{,}000 questions; accuracy).
-\textbf{HRBench}~\citep{chen2024hrbench} probes perception on high-resolution
-(${\geq}4\mathrm{K}$) images requiring sub-region localisation and fine-grained visual
-disambiguation (accuracy).
-\textbf{V$^*$}~\citep{wu2024vstar} measures visual search ability: given a query about
-an object's property, the agent must locate and attend to the relevant sub-image before
-reasoning (${\approx}500$ questions; accuracy).
-These benchmarks were chosen because they create different opportunities for capability
-generation: ChartQA and MathVista often require structured extraction and multi-step
-reasoning, while HRBench and V$^*$ often benefit from sub-region inspection or higher-resolution
-visual access.
+We use four visual reasoning benchmarks:
+\textbf{ChartQA}~\citep{masry2022chartqa} (multi-step numerical reasoning over charts;
+2{,}500 test questions, relaxed accuracy with 5\% tolerance),
+\textbf{MathVista}~\citep{lu2023mathvista} (math reasoning grounded in figures and plots;
+1{,}000 testmini questions, accuracy),
+\textbf{HRBench}~\citep{chen2024hrbench} (perception on $\geq$4K-resolution images;
+accuracy), and
+\textbf{V$^*$}~\citep{wu2024vstar} (visual search for an object's property;
+${\approx}500$ questions, accuracy).
+ChartQA and MathVista emphasise \emph{cognitive} bottlenecks (structured extraction,
+multi-step reasoning); HRBench and V$^*$ emphasise \emph{perceptual} ones (sub-region
+inspection, fine-grained disambiguation).
 
 \paragraph{Foundation models.}
 Experiment~I evaluates six proprietary and open-weight VLMs:
