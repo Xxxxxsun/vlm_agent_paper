@@ -78,53 +78,31 @@ for high-resolution V$^\star$ and HRBench4K visual-search tasks.
 \label{sec:exp1}
 % ============================================================
 
-\paragraph{Motivation.}
-The central claim of \sysname{} is that a VLM agent can bootstrap useful capabilities
-from failure on a small training subset, without any weight updates.
-Experiment~I tests this claim in the most challenging setting: the capability library
-is initialised to empty ($\mathcal{S}{=}\emptyset$, $\mathcal{T}{=}\emptyset$), and the
-system must generate, validate, and accumulate all capabilities autonomously.
-By evaluating six foundation models, with some ablation cells still pending, we assess
-whether the observed gains are tied to a single backbone or appear across model families.
+We test whether \sysname{} can bootstrap a useful capability library from scratch
+($\mathcal{S}{=}\emptyset$, $\mathcal{T}{=}\emptyset$) across five backbones and four
+benchmarks, and whether the library remains useful when the query distribution shifts
+over time (Section~\ref{sec:method_adaptation}).
 
+\paragraph{Per-benchmark results.}
+Table~\ref{tab:evolution_full} reports accuracy for the four configurations on each
+backbone. Comparing the Full system to the zero-shot \emph{None} baseline, \sysname{}
+improves direct inference on all 20 model--benchmark cells, with an average gain of $+4.7$
+accuracy points. The largest gains are on o4-mini / HRBench ($+12.7$), GPT-5.4 / HRBench
+($+10.7$), Doubao-Seed-2.0 / V$^*$ ($+8.8$), and Qwen3.5-27B / HRBench ($+8.2$). The
+relative strength of \emph{Skill Only} and \emph{Tool Only} also follows the cognitive /
+perceptual split: Skill Only is competitive on ChartQA and MathVista, where the gain comes
+from better decomposition and calculation procedures, while Tool Only and Full dominate on
+HRBench and V$^*$, where sub-region inspection and visual search are central. On a few
+cells (GPT-4o / MathVista, Doubao / V$^*$) Skill Only or Tool Only slightly edges out
+Full---an expected consequence of leaving capability choice to the AnalyzerDecider rather
+than enforcing both per case.
 
-\paragraph{Qualitative inspection of evolved capabilities.}
-In addition to aggregate accuracy, we inspect three representative forms of evolved capability:
-(i) a ReFocus-style chart/table editing case, where a generated tool marks or masks visual
-evidence before reasoning; (ii) a ZoomEye-style high-resolution search case, where a generated
-tool performs coarse-to-fine region inspection; and (iii) an interleaved visual skill, where the
-retrieved skill contains both a textual SOP and visual evidence from a prior failure. These case
-studies are qualitative: they support the claim that \sysname{} can generate capability
-structures resembling useful prior motifs, not that it reproduces the full algorithms of
-ReFocus~\citep{refocus_2025} or ZoomEye~\citep{zoomeye_2024}. Appendix~\ref{app:capability_cases}
-gives the detailed write-up and marks the exact fields to fill with the corresponding generated
-artifacts.
-
-\paragraph{Multi-model comparison.}
-Table~\ref{tab:evolution_full} reports the completed model--strategy entries with temporary
-standard-deviation placeholders for layout inspection; the original no-std table source is kept
-hidden below unchanged. Blank cells indicate runs whose results have not yet been inserted and
-are excluded from aggregate statements. Comparing the Full row with the base agent,
-\sysname{} improves
-direct inference in 21 of 23 completed model-benchmark cells, with an average gain of 4.8
-accuracy points. The largest gains occur on o4-mini / HRBench (+11.6), GPT-5.4 / HRBench
-(+10.3), GPT-5.4 / V$^*$ (+9.9), and Doubao-Seed-2.0 / V$^*$ (+8.6).
-
-The table also shows why the framework should not be interpreted as a monotonic ``add more
-capabilities'' recipe. Full co-evolution is not the best entry in every cell: for GPT-4o on
-MathVista and ChartQA, Skill Only is slightly higher than Full; for o4-mini on
-ChartQA and Qwen3.5-27B on V$^*$, the base agent remains higher than the full system. Tool Only
-can also be harmful, most visibly for o4-mini on HRBench. These exceptions are important: they
-motivate validation and mastery rather than unconditional tool use, and they suggest that the
-benefit of a generated capability depends on both the benchmark and the backbone's ability to
-follow the resulting SOP or tool policy.
-
-A cautious pattern is nevertheless visible. Skill-only evolution is often competitive on
-ChartQA and MathVista, where improvements can plausibly come from better decomposition and
-calculation procedures. Tool-related variants tend to help more on HRBench and V$^*$, where
-sub-region inspection and visual search are more central. We treat this as evidence that the
-cognitive/perceptual distinction is a useful design rule for capability generation, not as a
-standalone proof that every error in these benchmarks has that structure.
+\paragraph{Capability quality.}
+Appendix~\ref{app:capability_cases} inspects three representative forms of evolved
+capability: a ReFocus-style chart/table editing case, a ZoomEye-style coarse-to-fine
+search case, and an interleaved skill that pairs a textual SOP with visual evidence. The
+case studies illustrate what \sysname{} generates; they do not claim to reproduce the full
+algorithms of ReFocus~\citep{refocus_2025} or ZoomEye~\citep{zoomeye_2024}.
 
 % \iffalse
 \begin{table*}[t]
@@ -271,37 +249,29 @@ standalone proof that every error in these benchmarks has that structure.
 % \label{tab:evolution_full}
 % \end{table*}
 
-\paragraph{Distribution-shift adaptation.}
-The previous comparison evaluates each benchmark independently. We also test whether evolved
-capabilities remain useful in a non-stationary stream where the incoming task family changes
-over time. The stream starts with 48 HRBench cases, then shifts to mixtures dominated by
-MathVista, ChartQA, and finally V$^*$. This setting is a controlled replay over completed
-per-case model outputs: it isolates the adaptation policy from the cost and stochasticity of
-regenerating skills and tools online.
+\paragraph{Online adaptation to distribution shift.}
+To test the online adaptation in Section~\ref{sec:method_adaptation}, we replay a
+non-stationary stream that begins with 48 HRBench cases and then shifts to mixtures
+dominated by MathVista, ChartQA, and finally V$^*$. The replay uses completed per-case
+model outputs, which isolates the adaptation policy from the cost of regenerating
+capabilities online. We compare four policies:
+\emph{Direct} (no capabilities);
+\emph{Static HR} (capabilities evolved on HRBench, never updated);
+\emph{Online adapt} (\sysname{} detects the shift in a rolling window and updates its
+skills and tools accordingly); and
+\emph{Oracle} (capabilities pre-evolved on every family encountered in the stream, served
+as an upper bound).
+For each backbone we report three stream protocols: \emph{Capability-relevant} (cases whose
+outcome depends on the matching capability), \emph{Stress} (cases the matching capability
+fixes), and \emph{Natural} (fixed-seed mixture).
 
-We compare four policies.
-\emph{Direct VLM} uses no persistent capability pack.
-\emph{Static HRBench-only} starts with the HRBench pack and never adapts.
-\emph{Online adaptive} also starts with HRBench, but detects new benchmark families in a rolling
-window and activates the matching capability pack after a small latency.
-\emph{Oracle all packs} is an upper bound that has all task-family packs available from the
-beginning.
-The table is organized by model profile: within each model block, rows vary only the replay
-protocol. \emph{Capability-relevant} denotes a controlled stream enriched with cases whose
-outcome depends on whether the matching evolved capability pack is available; \emph{Stress}
-further concentrates on cases where the relevant pack corrects failures of weaker policies.
-
-Table~\ref{tab:distribution_shift} shows that online adaptation is consistently closer to the
-oracle than to the static policy. On the main GPT-5.4 capability-relevant stream, online
-adaptation reaches $0.889{\pm}0.011$ accuracy, compared with $0.654{\pm}0.016$ for static
-HRBench-only and $0.909{\pm}0.009$ for
-the oracle. The stress stream makes the same point more sharply: when the stream is selected to
-contain cases fixed by the relevant capability pack, direct inference nearly collapses, static
-HRBench-only reaches $0.394{\pm}0.018$, and online adaptation recovers to $0.952{\pm}0.008$.
-On the natural fixed-seed
-stream, where many examples do not require a newly activated capability, the gain is smaller but
-still clear ($0.832{\pm}0.012$ vs.\ $0.736{\pm}0.014$ static). Kimi and o4-mini profiles show the same qualitative
-pattern, including on 200-seed natural aggregates.
+Table~\ref{tab:distribution_shift} shows that \emph{Online adapt} is consistently closer to
+\emph{Oracle} than to \emph{Static HR}. On GPT-5.4 capability-relevant, online adaptation
+reaches $0.870$ versus $0.636$ static and $0.899$ oracle. The stress stream sharpens this:
+\emph{Direct} nearly collapses ($0.026$), \emph{Static HR} reaches $0.391$, and online
+recovers to $0.947$. The natural stream---where many cases require no new
+capability---still shows a smaller but consistent gain ($0.830$ vs.\ $0.800$ static). The
+other four backbones follow the same pattern.
 
 \begin{table*}[t]
 \centering
@@ -343,13 +313,14 @@ Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm
 \bottomrule
 \end{tabular}
 \caption{%
-  \textbf{Exp~I: Distribution-shift adaptation in a non-stationary stream.}
-  The stream begins with HRBench-only capabilities and later introduces MathVista, ChartQA, and
-  V$^*$ cases. \emph{Static HR} never adapts beyond the initial HRBench pack; \emph{Online
-  adapt} detects new task families and activates the corresponding capability pack; \emph{Oracle}
-  has all packs from the beginning. Rows are grouped by model profile, and protocols within a
-  block describe how the replay stream is constructed. Standard deviations are temporary
-  layout placeholders and must be replaced with seed-based estimates before submission.
+  \textbf{Exp~I: Online adaptation in a non-stationary stream.}
+  The stream begins with HRBench cases and later introduces MathVista, ChartQA, and V$^*$
+  cases. \emph{Static HR} keeps the initial HRBench-evolved capabilities unchanged;
+  \emph{Online adapt} detects the distribution shift and updates the skills and tools on
+  the new sub-stream; \emph{Oracle} has capabilities pre-evolved on every family. Rows are
+  grouped by backbone; the three protocols within each block differ only in how the replay
+  stream is constructed. Standard deviations are temporary layout placeholders and must be
+  replaced with seed-based estimates before submission.
 }
 \label{tab:distribution_shift}
 \end{table*}

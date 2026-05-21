@@ -454,12 +454,12 @@
 \@LN{356}{4}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experiment\nobreakspace  {}I: Autonomous Evolution from Scratch}{5}{subsection.4.2}\protected@file@percent }
 \newlabel{sec:exp1}{{4.2}{5}{Experiment~I: Autonomous Evolution from Scratch}{subsection.4.2}{}}
-\@writefile{toc}{\contentsline {paragraph}{Motivation.}{5}{section*.15}\protected@file@percent }
 \@LN{357}{4}
 \@LN{358}{4}
 \@LN{359}{4}
 \@LN{360}{4}
 \@LN{361}{4}
+\@writefile{toc}{\contentsline {paragraph}{Per-benchmark results.}{5}{section*.15}\protected@file@percent }
 \@LN{362}{4}
 \@LN{363}{4}
 \@LN{364}{4}
@@ -467,7 +467,6 @@
 \@LN{366}{4}
 \@LN{367}{4}
 \@LN{368}{4}
-\@writefile{toc}{\contentsline {paragraph}{Qualitative inspection of evolved capabilities.}{5}{section*.16}\protected@file@percent }
 \@LN{369}{4}
 \@LN{370}{4}
 \@LN{371}{4}
@@ -481,16 +480,17 @@
 \@LN{379}{4}
 \@LN{380}{4}
 \@LN{381}{4}
+\@writefile{toc}{\contentsline {paragraph}{Capability quality.}{5}{section*.16}\protected@file@percent }
 \@LN{382}{4}
 \@LN{383}{4}
 \@LN{384}{4}
 \@LN{385}{4}
 \@LN{386}{4}
-\@writefile{toc}{\contentsline {paragraph}{Multi-model comparison.}{5}{section*.17}\protected@file@percent }
 \@LN{387}{4}
 \@LN{388}{4}
 \@LN{389}{4}
 \@LN{390}{4}
+\@writefile{toc}{\contentsline {paragraph}{Online adaptation to distribution shift.}{5}{section*.18}\protected@file@percent }
 \@LN{391}{4}
 \@LN{392}{4}
 \@LN{393}{4}
@@ -505,8 +505,8 @@
 \@LN{402}{4}
 \@LN{403}{4}
 \@LN{404}{4}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textbf  {Exp\nobreakspace  {}I: Autonomous evolution from scratch.} Accuracy for each evolution strategy across six foundation-model blocks and four benchmarks, all starting from an empty capability set. \emph  {None} is the zero-shot VLM baseline. \emph  {Skill Only} / \emph  {Tool Only} restrict the Generator to one capability type. \emph  {Full} is the unrestricted \textsc  {Dynamo}{} system, where the AnalyzerDecider chooses skill, tool, or both per case. Blank cells indicate runs whose results have not yet been inserted. \relax }}{6}{table.caption.18}\protected@file@percent }
-\newlabel{tab:evolution_full}{{1}{6}{\textbf {Exp~I: Autonomous evolution from scratch.} Accuracy for each evolution strategy across six foundation-model blocks and four benchmarks, all starting from an empty capability set. \emph {None} is the zero-shot VLM baseline. \emph {Skill Only} / \emph {Tool Only} restrict the Generator to one capability type. \emph {Full} is the unrestricted \sysname {} system, where the AnalyzerDecider chooses skill, tool, or both per case. Blank cells indicate runs whose results have not yet been inserted. \relax }{table.caption.18}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textbf  {Exp\nobreakspace  {}I: Autonomous evolution from scratch.} Accuracy for each evolution strategy across six foundation-model blocks and four benchmarks, all starting from an empty capability set. \emph  {None} is the zero-shot VLM baseline. \emph  {Skill Only} / \emph  {Tool Only} restrict the Generator to one capability type. \emph  {Full} is the unrestricted \textsc  {Dynamo}{} system, where the AnalyzerDecider chooses skill, tool, or both per case. Blank cells indicate runs whose results have not yet been inserted. \relax }}{6}{table.caption.17}\protected@file@percent }
+\newlabel{tab:evolution_full}{{1}{6}{\textbf {Exp~I: Autonomous evolution from scratch.} Accuracy for each evolution strategy across six foundation-model blocks and four benchmarks, all starting from an empty capability set. \emph {None} is the zero-shot VLM baseline. \emph {Skill Only} / \emph {Tool Only} restrict the Generator to one capability type. \emph {Full} is the unrestricted \sysname {} system, where the AnalyzerDecider chooses skill, tool, or both per case. Blank cells indicate runs whose results have not yet been inserted. \relax }{table.caption.17}{}}
 \@LN@col{1}
 \@LN{405}{5}
 \@LN{406}{5}
@@ -525,10 +525,12 @@
 \@LN{419}{5}
 \@LN{420}{5}
 \@LN{421}{5}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Experiment\nobreakspace  {}II: Learning to Use Pre-Provided Tools}{6}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:exp2}{{4.3}{6}{Experiment~II: Learning to Use Pre-Provided Tools}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Motivation.}{6}{section*.20}\protected@file@percent }
 \@LN{422}{5}
 \@LN{423}{5}
 \@LN{424}{5}
-\@writefile{toc}{\contentsline {paragraph}{Distribution-shift adaptation.}{6}{section*.19}\protected@file@percent }
 \@LN{425}{5}
 \@LN{426}{5}
 \@LN{427}{5}
@@ -543,6 +545,7 @@
 \@LN{435}{5}
 \@LN{436}{5}
 \@LN{437}{5}
+\@writefile{toc}{\contentsline {paragraph}{Results on GTA.}{6}{section*.21}\protected@file@percent }
 \@LN{438}{5}
 \@LN{439}{5}
 \@LN{440}{5}
@@ -558,10 +561,12 @@
 \@LN{450}{5}
 \@LN{451}{5}
 \@LN{452}{5}
-\@LN{453}{5}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {Exp\nobreakspace  {}I: Distribution-shift adaptation in a non-stationary stream.} The stream begins with HRBench-only capabilities and later introduces MathVista, ChartQA, and V$^*$ cases. \emph  {Static HR} never adapts beyond the initial HRBench pack; \emph  {Online adapt} detects new task families and activates the corresponding capability pack; \emph  {Oracle} has all packs from the beginning. Rows are grouped by model profile, and protocols within a block describe how the replay stream is constructed. Standard deviations are temporary layout placeholders and must be replaced with seed-based estimates before submission. \relax }}{7}{table.caption.20}\protected@file@percent }
-\newlabel{tab:distribution_shift}{{2}{7}{\textbf {Exp~I: Distribution-shift adaptation in a non-stationary stream.} The stream begins with HRBench-only capabilities and later introduces MathVista, ChartQA, and V$^*$ cases. \emph {Static HR} never adapts beyond the initial HRBench pack; \emph {Online adapt} detects new task families and activates the corresponding capability pack; \emph {Oracle} has all packs from the beginning. Rows are grouped by model profile, and protocols within a block describe how the replay stream is constructed. Standard deviations are temporary layout placeholders and must be replaced with seed-based estimates before submission. \relax }{table.caption.20}{}}
+\citation{vtoolr1_2025}
+\citation{deepeyes_2025}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {Exp\nobreakspace  {}I: Online adaptation in a non-stationary stream.} The stream begins with HRBench cases and later introduces MathVista, ChartQA, and V$^*$ cases. \emph  {Static HR} keeps the initial HRBench-evolved capabilities unchanged; \emph  {Online adapt} detects the distribution shift and updates the skills and tools on the new sub-stream; \emph  {Oracle} has capabilities pre-evolved on every family. Rows are grouped by backbone; the three protocols within each block differ only in how the replay stream is constructed. Standard deviations are temporary layout placeholders and must be replaced with seed-based estimates before submission. \relax }}{7}{table.caption.19}\protected@file@percent }
+\newlabel{tab:distribution_shift}{{2}{7}{\textbf {Exp~I: Online adaptation in a non-stationary stream.} The stream begins with HRBench cases and later introduces MathVista, ChartQA, and V$^*$ cases. \emph {Static HR} keeps the initial HRBench-evolved capabilities unchanged; \emph {Online adapt} detects the distribution shift and updates the skills and tools on the new sub-stream; \emph {Oracle} has capabilities pre-evolved on every family. Rows are grouped by backbone; the three protocols within each block differ only in how the replay stream is constructed. Standard deviations are temporary layout placeholders and must be replaced with seed-based estimates before submission. \relax }{table.caption.19}{}}
 \@LN@col{1}
+\@LN{453}{6}
 \@LN{454}{6}
 \@LN{455}{6}
 \@LN{456}{6}
@@ -579,13 +584,11 @@
 \@LN{468}{6}
 \@LN{469}{6}
 \@LN{470}{6}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Experiment\nobreakspace  {}II: Learning to Use Pre-Provided Tools}{7}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:exp2}{{4.3}{7}{Experiment~II: Learning to Use Pre-Provided Tools}{subsection.4.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Motivation.}{7}{section*.21}\protected@file@percent }
 \@LN{471}{6}
 \@LN{472}{6}
 \@LN{473}{6}
 \@LN{474}{6}
+\@writefile{toc}{\contentsline {paragraph}{Controlled tool-policy analysis.}{7}{section*.23}\protected@file@percent }
 \@LN{475}{6}
 \@LN{476}{6}
 \@LN@col{2}
@@ -599,7 +602,6 @@
 \@LN{484}{6}
 \@LN{485}{6}
 \@LN{486}{6}
-\@writefile{toc}{\contentsline {paragraph}{Results on GTA.}{7}{section*.22}\protected@file@percent }
 \@LN{487}{6}
 \@LN{488}{6}
 \@LN{489}{6}
@@ -607,18 +609,21 @@
 \@LN{491}{6}
 \@LN{492}{6}
 \@LN{493}{6}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Experiment\nobreakspace  {}III: RL and Self-Evolution Across Visual Tool Tasks}{7}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:exp3}{{4.4}{7}{Experiment~III: RL and Self-Evolution Across Visual Tool Tasks}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Motivation.}{7}{section*.25}\protected@file@percent }
 \@LN{494}{6}
 \@LN{495}{6}
 \@LN{496}{6}
 \@LN{497}{6}
 \@LN{498}{6}
 \@LN{499}{6}
-\@LN{500}{6}
-\citation{vtoolr1_2025}
-\citation{deepeyes_2025}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {Exp\nobreakspace  {}II: Learning to use pre-provided tools on GTA.} We report three of GTA's step-by-step metrics (\textbf  {InstAcc}: Instruction-Following; \textbf  {ToolAcc}: Tool Selection; \textbf  {ArgAcc}: Argument Prediction) and the end-to-end \textbf  {AnsAcc} (Answer Accuracy). GTA's \textbf  {SummAcc} requires per-step summary scoring and is not reported. \emph  {Skill Evolution (Ours)} applies \textsc  {Dynamo}{} Mode\nobreakspace  {}B, which learns per-tool mastery SOPs from the training set without generating new tools. \relax }}{8}{table.caption.23}\protected@file@percent }
-\newlabel{tab:gta_detailed}{{3}{8}{\textbf {Exp~II: Learning to use pre-provided tools on GTA.} We report three of GTA's step-by-step metrics (\textbf {InstAcc}: Instruction-Following; \textbf {ToolAcc}: Tool Selection; \textbf {ArgAcc}: Argument Prediction) and the end-to-end \textbf {AnsAcc} (Answer Accuracy). GTA's \textbf {SummAcc} requires per-step summary scoring and is not reported. \emph {Skill Evolution (Ours)} applies \sysname {} Mode~B, which learns per-tool mastery SOPs from the training set without generating new tools. \relax }{table.caption.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {Exp\nobreakspace  {}II: Learning to use pre-provided tools on GTA.} We report three of GTA's step-by-step metrics (\textbf  {InstAcc}: Instruction-Following; \textbf  {ToolAcc}: Tool Selection; \textbf  {ArgAcc}: Argument Prediction) and the end-to-end \textbf  {AnsAcc} (Answer Accuracy). GTA's \textbf  {SummAcc} requires per-step summary scoring and is not reported. \emph  {Skill Evolution (Ours)} applies \textsc  {Dynamo}{} Mode\nobreakspace  {}B, which learns per-tool mastery SOPs from the training set without generating new tools. \relax }}{8}{table.caption.22}\protected@file@percent }
+\newlabel{tab:gta_detailed}{{3}{8}{\textbf {Exp~II: Learning to use pre-provided tools on GTA.} We report three of GTA's step-by-step metrics (\textbf {InstAcc}: Instruction-Following; \textbf {ToolAcc}: Tool Selection; \textbf {ArgAcc}: Argument Prediction) and the end-to-end \textbf {AnsAcc} (Answer Accuracy). GTA's \textbf {SummAcc} requires per-step summary scoring and is not reported. \emph {Skill Evolution (Ours)} applies \sysname {} Mode~B, which learns per-tool mastery SOPs from the training set without generating new tools. \relax }{table.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textbf  {Supplementary controlled GTA analysis for Exp\nobreakspace  {}II.} Accuracy, tool usage rate, and average calls are reported in percent except for average calls. The first block fixes the task environment and changes tool strength; the second fixes the shared \texttt  {OCR} tool and changes the downstream environment. \relax }}{8}{table.caption.24}\protected@file@percent }
+\newlabel{tab:gta_controlled}{{4}{8}{\textbf {Supplementary controlled GTA analysis for Exp~II.} Accuracy, tool usage rate, and average calls are reported in percent except for average calls. The first block fixes the task environment and changes tool strength; the second fixes the shared \texttt {OCR} tool and changes the downstream environment. \relax }{table.caption.24}{}}
 \@LN@col{1}
+\@LN{500}{7}
 \@LN{501}{7}
 \@LN{502}{7}
 \@LN{503}{7}
@@ -634,6 +639,7 @@
 \@LN{513}{7}
 \@LN{514}{7}
 \@LN{515}{7}
+\@writefile{toc}{\contentsline {paragraph}{Results.}{8}{section*.26}\protected@file@percent }
 \@LN{516}{7}
 \@LN{517}{7}
 \@LN{518}{7}
@@ -642,9 +648,9 @@
 \@LN{521}{7}
 \@LN{522}{7}
 \@LN{523}{7}
-\@writefile{toc}{\contentsline {paragraph}{Controlled tool-policy analysis.}{8}{section*.24}\protected@file@percent }
 \@LN{524}{7}
 \@LN{525}{7}
+\@LN@col{2}
 \@LN{526}{7}
 \@LN{527}{7}
 \@LN{528}{7}
@@ -657,66 +663,70 @@
 \@LN{535}{7}
 \@LN{536}{7}
 \@LN{537}{7}
-\@LN@col{2}
 \@LN{538}{7}
 \@LN{539}{7}
 \@LN{540}{7}
 \@LN{541}{7}
 \@LN{542}{7}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Experiment\nobreakspace  {}III: RL and Self-Evolution Across Visual Tool Tasks}{8}{subsection.4.4}\protected@file@percent }
-\newlabel{sec:exp3}{{4.4}{8}{Experiment~III: RL and Self-Evolution Across Visual Tool Tasks}{subsection.4.4}{}}
-\@writefile{toc}{\contentsline {paragraph}{Motivation.}{8}{section*.26}\protected@file@percent }
 \@LN{543}{7}
 \@LN{544}{7}
 \@LN{545}{7}
 \@LN{546}{7}
 \@LN{547}{7}
 \@LN{548}{7}
+\@writefile{toc}{\contentsline {paragraph}{Cost comparison.}{8}{section*.27}\protected@file@percent }
 \@LN{549}{7}
 \@LN{550}{7}
 \@LN{551}{7}
-\@LN{552}{7}
-\@LN{553}{7}
-\@LN{554}{7}
-\@LN{555}{7}
-\@LN{556}{7}
-\@LN{557}{7}
-\@LN{558}{7}
-\@LN{559}{7}
-\@LN{560}{7}
-\@LN{561}{7}
-\@LN{562}{7}
-\@LN{563}{7}
-\@LN{564}{7}
-\@writefile{toc}{\contentsline {paragraph}{Results.}{8}{section*.27}\protected@file@percent }
-\@LN{565}{7}
-\@LN{566}{7}
-\@LN{567}{7}
-\@LN{568}{7}
-\@LN{569}{7}
-\@LN{570}{7}
-\@LN{571}{7}
-\@LN{572}{7}
-\@LN{573}{7}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textbf  {Supplementary controlled GTA analysis for Exp\nobreakspace  {}II.} Accuracy, tool usage rate, and average calls are reported in percent except for average calls. The first block fixes the task environment and changes tool strength; the second fixes the shared \texttt  {OCR} tool and changes the downstream environment. \relax }}{9}{table.caption.25}\protected@file@percent }
-\newlabel{tab:gta_controlled}{{4}{9}{\textbf {Supplementary controlled GTA analysis for Exp~II.} Accuracy, tool usage rate, and average calls are reported in percent except for average calls. The first block fixes the task environment and changes tool strength; the second fixes the shared \texttt {OCR} tool and changes the downstream environment. \relax }{table.caption.25}{}}
+\citation{vtoolr1_2025}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textbf  {Exp\nobreakspace  {}III: unified comparison of direct inference, RL, self-evolution, and self-evolution+RL.} Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows are VTool-R1 GRPO results and their \textsc  {Dynamo}{}+RL rows add the self-evolved capability on top of the RL-trained policy. V$^\star $ and HRBench4K entries follow the DeepEyes high-resolution evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding same-backbone or combined run is not reported in the source table and is not inferred here. \relax }}{9}{table.caption.28}\protected@file@percent }
+\newlabel{tab:rl_combined}{{5}{9}{\textbf {Exp~III: unified comparison of direct inference, RL, self-evolution, and self-evolution+RL.} Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows are VTool-R1 GRPO results and their \sysname {}+RL rows add the self-evolved capability on top of the RL-trained policy. V$^\star $ and HRBench4K entries follow the DeepEyes high-resolution evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding same-backbone or combined run is not reported in the source table and is not inferred here. \relax }{table.caption.28}{}}
 \@LN@col{1}
+\@LN{552}{8}
+\@LN{553}{8}
+\@LN{554}{8}
+\@LN{555}{8}
+\@LN{556}{8}
+\@LN{557}{8}
+\@LN{558}{8}
+\@LN{559}{8}
+\@LN{560}{8}
+\@LN{561}{8}
+\@LN{562}{8}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Ablation Studies}{9}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:ablation}{{4.5}{9}{Ablation Studies}{subsection.4.5}{}}
+\@LN{563}{8}
+\@LN{564}{8}
+\@LN{565}{8}
+\@LN{566}{8}
+\@LN{567}{8}
+\@LN{568}{8}
+\@LN{569}{8}
+\@LN{570}{8}
+\@LN{571}{8}
+\@LN{572}{8}
+\@LN{573}{8}
 \@LN{574}{8}
 \@LN{575}{8}
 \@LN{576}{8}
 \@LN{577}{8}
 \@LN{578}{8}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{9}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{When does evolution help?}{9}{section*.29}\protected@file@percent }
 \@LN{579}{8}
 \@LN{580}{8}
 \@LN{581}{8}
 \@LN{582}{8}
 \@LN{583}{8}
+\@LN@col{2}
 \@LN{584}{8}
 \@LN{585}{8}
 \@LN{586}{8}
 \@LN{587}{8}
 \@LN{588}{8}
 \@LN{589}{8}
+\@writefile{toc}{\contentsline {paragraph}{Limitations.}{9}{section*.30}\protected@file@percent }
 \@LN{590}{8}
 \@LN{591}{8}
 \@LN{592}{8}
@@ -725,7 +735,6 @@
 \@LN{595}{8}
 \@LN{596}{8}
 \@LN{597}{8}
-\@writefile{toc}{\contentsline {paragraph}{Cost comparison.}{9}{section*.28}\protected@file@percent }
 \@LN{598}{8}
 \@LN{599}{8}
 \@LN{600}{8}
@@ -739,59 +748,62 @@
 \@LN{608}{8}
 \@LN{609}{8}
 \@LN{610}{8}
-\@LN@col{2}
 \@LN{611}{8}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Ablation Studies}{9}{subsection.4.5}\protected@file@percent }
-\newlabel{sec:ablation}{{4.5}{9}{Ablation Studies}{subsection.4.5}{}}
 \@LN{612}{8}
 \@LN{613}{8}
 \@LN{614}{8}
+\@writefile{toc}{\contentsline {paragraph}{Future directions.}{9}{section*.31}\protected@file@percent }
 \@LN{615}{8}
 \@LN{616}{8}
-\@LN{617}{8}
-\@LN{618}{8}
-\@LN{619}{8}
-\@LN{620}{8}
-\@LN{621}{8}
-\@LN{622}{8}
-\@LN{623}{8}
-\@LN{624}{8}
-\@LN{625}{8}
-\@LN{626}{8}
-\@LN{627}{8}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{section.5}\protected@file@percent }
-\newlabel{sec:discussion}{{5}{9}{Discussion}{section.5}{}}
-\@writefile{toc}{\contentsline {paragraph}{When does evolution help?}{9}{section*.30}\protected@file@percent }
-\@LN{628}{8}
-\@LN{629}{8}
-\@LN{630}{8}
-\@LN{631}{8}
-\@LN{632}{8}
-\@LN{633}{8}
-\@LN{634}{8}
-\@LN{635}{8}
-\@LN{636}{8}
-\@LN{637}{8}
-\@LN{638}{8}
-\@writefile{toc}{\contentsline {paragraph}{Limitations.}{9}{section*.31}\protected@file@percent }
-\@LN{639}{8}
-\@LN{640}{8}
-\@LN{641}{8}
-\@LN{642}{8}
-\@LN{643}{8}
-\@LN{644}{8}
-\@LN{645}{8}
-\@LN{646}{8}
-\@LN{647}{8}
-\@LN{648}{8}
-\@LN{649}{8}
-\citation{vtoolr1_2025}
 \bibdata{references}
 \bibcite{chen2024hrbench}{{1}{2024}{{Anonymous}}{{}}}
 \bibcite{evolver_2025}{{2}{2025{a}}{{Anonymous}}{{}}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textbf  {Exp\nobreakspace  {}III: unified comparison of direct inference, RL, self-evolution, and self-evolution+RL.} Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows are VTool-R1 GRPO results and their \textsc  {Dynamo}{}+RL rows add the self-evolved capability on top of the RL-trained policy. V$^\star $ and HRBench4K entries follow the DeepEyes high-resolution evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding same-backbone or combined run is not reported in the source table and is not inferred here. \relax }}{10}{table.caption.29}\protected@file@percent }
-\newlabel{tab:rl_combined}{{5}{10}{\textbf {Exp~III: unified comparison of direct inference, RL, self-evolution, and self-evolution+RL.} Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows are VTool-R1 GRPO results and their \sysname {}+RL rows add the self-evolved capability on top of the RL-trained policy. V$^\star $ and HRBench4K entries follow the DeepEyes high-resolution evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding same-backbone or combined run is not reported in the source table and is not inferred here. \relax }{table.caption.29}{}}
+\bibcite{pixelreasoner_2025}{{3}{2025{b}}{{Anonymous}}{{}}}
+\bibcite{vthinker_2025}{{4}{2025{c}}{{Anonymous}}{{}}}
+\bibcite{vtoolr1_2025}{{5}{2025{d}}{{Anonymous}}{{}}}
+\bibcite{cai2024latm}{{6}{2023}{{Cai et~al.}}{{Cai, Wang, Ma, Chen, and Zhou}}}
+\bibcite{chen2024automanual}{{7}{2024}{{Chen et~al.}}{{Chen, Li, Yang, Yu, Lin, and He}}}
+\bibcite{refocus_2025}{{8}{2025}{{Fu et~al.}}{{Fu, Liu, Yang, Corring, Lu, Yang, Roth, Florencio, and Zhang}}}
+\bibcite{gupta2023visprog}{{9}{2023}{{Gupta and Kembhavi}}{{}}}
+\bibcite{lu2023mathvista}{{10}{2024}{{Lu et~al.}}{{Lu, Bansal, Xia, Liu, Li, Hajishirzi, Cheng, Chang, Galley, and Gao}}}
+\bibcite{lu2024chameleon}{{11}{2023}{{Lu et~al.}}{{Lu, Peng, Cheng, Galley, Chang, Wu, Zhu, and Gao}}}
+\bibcite{masry2022chartqa}{{12}{2022}{{Masry et~al.}}{{Masry, Long, Tan, Joty, and Hoque}}}
 \@LN@col{1}
+\@LN{617}{9}
+\@LN{618}{9}
+\@LN{619}{9}
+\@LN{620}{9}
+\@LN{621}{9}
+\@LN{622}{9}
+\@LN{623}{9}
+\@LN{624}{9}
+\@LN{625}{9}
+\@LN{626}{9}
+\@LN{627}{9}
+\@LN{628}{9}
+\@LN{629}{9}
+\@LN{630}{9}
+\@LN{631}{9}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{10}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{10}{Conclusion}{section.6}{}}
+\@LN{632}{9}
+\@LN{633}{9}
+\@LN{634}{9}
+\@LN{635}{9}
+\@LN{636}{9}
+\@LN{637}{9}
+\@LN{638}{9}
+\@LN{639}{9}
+\@LN{640}{9}
+\@LN{641}{9}
+\@LN{642}{9}
+\@LN{643}{9}
+\@LN{644}{9}
+\@LN{645}{9}
+\@LN{646}{9}
+\@LN{647}{9}
+\@LN{648}{9}
+\@LN{649}{9}
 \@LN{650}{9}
 \@LN{651}{9}
 \@LN{652}{9}
@@ -806,9 +818,9 @@
 \@LN{661}{9}
 \@LN{662}{9}
 \@LN{663}{9}
-\@writefile{toc}{\contentsline {paragraph}{Future directions.}{10}{section*.32}\protected@file@percent }
 \@LN{664}{9}
 \@LN{665}{9}
+\@LN@col{2}
 \@LN{666}{9}
 \@LN{667}{9}
 \@LN{668}{9}
@@ -824,11 +836,8 @@
 \@LN{678}{9}
 \@LN{679}{9}
 \@LN{680}{9}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{10}{section.6}\protected@file@percent }
-\newlabel{sec:conclusion}{{6}{10}{Conclusion}{section.6}{}}
 \@LN{681}{9}
 \@LN{682}{9}
-\@LN@col{2}
 \@LN{683}{9}
 \@LN{684}{9}
 \@LN{685}{9}
@@ -861,16 +870,13 @@
 \@LN{712}{9}
 \@LN{713}{9}
 \@LN{714}{9}
-\bibcite{pixelreasoner_2025}{{3}{2025{b}}{{Anonymous}}{{}}}
-\bibcite{vthinker_2025}{{4}{2025{c}}{{Anonymous}}{{}}}
-\bibcite{vtoolr1_2025}{{5}{2025{d}}{{Anonymous}}{{}}}
-\bibcite{cai2024latm}{{6}{2023}{{Cai et~al.}}{{Cai, Wang, Ma, Chen, and Zhou}}}
-\bibcite{chen2024automanual}{{7}{2024}{{Chen et~al.}}{{Chen, Li, Yang, Yu, Lin, and He}}}
-\bibcite{refocus_2025}{{8}{2025}{{Fu et~al.}}{{Fu, Liu, Yang, Corring, Lu, Yang, Roth, Florencio, and Zhang}}}
-\bibcite{gupta2023visprog}{{9}{2023}{{Gupta and Kembhavi}}{{}}}
-\bibcite{lu2023mathvista}{{10}{2024}{{Lu et~al.}}{{Lu, Bansal, Xia, Liu, Li, Hajishirzi, Cheng, Chang, Galley, and Gao}}}
-\bibcite{lu2024chameleon}{{11}{2023}{{Lu et~al.}}{{Lu, Peng, Cheng, Galley, Chang, Wu, Zhu, and Gao}}}
-\bibcite{masry2022chartqa}{{12}{2022}{{Masry et~al.}}{{Masry, Long, Tan, Joty, and Hoque}}}
+\@LN{715}{9}
+\@LN{716}{9}
+\@LN{717}{9}
+\@LN{718}{9}
+\@LN{719}{9}
+\@LN{720}{9}
+\@LN{721}{9}
 \bibcite{tang2023creator}{{13}{2023}{{Qian et~al.}}{{Qian, Han, Fung, Qin, Liu, and Ji}}}
 \bibcite{qin2024toolllm}{{14}{2024}{{Qin et~al.}}{{Qin, Liang, Ye, Zhu, Yan, Lu, Lin, Cong, Tang, Qian, Zhao, Hong, Tian, Xie, Zhou, Gerstein, Li, Liu, and Sun}}}
 \bibcite{zoomeye_2024}{{15}{2024}{{Shen et~al.}}{{Shen, Zhao, Zhao, Xu, Zhang, Zhu, and Yin}}}
@@ -881,14 +887,8 @@
 \bibcite{wu2024vstar}{{20}{2023}{{Wu and Xie}}{{}}}
 \bibcite{adaptivecof_2025}{{21}{2025}{{Zhang et~al.}}{{Zhang, Gao, Zhang, Li, Zhang, Liu, Yuan, Wu, Jia, Zhu, and Li}}}
 \bibcite{zhao2023expel}{{22}{2024}{{Zhao et~al.}}{{Zhao, Huang, Xu, Lin, Liu, and Huang}}}
+\bibcite{deepeyes_2025}{{23}{2025}{{Zheng et~al.}}{{Zheng, Yang, Hong, Zhao, Xu, Yang, Shen, and Yu}}}
 \@LN@col{1}
-\@LN{715}{10}
-\@LN{716}{10}
-\@LN{717}{10}
-\@LN{718}{10}
-\@LN{719}{10}
-\@LN{720}{10}
-\@LN{721}{10}
 \@LN{722}{10}
 \@LN{723}{10}
 \@LN{724}{10}
@@ -938,7 +938,6 @@
 \@LN{768}{10}
 \@LN{769}{10}
 \@LN{770}{10}
-\@LN@col{2}
 \@LN{771}{10}
 \@LN{772}{10}
 \@LN{773}{10}
@@ -947,6 +946,7 @@
 \@LN{776}{10}
 \@LN{777}{10}
 \@LN{778}{10}
+\@LN@col{2}
 \@LN{779}{10}
 \@LN{780}{10}
 \@LN{781}{10}
@@ -957,47 +957,61 @@
 \@LN{786}{10}
 \@LN{787}{10}
 \@LN{788}{10}
-\@LN{789}{10}
-\@LN{790}{10}
-\@LN{791}{10}
-\@LN{792}{10}
-\@LN{793}{10}
-\@LN{794}{10}
-\@LN{795}{10}
-\@LN{796}{10}
-\@LN{797}{10}
-\@LN{798}{10}
-\@LN{799}{10}
-\@LN{800}{10}
-\@LN{801}{10}
-\@LN{802}{10}
-\@LN{803}{10}
-\@LN{804}{10}
-\@LN{805}{10}
-\@LN{806}{10}
-\@LN{807}{10}
-\@LN{808}{10}
-\@LN{809}{10}
-\@LN{810}{10}
-\@LN{811}{10}
-\@LN{812}{10}
-\@LN{813}{10}
-\@LN{814}{10}
-\@LN{815}{10}
-\@LN{816}{10}
-\@LN{817}{10}
-\@LN{818}{10}
-\@LN{819}{10}
-\@LN{820}{10}
-\@LN{821}{10}
-\@LN{822}{10}
-\@LN{823}{10}
-\@LN{824}{10}
-\@LN{825}{10}
-\@LN{826}{10}
-\@LN{827}{10}
-\bibcite{deepeyes_2025}{{23}{2025}{{Zheng et~al.}}{{Zheng, Yang, Hong, Zhao, Xu, Yang, Shen, and Yu}}}
 \@LN@col{1}
+\@LN{789}{11}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Implementation Details}{12}{appendix.A}\protected@file@percent }
+\newlabel{app:impl}{{A}{12}{Implementation Details}{appendix.A}{}}
+\@writefile{toc}{\contentsline {paragraph}{Algorithm.}{12}{section*.33}\protected@file@percent }
+\@LN{790}{11}
+\@LN{791}{11}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces \textsc  {Dynamo}{} evolution loop.\relax }}{12}{algocf.1}\protected@file@percent }
+\newlabel{alg:main}{{1}{12}{Algorithm}{algocf.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Role prompts.}{12}{section*.35}\protected@file@percent }
+\@LN{792}{11}
+\@LN{793}{11}
+\@LN{794}{11}
+\@LN{795}{11}
+\@LN{796}{11}
+\@LN{797}{11}
+\@LN{798}{11}
+\@writefile{toc}{\contentsline {paragraph}{Skill retrieval.}{12}{section*.36}\protected@file@percent }
+\@LN{799}{11}
+\@LN{800}{11}
+\@LN{801}{11}
+\@LN{802}{11}
+\@LN{803}{11}
+\@writefile{toc}{\contentsline {paragraph}{Tool invocation.}{12}{section*.37}\protected@file@percent }
+\@LN{804}{11}
+\@LN{805}{11}
+\@LN{806}{11}
+\@LN{807}{11}
+\@LN{808}{11}
+\@LN{809}{11}
+\@LN{810}{11}
+\@writefile{toc}{\contentsline {paragraph}{Hyperparameters.}{12}{section*.38}\protected@file@percent }
+\@LN{811}{11}
+\@LN{812}{11}
+\@LN@col{2}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Hyperparameter settings.\relax }}{12}{table.caption.39}\protected@file@percent }
+\newlabel{tab:hyperparams}{{6}{12}{Hyperparameter settings.\relax }{table.caption.39}{}}
+\@writefile{toc}{\contentsline {paragraph}{Compute.}{12}{section*.40}\protected@file@percent }
+\@LN{813}{11}
+\@LN{814}{11}
+\@LN{815}{11}
+\@LN{816}{11}
+\@LN{817}{11}
+\@LN{818}{11}
+\@LN{819}{11}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Mechanism Ablations}{12}{appendix.B}\protected@file@percent }
+\newlabel{app:ablation_mechanisms}{{B}{12}{Mechanism Ablations}{appendix.B}{}}
+\@LN{820}{11}
+\@LN{821}{11}
+\@LN{822}{11}
+\@LN{823}{11}
+\@LN{824}{11}
+\@LN{825}{11}
+\@LN{826}{11}
+\@LN{827}{11}
 \@LN{828}{11}
 \@LN{829}{11}
 \@LN{830}{11}
@@ -1008,54 +1022,43 @@
 \@LN{835}{11}
 \@LN{836}{11}
 \@LN{837}{11}
-\@LN@col{2}
+\@LN{838}{11}
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{12}{section*.41}\protected@file@percent }
+\@LN{839}{11}
+\@LN{840}{11}
+\@LN{841}{11}
+\@LN{842}{11}
+\@LN{843}{11}
+\@LN{844}{11}
+\@LN{845}{11}
+\@LN{846}{11}
+\@LN{847}{11}
+\@LN{848}{11}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces \textbf  {Mechanism ablations.} Each row removes one mechanism from \textsc  {Dynamo}{} while holding all others fixed (GPT-5.4 backbone; $k{=}200$, $N{=}3$). The ablated dimensions are \emph  {mechanisms} (how capabilities are generated, diagnosed, gated, and reused) rather than capability \emph  {types}, which are already ablated by the \emph  {Skill Only} / \emph  {Tool Only} rows of Table\nobreakspace  {}\ref  {tab:evolution_full}. The Full row reproduces the Skill\nobreakspace  {}$+$\nobreakspace  {}Tool entry of Table\nobreakspace  {}\ref  {tab:evolution_full}, and the Direct row reproduces the None (Base Agent) entry, both for reference. The four ablation rows are \emph  {layout placeholders} chosen to illustrate the expected qualitative pattern and must be replaced with measured values before submission. \relax }}{13}{table.caption.43}\protected@file@percent }
+\newlabel{tab:ablation_mechanism}{{7}{13}{\textbf {Mechanism ablations.} Each row removes one mechanism from \sysname {} while holding all others fixed (GPT-5.4 backbone; $k{=}200$, $N{=}3$). The ablated dimensions are \emph {mechanisms} (how capabilities are generated, diagnosed, gated, and reused) rather than capability \emph {types}, which are already ablated by the \emph {Skill Only} / \emph {Tool Only} rows of Table~\ref {tab:evolution_full}. The Full row reproduces the Skill~$+$~Tool entry of Table~\ref {tab:evolution_full}, and the Direct row reproduces the None (Base Agent) entry, both for reference. The four ablation rows are \emph {layout placeholders} chosen to illustrate the expected qualitative pattern and must be replaced with measured values before submission. \relax }{table.caption.43}{}}
 \@LN@col{1}
-\@LN{838}{12}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Implementation Details}{13}{appendix.A}\protected@file@percent }
-\newlabel{app:impl}{{A}{13}{Implementation Details}{appendix.A}{}}
-\@writefile{toc}{\contentsline {paragraph}{Algorithm.}{13}{section*.34}\protected@file@percent }
-\@LN{839}{12}
-\@LN{840}{12}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces \textsc  {Dynamo}{} evolution loop.\relax }}{13}{algocf.1}\protected@file@percent }
-\newlabel{alg:main}{{1}{13}{Algorithm}{algocf.1}{}}
-\@writefile{toc}{\contentsline {paragraph}{Role prompts.}{13}{section*.36}\protected@file@percent }
-\@LN{841}{12}
-\@LN{842}{12}
-\@LN{843}{12}
-\@LN{844}{12}
-\@LN{845}{12}
-\@LN{846}{12}
-\@LN{847}{12}
-\@writefile{toc}{\contentsline {paragraph}{Skill retrieval.}{13}{section*.37}\protected@file@percent }
-\@LN{848}{12}
 \@LN{849}{12}
 \@LN{850}{12}
 \@LN{851}{12}
 \@LN{852}{12}
-\@writefile{toc}{\contentsline {paragraph}{Tool invocation.}{13}{section*.38}\protected@file@percent }
 \@LN{853}{12}
 \@LN{854}{12}
+\@writefile{toc}{\contentsline {paragraph}{Main mechanism table.}{13}{section*.42}\protected@file@percent }
 \@LN{855}{12}
 \@LN{856}{12}
 \@LN{857}{12}
 \@LN{858}{12}
 \@LN{859}{12}
-\@writefile{toc}{\contentsline {paragraph}{Hyperparameters.}{13}{section*.39}\protected@file@percent }
 \@LN{860}{12}
 \@LN{861}{12}
-\@LN@col{2}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Hyperparameter settings.\relax }}{13}{table.caption.40}\protected@file@percent }
-\newlabel{tab:hyperparams}{{6}{13}{Hyperparameter settings.\relax }{table.caption.40}{}}
-\@writefile{toc}{\contentsline {paragraph}{Compute.}{13}{section*.41}\protected@file@percent }
 \@LN{862}{12}
 \@LN{863}{12}
+\@writefile{toc}{\contentsline {paragraph}{Reading the table.}{13}{section*.44}\protected@file@percent }
 \@LN{864}{12}
 \@LN{865}{12}
 \@LN{866}{12}
 \@LN{867}{12}
 \@LN{868}{12}
-\@writefile{toc}{\contentsline {section}{\numberline {B}Mechanism Ablations}{13}{appendix.B}\protected@file@percent }
-\newlabel{app:ablation_mechanisms}{{B}{13}{Mechanism Ablations}{appendix.B}{}}
 \@LN{869}{12}
 \@LN{870}{12}
 \@LN{871}{12}
@@ -1066,16 +1069,20 @@
 \@LN{876}{12}
 \@LN{877}{12}
 \@LN{878}{12}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Generic Skill vs. Evolved Capability}{13}{subsection.B.1}\protected@file@percent }
+\newlabel{app:abl_generic}{{B.1}{13}{Generic Skill vs. Evolved Capability}{subsection.B.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Question.}{13}{section*.45}\protected@file@percent }
 \@LN{879}{12}
 \@LN{880}{12}
+\@LN@col{2}
 \@LN{881}{12}
+\@writefile{toc}{\contentsline {paragraph}{Variants.}{13}{section*.46}\protected@file@percent }
 \@LN{882}{12}
 \@LN{883}{12}
 \@LN{884}{12}
 \@LN{885}{12}
 \@LN{886}{12}
 \@LN{887}{12}
-\@writefile{toc}{\contentsline {paragraph}{Setup.}{13}{section*.42}\protected@file@percent }
 \@LN{888}{12}
 \@LN{889}{12}
 \@LN{890}{12}
@@ -1084,57 +1091,55 @@
 \@LN{893}{12}
 \@LN{894}{12}
 \@LN{895}{12}
+\@writefile{toc}{\contentsline {paragraph}{Expected interpretation.}{13}{section*.47}\protected@file@percent }
 \@LN{896}{12}
 \@LN{897}{12}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces \textbf  {Mechanism ablations.} Each row removes one mechanism from \textsc  {Dynamo}{} while holding all others fixed (GPT-5.4 backbone; $k{=}200$, $N{=}3$). The ablated dimensions are \emph  {mechanisms} (how capabilities are generated, diagnosed, gated, and reused) rather than capability \emph  {types}, which are already ablated by the \emph  {Skill Only} / \emph  {Tool Only} rows of Table\nobreakspace  {}\ref  {tab:evolution_full}. The Full row reproduces the Skill\nobreakspace  {}$+$\nobreakspace  {}Tool entry of Table\nobreakspace  {}\ref  {tab:evolution_full}, and the Direct row reproduces the None (Base Agent) entry, both for reference. The four ablation rows are \emph  {layout placeholders} chosen to illustrate the expected qualitative pattern and must be replaced with measured values before submission. \relax }}{14}{table.caption.44}\protected@file@percent }
-\newlabel{tab:ablation_mechanism}{{7}{14}{\textbf {Mechanism ablations.} Each row removes one mechanism from \sysname {} while holding all others fixed (GPT-5.4 backbone; $k{=}200$, $N{=}3$). The ablated dimensions are \emph {mechanisms} (how capabilities are generated, diagnosed, gated, and reused) rather than capability \emph {types}, which are already ablated by the \emph {Skill Only} / \emph {Tool Only} rows of Table~\ref {tab:evolution_full}. The Full row reproduces the Skill~$+$~Tool entry of Table~\ref {tab:evolution_full}, and the Direct row reproduces the None (Base Agent) entry, both for reference. The four ablation rows are \emph {layout placeholders} chosen to illustrate the expected qualitative pattern and must be replaced with measured values before submission. \relax }{table.caption.44}{}}
+\@LN{898}{12}
+\@LN{899}{12}
+\@LN{900}{12}
+\@LN{901}{12}
+\@LN{902}{12}
+\@LN{903}{12}
+\@LN{904}{12}
+\@LN{905}{12}
+\@LN{906}{12}
+\@LN{907}{12}
+\@LN{908}{12}
+\@LN{909}{12}
+\@LN{910}{12}
+\@LN{911}{12}
+\@LN{912}{12}
+\@LN{913}{12}
 \@LN@col{1}
-\@LN{898}{13}
-\@LN{899}{13}
-\@LN{900}{13}
-\@LN{901}{13}
-\@LN{902}{13}
-\@LN{903}{13}
-\@writefile{toc}{\contentsline {paragraph}{Main mechanism table.}{14}{section*.43}\protected@file@percent }
-\@LN{904}{13}
-\@LN{905}{13}
-\@LN{906}{13}
-\@LN{907}{13}
-\@LN{908}{13}
-\@LN{909}{13}
-\@LN{910}{13}
-\@LN{911}{13}
-\@LN{912}{13}
-\@writefile{toc}{\contentsline {paragraph}{Reading the table.}{14}{section*.45}\protected@file@percent }
-\@LN{913}{13}
 \@LN{914}{13}
 \@LN{915}{13}
+\@writefile{toc}{\contentsline {paragraph}{Writing hook.}{14}{section*.48}\protected@file@percent }
 \@LN{916}{13}
 \@LN{917}{13}
 \@LN{918}{13}
 \@LN{919}{13}
 \@LN{920}{13}
 \@LN{921}{13}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Text-only Diagnosis}{14}{subsection.B.2}\protected@file@percent }
+\newlabel{app:abl_textonly}{{B.2}{14}{Text-only Diagnosis}{subsection.B.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Question.}{14}{section*.49}\protected@file@percent }
 \@LN{922}{13}
 \@LN{923}{13}
 \@LN{924}{13}
+\@writefile{toc}{\contentsline {paragraph}{Variants.}{14}{section*.50}\protected@file@percent }
 \@LN{925}{13}
 \@LN{926}{13}
 \@LN{927}{13}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Generic Skill vs. Evolved Capability}{14}{subsection.B.1}\protected@file@percent }
-\newlabel{app:abl_generic}{{B.1}{14}{Generic Skill vs. Evolved Capability}{subsection.B.1}{}}
-\@writefile{toc}{\contentsline {paragraph}{Question.}{14}{section*.46}\protected@file@percent }
 \@LN{928}{13}
 \@LN{929}{13}
-\@LN@col{2}
 \@LN{930}{13}
-\@writefile{toc}{\contentsline {paragraph}{Variants.}{14}{section*.47}\protected@file@percent }
 \@LN{931}{13}
 \@LN{932}{13}
 \@LN{933}{13}
 \@LN{934}{13}
 \@LN{935}{13}
 \@LN{936}{13}
+\@writefile{toc}{\contentsline {paragraph}{Expected interpretation.}{14}{section*.51}\protected@file@percent }
 \@LN{937}{13}
 \@LN{938}{13}
 \@LN{939}{13}
@@ -1143,7 +1148,6 @@
 \@LN{942}{13}
 \@LN{943}{13}
 \@LN{944}{13}
-\@writefile{toc}{\contentsline {paragraph}{Expected interpretation.}{14}{section*.48}\protected@file@percent }
 \@LN{945}{13}
 \@LN{946}{13}
 \@LN{947}{13}
@@ -1154,78 +1158,79 @@
 \@LN{952}{13}
 \@LN{953}{13}
 \@LN{954}{13}
+\@writefile{toc}{\contentsline {paragraph}{Writing hook.}{14}{section*.52}\protected@file@percent }
 \@LN{955}{13}
 \@LN{956}{13}
 \@LN{957}{13}
 \@LN{958}{13}
 \@LN{959}{13}
+\@LN@col{2}
 \@LN{960}{13}
 \@LN{961}{13}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}No Mastery / Unconditional Tool Exposure}{14}{subsection.B.3}\protected@file@percent }
+\newlabel{app:abl_mastery}{{B.3}{14}{No Mastery / Unconditional Tool Exposure}{subsection.B.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Question.}{14}{section*.53}\protected@file@percent }
 \@LN{962}{13}
+\@LN{963}{13}
+\@LN{964}{13}
+\@writefile{toc}{\contentsline {paragraph}{Variants.}{14}{section*.54}\protected@file@percent }
+\@LN{965}{13}
+\@LN{966}{13}
+\@LN{967}{13}
+\@LN{968}{13}
+\@LN{969}{13}
+\@LN{970}{13}
+\@LN{971}{13}
+\@LN{972}{13}
+\@LN{973}{13}
+\@LN{974}{13}
+\@LN{975}{13}
+\@LN{976}{13}
+\@writefile{toc}{\contentsline {paragraph}{Expected interpretation.}{14}{section*.55}\protected@file@percent }
+\@LN{977}{13}
+\@LN{978}{13}
+\@LN{979}{13}
+\@LN{980}{13}
+\@LN{981}{13}
+\@LN{982}{13}
+\@LN{983}{13}
+\@LN{984}{13}
+\@LN{985}{13}
+\@LN{986}{13}
+\@LN{987}{13}
+\@LN{988}{13}
+\@LN{989}{13}
+\@LN{990}{13}
+\@LN{991}{13}
+\@LN{992}{13}
+\@writefile{toc}{\contentsline {paragraph}{Writing hook.}{14}{section*.56}\protected@file@percent }
+\@LN{993}{13}
+\@LN{994}{13}
+\@LN{995}{13}
+\@LN{996}{13}
+\@LN{997}{13}
+\@LN{998}{13}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4}No Persistence / Per-case Reflection}{14}{subsection.B.4}\protected@file@percent }
+\newlabel{app:abl_persistence}{{B.4}{14}{No Persistence / Per-case Reflection}{subsection.B.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Question.}{14}{section*.57}\protected@file@percent }
+\@LN{999}{13}
+\@LN{1000}{13}
+\@LN{1001}{13}
+\@writefile{toc}{\contentsline {paragraph}{Variants.}{14}{section*.58}\protected@file@percent }
+\@LN{1002}{13}
+\@LN{1003}{13}
+\@LN{1004}{13}
+\@LN{1005}{13}
+\@LN{1006}{13}
+\@LN{1007}{13}
 \@LN@col{1}
-\@LN{963}{14}
-\@LN{964}{14}
-\@writefile{toc}{\contentsline {paragraph}{Writing hook.}{15}{section*.49}\protected@file@percent }
-\@LN{965}{14}
-\@LN{966}{14}
-\@LN{967}{14}
-\@LN{968}{14}
-\@LN{969}{14}
-\@LN{970}{14}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Text-only Diagnosis}{15}{subsection.B.2}\protected@file@percent }
-\newlabel{app:abl_textonly}{{B.2}{15}{Text-only Diagnosis}{subsection.B.2}{}}
-\@writefile{toc}{\contentsline {paragraph}{Question.}{15}{section*.50}\protected@file@percent }
-\@LN{971}{14}
-\@LN{972}{14}
-\@LN{973}{14}
-\@writefile{toc}{\contentsline {paragraph}{Variants.}{15}{section*.51}\protected@file@percent }
-\@LN{974}{14}
-\@LN{975}{14}
-\@LN{976}{14}
-\@LN{977}{14}
-\@LN{978}{14}
-\@LN{979}{14}
-\@LN{980}{14}
-\@LN{981}{14}
-\@LN{982}{14}
-\@LN{983}{14}
-\@LN{984}{14}
-\@LN{985}{14}
-\@writefile{toc}{\contentsline {paragraph}{Expected interpretation.}{15}{section*.52}\protected@file@percent }
-\@LN{986}{14}
-\@LN{987}{14}
-\@LN{988}{14}
-\@LN{989}{14}
-\@LN{990}{14}
-\@LN{991}{14}
-\@LN{992}{14}
-\@LN{993}{14}
-\@LN{994}{14}
-\@LN{995}{14}
-\@LN{996}{14}
-\@LN{997}{14}
-\@LN{998}{14}
-\@LN{999}{14}
-\@LN{1000}{14}
-\@LN{1001}{14}
-\@LN{1002}{14}
-\@LN{1003}{14}
-\@writefile{toc}{\contentsline {paragraph}{Writing hook.}{15}{section*.53}\protected@file@percent }
-\@LN{1004}{14}
-\@LN{1005}{14}
-\@LN{1006}{14}
-\@LN{1007}{14}
 \@LN{1008}{14}
-\@LN@col{2}
 \@LN{1009}{14}
 \@LN{1010}{14}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}No Mastery / Unconditional Tool Exposure}{15}{subsection.B.3}\protected@file@percent }
-\newlabel{app:abl_mastery}{{B.3}{15}{No Mastery / Unconditional Tool Exposure}{subsection.B.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Question.}{15}{section*.54}\protected@file@percent }
 \@LN{1011}{14}
+\@writefile{toc}{\contentsline {paragraph}{Expected interpretation.}{15}{section*.59}\protected@file@percent }
 \@LN{1012}{14}
 \@LN{1013}{14}
-\@writefile{toc}{\contentsline {paragraph}{Variants.}{15}{section*.55}\protected@file@percent }
 \@LN{1014}{14}
 \@LN{1015}{14}
 \@LN{1016}{14}
@@ -1238,16 +1243,18 @@
 \@LN{1023}{14}
 \@LN{1024}{14}
 \@LN{1025}{14}
-\@writefile{toc}{\contentsline {paragraph}{Expected interpretation.}{15}{section*.56}\protected@file@percent }
 \@LN{1026}{14}
 \@LN{1027}{14}
 \@LN{1028}{14}
+\@writefile{toc}{\contentsline {paragraph}{Writing hook.}{15}{section*.60}\protected@file@percent }
 \@LN{1029}{14}
 \@LN{1030}{14}
 \@LN{1031}{14}
 \@LN{1032}{14}
 \@LN{1033}{14}
 \@LN{1034}{14}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.5}Optional: Validation and Regression Filter}{15}{subsection.B.5}\protected@file@percent }
+\newlabel{app:abl_validation}{{B.5}{15}{Optional: Validation and Regression Filter}{subsection.B.5}{}}
 \@LN{1035}{14}
 \@LN{1036}{14}
 \@LN{1037}{14}
@@ -1255,88 +1262,94 @@
 \@LN{1039}{14}
 \@LN{1040}{14}
 \@LN{1041}{14}
-\@writefile{toc}{\contentsline {paragraph}{Writing hook.}{15}{section*.57}\protected@file@percent }
 \@LN{1042}{14}
 \@LN{1043}{14}
 \@LN{1044}{14}
 \@LN{1045}{14}
 \@LN{1046}{14}
 \@LN{1047}{14}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.4}No Persistence / Per-case Reflection}{15}{subsection.B.4}\protected@file@percent }
-\newlabel{app:abl_persistence}{{B.4}{15}{No Persistence / Per-case Reflection}{subsection.B.4}{}}
-\@writefile{toc}{\contentsline {paragraph}{Question.}{15}{section*.58}\protected@file@percent }
 \@LN{1048}{14}
 \@LN{1049}{14}
 \@LN{1050}{14}
-\@writefile{toc}{\contentsline {paragraph}{Variants.}{15}{section*.59}\protected@file@percent }
 \@LN{1051}{14}
 \@LN{1052}{14}
 \@LN{1053}{14}
 \@LN{1054}{14}
 \@LN{1055}{14}
 \@LN{1056}{14}
-\@LN@col{1}
-\@LN{1057}{15}
-\@LN{1058}{15}
-\@LN{1059}{15}
-\@LN{1060}{15}
-\@writefile{toc}{\contentsline {paragraph}{Expected interpretation.}{16}{section*.60}\protected@file@percent }
-\@LN{1061}{15}
-\@LN{1062}{15}
-\@LN{1063}{15}
-\@LN{1064}{15}
-\@LN{1065}{15}
-\@LN{1066}{15}
-\@LN{1067}{15}
-\@LN{1068}{15}
-\@LN{1069}{15}
-\@LN{1070}{15}
-\@LN{1071}{15}
-\@LN{1072}{15}
-\@LN{1073}{15}
-\@LN{1074}{15}
-\@LN{1075}{15}
-\@LN{1076}{15}
-\@LN{1077}{15}
-\@writefile{toc}{\contentsline {paragraph}{Writing hook.}{16}{section*.61}\protected@file@percent }
-\@LN{1078}{15}
-\@LN{1079}{15}
-\@LN{1080}{15}
-\@LN{1081}{15}
-\@LN{1082}{15}
-\@LN{1083}{15}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.5}Optional: Validation and Regression Filter}{16}{subsection.B.5}\protected@file@percent }
-\newlabel{app:abl_validation}{{B.5}{16}{Optional: Validation and Regression Filter}{subsection.B.5}{}}
-\@LN{1084}{15}
-\@LN{1085}{15}
-\@LN{1086}{15}
-\@LN{1087}{15}
-\@LN{1088}{15}
-\@LN{1089}{15}
-\@LN{1090}{15}
-\@LN{1091}{15}
-\@LN{1092}{15}
-\@LN{1093}{15}
-\@LN{1094}{15}
-\@LN{1095}{15}
-\@LN{1096}{15}
-\@LN{1097}{15}
-\@LN{1098}{15}
-\@LN{1099}{15}
-\@LN{1100}{15}
-\@LN{1101}{15}
-\@LN{1102}{15}
-\@LN{1103}{15}
-\@LN{1104}{15}
-\@LN{1105}{15}
 \@LN@col{2}
+\@LN{1057}{14}
+\@LN{1058}{14}
+\@LN{1059}{14}
+\@LN{1060}{14}
+\@LN{1061}{14}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.6}Sensitivity to Training Subset Size and Iteration Count}{15}{subsection.B.6}\protected@file@percent }
+\newlabel{app:abl_sensitivity}{{B.6}{15}{Sensitivity to Training Subset Size and Iteration Count}{subsection.B.6}{}}
+\@LN{1062}{14}
+\@LN{1063}{14}
+\@LN{1064}{14}
+\@LN{1065}{14}
+\@LN{1066}{14}
+\@LN{1067}{14}
+\@LN{1068}{14}
+\@LN{1069}{14}
+\@LN{1070}{14}
+\@LN{1071}{14}
+\@LN{1072}{14}
+\@LN{1073}{14}
+\@LN{1074}{14}
+\@LN{1075}{14}
+\@LN{1076}{14}
+\@LN{1077}{14}
+\@LN{1078}{14}
+\@LN{1079}{14}
+\@LN{1080}{14}
+\@LN{1081}{14}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.7}Summary}{15}{subsection.B.7}\protected@file@percent }
+\newlabel{app:abl_summary}{{B.7}{15}{Summary}{subsection.B.7}{}}
+\@LN{1082}{14}
+\@LN{1083}{14}
+\@LN{1084}{14}
+\@LN{1085}{14}
+\@LN{1086}{14}
+\@LN{1087}{14}
+\@LN{1088}{14}
+\@LN{1089}{14}
+\@LN{1090}{14}
+\@LN{1091}{14}
+\@LN{1092}{14}
+\@LN{1093}{14}
+\@LN{1094}{14}
+\@LN{1095}{14}
+\@LN{1096}{14}
+\@LN{1097}{14}
+\@LN{1098}{14}
+\@LN{1099}{14}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Additional Results}{15}{appendix.C}\protected@file@percent }
+\newlabel{app:results}{{C}{15}{Additional Results}{appendix.C}{}}
+\@LN{1100}{14}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Training Set Size Sensitivity}{15}{subsection.C.1}\protected@file@percent }
+\@LN{1101}{14}
+\@LN{1102}{14}
+\@LN{1103}{14}
+\citation{refocus_2025}
+\citation{zoomeye_2024}
+\citation{refocus_2025}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces  \textbf  {Three qualitative forms of evolved capability.} The case studies compare generated artifacts to prior visual-reasoning motifs. They do not claim that \textsc  {Dynamo}{} reproduces the full prior algorithms. \relax }}{16}{table.caption.62}\protected@file@percent }
+\newlabel{tab:capability_prior_motifs}{{8}{16}{\textbf {Three qualitative forms of evolved capability.} The case studies compare generated artifacts to prior visual-reasoning motifs. They do not claim that \sysname {} reproduces the full prior algorithms. \relax }{table.caption.62}{}}
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Placeholder for ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.\relax }}{16}{figure.caption.61}\protected@file@percent }
+\newlabel{fig:k_sensitivity}{{3}{16}{Placeholder for ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.\relax }{figure.caption.61}{}}
+\@LN{1104}{15}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Per-Category Analysis on ChartQA}{16}{subsection.C.2}\protected@file@percent }
+\@LN{1105}{15}
 \@LN{1106}{15}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Qualitative Analysis of Evolved Capabilities}{16}{appendix.D}\protected@file@percent }
+\newlabel{app:capability_cases}{{D}{16}{Qualitative Analysis of Evolved Capabilities}{appendix.D}{}}
 \@LN{1107}{15}
 \@LN{1108}{15}
 \@LN{1109}{15}
 \@LN{1110}{15}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.6}Sensitivity to Training Subset Size and Iteration Count}{16}{subsection.B.6}\protected@file@percent }
-\newlabel{app:abl_sensitivity}{{B.6}{16}{Sensitivity to Training Subset Size and Iteration Count}{subsection.B.6}{}}
 \@LN{1111}{15}
 \@LN{1112}{15}
 \@LN{1113}{15}
@@ -1347,18 +1360,19 @@
 \@LN{1118}{15}
 \@LN{1119}{15}
 \@LN{1120}{15}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.1}Case A: ReFocus-Style Skill and Tool for Structured Images}{16}{subsection.D.1}\protected@file@percent }
+\newlabel{app:refocus_style}{{D.1}{16}{Case A: ReFocus-Style Skill and Tool for Structured Images}{subsection.D.1}{}}
 \@LN{1121}{15}
 \@LN{1122}{15}
 \@LN{1123}{15}
 \@LN{1124}{15}
 \@LN{1125}{15}
+\@LN@col{2}
 \@LN{1126}{15}
 \@LN{1127}{15}
 \@LN{1128}{15}
 \@LN{1129}{15}
 \@LN{1130}{15}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.7}Summary}{16}{subsection.B.7}\protected@file@percent }
-\newlabel{app:abl_summary}{{B.7}{16}{Summary}{subsection.B.7}{}}
 \@LN{1131}{15}
 \@LN{1132}{15}
 \@LN{1133}{15}
@@ -1377,49 +1391,34 @@
 \@LN{1146}{15}
 \@LN{1147}{15}
 \@LN{1148}{15}
-\@writefile{toc}{\contentsline {section}{\numberline {C}Additional Results}{16}{appendix.C}\protected@file@percent }
-\newlabel{app:results}{{C}{16}{Additional Results}{appendix.C}{}}
 \@LN{1149}{15}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Training Set Size Sensitivity}{16}{subsection.C.1}\protected@file@percent }
 \@LN{1150}{15}
 \@LN{1151}{15}
 \@LN{1152}{15}
-\citation{refocus_2025}
+\@LN{1153}{15}
+\@LN{1154}{15}
+\@LN{1155}{15}
+\@LN{1156}{15}
+\@LN{1157}{15}
+\@LN{1158}{15}
+\@LN{1159}{15}
+\@LN{1160}{15}
+\@LN{1161}{15}
+\@LN{1162}{15}
+\@LN{1163}{15}
+\@LN{1164}{15}
+\@LN{1165}{15}
+\@LN{1166}{15}
+\@LN{1167}{15}
+\@LN{1168}{15}
 \citation{zoomeye_2024}
-\citation{refocus_2025}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces  \textbf  {Three qualitative forms of evolved capability.} The case studies compare generated artifacts to prior visual-reasoning motifs. They do not claim that \textsc  {Dynamo}{} reproduces the full prior algorithms. \relax }}{17}{table.caption.63}\protected@file@percent }
-\newlabel{tab:capability_prior_motifs}{{8}{17}{\textbf {Three qualitative forms of evolved capability.} The case studies compare generated artifacts to prior visual-reasoning motifs. They do not claim that \sysname {} reproduces the full prior algorithms. \relax }{table.caption.63}{}}
 \@LN@col{1}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Placeholder for ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.\relax }}{17}{figure.caption.62}\protected@file@percent }
-\newlabel{fig:k_sensitivity}{{3}{17}{Placeholder for ChartQA accuracy vs.\ training set size $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.\relax }{figure.caption.62}{}}
-\@LN{1153}{16}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Per-Category Analysis on ChartQA}{17}{subsection.C.2}\protected@file@percent }
-\@LN{1154}{16}
-\@LN{1155}{16}
-\@writefile{toc}{\contentsline {section}{\numberline {D}Qualitative Analysis of Evolved Capabilities}{17}{appendix.D}\protected@file@percent }
-\newlabel{app:capability_cases}{{D}{17}{Qualitative Analysis of Evolved Capabilities}{appendix.D}{}}
-\@LN{1156}{16}
-\@LN{1157}{16}
-\@LN{1158}{16}
-\@LN{1159}{16}
-\@LN{1160}{16}
-\@LN{1161}{16}
-\@LN{1162}{16}
-\@LN{1163}{16}
-\@LN{1164}{16}
-\@LN{1165}{16}
-\@LN{1166}{16}
-\@LN{1167}{16}
-\@LN{1168}{16}
 \@LN{1169}{16}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.1}Case A: ReFocus-Style Skill and Tool for Structured Images}{17}{subsection.D.1}\protected@file@percent }
-\newlabel{app:refocus_style}{{D.1}{17}{Case A: ReFocus-Style Skill and Tool for Structured Images}{subsection.D.1}{}}
 \@LN{1170}{16}
 \@LN{1171}{16}
 \@LN{1172}{16}
 \@LN{1173}{16}
 \@LN{1174}{16}
-\@LN@col{2}
 \@LN{1175}{16}
 \@LN{1176}{16}
 \@LN{1177}{16}
@@ -1451,6 +1450,8 @@
 \@LN{1203}{16}
 \@LN{1204}{16}
 \@LN{1205}{16}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.2}Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}{17}{subsection.D.2}\protected@file@percent }
+\newlabel{app:zoomeye_style}{{D.2}{17}{Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}{subsection.D.2}{}}
 \@LN{1206}{16}
 \@LN{1207}{16}
 \@LN{1208}{16}
@@ -1463,87 +1464,86 @@
 \@LN{1215}{16}
 \@LN{1216}{16}
 \@LN{1217}{16}
-\citation{zoomeye_2024}
-\@LN@col{1}
-\@LN{1218}{17}
-\@LN{1219}{17}
-\@LN{1220}{17}
-\@LN{1221}{17}
-\@LN{1222}{17}
-\@LN{1223}{17}
-\@LN{1224}{17}
-\@LN{1225}{17}
-\@LN{1226}{17}
-\@LN{1227}{17}
-\@LN{1228}{17}
-\@LN{1229}{17}
-\@LN{1230}{17}
-\@LN{1231}{17}
-\@LN{1232}{17}
-\@LN{1233}{17}
-\@LN{1234}{17}
-\@LN{1235}{17}
-\@LN{1236}{17}
-\@LN{1237}{17}
-\@LN{1238}{17}
-\@LN{1239}{17}
-\@LN{1240}{17}
-\@LN{1241}{17}
-\@LN{1242}{17}
-\@LN{1243}{17}
-\@LN{1244}{17}
-\@LN{1245}{17}
-\@LN{1246}{17}
-\@LN{1247}{17}
-\@LN{1248}{17}
-\@LN{1249}{17}
-\@LN{1250}{17}
-\@LN{1251}{17}
-\@LN{1252}{17}
-\@LN{1253}{17}
-\@LN{1254}{17}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.2}Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}{18}{subsection.D.2}\protected@file@percent }
-\newlabel{app:zoomeye_style}{{D.2}{18}{Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}{subsection.D.2}{}}
-\@LN{1255}{17}
-\@LN{1256}{17}
-\@LN{1257}{17}
-\@LN{1258}{17}
-\@LN{1259}{17}
-\@LN{1260}{17}
-\@LN{1261}{17}
-\@LN{1262}{17}
-\@LN{1263}{17}
-\@LN{1264}{17}
-\@LN{1265}{17}
-\@LN{1266}{17}
-\@LN{1267}{17}
-\@LN{1268}{17}
-\@LN{1269}{17}
-\@LN{1270}{17}
-\@LN{1271}{17}
-\@LN{1272}{17}
-\@LN{1273}{17}
-\@LN{1274}{17}
-\@LN{1275}{17}
+\@LN{1218}{16}
+\@LN{1219}{16}
+\@LN{1220}{16}
+\@LN{1221}{16}
+\@LN{1222}{16}
+\@LN{1223}{16}
+\@LN{1224}{16}
+\@LN{1225}{16}
+\@LN{1226}{16}
 \@LN@col{2}
-\@LN{1276}{17}
-\@LN{1277}{17}
-\@LN{1278}{17}
-\@LN{1279}{17}
-\@LN{1280}{17}
-\@LN{1281}{17}
-\@LN{1282}{17}
-\@LN{1283}{17}
-\@LN{1284}{17}
-\@LN{1285}{17}
-\@LN{1286}{17}
-\@LN{1287}{17}
-\@LN{1288}{17}
-\@LN{1289}{17}
-\@LN{1290}{17}
-\@LN{1291}{17}
-\@LN{1292}{17}
-\@LN{1293}{17}
+\@LN{1227}{16}
+\@LN{1228}{16}
+\@LN{1229}{16}
+\@LN{1230}{16}
+\@LN{1231}{16}
+\@LN{1232}{16}
+\@LN{1233}{16}
+\@LN{1234}{16}
+\@LN{1235}{16}
+\@LN{1236}{16}
+\@LN{1237}{16}
+\@LN{1238}{16}
+\@LN{1239}{16}
+\@LN{1240}{16}
+\@LN{1241}{16}
+\@LN{1242}{16}
+\@LN{1243}{16}
+\@LN{1244}{16}
+\@LN{1245}{16}
+\@LN{1246}{16}
+\@LN{1247}{16}
+\@LN{1248}{16}
+\@LN{1249}{16}
+\@LN{1250}{16}
+\@LN{1251}{16}
+\@LN{1252}{16}
+\@LN{1253}{16}
+\@LN{1254}{16}
+\@LN{1255}{16}
+\@LN{1256}{16}
+\@LN{1257}{16}
+\@LN{1258}{16}
+\@LN{1259}{16}
+\@LN{1260}{16}
+\@LN{1261}{16}
+\@LN{1262}{16}
+\@LN{1263}{16}
+\@LN{1264}{16}
+\@LN{1265}{16}
+\@LN{1266}{16}
+\@LN{1267}{16}
+\@LN{1268}{16}
+\@LN{1269}{16}
+\@LN{1270}{16}
+\@LN{1271}{16}
+\@LN{1272}{16}
+\@LN{1273}{16}
+\@LN{1274}{16}
+\@LN{1275}{16}
+\@LN{1276}{16}
+\@LN{1277}{16}
+\@LN{1278}{16}
+\@LN{1279}{16}
+\@LN{1280}{16}
+\@LN{1281}{16}
+\@LN{1282}{16}
+\@LN{1283}{16}
+\@LN{1284}{16}
+\@LN{1285}{16}
+\@LN{1286}{16}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.3}Case C: Interleaved Visual Skill}{17}{subsection.D.3}\protected@file@percent }
+\newlabel{app:interleaved_visual_skills}{{D.3}{17}{Case C: Interleaved Visual Skill}{subsection.D.3}{}}
+\@LN{1287}{16}
+\@LN{1288}{16}
+\@LN{1289}{16}
+\@LN{1290}{16}
+\@LN{1291}{16}
+\@LN{1292}{16}
+\@LN{1293}{16}
+\@LN@col{1}
 \@LN{1294}{17}
 \@LN{1295}{17}
 \@LN{1296}{17}
@@ -1586,8 +1586,6 @@
 \@LN{1333}{17}
 \@LN{1334}{17}
 \@LN{1335}{17}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.3}Case C: Interleaved Visual Skill}{18}{subsection.D.3}\protected@file@percent }
-\newlabel{app:interleaved_visual_skills}{{D.3}{18}{Case C: Interleaved Visual Skill}{subsection.D.3}{}}
 \@LN{1336}{17}
 \@LN{1337}{17}
 \@LN{1338}{17}
@@ -1595,53 +1593,60 @@
 \@LN{1340}{17}
 \@LN{1341}{17}
 \@LN{1342}{17}
+\@LN{1343}{17}
+\@LN{1344}{17}
+\@LN{1345}{17}
+\@LN{1346}{17}
+\@LN{1347}{17}
+\@LN{1348}{17}
+\@LN{1349}{17}
+\@LN{1350}{17}
+\@LN{1351}{17}
+\@LN{1352}{17}
+\@LN{1353}{17}
+\@LN{1354}{17}
+\@LN{1355}{17}
+\@LN{1356}{17}
+\@LN{1357}{17}
+\@LN{1358}{17}
+\@LN{1359}{17}
+\@LN{1360}{17}
+\@LN@col{2}
+\@LN{1361}{17}
+\@LN{1362}{17}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  \textbf  {Placeholder for a concrete before/after case study.} The final version should insert the original image, the failed base answer, the generated skill/tool artifact, the processed visual output if any, and the validated retry answer. \relax }}{18}{figure.caption.63}\protected@file@percent }
+\newlabel{fig:casestudy}{{4}{18}{\textbf {Placeholder for a concrete before/after case study.} The final version should insert the original image, the failed base answer, the generated skill/tool artifact, the processed visual output if any, and the validated retry answer. \relax }{figure.caption.63}{}}
+\@LN{1363}{17}
+\@writefile{toc}{\contentsline {section}{\numberline {E}Case Study Artifact Checklist}{18}{appendix.E}\protected@file@percent }
+\newlabel{app:case_artifact_checklist}{{E}{18}{Case Study Artifact Checklist}{appendix.E}{}}
+\@LN{1364}{17}
+\@LN{1365}{17}
+\@LN{1366}{17}
+\@LN{1367}{17}
+\@LN{1368}{17}
+\@LN{1369}{17}
+\@LN{1370}{17}
+\@LN{1371}{17}
+\@LN{1372}{17}
+\@LN{1373}{17}
+\@LN{1374}{17}
+\@LN{1375}{17}
+\@LN{1376}{17}
+\@LN{1377}{17}
+\@LN{1378}{17}
+\@LN{1379}{17}
+\@LN{1380}{17}
+\@LN{1381}{17}
+\@LN{1382}{17}
+\@LN{1383}{17}
+\@LN{1384}{17}
+\@LN{1385}{17}
+\@LN{1386}{17}
+\@LN{1387}{17}
 \@LN@col{1}
-\@LN{1343}{18}
-\@LN{1344}{18}
-\@LN{1345}{18}
-\@LN{1346}{18}
-\@LN{1347}{18}
-\@LN{1348}{18}
-\@LN{1349}{18}
-\@LN{1350}{18}
-\@LN{1351}{18}
-\@LN{1352}{18}
-\@LN{1353}{18}
-\@LN{1354}{18}
-\@LN{1355}{18}
-\@LN{1356}{18}
-\@LN{1357}{18}
-\@LN{1358}{18}
-\@LN{1359}{18}
-\@LN{1360}{18}
-\@LN{1361}{18}
-\@LN{1362}{18}
-\@LN{1363}{18}
-\@LN{1364}{18}
-\@LN{1365}{18}
-\@LN{1366}{18}
-\@LN{1367}{18}
-\@LN{1368}{18}
-\@LN{1369}{18}
-\@LN{1370}{18}
-\@LN{1371}{18}
-\@LN{1372}{18}
-\@LN{1373}{18}
-\@LN{1374}{18}
-\@LN{1375}{18}
-\@LN{1376}{18}
-\@LN{1377}{18}
-\@LN{1378}{18}
-\@LN{1379}{18}
-\@LN{1380}{18}
-\@LN{1381}{18}
-\@LN{1382}{18}
-\@LN{1383}{18}
-\@LN{1384}{18}
-\@LN{1385}{18}
-\@LN{1386}{18}
-\@LN{1387}{18}
 \@LN{1388}{18}
+\@writefile{toc}{\contentsline {section}{\numberline {F}Reproducibility Statement}{19}{appendix.F}\protected@file@percent }
+\newlabel{app:reproducibility}{{F}{19}{Reproducibility Statement}{appendix.F}{}}
 \@LN{1389}{18}
 \@LN{1390}{18}
 \@LN{1391}{18}
@@ -1651,62 +1656,5 @@
 \@LN{1395}{18}
 \@LN{1396}{18}
 \@LN{1397}{18}
-\@LN{1398}{18}
-\@LN{1399}{18}
-\@LN{1400}{18}
-\@LN{1401}{18}
-\@LN{1402}{18}
-\@LN{1403}{18}
-\@LN{1404}{18}
-\@LN{1405}{18}
-\@LN{1406}{18}
-\@LN{1407}{18}
-\@LN{1408}{18}
-\@LN{1409}{18}
 \@LN@col{2}
-\@LN{1410}{18}
-\@LN{1411}{18}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  \textbf  {Placeholder for a concrete before/after case study.} The final version should insert the original image, the failed base answer, the generated skill/tool artifact, the processed visual output if any, and the validated retry answer. \relax }}{19}{figure.caption.64}\protected@file@percent }
-\newlabel{fig:casestudy}{{4}{19}{\textbf {Placeholder for a concrete before/after case study.} The final version should insert the original image, the failed base answer, the generated skill/tool artifact, the processed visual output if any, and the validated retry answer. \relax }{figure.caption.64}{}}
-\@LN{1412}{18}
-\@writefile{toc}{\contentsline {section}{\numberline {E}Case Study Artifact Checklist}{19}{appendix.E}\protected@file@percent }
-\newlabel{app:case_artifact_checklist}{{E}{19}{Case Study Artifact Checklist}{appendix.E}{}}
-\@LN{1413}{18}
-\@LN{1414}{18}
-\@LN{1415}{18}
-\@LN{1416}{18}
-\@LN{1417}{18}
-\@LN{1418}{18}
-\@LN{1419}{18}
-\@LN{1420}{18}
-\@LN{1421}{18}
-\@LN{1422}{18}
-\@LN{1423}{18}
-\@LN{1424}{18}
-\@LN{1425}{18}
-\@LN{1426}{18}
-\@LN{1427}{18}
-\@LN{1428}{18}
-\@LN{1429}{18}
-\@LN{1430}{18}
-\@LN{1431}{18}
-\@LN{1432}{18}
-\@LN{1433}{18}
-\@LN{1434}{18}
-\@LN{1435}{18}
-\@LN{1436}{18}
-\@LN@col{1}
-\@LN{1437}{19}
-\@writefile{toc}{\contentsline {section}{\numberline {F}Reproducibility Statement}{20}{appendix.F}\protected@file@percent }
-\newlabel{app:reproducibility}{{F}{20}{Reproducibility Statement}{appendix.F}{}}
-\@LN{1438}{19}
-\@LN{1439}{19}
-\@LN{1440}{19}
-\@LN{1441}{19}
-\@LN{1442}{19}
-\@LN{1443}{19}
-\@LN{1444}{19}
-\@LN{1445}{19}
-\@LN{1446}{19}
-\@LN@col{2}
-\gdef \@abspage@last{20}
+\gdef \@abspage@last{19}
