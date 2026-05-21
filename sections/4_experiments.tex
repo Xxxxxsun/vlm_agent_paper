@@ -39,12 +39,12 @@ VTool-R1 evaluation protocol. All VLM weights are \emph{frozen} throughout; no g
 updates are performed.
 
 \paragraph{Evolution protocol.}
-For each benchmark, we sample a training subset of $k{=}200$ cases from the official
-training split and run the \sysname{} evolution loop for $N{=}3$ iterations.
-At the end of training, the capability set $\mathcal{C}$ is frozen and evaluated on
-the held-out validation / test split.
-We report the average over three independent random seeds (different $k{=}200$ subsets)
-to account for sampling variance where repeated runs are available.
+For each benchmark, we sample 20\% of the official training split as
+$\mathcal{D}_{\text{train}}$ and run the \sysname{} evolution loop for $N{=}3$ iterations.
+The capability set $\mathcal{C}$ is then frozen and evaluated on the held-out
+validation / test split. We report the average over three independent random seeds
+(different 20\% subsets) to account for sampling variance where repeated runs are
+available.
 
 \paragraph{Baselines.}
 For Experiment~I, we compare four evolution configurations that isolate the contribution
@@ -531,9 +531,9 @@ be recovered without gradient updates, and that combining self-evolved capabilit
 a natural next step when task-specific RL infrastructure is available.
 
 \paragraph{Cost comparison.}
-\sysname{} performs no weight updates. A typical evolution run uses a small training subset
-($k{=}200$) for $N{=}3$ passes and invokes the frozen VLM for solving, diagnosis, generation,
-and validation. This is a different resource profile from RL-based methods, which optimize
+\sysname{} performs no weight updates. A typical evolution run uses 20\% of each benchmark's
+training split for $N{=}3$ passes and invokes the frozen VLM for solving, diagnosis,
+generation, and validation. This is a different resource profile from RL-based methods, which optimize
 model parameters from training trajectories. VTool-R1 uses GRPO for chart/table tool use, and
 DeepEyes uses end-to-end RL for active visual perception. The comparison therefore isolates a
 practical question: how much of the gain over direct inference can be obtained when retraining is

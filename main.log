@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  21 MAY 2026 21:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  21 MAY 2026 22:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1434,11 +1434,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 126C45280029711B89281CF0D95A849C;6859.
  ) 
 Here is how much of TeX's memory you used:
- 36722 strings out of 478994
- 705171 string characters out of 5858184
+ 36718 strings out of 478994
+ 705133 string characters out of 5858184
  1280368 words of memory out of 5000000
  52511 multiletter control sequences out of 15000+600000
- 552380 words of font info for 629 fonts, out of 8000000 for 9000
+ 552147 words of font info for 626 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,15n,108p,982b,2342s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
@@ -1464,7 +1464,7 @@ onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/ti
 mes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on main.pdf (19 pages, 4899978 bytes).
+Output written on main.pdf (19 pages, 4899732 bytes).
 PDF statistics:
  987 PDF objects out of 1000 (max. 8388607)
  772 compressed objects within 8 object streams
