@@ -18,11 +18,10 @@ $\mathcal{C} \leftarrow (\emptyset, \emptyset)$\;
   Solve $\mathcal{D}_{\text{train}}$ with $f_{\mathcal{C}}$; collect attempts\;
   $\mathcal{D}_{\text{sub}} \leftarrow$ sample from $\mathcal{D}_{\text{train}}$\;
   $a, r \leftarrow \textsc{AnalyzerDecider}(\mathcal{D}_{\text{sub}};\, \pi_\theta)$\;
-  $\{(s_m, t_m)\}_{m=1}^{M} \leftarrow \textsc{Generator}(a, r;\, \pi_\theta)$\;
+  $\{(s_m, t_m)\}_{m=1}^{M} \leftarrow \textsc{Generator}(a, r;\, \pi_\theta)$\tcp*{$s_m$ paired with $t_m$ acts as its mastery SOP}
   $m^\star \leftarrow \arg\max_{m} \mathrm{Acc}\bigl(f_{\mathcal{C} \cup (s_m, t_m)};\, \mathcal{D}_{\text{train}}\bigr)$\;
   \If{accuracy improves}{
     $\mathcal{C} \leftarrow \mathcal{C} \cup \{(s_{m^\star}, t_{m^\star})\}$\;
-    $t_{m^\star}.\text{mastery} \leftarrow \textsc{Mastery}(t_{m^\star}, \mathcal{D}_{\text{train}};\, \pi_\theta)$\;
   }
 }
 \Return{$\mathcal{C}$}\;
