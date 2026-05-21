@@ -49,13 +49,14 @@ available.
 \paragraph{Baselines.}
 For Experiment~I, we compare four evolution configurations that isolate the contribution
 of each component:
-\textbf{None (Base Agent)} invokes the frozen VLM with no evolved capabilities — the
-zero-shot baseline;
-\textbf{Skill Only} runs the evolution loop but restricts the Generator to producing
-reasoning skills (no tool generation);
-\textbf{Tool Only} restricts generation to executable visual tools (no skill generation);
-\textbf{Skill $+$ Tool} is the full \sysname{} system (co-evolution of both capability
-types).
+\textbf{None (Base Agent)} invokes the frozen VLM with no evolved capabilities (the
+zero-shot baseline);
+\textbf{Skill Only} restricts the Generator to producing reasoning skills (no tool
+generation);
+\textbf{Tool Only} restricts the Generator to producing executable visual tools (no skill
+generation);
+\textbf{Full} is the unrestricted \sysname{} system, where the AnalyzerDecider chooses on
+each case whether to generate a skill, a tool, or both.
 
 \paragraph{Evaluation metrics.}
 All primary metrics are task-level accuracy on the held-out split.
@@ -101,15 +102,15 @@ artifacts.
 Table~\ref{tab:evolution_full} reports the completed model--strategy entries with temporary
 standard-deviation placeholders for layout inspection; the original no-std table source is kept
 hidden below unchanged. Blank cells indicate runs whose results have not yet been inserted and
-are excluded from aggregate statements. Comparing the full Skill~$+$~Tool row with the base
-agent, \sysname{} improves
+are excluded from aggregate statements. Comparing the Full row with the base agent,
+\sysname{} improves
 direct inference in 21 of 23 completed model-benchmark cells, with an average gain of 4.8
 accuracy points. The largest gains occur on o4-mini / HRBench (+11.6), GPT-5.4 / HRBench
 (+10.3), GPT-5.4 / V$^*$ (+9.9), and Doubao-Seed-2.0 / V$^*$ (+8.6).
 
 The table also shows why the framework should not be interpreted as a monotonic ``add more
 capabilities'' recipe. Full co-evolution is not the best entry in every cell: for GPT-4o on
-MathVista and ChartQA, Skill Only is slightly higher than Skill~$+$~Tool; for o4-mini on
+MathVista and ChartQA, Skill Only is slightly higher than Full; for o4-mini on
 ChartQA and Qwen3.5-27B on V$^*$, the base agent remains higher than the full system. Tool Only
 can also be harmful, most visibly for o4-mini on HRBench. These exceptions are important: they
 motivate validation and mastery rather than unconditional tool use, and they suggest that the
@@ -142,7 +143,7 @@ standalone proof that every error in these benchmarks has that structure.
   & None (Base Agent)  &0.6386  &0.6711  &0.5828  &0.7552  \\
   & Skill Only         &$0.6733 {\pm} 0.0121$  &$0.7122 {\pm} 0.0038$  &$0.6424 {\pm} 0.0066$  &$0.7785 {\pm} 0.0026$  \\
   & Tool Only          &$0.6452 {\pm} 0.0044$  &$0.6900 {\pm} 0.0029$  &$0.6225 {\pm} 0.0066$  & $0.7722 {\pm} 0.0029$  \\
-  & Skill + Tool       &$0.6643 {\pm} 0.0052$  &$0.7011 {\pm} 0.0067$  &$0.6313 {\pm} 0.0101$  &$0.7799 {\pm} 0.0045$  \\
+  & Full               &$0.6643 {\pm} 0.0052$  &$0.7011 {\pm} 0.0067$  &$0.6313 {\pm} 0.0101$  &$0.7799 {\pm} 0.0045$  \\
 
 \midrule
 
@@ -150,7 +151,7 @@ standalone proof that every error in these benchmarks has that structure.
   & None (Base Agent)  &0.73  &0.753333  &0.72847  &0.7833  \\
   & Skill Only         &$0.7724 {\pm} 0.0058$  &$0.7470 {\pm} 0.0107$  &$0.7616 {\pm} 0.0066$  &$0.7866 {\pm} 0.0151$  \\
   & Tool Only          &$0.7457 {\pm} 0.1670$  &$0.7356 {\pm} 0.0328$  &$0.8387 {\pm} 0.0629$  & $0.7920 {\pm} 0.0213$  \\
-  & Skill + Tool       &$0.8571 {\pm} 0.0099$  &$0.7559 {\pm} 0.0055$  &$0.7991 {\pm} 0.0399$  &$0.8007 {\pm} 0.0081$  \\
+  & Full               &$0.8571 {\pm} 0.0099$  &$0.7559 {\pm} 0.0055$  &$0.7991 {\pm} 0.0399$  &$0.8007 {\pm} 0.0081$  \\
 
 \midrule
 
@@ -158,7 +159,7 @@ standalone proof that every error in these benchmarks has that structure.
   & None (Base Agent)  &0.7471  &0.7589  &0.7748  &0.7974  \\
   & Skill Only         &$0.7805 {\pm} 0.0036$  &$0.7752 {\pm} 0.0039$  &$0.7682 {\pm} 0.0199$  &$0.8090 {\pm} 0.0022$  \\
   & Tool Only          &$0.8367 {\pm} 0.0346$  &$0.7663 {\pm} 0.0061$  &$0.8477 {\pm} 0.0132$  & $0.8108 {\pm} 0.0052$  \\
-  & Skill + Tool       &$0.8538 {\pm} 0.0036$  &$0.7704 {\pm} 0.0134$  &$0.8411 {\pm} 0.0369$  &$0.8276 {\pm} 0.0278$  \\
+  & Full               &$0.8538 {\pm} 0.0036$  &$0.7704 {\pm} 0.0134$  &$0.8411 {\pm} 0.0369$  &$0.8276 {\pm} 0.0278$  \\
 
 \midrule
 
@@ -166,7 +167,7 @@ standalone proof that every error in these benchmarks has that structure.
   & None (Base Agent)  &0.8214  &0.8544  &0.8675  &0.8152  \\
   & Skill Only         &$0.8600 {\pm} 0.0049$  &$0.8556{\pm} 0.0109$  &$0.8609 {\pm} 0.0115$  &$0.8198 {\pm} 0.0031$  \\
   & Tool Only          &$0.9005 {\pm} 0.0022$  &$0.8659 {\pm} 0.0061$  &$0.9448 {\pm} 0.0038$  & $0.8156 {\pm} 0.0068$  \\
-  & Skill + Tool       &$0.8990 {\pm} 0.0064$  &$0.8681 {\pm} 0.0105$  &$0.9558 {\pm} 0.0038$  &$0.8347 {\pm} 0.0295$  \\
+  & Full               &$0.8990 {\pm} 0.0064$  &$0.8681 {\pm} 0.0105$  &$0.9558 {\pm} 0.0038$  &$0.8347 {\pm} 0.0295$  \\
 
 \midrule
 
@@ -174,7 +175,7 @@ standalone proof that every error in these benchmarks has that structure.
   & None (Base Agent)  &0.8171  &0.8088  &0.88079  &0.8114  \\
   & Skill Only         &$0.8721 {\pm} 0.0030$  &$0.8152{\pm} 0.0080$  &$0.8675 {\pm} 0.0066$  &$0.8097 {\pm} 0.0090$  \\
   & Tool Only          &$0.8986 {\pm} 0.0000$  &$0.8241 {\pm} 0.0034$  &$0.9514 {\pm} 0.0101$  & $0.8115 {\pm} 0.0041$  \\
-  & Skill + Tool       &$0.8986 {\pm} 0.0049$  &$0.8233 {\pm} 0.0011$  &$0.9603 {\pm} 0.0175$  &$0.8158 {\pm} 0.0026$  \\
+  & Full               &$0.8986 {\pm} 0.0049$  &$0.8233 {\pm} 0.0011$  &$0.9603 {\pm} 0.0175$  &$0.8158 {\pm} 0.0026$  \\
 
 % \midrule
 
@@ -182,7 +183,7 @@ standalone proof that every error in these benchmarks has that structure.
 %   & None (Base Agent)  &0.7792  &0.8473  &0.8411  &0.6517  \\
 %   & Skill Only         &  &  &  &  \\
 %   & Tool Only          &  &  &  &  \\
-%   & Skill + Tool       &  &0.849  &0.8543  &0.7980  \\
+%   & Full               &  &0.849  &0.8543  &0.7980  \\
 
 \bottomrule
 \end{tabular}
@@ -191,8 +192,9 @@ standalone proof that every error in these benchmarks has that structure.
   Accuracy for each evolution strategy across six foundation-model blocks and four
   benchmarks, all starting from an empty capability set.
   \emph{None} is the zero-shot VLM baseline.
-  \emph{Skill Only} / \emph{Tool Only} ablate one capability type.
-  \emph{Skill~$+$~Tool} is the full \sysname{} system.
+  \emph{Skill Only} / \emph{Tool Only} restrict the Generator to one capability type.
+  \emph{Full} is the unrestricted \sysname{} system, where the AnalyzerDecider chooses
+  skill, tool, or both per case.
   Blank cells indicate runs whose results have not yet been inserted.
 }
 \label{tab:evolution_full}
@@ -217,7 +219,7 @@ standalone proof that every error in these benchmarks has that structure.
 %   & None (Base Agent)  &$0.6386{\pm}0.014$  &$0.6711{\pm}0.012$  &$0.5828{\pm}0.016$  &$0.7552{\pm}0.011$  \\
 %   & Skill Only         &$0.6614{\pm}0.013$  &$0.7077{\pm}0.011$  &$0.6358{\pm}0.015$  &$0.7796{\pm}0.010$  \\
 %   & Tool Only          &$0.6414{\pm}0.014$  &$0.6922{\pm}0.012$  &$0.6159{\pm}0.015$  &$0.7693{\pm}0.011$  \\
-%   & Skill + Tool       &$0.6600{\pm}0.013$  &$0.7078{\pm}0.011$  &$0.6423{\pm}0.014$  &$0.7750{\pm}0.010$  \\
+%   & Full               &$0.6600{\pm}0.013$  &$0.7078{\pm}0.011$  &$0.6423{\pm}0.014$  &$0.7750{\pm}0.010$  \\
 
 % \midrule
 
@@ -225,7 +227,7 @@ standalone proof that every error in these benchmarks has that structure.
 %   & None (Base Agent)  &$0.7300{\pm}0.012$  &$0.7533{\pm}0.010$  &$0.7285{\pm}0.012$  &$0.7833{\pm}0.010$  \\
 %   & Skill Only         &$0.7671{\pm}0.011$  &$0.7567{\pm}0.010$  &$0.7550{\pm}0.011$  &$0.7693{\pm}0.011$  \\
 %   & Tool Only          &$0.5529{\pm}0.018$  &$0.6978{\pm}0.013$  &$0.7677{\pm}0.011$  &$0.7677{\pm}0.011$  \\
-%   & Skill + Tool       &$0.8457{\pm}0.009$  &$0.7622{\pm}0.010$  &$0.7947{\pm}0.010$  &$0.7917{\pm}0.010$  \\
+%   & Full               &$0.8457{\pm}0.009$  &$0.7622{\pm}0.010$  &$0.7947{\pm}0.010$  &$0.7917{\pm}0.010$  \\
 
 % \midrule
 
@@ -233,7 +235,7 @@ standalone proof that every error in these benchmarks has that structure.
 %   & None (Base Agent)  &$0.7471{\pm}0.012$  &$0.7589{\pm}0.010$  &$0.7748{\pm}0.011$  &$0.7974{\pm}0.010$  \\
 %   & Skill Only         &$0.7800{\pm}0.011$  &$0.7711{\pm}0.010$  &$0.7881{\pm}0.010$  &$0.8115{\pm}0.009$ \\
 %   & Tool Only          &$0.7971{\pm}0.010$  &$0.7722{\pm}0.010$  &$0.8609{\pm}0.008$  &$0.8161{\pm}0.009$  \\
-%   & Skill + Tool       &$0.8500{\pm}0.009$  &$0.7856{\pm}0.009$  &$0.8742{\pm}0.008$  &$0.8594{\pm}0.008$  \\
+%   & Full               &$0.8500{\pm}0.009$  &$0.7856{\pm}0.009$  &$0.8742{\pm}0.008$  &$0.8594{\pm}0.008$  \\
 
 % \midrule
 
@@ -241,7 +243,7 @@ standalone proof that every error in these benchmarks has that structure.
 %   & None (Base Agent)  &$0.8214{\pm}0.010$  &$0.8544{\pm}0.009$  &$0.8675{\pm}0.008$  &$0.8152{\pm}0.009$  \\
 %   & Skill Only         &$0.8629{\pm}0.009$  &$0.8433{\pm}0.009$  &$0.8675{\pm}0.008$  &$0.8229{\pm}0.009$ \\
 %   & Tool Only          &$0.9000{\pm}0.007$  &$0.8700{\pm}0.008$  &$0.9470{\pm}0.006$  &$0.8078{\pm}0.010$  \\
-%   & Skill + Tool       &$0.9057{\pm}0.007$  &$0.8800{\pm}0.008$  &$0.9536{\pm}0.006$  &$0.8688{\pm}0.008$  \\
+%   & Full               &$0.9057{\pm}0.007$  &$0.8800{\pm}0.008$  &$0.9536{\pm}0.006$  &$0.8688{\pm}0.008$  \\
 
 % \midrule
 
@@ -249,7 +251,7 @@ standalone proof that every error in these benchmarks has that structure.
 %   & None (Base Agent)  &$0.8171{\pm}0.010$  &$0.8088{\pm}0.010$  &$0.8808{\pm}0.008$  &$0.8114{\pm}0.009$  \\
 %   & Skill Only         &$0.8192{\pm}0.010$  &$0.8244{\pm}0.009$  &$0.8676{\pm}0.008$  &$0.7994{\pm}0.010$  \\
 %   & Tool Only          &$0.8201{\pm}0.010$  &$0.8233{\pm}0.009$  &$0.9603{\pm}0.005$  &$0.8067{\pm}0.009$  \\
-%   & Skill + Tool       &$0.8372{\pm}0.009$  &$0.8222{\pm}0.009$  &$0.9470{\pm}0.006$  &$0.8182{\pm}0.009$  \\
+%   & Full               &$0.8372{\pm}0.009$  &$0.8222{\pm}0.009$  &$0.9470{\pm}0.006$  &$0.8182{\pm}0.009$  \\
 
 % \bottomrule
 % \end{tabular}%
@@ -312,27 +314,27 @@ pattern, including on 200-seed natural aggregates.
   & \textbf{Online adapt}
   & \textbf{Oracle} \\
 \midrule
-\multicolumn{5}{l}{\emph{GPT-4o skill+tool}} \\
+\multicolumn{5}{l}{\emph{GPT-4o (Full)}} \\
 Capability-relevant & $0.418{\pm}0.020$ & $0.558{\pm}0.023$ & $0.789{\pm}0.025$ & $0.818{\pm}0.022$ \\
 Stress & $0.068{\pm}0.009$ & $0.347{\pm}0.011$ & $0.912{\pm}0.008$ & $0.961{\pm} 0.010$ \\
 Natural & $0.664{\pm}0.032$ & $0.673{\pm}0.030$ & $0.702{\pm}0.028$ & $0.705{\pm}0.028$ \\
 \midrule
-\multicolumn{5}{l}{\emph{o4mini skill+tool}} \\
+\multicolumn{5}{l}{\emph{o4mini (Full)}} \\
 Capability-relevant & $0.467{\pm}0.019$ & $0.626{\pm}0.019$ & $0.852{\pm}0.019$ & $0.881{\pm}0.016$ \\
 Stress & $0.047{\pm}0.006$ & $0.412{\pm}0.006$ & $ 0.940{\pm}0.009$ & $0.984{\pm}0.007$ \\
 Natural & $0.745{\pm}0.029$ & $0.787{\pm}0.028$ & $0.807{\pm}0.027$ & $0.808{\pm}0.027$ \\
 \midrule
-\multicolumn{5}{l}{\emph{GPT-5.4 skill+tool}} \\
+\multicolumn{5}{l}{\emph{GPT-5.4 (Full)}} \\
 Capability-relevant & $0.479{\pm}0.021$ & $0.636{\pm}0.020$ & $0.870{\pm}0.020$ & $0.899{\pm}0.018$ \\
 Stress & $0.026{\pm}0.004$ & $0.391{\pm}0.004$ & $ 0.947{\pm}0.007$ & $0.995{\pm}0.005$ \\
 Natural & $0.761{\pm}0.029$ & $0.800{\pm}0.029$ & $0.830{\pm}0.026$ & $0.833{\pm}0.025$ \\
 \midrule
-\multicolumn{5}{l}{\emph{Qwen3.5-27B skill+tool}} \\
+\multicolumn{5}{l}{\emph{Qwen3.5-27B (Full)}} \\
 Capability-relevant & $0.514{\pm}0.015$ & $0.667{\pm}0.016$ & $ 0.888{\pm}0.020$ & $ 0.917{\pm}0.018$ \\
 Stress & $0.122{\pm}0.007$ & $0.488{\pm}0.007$ & $0.940{\pm}0.009$ & $0.984{\pm}0.008$ \\
 Natural & $0.821{\pm}0.026$ & $0.847{\pm}0.023$ & $0.861{\pm}0.022$ & $0.862{\pm}0.022$ \\
 \midrule
-\multicolumn{5}{l}{\emph{Doubao-Seed-2.0 skill+tool}} \\
+\multicolumn{5}{l}{\emph{Doubao-Seed-2.0 (Full)}} \\
 Capability-relevant & $0.635{\pm}0.014$ & $0.773{\pm}0.015$ & $0.900{\pm}0.018$ & $ 0.917{\pm}0.016$ \\
 Stress & $0.621{\pm}0.013$ & $0.768{\pm}0.014$ & $0.902{\pm}0.014$ & $0.920{\pm}0.014$ \\
 Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm}0.019$ \\
