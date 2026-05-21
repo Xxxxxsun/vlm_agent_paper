@@ -567,8 +567,8 @@
 \citation{vtoolr1_2025}
 \citation{deepeyes_2025}
 \@LN@col{1}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {Exp\nobreakspace  {}I: Online adaptation in a non-stationary stream.} Simulates a real online user-traffic distribution that drifts over time. The stream begins on HRBench and later introduces MathVista, ChartQA, and V$^*$ cases. \emph  {Static} keeps the initial-distribution capabilities unchanged; \emph  {Online adapt} detects the drift and updates skills and tools on the new sub-stream; \emph  {Oracle} has capabilities pre-evolved on every family. Rows are grouped by backbone; the three protocols within each block differ only in how the replay stream is constructed. Standard deviations are temporary layout placeholders and must be replaced with seed-based estimates before submission. \relax }}{7}{table.caption.19}\protected@file@percent }
-\newlabel{tab:distribution_shift}{{2}{7}{\textbf {Exp~I: Online adaptation in a non-stationary stream.} Simulates a real online user-traffic distribution that drifts over time. The stream begins on HRBench and later introduces MathVista, ChartQA, and V$^*$ cases. \emph {Static} keeps the initial-distribution capabilities unchanged; \emph {Online adapt} detects the drift and updates skills and tools on the new sub-stream; \emph {Oracle} has capabilities pre-evolved on every family. Rows are grouped by backbone; the three protocols within each block differ only in how the replay stream is constructed. Standard deviations are temporary layout placeholders and must be replaced with seed-based estimates before submission. \relax }{table.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {Exp\nobreakspace  {}I: Online adaptation to distribution shift.} \emph  {Static}: capabilities evolved on the initial distribution only; \emph  {Online adapt}: \textsc  {Dynamo}{} updates skills and tools after detecting the shift; \emph  {Oracle}: capabilities pre-evolved on every family (upper bound). Rows are grouped by backbone; the three protocols within each block vary only in how the replay stream is constructed (see prose). Standard deviations are temporary placeholders. \relax }}{7}{table.caption.19}\protected@file@percent }
+\newlabel{tab:distribution_shift}{{2}{7}{\textbf {Exp~I: Online adaptation to distribution shift.} \emph {Static}: capabilities evolved on the initial distribution only; \emph {Online adapt}: \sysname {} updates skills and tools after detecting the shift; \emph {Oracle}: capabilities pre-evolved on every family (upper bound). Rows are grouped by backbone; the three protocols within each block vary only in how the replay stream is constructed (see prose). Standard deviations are temporary placeholders. \relax }{table.caption.19}{}}
 \@LN{456}{6}
 \@LN{457}{6}
 \@LN{458}{6}
@@ -593,11 +593,11 @@
 \@LN{476}{6}
 \@LN{477}{6}
 \@LN{478}{6}
-\@LN@col{2}
 \@LN{479}{6}
 \@LN{480}{6}
 \@LN{481}{6}
 \@LN{482}{6}
+\@LN@col{2}
 \@LN{483}{6}
 \@LN{484}{6}
 \@LN{485}{6}
@@ -648,15 +648,15 @@
 \@LN{526}{6}
 \@LN{527}{6}
 \@LN{528}{6}
+\@LN{529}{6}
+\@LN{530}{6}
+\@LN{531}{6}
+\@LN{532}{6}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {Exp\nobreakspace  {}II: Learning to use pre-provided tools on GTA.} We report three of GTA's step-by-step metrics (\textbf  {InstAcc}: Instruction-Following; \textbf  {ToolAcc}: Tool Selection; \textbf  {ArgAcc}: Argument Prediction) and the end-to-end \textbf  {AnsAcc} (Answer Accuracy). GTA's \textbf  {SummAcc} requires per-step summary scoring and is not reported. \emph  {Skill Evolution (Ours)} applies \textsc  {Dynamo}{} Mode\nobreakspace  {}B, which learns per-tool mastery SOPs from the training set without generating new tools. \relax }}{8}{table.caption.22}\protected@file@percent }
 \newlabel{tab:gta_detailed}{{3}{8}{\textbf {Exp~II: Learning to use pre-provided tools on GTA.} We report three of GTA's step-by-step metrics (\textbf {InstAcc}: Instruction-Following; \textbf {ToolAcc}: Tool Selection; \textbf {ArgAcc}: Argument Prediction) and the end-to-end \textbf {AnsAcc} (Answer Accuracy). GTA's \textbf {SummAcc} requires per-step summary scoring and is not reported. \emph {Skill Evolution (Ours)} applies \sysname {} Mode~B, which learns per-tool mastery SOPs from the training set without generating new tools. \relax }{table.caption.22}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textbf  {Supplementary controlled GTA analysis for Exp\nobreakspace  {}II.} Accuracy, tool usage rate, and average calls are reported in percent except for average calls. The first block fixes the task environment and changes tool strength; the second fixes the shared \texttt  {OCR} tool and changes the downstream environment. \relax }}{8}{table.caption.24}\protected@file@percent }
 \newlabel{tab:gta_controlled}{{4}{8}{\textbf {Supplementary controlled GTA analysis for Exp~II.} Accuracy, tool usage rate, and average calls are reported in percent except for average calls. The first block fixes the task environment and changes tool strength; the second fixes the shared \texttt {OCR} tool and changes the downstream environment. \relax }{table.caption.24}{}}
 \@LN@col{1}
-\@LN{529}{7}
-\@LN{530}{7}
-\@LN{531}{7}
-\@LN{532}{7}
 \@LN{533}{7}
 \@LN{534}{7}
 \@LN{535}{7}
@@ -680,11 +680,11 @@
 \@LN{552}{7}
 \@LN{553}{7}
 \@LN{554}{7}
-\@LN@col{2}
 \@LN{555}{7}
 \@LN{556}{7}
 \@LN{557}{7}
 \@LN{558}{7}
+\@LN@col{2}
 \@LN{559}{7}
 \@LN{560}{7}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Ablation Studies}{8}{subsection.4.5}\protected@file@percent }
@@ -711,14 +711,14 @@
 \@LN{577}{7}
 \@LN{578}{7}
 \@LN{579}{7}
+\@LN{580}{7}
+\@LN{581}{7}
+\@LN{582}{7}
+\@LN{583}{7}
 \citation{vtoolr1_2025}
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textbf  {Exp\nobreakspace  {}III: unified comparison of direct inference, RL, self-evolution, and self-evolution+RL.} Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows are VTool-R1 GRPO results and their \textsc  {Dynamo}{}+RL rows add the self-evolved capability on top of the RL-trained policy. V$^\star $ and HRBench4K entries follow the DeepEyes high-resolution evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding same-backbone or combined run is not reported in the source table and is not inferred here. \relax }}{9}{table.caption.28}\protected@file@percent }
 \newlabel{tab:rl_combined}{{5}{9}{\textbf {Exp~III: unified comparison of direct inference, RL, self-evolution, and self-evolution+RL.} Scores are accuracy (\%). Chart and Table entries follow the VTool-R1 protocol; their RL rows are VTool-R1 GRPO results and their \sysname {}+RL rows add the self-evolved capability on top of the RL-trained policy. V$^\star $ and HRBench4K entries follow the DeepEyes high-resolution evaluation; their RL rows are DeepEyes results where reported. A dash means the corresponding same-backbone or combined run is not reported in the source table and is not inferred here. \relax }{table.caption.28}{}}
 \@LN@col{1}
-\@LN{580}{8}
-\@LN{581}{8}
-\@LN{582}{8}
-\@LN{583}{8}
 \@LN{584}{8}
 \@LN{585}{8}
 \@LN{586}{8}
@@ -749,12 +749,12 @@
 \@LN{610}{8}
 \@LN{611}{8}
 \@LN{612}{8}
-\@LN@col{2}
 \@writefile{toc}{\contentsline {paragraph}{Future directions.}{9}{section*.31}\protected@file@percent }
 \@LN{613}{8}
 \@LN{614}{8}
 \@LN{615}{8}
 \@LN{616}{8}
+\@LN@col{2}
 \@LN{617}{8}
 \@LN{618}{8}
 \@LN{619}{8}
@@ -786,6 +786,10 @@
 \@LN{643}{8}
 \@LN{644}{8}
 \@LN{645}{8}
+\@LN{646}{8}
+\@LN{647}{8}
+\@LN{648}{8}
+\@LN{649}{8}
 \bibdata{references}
 \bibcite{chen2024hrbench}{{1}{2024}{{Anonymous}}{{}}}
 \bibcite{evolver_2025}{{2}{2025{a}}{{Anonymous}}{{}}}
@@ -804,11 +808,8 @@
 \bibcite{zoomeye_2024}{{15}{2024}{{Shen et~al.}}{{Shen, Zhao, Zhao, Xu, Zhang, Zhu, and Yin}}}
 \bibcite{shinn2023reflexion}{{16}{2023}{{Shinn et~al.}}{{Shinn, Cassano, Gopinath, Narasimhan, and Yao}}}
 \bibcite{suris2023vipergpt}{{17}{2023}{{Sur{\'{i}}s et~al.}}{{Sur{\'{i}}s, Menon, and Vondrick}}}
+\bibcite{wang2023voyager}{{18}{2024{a}}{{Wang et~al.}}{{Wang, Xie, Jiang, Mandlekar, Xiao, Zhu, Fan, and Anandkumar}}}
 \@LN@col{1}
-\@LN{646}{9}
-\@LN{647}{9}
-\@LN{648}{9}
-\@LN{649}{9}
 \@LN{650}{9}
 \@LN{651}{9}
 \@LN{652}{9}
@@ -857,12 +858,12 @@
 \@LN{695}{9}
 \@LN{696}{9}
 \@LN{697}{9}
-\@LN@col{2}
 \@LN{698}{9}
 \@LN{699}{9}
 \@LN{700}{9}
 \@LN{701}{9}
 \@LN{702}{9}
+\@LN@col{2}
 \@LN{703}{9}
 \@LN{704}{9}
 \@LN{705}{9}
@@ -915,19 +916,18 @@
 \@LN{752}{9}
 \@LN{753}{9}
 \@LN{754}{9}
-\bibcite{wang2023voyager}{{18}{2024{a}}{{Wang et~al.}}{{Wang, Xie, Jiang, Mandlekar, Xiao, Zhu, Fan, and Anandkumar}}}
+\@LN{755}{9}
+\@LN{756}{9}
+\@LN{757}{9}
+\@LN{758}{9}
+\@LN{759}{9}
+\@LN{760}{9}
 \bibcite{gta_2024}{{19}{2024{b}}{{Wang et~al.}}{{Wang, Ma, Li, Zhang, Chen, Chen, and Le}}}
 \bibcite{wu2024vstar}{{20}{2023}{{Wu and Xie}}{{}}}
 \bibcite{adaptivecof_2025}{{21}{2025}{{Zhang et~al.}}{{Zhang, Gao, Zhang, Li, Zhang, Liu, Yuan, Wu, Jia, Zhu, and Li}}}
 \bibcite{zhao2023expel}{{22}{2024}{{Zhao et~al.}}{{Zhao, Huang, Xu, Lin, Liu, and Huang}}}
 \bibcite{deepeyes_2025}{{23}{2025}{{Zheng et~al.}}{{Zheng, Yang, Hong, Zhao, Xu, Yang, Shen, and Yu}}}
 \@LN@col{1}
-\@LN{755}{10}
-\@LN{756}{10}
-\@LN{757}{10}
-\@LN{758}{10}
-\@LN{759}{10}
-\@LN{760}{10}
 \@LN{761}{10}
 \@LN{762}{10}
 \@LN{763}{10}
