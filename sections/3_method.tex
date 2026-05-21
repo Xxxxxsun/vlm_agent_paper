@@ -108,19 +108,27 @@ behaviour on $\mathcal{D}_{\text{train}}$. Mode B requires no code generation, m
 practical when tool quality is already high but deployment strategy is unknown.
 Experiment~II (Section~\ref{sec:exp2}) evaluates this mode.
 
-\subsection{Inference-time Adaptation}
+\subsection{Online Adaptation to Distribution Shift}
 \label{sec:method_adaptation}
 
-Because evolution proceeds per task family, the library $\mathcal{C}$ is naturally organised
-into \emph{task-family packs} $\{\mathcal{C}_f\}_{f}$, each containing the skills and tools
-that emerged from training on family $f$. At inference, \sysname{} equips only the pack
-matching the incoming case rather than exposing the entire library, keeping retrieval scope
-and tool surface focused.
+In real deployments, \sysname{} runs against a streaming query distribution that can shift
+over time---a stream may begin with high-resolution perception cases and later start
+including MathVista-style reasoning cases, or vice versa. We design \sysname{} to detect
+such shifts and re-equip its capabilities online, without weight updates and without the
+practitioner having to anticipate the shift or prepare a per-family training set.
 
-In a streaming setting where the task family shifts over time, \sysname{} maintains a
-rolling window over recent cases and identifies the dominant family from their question and
-image features. When the detected family differs from the currently active pack, the system
-swaps to the matching $\mathcal{C}_f$ after a small confirmation latency, with no weight
-updates. This online policy is evaluated against a static-pack baseline and an oracle that
-has all packs available from the start (Section~\ref{sec:exp1}, distribution-shift
-adaptation).
+\paragraph{Streaming evolution.}
+On a query stream, \sysname{} continuously samples a sub-training set from the most recent
+queries and runs the evolution loop of Section~\ref{sec:method_loop} on them. The resulting
+library $\mathcal{C}$ is naturally partitioned into \emph{task-family packs}
+$\{\mathcal{C}_f\}_{f}$, one per family the stream has visited.
+
+\paragraph{Shift detection and re-equipping.}
+\sysname{} monitors a rolling window over the latest queries and identifies the dominant
+task family from their question and image features. When the detected family differs from
+the currently active pack, the system re-equips after a small confirmation latency: an
+existing matching $\mathcal{C}_f$ is activated, and if the family is new, the evolution
+loop is launched on the new sub-stream to grow one. We treat this autonomous online
+adaptation as one of the method's contributions; its swap policy is evaluated in
+Experiment~I (distribution-shift adaptation, Section~\ref{sec:exp1}) against a static-pack
+baseline and an oracle that has all packs available from the start.
