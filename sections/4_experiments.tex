@@ -272,11 +272,12 @@ recovers to $0.947$. The natural stream---where many cases require no new
 capability---still shows a smaller but consistent gain ($0.830$ vs.\ $0.800$ static). The
 other four backbones follow the same pattern.
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.12}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Replay protocol}
@@ -310,7 +311,8 @@ Capability-relevant & $0.635{\pm}0.014$ & $0.773{\pm}0.015$ & $0.900{\pm}0.018$ 
 Stress & $0.621{\pm}0.013$ & $0.768{\pm}0.014$ & $0.902{\pm}0.014$ & $0.920{\pm}0.014$ \\
 Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm}0.019$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \caption{%
   \textbf{Exp~I: Online adaptation in a non-stationary stream.}
   The stream begins with HRBench cases and later introduces MathVista, ChartQA, and V$^*$
@@ -322,7 +324,7 @@ Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm
   replaced with seed-based estimates before submission.
 }
 \label{tab:distribution_shift}
-\end{table*}
+\end{table}
 
 % ============================================================
 \subsection{Experiment~II: Learning to Use Pre-Provided Tools}
