@@ -5,6 +5,31 @@
 \section{Implementation Details}
 \label{app:impl}
 
+\paragraph{Algorithm.}
+Algorithm~\ref{alg:main} gives the full \sysname{} evolution procedure described in
+Section~\ref{sec:method_loop}.
+
+\begin{algorithm}[h]
+\SetAlgoLined
+\KwIn{$\mathcal{D}_{\text{train}}$, frozen VLM $\pi_\theta$, iterations $N$, candidates $M$}
+\KwOut{Capability set $\mathcal{C} = (\mathcal{S}, \mathcal{T})$}
+$\mathcal{C} \leftarrow (\emptyset, \emptyset)$\;
+\For{$n = 1$ \KwTo $N$}{
+  Solve $\mathcal{D}_{\text{train}}$ with $f_{\mathcal{C}}$; collect attempts\;
+  $\mathcal{D}_{\text{sub}} \leftarrow$ sample from $\mathcal{D}_{\text{train}}$\;
+  $a, r \leftarrow \textsc{AnalyzerDecider}(\mathcal{D}_{\text{sub}};\, \pi_\theta)$\;
+  $\{(s_m, t_m)\}_{m=1}^{M} \leftarrow \textsc{Generator}(a, r;\, \pi_\theta)$\;
+  $m^\star \leftarrow \arg\max_{m} \mathrm{Acc}\bigl(f_{\mathcal{C} \cup (s_m, t_m)};\, \mathcal{D}_{\text{train}}\bigr)$\;
+  \If{accuracy improves}{
+    $\mathcal{C} \leftarrow \mathcal{C} \cup \{(s_{m^\star}, t_{m^\star})\}$\;
+    $t_{m^\star}.\text{mastery} \leftarrow \textsc{Mastery}(t_{m^\star}, \mathcal{D}_{\text{train}};\, \pi_\theta)$\;
+  }
+}
+\Return{$\mathcal{C}$}\;
+\caption{\sysname{} evolution loop.}
+\label{alg:main}
+\end{algorithm}
+
 \paragraph{Role prompts.}
 \sysname{} uses three role-specific system prompts for the same base VLM:
 \textit{Solver} (standard QA prompt with capability context injected),

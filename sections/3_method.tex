@@ -63,28 +63,7 @@ must improve over the previous $f_{\mathcal{C}}$ on the cases it targets) and a
 \emph{regression} requirement (it must not degrade currently-correct cases). Promoted tools
 then go through a mastery phase (Section~\ref{sec:method_tool}) that profiles when each tool
 helps before exposing it at inference. The full procedure runs for $N$ iterations (default
-$N{=}3$).
-
-\begin{algorithm}[t]
-\SetAlgoLined
-\KwIn{$\mathcal{D}_{\text{train}}$, frozen VLM $\pi_\theta$, iterations $N$, candidates $M$}
-\KwOut{Capability set $\mathcal{C} = (\mathcal{S}, \mathcal{T})$}
-$\mathcal{C} \leftarrow (\emptyset, \emptyset)$\;
-\For{$n = 1$ \KwTo $N$}{
-  Solve $\mathcal{D}_{\text{train}}$ with $f_{\mathcal{C}}$; collect attempts\;
-  $\mathcal{D}_{\text{sub}} \leftarrow$ sample from $\mathcal{D}_{\text{train}}$\;
-  $a, r \leftarrow \textsc{AnalyzerDecider}(\mathcal{D}_{\text{sub}};\, \pi_\theta)$\;
-  $\{(s_m, t_m)\}_{m=1}^{M} \leftarrow \textsc{Generator}(a, r;\, \pi_\theta)$\;
-  $m^\star \leftarrow \arg\max_{m} \mathrm{Acc}\bigl(f_{\mathcal{C} \cup (s_m, t_m)};\, \mathcal{D}_{\text{train}}\bigr)$\;
-  \If{accuracy improves}{
-    $\mathcal{C} \leftarrow \mathcal{C} \cup \{(s_{m^\star}, t_{m^\star})\}$\;
-    $t_{m^\star}.\text{mastery} \leftarrow \textsc{Mastery}(t_{m^\star}, \mathcal{D}_{\text{train}};\, \pi_\theta)$\;
-  }
-}
-\Return{$\mathcal{C}$}\;
-\caption{\sysname{} evolution loop.}
-\label{alg:main}
-\end{algorithm}
+$N{=}3$); pseudocode is given in Appendix~\ref{app:impl} (Algorithm~\ref{alg:main}).
 
 \subsection{Skills}
 \label{sec:method_skill}
