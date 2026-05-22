@@ -29,13 +29,11 @@ problem solving, and invokes $\pi_\theta$ for reasoning.
 Given a held-out validation set $\mathcal{D}_{\text{val}}$, our goal is to learn
 $\mathcal{C}$ that maximises agent accuracy without any weight update:
 \begin{equation}
-  \mathcal{C}^{\star}
-  = \arg\max_{\mathcal{C}}
-    \mathbb{E}_{(x, y, \mathbf{v}) \sim \mathcal{D}_{\text{val}}}
-    \mathbf{1}\!\left[\, f_{\mathcal{C}}(x, \mathbf{v};\, \pi_\theta) = y \,\right],
-  \quad \text{s.t.}\; \nabla_\theta = 0.
+  \mathcal{C}^{\star} = \arg\max_{\mathcal{C}}\; \mathrm{Acc}\!\left(f_{\mathcal{C}};\, \mathcal{D}_{\text{val}}\right),
   \label{eq:objective}
 \end{equation}
+where the maximisation is over $\mathcal{C}$ only and $\pi_\theta$ remains frozen
+($\nabla_\theta = 0$).
 
 \subsection{Evolution Loop}
 \label{sec:method_loop}
@@ -65,13 +63,12 @@ implementation.
 Each candidate is evaluated on $\mathcal{D}_{\text{train}}$ and the highest-accuracy
 combination is promoted:
 \begin{equation}
-  m^{\star}
-  = \arg\max_{m \in \{1, \dots, M\}}
-    \mathrm{Acc}\!\left(f_{\mathcal{C} \cup (s_m, t_m)};\;
-    \mathcal{D}_{\text{train}}\right),
-  \;\;\;
-  \mathcal{C} \leftarrow \mathcal{C} \cup \{(s_{m^{\star}}, t_{m^{\star}})\}.
-  \label{eq:selection}
+\begin{aligned}
+  m^{\star} &= \arg\max_{m \in \{1, \dots, M\}}
+              \mathrm{Acc}\!\left(f_{\mathcal{C} \cup (s_m, t_m)};\, \mathcal{D}_{\text{train}}\right), \\
+  \mathcal{C} &\leftarrow \mathcal{C} \cup \{(s_{m^{\star}}, t_{m^{\star}})\}.
+\end{aligned}
+\label{eq:selection}
 \end{equation}
 Selection by accuracy on $\mathcal{D}_{\text{train}}$ subsumes both an \emph{origin}
 requirement (the new capability must improve over the previous $f_{\mathcal{C}}$ on the
