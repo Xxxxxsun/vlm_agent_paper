@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  22 MAY 2026 21:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  22 MAY 2026 21:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1267,84 +1267,58 @@ our visual-
 
 ) (./sections/2_related_work.tex
 
-Package natbib Warning: Citation `DBLP:conf/nips/ShinnCGNY23' on page 2 undefin
-ed on input line 8.
+Package natbib Warning: Citation `trace2skill' on page 2 undefined on input lin
+e 13.
 
 
-Package natbib Warning: Citation `DBLP:journals/tmlr/WangX0MXZFA24' on page 2 u
-ndefined on input line 9.
+Package natbib Warning: Citation `selfimprov_paradox' on page 2 undefined on in
+put line 16.
 
 
-Package natbib Warning: Citation `DBLP:conf/aaai/Zhao0XLLH24' on page 2 undefin
-ed on input line 9.
+Package natbib Warning: Citation `personalized_agents' on page 2 undefined on i
+nput line 17.
 
 
-Package natbib Warning: Citation `DBLP:conf/aaai/Zhao0XLLH24' on page 2 undefin
-ed on input line 11.
+Package natbib Warning: Citation `yang2024lever' on page 2 undefined on input l
+ine 41.
 
 
-Package natbib Warning: Citation `DBLP:journals/corr/abs-2510-16079' on page 2 
-undefined on input line 11.
+Underfull \hbox (badness 1019) in paragraph at lines 35--45
+ []\T1/ptm/b/n/10.95 (+20) Visual rea-son-ing with tools.[] \T1/ptm/m/n/10.95 (
++20) Sev-eral re-cent
+ []
 
 
-Package natbib Warning: Citation `DBLP:conf/emnlp/QianH0Q0J23' on page 2 undefi
-ned on input line 19.
+Underfull \hbox (badness 1852) in paragraph at lines 35--45
+\T1/ptm/m/n/10.95 (+20) sys-tems equip VLMs with vi-sual pro-cess-ing
+ []
 
 
-Package natbib Warning: Citation `DBLP:conf/iclr/Cai00CZ24' on page 2 undefined
- on input line 20.
+Underfull \hbox (badness 1331) in paragraph at lines 35--45
+\T1/ptm/m/n/10.95 (+20) tools. VTool-R1 ([][]Wu et al.[][], [][]2025a[][]), Dee
+p-
+ []
 
 
-Package natbib Warning: Citation `DBLP:conf/iclr/QinLYZYLLCTQZHT24' on page 2 u
-ndefined on input line 20.
+Package natbib Warning: Citation `ma2026mmr' on page 2 undefined on input line 
+50.
 
 
-Package natbib Warning: Citation `DBLP:journals/corr/abs-2505-19255' on page 2 
-undefined on input line 29.
+Package natbib Warning: Citation `cheng2025ecoalign' on page 2 undefined on inp
+ut line 54.
 
+)
+Underfull \hbox (badness 1924) in paragraph at lines 47--148
+\T1/ptm/b/n/10.95 (+20) sets.[] \T1/ptm/m/n/10.95 (+20) Vis-Prog ([][]Gupta and
+ Kem-b-havi[][], [][]2023[][]),
+ []
 
-Package natbib Warning: Citation `DBLP:journals/corr/abs-2505-14362' on page 2 
-undefined on input line 30.
-
-
-Package natbib Warning: Citation `zhang2025adaptive' on page 2 undefined on inp
-ut line 30.
-
-
-Package natbib Warning: Citation `DBLP:journals/corr/abs-2505-15966' on page 2 
-undefined on input line 31.
-
-
-Package natbib Warning: Citation `DBLP:journals/corr/abs-2511-04460' on page 2 
-undefined on input line 31.
-
-
-Package natbib Warning: Citation `DBLP:conf/emnlp/ShenZZXZZY25' on page 2 undef
-ined on input line 33.
-
-
-Package natbib Warning: Citation `DBLP:conf/icml/FuLYCLY0FZ25' on page 2 undefi
-ned on input line 33.
-
-
-Package natbib Warning: Citation `DBLP:conf/cvpr/GuptaK23' on page 2 undefined 
-on input line 39.
-
-
-Package natbib Warning: Citation `DBLP:conf/iccv/SurisMV23' on page 2 undefined
- on input line 39.
-
-
-Package natbib Warning: Citation `DBLP:conf/nips/LuPCGCWZG23' on page 2 undefin
-ed on input line 40.
-
-) (./sections/3_method.tex
-<figures/method.pdf, id=256, 753.81625pt x 409.53pt>
+[2] (./sections/3_method.tex
+<figures/method.pdf, id=333, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
 (pdftex.def)             Requested size: 455.24411pt x 247.31961pt.
- [2]
 LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 58
 .
 
@@ -1357,64 +1331,16 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [3 <./figures/method.pdf>]
-
-Package natbib Warning: Citation `DBLP:conf/emnlp/QianH0Q0J23' on page 4 undefi
-ned on input line 119.
-
-
-Package natbib Warning: Citation `DBLP:conf/iclr/Cai00CZ24' on page 4 undefined
- on input line 119.
-
-) (./sections/4_experiments.tex
-
-Package natbib Warning: Citation `DBLP:conf/acl/MasryLTJH22' on page 4 undefine
-d on input line 13.
-
-
-Package natbib Warning: Citation `DBLP:conf/iclr/LuBX0LH0CG024' on page 4 undef
-ined on input line 15.
-
-
-Package natbib Warning: Citation `DBLP:conf/aaai/Wang0ZZ000T25' on page 4 undef
-ined on input line 17.
-
-
-Package natbib Warning: Citation `DBLP:conf/cvpr/WuX24a' on page 4 undefined on
- input line 19.
-
-
-Package natbib Warning: Citation `DBLP:conf/nips/WangMLZC0L24' on page 4 undefi
-ned on input line 22.
-
-
-Package natbib Warning: Citation `DBLP:journals/corr/abs-2505-19255' on page 4 
-undefined on input line 27.
-
-
-Package natbib Warning: Citation `DBLP:journals/corr/abs-2505-14362' on page 4 
-undefined on input line 29.
-
-[4]
+ [3 <./figures/method.pdf>]) [4] (./sections/4_experiments.tex [5]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 112.
- [5]
-<figures/distribution_shift_bars.pdf, id=446, 479.58861pt x 174.36057pt>
+<figures/distribution_shift_bars.pdf, id=533, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
 e 271.
 (pdftex.def)             Requested size: 455.24411pt x 165.51653pt.
-
-Underfull \hbox (badness 1360) in paragraph at lines 288--297
-\T1/ptm/m/n/10.95 (+20) posed); an \T1/ptm/m/it/10.95 (+20) XSkill-style \T1/pt
-m/m/n/10.95 (+20) base-line ([][]Anony-mous[][],
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
+ [6]
 Underfull \hbox (badness 10000) in paragraph at lines 299--309
  []\T1/ptm/b/n/10.95 (+20) What does environment-specific mas-tery
  []
@@ -1429,29 +1355,28 @@ Underfull \hbox (badness 1810) in paragraph at lines 299--309
 \T1/ptm/m/n/10.95 (+20) the tar-get en-vi-ron-ment's spe-cific tool chains,
  []
 
-[6]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 396.
- [7 <./figures/distribution_shift_bars.pdf>]
+[7 <./figures/distribution_shift_bars.pdf>]
 Underfull \hbox (badness 2103) in paragraph at lines 423--428
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
 (+20) On V$[]$ and
  []
 
-) (./sections/6_conclusion.tex) (./sections/limitations.tex
+) (./sections/6_conclusion.tex) [8] (./sections/limitations.tex
 Underfull \hbox (badness 4886) in paragraph at lines 12--16
  []\T1/ptm/b/n/10.95 (+20) Tool qual-ity ceil-ing.[] \T1/ptm/m/n/10.95 (+20) To
 ol ef-fec-tive-ness is
  []
 
-[8]) (./main.bbl
-Underfull \hbox (badness 3354) in paragraph at lines 130--137
+) (./main.bbl
+Underfull \hbox (badness 3354) in paragraph at lines 86--92
 []\T1/ptm/m/n/10 (+20) Haozhan Shen, Kangjia Zhao, Tiancheng Zhao,
  []
 
 [9]
-Underfull \hbox (badness 1077) in paragraph at lines 199--205
-\T1/ptm/m/n/10 (+20) Yu. 2025.  [][]Deep-Eyes: In-cen-tiviz-ing ``think-ing
+Underfull \hbox (badness 1152) in paragraph at lines 174--179
+[]\T1/ptm/m/n/10 (+20) Ziwei Zheng, Michael Yang, Jack Hong, Chenx-
  []
 
 ) [10
@@ -1486,7 +1411,7 @@ Underfull \hbox (badness 2698) in paragraph at lines 313--317
 \T1/ptm/m/n/10.95 (+20) Figure [][]3[][] in the main pa-per ag-gre-gates the
  []
 
-<figures/distribution_shift_timeseries.pdf, id=719, 237.70663pt x 144.37573pt>
+<figures/distribution_shift_timeseries.pdf, id=716, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
@@ -1560,20 +1485,17 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 Package natbib Warning: There were undefined citations.
 
 [17] (./main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 0929CD4A1D230077555DC34C9DDBAC7C;6983.
  ) 
 Here is how much of TeX's memory you used:
- 36684 strings out of 478994
- 705408 string characters out of 5858184
- 1310616 words of memory out of 5000000
- 52527 multiletter control sequences out of 15000+600000
- 548417 words of font info for 589 fonts, out of 8000000 for 9000
+ 36655 strings out of 478994
+ 706356 string characters out of 5858184
+ 1307770 words of memory out of 5000000
+ 52524 multiletter control sequences out of 15000+600000
+ 546805 words of font info for 572 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,15n,108p,732b,2346s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,15n,108p,754b,2346s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
 /usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
 ive/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
@@ -1596,10 +1518,10 @@ st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on main.pdf (17 pages, 4918320 bytes).
+Output written on main.pdf (17 pages, 4917426 bytes).
 PDF statistics:
- 1027 PDF objects out of 1200 (max. 8388607)
- 735 compressed objects within 8 object streams
- 268 named destinations out of 1000 (max. 500000)
+ 1024 PDF objects out of 1200 (max. 8388607)
+ 732 compressed objects within 8 object streams
+ 267 named destinations out of 1000 (max. 500000)
  115657 words of extra memory for PDF output out of 128383 (max. 10000000)
 

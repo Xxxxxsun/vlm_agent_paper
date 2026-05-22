@@ -9,44 +9,51 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: references.bib
-You've used 24 entries,
+Warning--I didn't find a database entry for "trace2skill"
+Warning--I didn't find a database entry for "selfimprov_paradox"
+Warning--I didn't find a database entry for "personalized_agents"
+Warning--I didn't find a database entry for "yang2024lever"
+Warning--I didn't find a database entry for "ma2026mmr"
+Warning--I didn't find a database entry for "cheng2025ecoalign"
+You've used 23 entries,
             3764 wiz_defined-function locations,
-            861 strings with 12538 characters,
-and the built_in function-call counts, 20603 in all, are:
-= -- 1722
-> -- 1292
-< -- 21
-+ -- 537
-- -- 400
-* -- 1439
-:= -- 3070
+            870 strings with 11900 characters,
+and the built_in function-call counts, 23357 in all, are:
+= -- 1892
+> -- 1642
+< -- 14
++ -- 687
+- -- 515
+* -- 1662
+:= -- 3382
 add.period$ -- 104
-call.type$ -- 24
-change.case$ -- 283
-chr.to.int$ -- 33
-cite$ -- 24
-duplicate$ -- 1144
-empty$ -- 1309
-format.name$ -- 463
-if$ -- 4438
-int.to.chr$ -- 6
-int.to.str$ -- 1
-missing$ -- 265
-newline$ -- 126
-num.names$ -- 96
-pop$ -- 748
+call.type$ -- 23
+change.case$ -- 316
+chr.to.int$ -- 28
+cite$ -- 23
+duplicate$ -- 1318
+empty$ -- 1360
+format.name$ -- 586
+if$ -- 4945
+int.to.chr$ -- 3
+int.to.str$ -- 2
+missing$ -- 331
+newline$ -- 119
+num.names$ -- 92
+pop$ -- 892
 preamble$ -- 1
-purify$ -- 229
+purify$ -- 263
 quote$ -- 0
-skip$ -- 1042
+skip$ -- 1164
 stack$ -- 0
-substring$ -- 516
-swap$ -- 643
-text.length$ -- 9
+substring$ -- 609
+swap$ -- 767
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 216
+type$ -- 207
 warning$ -- 0
-while$ -- 87
+while$ -- 93
 width$ -- 0
-write$ -- 315
+write$ -- 309
+(There were 6 warnings)
