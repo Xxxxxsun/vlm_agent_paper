@@ -1,11 +1,16 @@
-\begin{thebibliography}{23}
+\begin{thebibliography}{24}
 \providecommand{\natexlab}[1]{#1}
 
-\bibitem[{{Anonymous}(2024)}]{chen2024hrbench}
-{Anonymous}. 2024.
+\bibitem[{{Anonymous}(2024{\natexlab{a}})}]{chen2024hrbench}
+{Anonymous}. 2024{\natexlab{a}}.
 \newblock {HRBench}: A high-resolution visual benchmark for multimodal models
   (placeholder).
 \newblock [VERIFY] Replace with correct citation upon confirmation.
+
+\bibitem[{{Anonymous}(2024{\natexlab{b}})}]{xskill_2024}
+{Anonymous}. 2024{\natexlab{b}}.
+\newblock {XSkill}: Skill-injection for visual reasoning agents (placeholder).
+\newblock [VERIFY] Replace with final citation upon confirmation.
 
 \bibitem[{{Anonymous}(2025{\natexlab{a}})}]{evolver_2025}
 {Anonymous}. 2025{\natexlab{a}}.
