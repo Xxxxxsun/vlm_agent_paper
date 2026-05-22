@@ -48,8 +48,8 @@ Each evolution iteration over $\mathcal{D}_{\text{train}}$ has three phases
 (Figure~\ref{fig:method}).
 
 \textbf{Diagnose.}
-The agent solves $\mathcal{D}_{\text{train}}$ with the current $\mathcal{C}$, then samples a
-sub-training set $\mathcal{D}_{\text{sub}} \subseteq \mathcal{D}_{\text{train}}$ containing
+The agent (Eq.~\ref{eq:agent}) solves $\mathcal{D}_{\text{train}}$ with the current
+$\mathcal{C}$, then samples a sub-training set $\mathcal{D}_{\text{sub}} \subseteq \mathcal{D}_{\text{train}}$ containing
 both correct and incorrect attempts. The \textsc{AnalyzerDecider} inspects
 $\mathcal{D}_{\text{sub}}$---the questions, original images $\mathbf{v}_i$, reasoning
 traces $\tau_i$, and any intermediate tool outputs---and emits a root-cause analysis grounded
@@ -76,7 +76,8 @@ combination is promoted:
 \end{aligned}
 \label{eq:selection}
 \end{equation}
-Selection by accuracy on $\mathcal{D}_{\text{train}}$ subsumes both an \emph{origin}
+Eq.~\ref{eq:selection} approximates the validation objective in
+Eq.~\ref{eq:objective} by its training-set counterpart, and subsumes both an \emph{origin}
 requirement (the new capability must improve over the previous $f_{\mathcal{C}}$ on the
 cases it targets) and a \emph{regression} requirement (it must not degrade
 currently-correct cases). When the action is \texttt{both}, the paired skill additionally
@@ -145,8 +146,8 @@ family at step $t$ is
   \label{eq:shift}
 \end{equation}
 where $\mathrm{fam}(\cdot)$ classifies each query from its question and image features.
-When $\hat{f}_t \neq \hat{f}_{t-1}$, the next evolution iteration is triggered on the new
-sub-stream and produces updated skills and tools that handle the new distribution. The
+When Eq.~\ref{eq:shift} flips ($\hat{f}_t \neq \hat{f}_{t-1}$), the next evolution
+iteration is triggered on the new sub-stream and produces updated skills and tools that handle the new distribution. The
 library is thus kept in sync with the current query distribution without any human
 intervention. We treat this autonomous online adaptation as one of the method's
 contributions; Experiment~I (Section~\ref{sec:exp1}) evaluates it against a static
