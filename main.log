@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  22 MAY 2026 19:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  22 MAY 2026 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1376,162 +1376,155 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [11
 
 ]
-Underfull \hbox (badness 2027) in paragraph at lines 174--176
- []\T1/ptm/b/n/10.95 (+20) Question.[] \T1/ptm/m/n/10.95 (+20) Are the gains ca
-used by failure-
+Underfull \hbox (badness 10000) in paragraph at lines 176--183
+ []\T1/ptm/b/n/10.95 (+20) What this rules out.[] \T1/ptm/m/n/10.95 (+20) Most 
+prior self-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--198
- []\T1/ptm/b/n/10.95 (+20) Expected in-ter-pre-ta-tion.[] \T1/ptm/m/n/10.95 (+2
-0) A pure prompt-
+Underfull \hbox (badness 7888) in paragraph at lines 176--183
+\T1/ptm/m/n/10.95 (+20) improvement work treats cor-rect cases as
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 188--198
-\T1/ptm/m/n/10.95 (+20) are them-selves ex-pressed as natural-language
- []
-
-[12]
-Underfull \hbox (badness 4024) in paragraph at lines 264--267
- []\T1/ptm/b/n/10.95 (+20) Writing hook.[] \T1/ptm/m/n/10.95 (+20) Mas-tery im-
-proves pre-ci-sion
- []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 200.
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 272--274
- []\T1/ptm/b/n/10.95 (+20) Question.[] \T1/ptm/m/n/10.95 (+20) Does stor-ing re
-usable ca-pa-bil-i-ties
- []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 200.
 
-[13]
-Underfull \hbox (badness 1845) in paragraph at lines 309--316
-[]\T1/ptm/m/n/10.95 (+20) Origin-only is ex-pected to pro-duce higher
- []
-
-
-Underfull \hbox (badness 2351) in paragraph at lines 320--331
-\T1/ptm/m/n/10.95 (+20) The main pa-per fixes $\OML/cmm/m/it/10.95 k[]\OT1/cmr/
-m/n/10.95 200$ \T1/ptm/m/n/10.95 (+20) train-ing cases
- []
-
-
-Underfull \hbox (badness 1082) in paragraph at lines 320--331
-\T1/ptm/m/n/10.95 (+20) and $\OML/cmm/m/it/10.95 N[]\OT1/cmr/m/n/10.95 3$ \T1/p
-tm/m/n/10.95 (+20) evo-lu-tion it-er-a-tions. The sen-si-tiv-
- []
-
-[14]
-Underfull \hbox (badness 2698) in paragraph at lines 378--382
+[12] [13]
+Underfull \hbox (badness 2698) in paragraph at lines 313--317
 \T1/ptm/m/n/10.95 (+20) Figure [][]3[][] in the main pa-per ag-gre-gates the
  []
 
-<figures/distribution_shift_timeseries.pdf, id=784, 237.70663pt x 144.37573pt>
+<figures/distribution_shift_timeseries.pdf, id=780, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
-ut line 385.
+ut line 320.
 (pdftex.def)             Requested size: 219.08614pt x 133.0674pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 440--440
+Underfull \hbox (badness 10000) in paragraph at lines 375--375
 []\T1/ptm/m/n/10 (+20) Table 7: |\T1/ptm/b/n/10 (+20) Per-backbone ag-gre-gates
  for the
  []
 
 
-Underfull \hbox (badness 4229) in paragraph at lines 440--440
+Underfull \hbox (badness 4229) in paragraph at lines 375--375
 \T1/ptm/b/n/10 (+20) distribution-shift ex-per-i-ment. \T1/ptm/m/n/10 (+20) Mea
 n ac-cu-racy
  []
 
 
-Underfull \hbox (badness 6493) in paragraph at lines 465--467
+Underfull \hbox (badness 6493) in paragraph at lines 400--402
 []|\T1/ptm/m/n/9 (+20) A skill that in-structs the
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 465--467
+Underfull \hbox (badness 1168) in paragraph at lines 400--402
 \T1/ptm/m/n/9 (+20) chart/table struc-ture, plus a
  []
 
 
-Underfull \hbox (badness 3803) in paragraph at lines 469--471
+Underfull \hbox (badness 3803) in paragraph at lines 404--406
 []|\T1/ptm/m/sc/9 (+20) Dynamo \T1/ptm/m/n/9 (+20) can gen-er-ate a
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 469--471
+Underfull \hbox (badness 2020) in paragraph at lines 404--406
 \T1/ptm/m/n/9 (+20) re-ly-ing on a fixed visual-
  []
 
 
-Underfull \hbox (badness 1092) in paragraph at lines 473--475
+Underfull \hbox (badness 1092) in paragraph at lines 408--410
 \T1/ptm/m/n/9 (+20) ques-tion into target-location
  []
 
 
-Underfull \hbox (badness 4832) in paragraph at lines 475--477
+Underfull \hbox (badness 4832) in paragraph at lines 410--412
 []|\T1/ptm/m/n/9 (+20) ZoomEye per-forms training-
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 475--477
+Underfull \hbox (badness 1902) in paragraph at lines 410--412
 \T1/ptm/m/n/9 (+20) free tree-based im-age ex-plo-
  []
 
 
-Underfull \hbox (badness 2158) in paragraph at lines 477--479
+Underfull \hbox (badness 2158) in paragraph at lines 412--414
 \T1/ptm/m/n/9 (+20) Zoom-Eye as a pre-de-fined
  []
 
-[15 <./figures/distribution_shift_timeseries.pdf>]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 7.0pt on input line 514.
- [16] [17]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
-30.
+(Font)              scaled to size 7.0pt on input line 449.
+[14 <./figures/distribution_shift_timeseries.pdf>] [15]
+Underfull \vbox (badness 2875) has occurred while \output is active []
+
+ [16]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
+65.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)) [18]
+)) [17]
 (./main.aux)
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1671B0BA81A21D2309869D1A6E2382DF;7124.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 1671B0BA81A21D2309869D1A6E2382DF;7124
+(rerunfilecheck)             After:  0929CD4A1D230077555DC34C9DDBAC7C;6983.
  ) 
 Here is how much of TeX's memory you used:
- 36723 strings out of 478994
- 705750 string characters out of 5858184
- 1332684 words of memory out of 5000000
- 52528 multiletter control sequences out of 15000+600000
- 550699 words of font info for 611 fonts, out of 8000000 for 9000
+ 36683 strings out of 478994
+ 705427 string characters out of 5858184
+ 1310227 words of memory out of 5000000
+ 52530 multiletter control sequences out of 15000+600000
+ 548155 words of font info for 584 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,15n,108p,982b,1618s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
-/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
-ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/lo
-cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/loca
-l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/
-texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/202
-1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist
-/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/
-type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
-times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr
-i8a.pfb>
-Output written on main.pdf (18 pages, 4926113 bytes).
+ 101i,15n,108p,977b,2346s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{table.caption.66} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.64} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.65} has been referenced but does not
+ exist, replaced by a fixed one
+
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{/u
+sr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/loc
+al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist/f
+onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
+pe1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on main.pdf (17 pages, 4919971 bytes).
 PDF statistics:
- 1093 PDF objects out of 1200 (max. 8388607)
- 799 compressed objects within 8 object streams
- 273 named destinations out of 1000 (max. 500000)
+ 1092 PDF objects out of 1200 (max. 8388607)
+ 800 compressed objects within 8 object streams
+ 271 named destinations out of 1000 (max. 500000)
  115649 words of extra memory for PDF output out of 128383 (max. 10000000)
 

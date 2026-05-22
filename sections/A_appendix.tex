@@ -84,264 +84,199 @@ No GPU training is performed.
 \section{Mechanism Ablations}
 \label{app:ablation_mechanisms}
 
-Experiment~I in the main paper already isolates the contribution of each capability \emph{type}:
-the \emph{None}, \emph{Skill Only}, \emph{Tool Only}, and \emph{Skill~$+$~Tool} rows of
-Table~\ref{tab:evolution_full} answer whether skills, tools, or their combination is responsible
-for the observed gains. The ablations in this appendix test a complementary question: when the
-full capability library is used, which \emph{mechanisms} inside the evolution loop are doing the
-work? Each variant below removes one design decision---failure-specific capability generation,
-multimodal failure diagnosis, mastery-gated tool exposure, or cross-case
-persistence---while holding the rest of the system fixed. The unifying claim under test is that
-the gains come from \emph{failure-driven capability evolution}: the agent visually diagnoses
-failures, generates persistent skills and tools, validates them, and learns when to deploy them
-through mastery. Removing any of these mechanisms either reduces improvement or makes tool use
-less reliable.
+Experiment~I in the main paper already isolates the contribution of each capability
+\emph{type}: the \emph{None}, \emph{Skill Only}, \emph{Tool Only}, and \emph{Full} rows of
+Table~\ref{tab:evolution_full} answer whether skills, tools, or both account for the
+observed gains. The ablations here test a complementary question: when the Full system is
+used, which \emph{mechanisms} inside the evolution loop (Section~\ref{sec:method_loop}) are
+doing the work? Each variant removes one design decision and holds the rest fixed, so each
+row of Table~\ref{tab:ablation_mechanism} rules out one alternative explanation for the
+Full system's gains.
 
 \paragraph{Setup.}
-All variants use the same protocol as Experiment~I (frozen backbone; $k{=}200$ training cases;
-$N{=}3$ evolution iterations) and rebuild the capability library from scratch so that any
-deficit reflects the ablated mechanism rather than a carried-over artifact. We report results
-on a representative backbone (we use GPT-5.4 in the main mechanism table, with GPT-4o and
-Doubao-Seed-2.0 entries reported below as robustness checks where available). The two main
-benchmarks are chosen to stress different bottlenecks: \textbf{ChartQA} as a cognitive /
-procedural test where persistent reasoning skills are expected to help, and \textbf{HRBench} as a
-perceptual / high-resolution test where visual failure analysis and mastery-gated tools matter
-most. MathVista and V$^\star$ entries are reported as a secondary check.
+All variants use the same protocol as Experiment~I (frozen GPT-5.4 backbone; 20\% of each
+benchmark's training split as $\mathcal{D}_{\text{train}}$; $N{=}3$ evolution iterations;
+$M$ candidate skill$+$tool combinations per iteration) and rebuild $\mathcal{C}$ from
+scratch so any deficit reflects the ablated mechanism rather than a carried-over artifact.
+The two primary benchmarks are \textbf{ChartQA} (cognitive / procedural) and
+\textbf{HRBench} (perceptual / high-resolution); \textbf{MathVista} and \textbf{V$^\star$}
+are reported as secondary checks.
 
 \paragraph{Main mechanism table.}
-Table~\ref{tab:ablation_mechanism} reports the five variants on the two primary benchmarks.
-Each row maps to one specific design decision in Section~\ref{sec:method}, and the corresponding
-subsections below describe the variant, its motivation, and the expected reading of the
-numbers. The Full \sysname{} row reproduces the Skill~$+$~Tool entry from
-Table~\ref{tab:evolution_full} for reference; the other rows are not subsumed by any row of
-that table.
+Table~\ref{tab:ablation_mechanism} reports six ablation variants spanning the four
+mechanism families: diagnosis (whether the AnalyzerDecider sees correct cases and visual
+input), exploration (multi-candidate generation), inference-time gating (paired mastery
+skill), and persistence (cross-case library). The Full row reproduces the Full entry from
+Table~\ref{tab:evolution_full} for reference.
 
 \begin{table*}[t]
 \centering
 \small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.18}
-\begin{tabular}{lp{0.30\textwidth}cccc}
+\begin{tabular}{lp{0.34\textwidth}cccc}
 \toprule
 \textbf{Variant} & \textbf{Ablated mechanism}
   & \textbf{ChartQA} & \textbf{HRBench}
   & \textbf{MathVista} & \textbf{V$^\star$} \\
 \midrule
-Full \sysname{}        & none (full evolution loop)
-  & 0.859 & 0.850 & 0.786 & 0.874 \\
-Direct (reference)     & no capability library; zero-shot VLM
-  & 0.797 & 0.747 & 0.759 & 0.775 \\
+Full \sysname{}              & --- (full evolution loop)
+  & & & & \\
 \midrule
-Generic Skill          & no failure-specific evolution; hand-neutral task prompt only
-  & 0.815 & 0.772 & 0.769 & 0.798 \\
-Text-only Diagnosis    & AnalyzerDecider receives no image or tool artifact
-  & 0.844 & 0.802 & 0.778 & 0.815 \\
-No Mastery             & tools exposed without applicability SOP
-  & 0.838 & 0.823 & 0.754 & 0.836 \\
-No Persistence         & reflection/capability not stored across cases
-  & 0.819 & 0.819 & 0.770 & 0.828 \\
+Generic Skill                & evolved library $\to$ hand-neutral task prompt
+  & & & & \\
+Failure-Only Diagnosis       & AnalyzerDecider sees only incorrect cases
+  & & & & \\
+Text-only Diagnosis          & AnalyzerDecider sees no images or tool artefacts
+  & & & & \\
+Single-Candidate ($M{=}1$)   & one Generator proposal per iteration; no selection
+  & & & & \\
+No Paired Mastery Skill      & tool emitted without its paired skill (action $=$ both)
+  & & & & \\
+No Persistence               & capabilities not stored across cases
+  & & & & \\
 \bottomrule
 \end{tabular}
 \caption{%
   \textbf{Mechanism ablations.}
-  Each row removes one mechanism from \sysname{} while holding all others fixed (GPT-5.4
-  backbone; $k{=}200$, $N{=}3$). The ablated dimensions are \emph{mechanisms} (how
-  capabilities are generated, diagnosed, gated, and reused) rather than capability
-  \emph{types}, which are already ablated by the \emph{Skill Only} / \emph{Tool Only} rows of
-  Table~\ref{tab:evolution_full}. The Full row reproduces the Skill~$+$~Tool entry of
-  Table~\ref{tab:evolution_full}, and the Direct row reproduces the None (Base Agent) entry,
-  both for reference. The four ablation rows are \emph{layout placeholders} chosen to
-  illustrate the expected qualitative pattern and must be replaced with measured values before
-  submission.
+  Each row removes one mechanism from \sysname{} while holding the rest fixed
+  (GPT-5.4; 20\% training split; $N{=}3$). The Full row reproduces the Full entry from
+  Table~\ref{tab:evolution_full}. Numbers will be filled in once the corresponding runs
+  complete.
 }
 \label{tab:ablation_mechanism}
 \end{table*}
 
-\paragraph{Reading the table.}
-Across the four mechanism variants we expect a consistent qualitative pattern: Generic Skill
-should recover only a small fraction of the Full gain (it captures shallow prompt advice but
-not failure-specific procedures and triggers); Text-only Diagnosis should hurt most on the
-perceptual benchmarks where the AnalyzerDecider must inspect crops and processed artifacts;
-No Mastery should leave or even increase tool usage but reduce reliability by invoking tools on
-cases that direct reasoning already solves; and No Persistence should preserve per-case retry
-benefits but lose held-out gains that depend on retrieving capabilities discovered on different
-training cases.
-
 \subsection{Generic Skill vs. Evolved Capability}
 \label{app:abl_generic}
 
-\paragraph{Question.}
-Are the gains caused by failure-specific evolution, or would a generic task-aware prompt do the
-same thing?
+\paragraph{What is removed.}
+The evolved capability library is replaced with a single hand-neutral task prompt that
+gives generic task advice (for ChartQA: ``read the chart carefully, identify relevant
+values, reason step by step''; for HRBench: ``inspect local details before answering and
+verify the target object''). No diagnosis, generation, validation, or persistence is run.
 
-\paragraph{Variants.}
-We compare three configurations on the same backbone and the same evaluation protocol.
-\emph{Direct} is the zero-shot VLM with no persistent capability and no special prompt.
-\emph{Generic Skill} replaces the evolved capability library with a single hand-neutral task
-prompt that gives general task advice not derived from any failure analysis: for ChartQA, the
-prompt instructs the model to ``read the chart carefully, identify the relevant values, and
-reason step by step''; for HRBench, ``inspect local details before answering and verify the
-target object before committing to an answer.'' \emph{Evolved Skill/Tool} is the frozen
-capability library produced by the standard evolution loop.
+\paragraph{What this rules out.}
+A pure prompt-engineering account would predict that Generic Skill closes most of the gap
+to Full, since the evolved skills are themselves natural-language SOPs. If Generic Skill
+improves over Direct by only a small margin and stays well below Full, the gap is
+attributable to mechanism-level evolution---failure-specific procedures, applicability
+triggers, and pitfalls that a generic prompt cannot anticipate---rather than to the
+presence of any task-aware prompt.
 
-\paragraph{Expected interpretation.}
-A pure prompt-engineering account of the main results would predict that Generic Skill closes
-most of the gap to the evolved library, because the evolved skills are themselves expressed as
-natural-language SOPs. The hypothesis under test is the opposite: that Generic Skill captures
-only shallow task advice, while the evolved capabilities encode failure-specific procedures,
-applicability triggers, and pitfalls that transfer beyond the triggering examples. Concretely,
-if Generic Skill improves over Direct by a small margin but remains well below Full, the gap is
-attributable to mechanism-level evolution rather than to the presence of any task-aware prompt.
-On ChartQA in particular, evolved skills frequently encode chart-type-conditioned decomposition
-patterns (e.g., ``for stacked bars, read the upper and lower boundaries of the target segment
-before subtracting'') that a generic chart prompt does not specify.
+\subsection{Failure-Only Diagnosis}
+\label{app:abl_failure_only}
 
-\paragraph{Writing hook.}
-Generic task instructions provide a useful but incomplete baseline: they tell the model to be
-careful, but they do not identify which recurring failure modes were observed during training
-or when a visual tool should be invoked.
+\paragraph{What is removed.}
+The AnalyzerDecider only sees the incorrect cases in the sampled sub-training set; the
+correct cases are dropped. Everything else---multimodal input, multi-candidate
+exploration, paired mastery skill, persistence---is unchanged.
+
+\paragraph{What this rules out.}
+Most prior self-improvement work treats correct cases as nothing to learn from. This
+variant tests that assumption directly. If Failure-Only Diagnosis matches Full, then the
+correct cases carry no useful diagnostic signal and the abstract's framing of ``diagnoses
+both correct and incorrect attempts'' is decorative. A gap supports the design choice:
+correct attempts tell the AnalyzerDecider \emph{which sub-patterns the current
+$\mathcal{C}$ already handles}, which sharpens the next capability proposal toward what is
+still missing.
 
 \subsection{Text-only Diagnosis}
 \label{app:abl_textonly}
 
-\paragraph{Question.}
-Does the AnalyzerDecider need to see images and intermediate tool artifacts, or is a text-only
-reflection sufficient?
+\paragraph{What is removed.}
+The AnalyzerDecider's inputs are restricted to text only: the question, the agent's answer
+(correct or incorrect), the ground-truth answer, and the reasoning trace. No original
+image, no intermediate tool output, and no processed visual artefact is passed in.
 
-\paragraph{Variants.}
-\emph{Full Diagnosis} is the standard configuration in which the AnalyzerDecider receives the
-question, the failed answer, the ground-truth answer, the full reasoning trace, the original
-image, and any intermediate visual artifacts produced by tools invoked during the failed
-attempt. \emph{Text-only Diagnosis} restricts the AnalyzerDecider's inputs to question, failed
-answer, ground truth, and trace; no original image and no generated, cropped, or processed
-visual artifacts are passed. The rest of the loop is unchanged, so any difference reflects only
-the diagnostic channel.
+\paragraph{What this rules out.}
+Text reflection can say \emph{that} an answer was wrong, but it cannot tell whether a
+crop was misaligned, whether a zoomed region missed the target, or whether a processed
+image introduced artefacts. We expect the gap to Full to be largest on the perceptual
+benchmarks (HRBench, V$^\star$). On ChartQA the gap should be smaller because many
+failures there are procedural; a small ChartQA gap with a large HRBench/V$^\star$ gap is
+itself the signature of the visual-diagnosis claim.
 
-\paragraph{Expected interpretation.}
-Text-only reflection can describe \emph{that} an answer was wrong and can speculate about
-plausible cognitive causes, but it cannot determine whether a crop was misaligned, whether a
-zoomed region missed the target, whether a generated visual artifact degraded the evidence, or
-whether the original image already contained the information needed. We therefore expect the
-gap between Full and Text-only Diagnosis to be largest on HRBench and V$^\star$, where
-correctly diagnosing a perceptual failure requires inspecting the image. On ChartQA, the gap
-should be smaller because many failures there are procedural rather than perceptual; a small or
-negligible gap on ChartQA is consistent with, rather than evidence against, the visual-diagnosis
-claim. The asymmetric pattern itself supports the cognitive/perceptual distinction that
-motivates the dual-capability design.
+\subsection{Single-Candidate ($M{=}1$)}
+\label{app:abl_single_candidate}
 
-\paragraph{Writing hook.}
-Text-only reflection can describe that an answer was wrong, but it cannot tell whether a crop
-was misaligned, a zoomed region missed the target, or a generated visual artifact degraded the
-evidence shown to the next solver call.
+\paragraph{What is removed.}
+The Generator produces a single capability proposal per iteration (the same setting as
+typical generate-then-validate tool-creation methods such as
+CREATOR~\citep{tang2023creator} and LATM~\citep{cai2024latm}). The validate-and-promote
+step (Eq.~\ref{eq:selection}) collapses to a binary accept/reject of that single
+candidate against the training set.
 
-\subsection{No Mastery / Unconditional Tool Exposure}
+\paragraph{What this rules out.}
+A reviewer might ask whether the multi-candidate $\arg\max$ in Eq.~\ref{eq:selection} is
+load-bearing or whether the first proposal is usually good enough. If Single-Candidate
+roughly matches Full, the exploration step is decorative. A measurable gap shows that
+diverse candidates plus selection by training-set accuracy is what turns a noisy proposal
+distribution into a reliably improving library.
+
+\subsection{No Paired Mastery Skill}
 \label{app:abl_mastery}
 
-\paragraph{Question.}
-Does progressive mastery matter, or can the agent simply expose every validated tool whenever
-one is available?
+\paragraph{What is removed.}
+When the AnalyzerDecider's action is \texttt{both}, the Generator emits only the tool and
+not its paired mastery skill. The tool is added to $\mathcal{T}$ but has no
+$\textsc{When-to-Use}$ predicate gating its invocation at inference, so any skill
+retrieval that surfaces a tool reference exposes the tool unconditionally.
 
-\paragraph{Variants.}
-\emph{Full} validates each generated tool and gates its exposure on a learned mastery SOP that
-describes the inputs and contexts in which the tool tends to improve over direct reasoning.
-\emph{No Mastery} keeps validation but removes the mastery SOP: any tool that passes basic
-syntax and origin-case checks is exposed to the Solver on every case, with at most a coarse
-dataset-level rule. As an optional bound, \emph{All Tools Exposed} exposes every tool on every
-case regardless of validation; we treat this as a stress test rather than a main row because it
-is rarely used in practice.
+\paragraph{What this rules out.}
+Prior tool-creation methods deploy generated tools indiscriminately. The paired-skill
+design in Section~\ref{sec:method_mastery} predicts that gating tool invocation by
+retrieval of an applicability-encoding skill is what keeps tool usage selective.
+No Paired Mastery Skill is expected to keep or even increase tool-usage rate but reduce
+accuracy on benchmarks where naive tool exposure can hurt---MathVista is the canonical
+cautionary case.
 
-\paragraph{Expected interpretation.}
-No Mastery is expected to increase tool-usage rate but reduce accuracy or increase variance.
-This is the central motivation for the mastery design: many generated tools are useful only in
-a narrow input region, and indiscriminate exposure causes the Solver to invoke them on cases
-where direct reasoning was already sufficient, introducing unnecessary visual artifacts or
-intermediate steps. The MathVista cell is informative here: prior runs in the main paper show
-that naive tool exposure can hurt MathVista more than it helps, and we expect the No Mastery
-variant to reproduce that pattern. The Full vs. No Mastery comparison therefore tests whether
-mastery improves \emph{precision} rather than just increasing tool-use rate.
-
-\paragraph{Writing hook.}
-Mastery improves precision rather than simply increasing tool-use rate. The unconditional
-variant often calls tools on cases where direct reasoning is already sufficient, introducing
-visual artifacts or unnecessary intermediate steps.
-
-\subsection{No Persistence / Per-case Reflection}
+\subsection{No Persistence}
 \label{app:abl_persistence}
 
-\paragraph{Question.}
-Does storing reusable capabilities across cases matter, or is it enough to reflect and retry on
-each failed case independently?
+\paragraph{What is removed.}
+Capabilities promoted during one iteration are not stored in $\mathcal{C}$. The agent can
+still reflect on a case and immediately retry it with the generated capability, but the
+capability is discarded before the next case is processed, so no cross-case retrieval
+occurs.
 
-\paragraph{Variants.}
-\emph{Persistent Library} is the standard configuration: promoted skills and tools are stored
-in $\mathcal{C}$ and retrieved on later training and evaluation cases. \emph{Per-case
-Reflection} allows the agent to reflect on a failed attempt and immediately retry the
-\emph{same} case using the generated capability, but discards the capability afterwards so it
-is unavailable to any future case. In both variants, the AnalyzerDecider and Generator are
-otherwise identical; only the storage and retrieval interface is removed.
-
-\paragraph{Expected interpretation.}
-Per-case Reflection should help on the triggering case but provide little benefit on held-out
-cases, because each failure is repaired in isolation. The gap between Persistent Library and
-Per-case Reflection on held-out accuracy therefore measures the value of \emph{cross-case
-capability reuse}, not the value of reflection per se. ChartQA is the cleanest test: failures
-on chart questions form recurring families (stacked-bar boundary reading, multi-series
-selection, percentage versus absolute value), and the same generated skill should fix many
-held-out cases of the same family. If Persistent Library substantially outperforms Per-case
-Reflection on held-out ChartQA accuracy, the system's advantage comes from accumulating
-reusable capabilities rather than from per-case retry alone.
-
-\paragraph{Writing hook.}
-The goal of evolution is not to repair a single failed attempt, but to convert that failure
-into a reusable capability that future cases can retrieve.
-
-\subsection{Optional: Validation and Regression Filter}
-\label{app:abl_validation}
-
-This ablation tests whether the multi-stage validation pipeline that gates capability
-promotion is necessary, rather than which mechanism produces the capability in the first place.
-\emph{Full Validation} requires a generated tool to pass syntax checking, origin-case
-improvement (the tool must fix the triggering case), and a regression check over a buffer of
-previously-correct cases before mastery profiling begins. \emph{Origin-only} accepts a tool as
-soon as it fixes the triggering case, skipping the regression buffer. \emph{No Regression}
-keeps the syntax and origin checks but disables the prior-correct buffer.
-
-Origin-only is expected to produce higher training-set recovery but worse held-out accuracy
-because it admits tools that overfit the triggering case or harm visually similar but
-semantically different inputs. HRBench and V$^\star$ are the most informative benchmarks here
-because generated visual tools (cropping, zooming, masking) can easily overfit to one image
-region. We report this ablation as optional because the regression-buffer cost is the same
-order as one extra validation pass, and its main value is in preventing failure modes that
-appear only with larger or longer evolution runs than the main experiments use.
+\paragraph{What this rules out.}
+A retry-only account would predict that most of Full's gain comes from in-place retry on
+the triggering case rather than from cross-case reuse. If No Persistence matches Full on
+held-out accuracy, the library is a bookkeeping device with no inferential value. A gap
+shows that the system's advantage comes from accumulating capabilities that future cases
+can retrieve, not just from one more attempt at the triggering case. ChartQA is the
+cleanest test because failures there form recurring families (stacked-bar boundary
+reading, multi-series selection) that a single capability can fix across many held-out
+cases.
 
 \subsection{Sensitivity to Training Subset Size and Iteration Count}
 \label{app:abl_sensitivity}
 
-The main paper fixes $k{=}200$ training cases and $N{=}3$ evolution iterations. The
-sensitivity analysis in Appendix~\ref{app:results} (Figure~\ref{fig:k_sensitivity}) sweeps
-$k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ and reports ChartQA accuracy. We expect a monotone
-but quickly saturating curve: a small $k$ already exposes the most frequent failure families,
-and adding more training cases mostly contributes redundant capabilities that the persistence
-and validation filters merge or reject. A similar saturation is expected for $N$:
-$N{=}1$ misses failures that only appear after earlier capabilities reshape the trajectory,
-while $N{=}3$ and $N{=}5$ tend to produce comparable libraries because most remaining failures
-fall outside the in-distribution training subset. We treat the sensitivity sweep as a
-robustness check rather than a tuning study; the operating point is chosen to fit the
-per-benchmark budget rather than to maximize accuracy.
+The main paper fixes the training subset at 20\% of each benchmark's training split and
+runs $N{=}3$ evolution iterations. A sensitivity sweep over smaller fractions (e.g.\ 5\%,
+10\%) and over $N \in \{1, 3, 5\}$ tests how quickly the library saturates: a small subset
+should already expose the most frequent procedural / perceptual patterns, with diminishing
+returns as the subset grows; $N{=}1$ should miss capabilities that only surface after
+earlier ones reshape the trajectory, while $N{=}3$ and $N{=}5$ should produce comparable
+libraries. We treat this as a robustness check rather than a tuning study; the operating
+point is chosen to fit the per-benchmark budget.
 
 \subsection{Summary}
 \label{app:abl_summary}
 
-Read together, the four mechanism ablations are designed to triangulate the same claim from
-four different angles. Generic Skill rules out a pure prompt-engineering explanation;
-Text-only Diagnosis rules out a pure text-reflection explanation and supports the
-visual-diagnosis channel; No Mastery rules out an ``expose all generated tools'' explanation
-and supports applicability-bounded tool use; and No Persistence rules out a per-case retry
-explanation and supports cross-case capability accumulation. The expected pattern is that
-removing any one mechanism reduces held-out accuracy noticeably, but no single ablation
-collapses the system, which is consistent with the design view that the four mechanisms
-implement complementary aspects of capability evolution rather than redundant copies of the
-same underlying lever.
+Read together, the six mechanism ablations are designed to triangulate the same claim
+from six different angles. Generic Skill rules out a pure prompt-engineering explanation;
+Failure-Only Diagnosis rules out ``correct cases carry no signal''; Text-only Diagnosis
+rules out ``text reflection is enough'' and supports the visual-diagnosis channel;
+Single-Candidate rules out ``the first proposal is good enough'' and supports
+multi-candidate exploration; No Paired Mastery Skill rules out ``expose every generated
+tool'' and supports applicability-bounded deployment; and No Persistence rules out
+``per-case retry is enough'' and supports cross-case capability accumulation. The
+expected pattern is that removing any one mechanism reduces held-out accuracy noticeably,
+but no single ablation collapses the system---consistent with the design view that the
+six mechanisms implement complementary aspects of capability evolution rather than
+redundant copies of the same underlying lever.
 
 \paragraph{Practical diagnostic.}
 The mechanism ablations also suggest a practical rule of thumb for new task families. If
