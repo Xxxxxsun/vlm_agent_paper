@@ -340,8 +340,17 @@ and supports applicability-bounded tool use; and No Persistence rules out a per-
 explanation and supports cross-case capability accumulation. The expected pattern is that
 removing any one mechanism reduces held-out accuracy noticeably, but no single ablation
 collapses the system, which is consistent with the design view that the four mechanisms
-implement complementary aspects of failure-driven capability evolution rather than redundant
-copies of the same underlying lever.
+implement complementary aspects of capability evolution rather than redundant copies of the
+same underlying lever.
+
+\paragraph{Practical diagnostic.}
+The mechanism ablations also suggest a practical rule of thumb for new task families. If
+the bottleneck is procedural---visual evidence is present but the reasoning is weak---skill
+evolution is the lower-cost first choice; if a different view of the image is required
+before the evidence becomes accessible, tool evolution is necessary. A practitioner
+targeting a new benchmark can use a small pilot run (e.g.\ 5\% of the training split with
+$N{=}1$) to inspect which kinds of capabilities are generated and whether they transfer
+beyond the triggering examples.
 
 \section{Additional Results}
 \label{app:results}

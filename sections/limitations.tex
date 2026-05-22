@@ -1,0 +1,25 @@
+% ============================================================
+%  Limitations  (unnumbered; included after Conclusion via \section*)
+% ============================================================
+\label{sec:limitations}
+
+\paragraph{Short evolution horizon.}
+We report results at $N{=}3$ iterations; the evolution dynamics suggest gains plateau by
+$N{=}5$, but we have not evaluated whether longer runs (e.g.\ $N{>}10$) eventually overfit
+the training distribution.
+
+\paragraph{Tool quality ceiling.}
+Tool effectiveness is bounded by the backbone's Python coding ability. For benchmarks
+requiring specialised computer-vision operations beyond standard libraries (e.g.\ learned
+feature extractors), the Generator may fail to produce a working tool, limiting the
+perceptual gains.
+
+\paragraph{Benchmark scope.}
+We evaluate four visual-reasoning benchmarks plus GTA and the VTool-R1 / DeepEyes splits.
+Broader coverage (video QA, 3D spatial reasoning, medical imaging) is needed before strong
+generality claims about the cognitive / perceptual decision rule.
+
+\paragraph{API cost.}
+Each training case incurs roughly 15K tokens for the combined attempt, diagnosis,
+generation, and validation pass. While negligible compared with RL training, this cost
+should be accounted for when comparing training-free methods.
