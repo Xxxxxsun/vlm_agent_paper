@@ -244,12 +244,12 @@ algorithms of ReFocus~\citep{refocus_2025} or ZoomEye~\citep{zoomeye_2024}.
 % \end{table*}
 
 \paragraph{Online adaptation to distribution shift.}
-To simulate real online user traffic---where the task distribution shifts over time as
-different users and requests arrive---we replay a non-stationary stream that begins on one
-family (HRBench) and then drifts into mixtures dominated by MathVista, ChartQA, and
-finally a four-way mixed phase including V$^*$. The replay reuses completed per-case
-outputs, isolating the adaptation policy from the cost of regenerating capabilities
-online. We compare \emph{Direct} (no capabilities), \emph{Static} (capabilities evolved
+To simulate real online user traffic---where the task distribution grows and shifts over
+time as different users and requests arrive---we replay a 208-step non-stationary stream
+in which each phase introduces a new task family while keeping carry-over cases from
+earlier phases: starting with HRBench, then adding MathVista, ChartQA, and finally V$^*$
+as the new dominant family. The replay reuses completed per-case outputs, isolating the
+adaptation policy from the cost of regenerating capabilities online. We compare \emph{Direct} (no capabilities), \emph{Static} (capabilities evolved
 on the initial distribution only and never updated), \emph{Online adapt} (\sysname{}
 detects the shift and updates skills and tools on the new sub-stream), and \emph{Oracle}
 (capabilities pre-evolved on every family, an upper bound).
@@ -272,9 +272,10 @@ and \emph{Online adapt} recovers to $0.947$.
   \includegraphics[width=\columnwidth]{figures/distribution_shift_timeseries.pdf}
   \caption{%
     \textbf{Online adaptation under distribution shift (GPT-5.4, natural stream).}
-    Rolling accuracy for each policy along a 208-step stream that drifts from HRBench
-    through MathVista, ChartQA, and a four-way mix. \emph{Static} lags at each shift;
-    \emph{Online adapt} catches up to \emph{Oracle} within a small detection latency.
+    Rolling accuracy for each policy along the 208-step stream. Phase labels above the
+    plot mark the newly introduced family at each shift; earlier families remain present
+    in the mix. \emph{Static} lags at each shift; \emph{Online adapt} catches up to
+    \emph{Oracle} within a small detection latency.
   }
   \label{fig:distribution_shift}
 \end{figure}
