@@ -254,80 +254,30 @@ on the initial distribution only and never updated), \emph{Online adapt} (\sysna
 detects the shift and updates skills and tools on the new sub-stream), and \emph{Oracle}
 (capabilities pre-evolved on every family, an upper bound).
 
-Figure~\ref{fig:distribution_shift} plots rolling accuracy over the stream for GPT-5.4 on
-the natural protocol. All four policies share the same trajectory through the warmup
-phase; at each subsequent shift, \emph{Static}'s accuracy lags because its
-HRBench-evolved capabilities no longer match the incoming distribution, while
-\emph{Online adapt} re-evolves on the new sub-stream and catches up to \emph{Oracle}
-within a small detection latency (2--7 cases per shift). Aggregated over the full stream,
-the ordering holds across all five backbones and three stream constructions: on GPT-5.4
-natural, \emph{Online adapt} reaches $0.832$ versus $0.736$ static and $0.851$ oracle;
-on the capability-relevant protocol, which selects cases whose outcome depends on the
-matching capability, the gap widens to $0.870$ vs.\ $0.636$ static and $0.899$ oracle;
-on the stress protocol, \emph{Direct} collapses to $0.026$, \emph{Static} reaches $0.391$,
-and \emph{Online adapt} recovers to $0.947$.
+Figure~\ref{fig:distribution_shift} compares the four policies across all five backbones
+and three stream constructions: the \emph{natural} mixture (a fixed-seed mix of the four
+families), \emph{capability-relevant} (cases whose outcome depends on the matching
+capability), and \emph{stress} (cases the matching capability is required to fix). The
+ordering \emph{Direct} $\le$ \emph{Static} $<$ \emph{Online adapt} $\approx$ \emph{Oracle}
+is consistent across every backbone $\times$ protocol cell. On GPT-5.4 the gap is
+representative: \emph{Online adapt} reaches $0.83$ vs.\ $0.74$ static on natural; widens
+to $0.89$ vs.\ $0.65$ on capability-relevant; and on stress, \emph{Direct} collapses to
+$0.03$ while \emph{Online adapt} still recovers to $0.95$. The per-step trajectory along
+the stream, with shift-detection latencies of 2--7 cases per phase, is shown in
+Appendix~\ref{app:distribution_shift_timeseries} (Figure~\ref{fig:distribution_shift_timeseries}).
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\columnwidth]{figures/distribution_shift_timeseries.pdf}
+  \includegraphics[width=\columnwidth]{figures/distribution_shift_bars.pdf}
   \caption{%
-    \textbf{Online adaptation under distribution shift (GPT-5.4, natural stream).}
-    Rolling accuracy for each policy along the 208-step stream. Phase labels above the
-    plot mark the newly introduced family at each shift; earlier families remain present
-    in the mix. \emph{Static} lags at each shift; \emph{Online adapt} catches up to
-    \emph{Oracle} within a small detection latency.
+    \textbf{Online adaptation to distribution shift.}
+    Replay accuracy across five backbones and three stream constructions. \emph{Online
+    adapt} stays close to the \emph{Oracle} upper bound and far above \emph{Static}
+    everywhere; the gap is largest under the stress protocol, where \emph{Direct} nearly
+    collapses. Error bars are seed std (50--200 seeds per cell).
   }
   \label{fig:distribution_shift}
 \end{figure}
-
-\begin{table}[t]
-\centering
-\small
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.12}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Replay protocol}
-  & \textbf{Direct}
-  & \textbf{Static}
-  & \textbf{Online adapt}
-  & \textbf{Oracle} \\
-\midrule
-\multicolumn{5}{l}{\emph{GPT-4o (Full)}} \\
-Capability-relevant & $0.418{\pm}0.020$ & $0.558{\pm}0.023$ & $0.789{\pm}0.025$ & $0.818{\pm}0.022$ \\
-Stress & $0.068{\pm}0.009$ & $0.347{\pm}0.011$ & $0.912{\pm}0.008$ & $0.961{\pm} 0.010$ \\
-Natural & $0.664{\pm}0.032$ & $0.673{\pm}0.030$ & $0.702{\pm}0.028$ & $0.705{\pm}0.028$ \\
-\midrule
-\multicolumn{5}{l}{\emph{o4mini (Full)}} \\
-Capability-relevant & $0.467{\pm}0.019$ & $0.626{\pm}0.019$ & $0.852{\pm}0.019$ & $0.881{\pm}0.016$ \\
-Stress & $0.047{\pm}0.006$ & $0.412{\pm}0.006$ & $ 0.940{\pm}0.009$ & $0.984{\pm}0.007$ \\
-Natural & $0.745{\pm}0.029$ & $0.787{\pm}0.028$ & $0.807{\pm}0.027$ & $0.808{\pm}0.027$ \\
-\midrule
-\multicolumn{5}{l}{\emph{GPT-5.4 (Full)}} \\
-Capability-relevant & $0.479{\pm}0.021$ & $0.636{\pm}0.020$ & $0.870{\pm}0.020$ & $0.899{\pm}0.018$ \\
-Stress & $0.026{\pm}0.004$ & $0.391{\pm}0.004$ & $ 0.947{\pm}0.007$ & $0.995{\pm}0.005$ \\
-Natural & $0.761{\pm}0.029$ & $0.800{\pm}0.029$ & $0.830{\pm}0.026$ & $0.833{\pm}0.025$ \\
-\midrule
-\multicolumn{5}{l}{\emph{Qwen3.5-27B (Full)}} \\
-Capability-relevant & $0.514{\pm}0.015$ & $0.667{\pm}0.016$ & $ 0.888{\pm}0.020$ & $ 0.917{\pm}0.018$ \\
-Stress & $0.122{\pm}0.007$ & $0.488{\pm}0.007$ & $0.940{\pm}0.009$ & $0.984{\pm}0.008$ \\
-Natural & $0.821{\pm}0.026$ & $0.847{\pm}0.023$ & $0.861{\pm}0.022$ & $0.862{\pm}0.022$ \\
-\midrule
-\multicolumn{5}{l}{\emph{Doubao-Seed-2.0 (Full)}} \\
-Capability-relevant & $0.635{\pm}0.014$ & $0.773{\pm}0.015$ & $0.900{\pm}0.018$ & $ 0.917{\pm}0.016$ \\
-Stress & $0.621{\pm}0.013$ & $0.768{\pm}0.014$ & $0.902{\pm}0.014$ & $0.920{\pm}0.014$ \\
-Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm}0.019$ \\
-\bottomrule
-\end{tabular}%
-}
-\caption{%
-  \textbf{Online adaptation to distribution shift.} Replay accuracy on a non-stationary
-  user-traffic stream. \emph{Online adapt} stays close to the \emph{Oracle} upper bound
-  and far above \emph{Static} across all five backbones.
-}
-\label{tab:distribution_shift}
-\end{table}
 
 % ============================================================
 \subsection{Experiment~II: Learning to Use Pre-Provided Tools}

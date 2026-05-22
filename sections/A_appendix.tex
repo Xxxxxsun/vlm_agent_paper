@@ -372,6 +372,75 @@ $k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.
 
 % TODO: Insert breakdown of accuracy gains by chart type (bar, line, pie, scatter).
 
+\subsection{Distribution-Shift Adaptation: Time Series and Aggregates}
+\label{app:distribution_shift_timeseries}
+
+Figure~\ref{fig:distribution_shift} in the main paper aggregates the distribution-shift
+experiment across backbones and stream constructions. This appendix shows the per-step
+trajectory along the stream (Figure~\ref{fig:distribution_shift_timeseries}) and the
+full per-backbone numerical aggregates (Table~\ref{tab:distribution_shift}).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/distribution_shift_timeseries.pdf}
+  \caption{%
+    \textbf{Rolling accuracy along the natural stream (GPT-5.4).}
+    Phase labels above the plot mark the newly introduced family at each shift; earlier
+    families remain present in the mix. \emph{Static} lags at each shift; \emph{Online
+    adapt} catches up to \emph{Oracle} within a 2--7 case detection latency.
+  }
+  \label{fig:distribution_shift_timeseries}
+\end{figure}
+
+\begin{table}[ht]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Replay protocol}
+  & \textbf{Direct}
+  & \textbf{Static}
+  & \textbf{Online adapt}
+  & \textbf{Oracle} \\
+\midrule
+\multicolumn{5}{l}{\emph{GPT-4o (Full)}} \\
+Capability-relevant & $0.418{\pm}0.020$ & $0.558{\pm}0.023$ & $0.789{\pm}0.025$ & $0.818{\pm}0.022$ \\
+Stress & $0.068{\pm}0.009$ & $0.347{\pm}0.011$ & $0.912{\pm}0.008$ & $0.961{\pm} 0.010$ \\
+Natural & $0.664{\pm}0.032$ & $0.673{\pm}0.030$ & $0.702{\pm}0.028$ & $0.705{\pm}0.028$ \\
+\midrule
+\multicolumn{5}{l}{\emph{o4mini (Full)}} \\
+Capability-relevant & $0.467{\pm}0.019$ & $0.626{\pm}0.019$ & $0.852{\pm}0.019$ & $0.881{\pm}0.016$ \\
+Stress & $0.047{\pm}0.006$ & $0.412{\pm}0.006$ & $ 0.940{\pm}0.009$ & $0.984{\pm}0.007$ \\
+Natural & $0.745{\pm}0.029$ & $0.787{\pm}0.028$ & $0.807{\pm}0.027$ & $0.808{\pm}0.027$ \\
+\midrule
+\multicolumn{5}{l}{\emph{GPT-5.4 (Full)}} \\
+Capability-relevant & $0.479{\pm}0.021$ & $0.636{\pm}0.020$ & $0.870{\pm}0.020$ & $0.899{\pm}0.018$ \\
+Stress & $0.026{\pm}0.004$ & $0.391{\pm}0.004$ & $ 0.947{\pm}0.007$ & $0.995{\pm}0.005$ \\
+Natural & $0.761{\pm}0.029$ & $0.800{\pm}0.029$ & $0.830{\pm}0.026$ & $0.833{\pm}0.025$ \\
+\midrule
+\multicolumn{5}{l}{\emph{Qwen3.5-27B (Full)}} \\
+Capability-relevant & $0.514{\pm}0.015$ & $0.667{\pm}0.016$ & $ 0.888{\pm}0.020$ & $ 0.917{\pm}0.018$ \\
+Stress & $0.122{\pm}0.007$ & $0.488{\pm}0.007$ & $0.940{\pm}0.009$ & $0.984{\pm}0.008$ \\
+Natural & $0.821{\pm}0.026$ & $0.847{\pm}0.023$ & $0.861{\pm}0.022$ & $0.862{\pm}0.022$ \\
+\midrule
+\multicolumn{5}{l}{\emph{Doubao-Seed-2.0 (Full)}} \\
+Capability-relevant & $0.635{\pm}0.014$ & $0.773{\pm}0.015$ & $0.900{\pm}0.018$ & $ 0.917{\pm}0.016$ \\
+Stress & $0.621{\pm}0.013$ & $0.768{\pm}0.014$ & $0.902{\pm}0.014$ & $0.920{\pm}0.014$ \\
+Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm}0.019$ \\
+\bottomrule
+\end{tabular}%
+}
+\caption{%
+  \textbf{Per-backbone aggregates for the distribution-shift experiment.}
+  Mean accuracy with seed std (50--200 seeds per cell). Bars in
+  Figure~\ref{fig:distribution_shift} are computed from this table.
+}
+\label{tab:distribution_shift}
+\end{table}
+
 \section{Qualitative Analysis of Evolved Capabilities}
 \label{app:capability_cases}
 
