@@ -318,53 +318,25 @@ Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm
 \label{sec:exp2}
 % ============================================================
 
-\paragraph{Motivation.}
-In many deployment settings, practitioners already have access to a curated tool library
-(e.g.\ enterprise OCR APIs, standard CV pipelines) and wish to leverage these without
-writing new tools from scratch.
-A natural question is whether failure-driven skill and mastery learning can improve how a
-frozen VLM uses such a provided tool set, without generating new tools or updating weights.
-Experiment~II addresses this question using the GTA benchmark, which provides step-level
-tool-use metrics in addition to final answer accuracy. Because the current table compares only
-the base agent and \sysname{} Mode~B, we use it to measure the net effect of mastery-guided
-capability use; a separate unconditional-tool baseline would be needed to isolate naive tool
-overuse directly.
-
 \paragraph{Results on GTA.}
-Table~\ref{tab:gta_detailed} compares \emph{Base Agent} and \emph{Skill Evolution
-(Ours)} across three foundation models on both step-level and final-answer metrics.
-\emph{Base Agent} invokes the frozen VLM directly with no evolved capabilities.
-\emph{Skill Evolution (Ours)} applies \sysname{} Mode~B: the mastery profiling phase
-runs on the provided GTA tool set, learning per-tool applicability SOPs, and skill
-evolution proceeds in parallel to refine task-level reasoning strategies.
+Table~\ref{tab:gta_detailed} compares \emph{Base Agent} (zero-shot VLM with the provided
+GTA tools exposed) to \sysname{} Mode~B (skills $+$ mastery learned on the training set,
+no new tool generation) across three backbones. Mode~B improves all three step-level
+metrics on every backbone: \textbf{InstAcc}, \textbf{ToolAcc}, and \textbf{ArgAcc} each
+gain double-digit points on GPT-5.4 ($+27$, $+33$, $+27$) and Doubao-Seed-2.0 ($+16$,
+$+19$, $+16$), and gain $+5$ on GPT-4o. End-to-end \textbf{AnsAcc} also improves on the
+two stronger backbones (GPT-5.4 $+2.5$, Doubao $+4.9$). The only regression is GPT-4o
+AnsAcc ($-8.2$): the evolved mastery SOP recommends tool invocation in a broader set of
+conditions than GPT-4o can reliably execute, leading it to invoke tools on cases it would
+have answered correctly without them. This is consistent with the Exp~I observation that
+evolution gains depend on the backbone's instruction-following capacity.
 
-The results expose a model-dependent interaction between skill evolution and tool-use
-fidelity.
-GPT-5.4 and Gemini3Flash both improve on all four metrics: GPT-5.4 gains
-$+3.1$ on \textbf{AnsAcc} (72.73 $\to$ 76.03) and Gemini gains $+2.5$ (66.56 $\to$ 69.06),
-accompanied by consistent improvements in \textbf{ToolAcc}, \textbf{ArgAcc}, and
-\textbf{InstAcc}.
-The step-level gains indicate that the evolved skills teach these models \emph{when} to
-invoke tools and how to formulate arguments precisely, reducing both missed invocations
-and over-invocation on unsuitable inputs.
-
-GPT-4o, by contrast, shows a slight regression in \textbf{AnsAcc} (62.81 $\to$ 61.16)
-despite comparable \textbf{ToolAcc}.
-Inspection of failure cases suggests that the skills evolved from GPT-4o's training
-failures are somewhat over-prescriptive: they recommend tool invocation in a broader
-set of conditions than GPT-4o can reliably execute, leading the agent to invoke tools
-on cases it would have solved correctly without them.
-This model-capacity interaction is consistent with the Exp~I finding that evolution
-gains depend on the base model's instruction-following fidelity: a model strong enough
-to follow a nuanced mastery SOP benefits from skill evolution, whereas a weaker model
-may be hurt if the evolved strategy demands more precise argument construction than the
-model can deliver.
-
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.15}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llcccc}
 \toprule
 \textbf{Model} & \textbf{Method}
@@ -391,61 +363,57 @@ model can deliver.
   & Skill Evolution (Ours) & 86.4 & 61.3 & 57.7 & 81.8 \\
 
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \caption{%
-  \textbf{Exp~II: Learning to use pre-provided tools on GTA.}
-  We report three of GTA's step-by-step metrics (\textbf{InstAcc}: Instruction-Following;
-  \textbf{ToolAcc}: Tool Selection; \textbf{ArgAcc}: Argument Prediction) and the
-  end-to-end \textbf{AnsAcc} (Answer Accuracy). GTA's \textbf{SummAcc} requires per-step
-  summary scoring and is not reported.
-  \emph{Skill Evolution (Ours)} applies \sysname{} Mode~B, which learns per-tool mastery SOPs
-  from the training set without generating new tools.
+  \textbf{Learning to use pre-provided tools on GTA.}
+  \sysname{} Mode~B (skills $+$ mastery only; no new tool generation) improves all
+  step-level metrics on every backbone, and improves end-to-end answer accuracy on the
+  two stronger backbones.
 }
 \label{tab:gta_detailed}
-\end{table*}
+\end{table}
 
 \paragraph{Controlled tool-policy analysis.}
-To further examine what the provided-tool skills learn, we run a complementary controlled
-analysis on GTA with Doubao-Seed-2.0-Pro. These runs are not a replacement for the main
-multi-model comparison in Table~\ref{tab:gta_detailed}; they isolate how the learned policy
-changes when either the tool abstraction or the task environment changes.
-Table~\ref{tab:gta_controlled} summarizes two findings from the report.
-First, when the OCR+Calculator environment is fixed, stronger composite tools compress the
-policy: atomic tools improve over direct answering but use an extract-then-compute chain, while
-\texttt{VisualArithmeticSolver} reaches higher accuracy with a one-call policy.
-Second, when the same \texttt{OCR} tool appears in different environments, its role changes:
-in OCR+Calc it feeds arithmetic, while in OCR+Search it feeds external lookup.
+Table~\ref{tab:gta_controlled} runs a complementary controlled study on GTA with
+Doubao-Seed-2.0-Pro to inspect what the learned policy actually does when either the tool
+abstraction or the task environment changes. Two findings stand out. First, fixing the
+environment to OCR$+$Calculator, stronger composite tools compress the policy: atomic
+tools reach $86.7$ via an \texttt{OCR}$\to$\texttt{Calculator} chain ($22/30$ cases),
+while \texttt{VisualArithmeticSolver} reaches $90.0$ with a one-call policy ($30/30$).
+Second, the same \texttt{OCR} tool plays different roles in different environments: in
+OCR$+$Calc it feeds arithmetic (\texttt{OCR}$\to$\texttt{Calculator}, $19/20$), while in
+OCR$+$Search it feeds external lookup
+(\texttt{OCR}$\to$\texttt{Search}$\to$\texttt{OCR}$\to$\texttt{Search}, $20/20$).
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
+\small
+\setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.15}
-\begin{tabular}{llccccp{0.27\textwidth}}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llcccc}
 \toprule
 \textbf{Study} & \textbf{Condition} & \textbf{Cases} & \textbf{Acc.}
-& \textbf{Tool use} & \textbf{Avg. calls} & \textbf{Dominant downstream behavior} \\
+& \textbf{Tool use} & \textbf{Avg. calls} \\
 \midrule
-Tool strength & Direct, no tools & 30 & 83.3 & 0.0 & 0.00 & \texttt{<none>} \\
-Tool strength & Atomic OCR+Calc tools & 30 & 86.7 & 100.0 & 1.83
-& \texttt{OCR -> Calculator} in 22/30 cases \\
-Tool strength & Composite visual-arithmetic tool & 30 & 90.0 & 100.0 & 1.00
-& \texttt{VisualArithmeticSolver} in 30/30 cases \\
+Tool strength & Direct, no tools & 30 & 83.3 & 0.0 & 0.00 \\
+Tool strength & Atomic OCR+Calc & 30 & 86.7 & 100.0 & 1.83 \\
+Tool strength & Composite VAS & 30 & 90.0 & 100.0 & 1.00 \\
 \midrule
-Same OCR tool & OCR+Calc environment & 20 & 80.0 & 100.0 & 2.20
-& \texttt{OCR -> Calculator} in 19/20 cases \\
-Same OCR tool & OCR+Search environment & 20 & 85.0 & 100.0 & 2.35
-& \texttt{OCR -> Search -> OCR -> Search} in 20/20 cases \\
+OCR role & OCR+Calc env & 20 & 80.0 & 100.0 & 2.20 \\
+OCR role & OCR+Search env & 20 & 85.0 & 100.0 & 2.35 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \caption{%
-  \textbf{Supplementary controlled GTA analysis for Exp~II.}
-  Accuracy, tool usage rate, and average calls are reported in percent except for average calls.
-  The first block fixes the task environment and changes tool strength; the second fixes the
-  shared \texttt{OCR} tool and changes the downstream environment.
+  \textbf{Controlled tool-policy analysis on GTA (Doubao-Seed-2.0-Pro).}
+  Top: stronger composite tools compress the policy at higher accuracy. Bottom: the same
+  \texttt{OCR} tool exhibits different downstream behavior in different environments
+  (dominant call chains discussed in prose). Acc./Tool use in \%; Avg. calls is a count.
 }
 \label{tab:gta_controlled}
-\end{table*}
+\end{table}
 
 
 % TODO: Insert MIRA subset results when available.
