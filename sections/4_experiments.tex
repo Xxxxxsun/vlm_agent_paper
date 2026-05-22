@@ -166,7 +166,11 @@ algorithms of ReFocus~\citep{refocus_2025} or ZoomEye~\citep{zoomeye_2024}.
 
 \bottomrule
 \end{tabular}
-\caption{\textbf{Exp~I: Autonomous evolution from scratch.}}
+\caption{%
+  \textbf{Autonomous evolution from scratch.} Accuracy across five VLM backbones and four
+  benchmarks. The Full \sysname{} configuration improves over the zero-shot \emph{None}
+  baseline on all 20 model--benchmark cells.
+}
 \label{tab:evolution_full}
 \end{table*}
 
@@ -301,7 +305,11 @@ Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm
 \bottomrule
 \end{tabular}%
 }
-\caption{\textbf{Exp~I: Online adaptation to distribution shift.}}
+\caption{%
+  \textbf{Online adaptation to distribution shift.} Replay accuracy on a non-stationary
+  user-traffic stream. \emph{Online adapt} stays close to the \emph{Oracle} upper bound
+  and far above \emph{Static} across all five backbones.
+}
 \label{tab:distribution_shift}
 \end{table}
 
