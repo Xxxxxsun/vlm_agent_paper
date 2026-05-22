@@ -203,7 +203,7 @@ itself the signature of the visual-diagnosis claim.
 \paragraph{What is removed.}
 The Generator produces a single capability proposal per iteration (the same setting as
 typical generate-then-validate tool-creation methods such as
-CREATOR~\citep{tang2023creator} and LATM~\citep{cai2024latm}). The validate-and-promote
+CREATOR~\citep{DBLP:conf/emnlp/QianH0Q0J23} and LATM~\citep{DBLP:conf/iclr/Cai00CZ24}). The validate-and-promote
 step (Eq.~\ref{eq:selection}) collapses to a binary accept/reject of that single
 candidate against the training set.
 
@@ -400,7 +400,7 @@ Case A: Structured-image editing
 & A skill that instructs the solver to isolate the relevant chart/table structure, plus a tool
 that highlights, boxes, or masks visual evidence.
 & ReFocus uses Python visual edits as chain-of-thought for structured image understanding
-~\citep{refocus_2025}.
+~\citep{DBLP:conf/icml/FuLYCLY0FZ25}.
 & \sysname{} can generate a reusable visual-editing capability from failure, rather than relying
 on a fixed visual-editing interface. \\
 \midrule
@@ -408,7 +408,7 @@ Case B: High-resolution visual search
 & A skill that decomposes the question into target-location cues, plus a tool that searches or
 zooms into candidate regions.
 & ZoomEye performs training-free tree-based image exploration over zoomed sub-regions
-~\citep{zoomeye_2024}.
+~\citep{DBLP:conf/emnlp/ShenZZXZZY25}.
 & \sysname{} can generate a local coarse-to-fine search capability without being given ZoomEye as
 a predefined module. \\
 \midrule
@@ -430,7 +430,7 @@ triggering failure.
 \subsection{Case A: ReFocus-Style Skill and Tool for Structured Images}
 \label{app:refocus_style}
 
-ReFocus~\citep{refocus_2025} proposes visual editing as a form of chain-of-thought for
+ReFocus~\citep{DBLP:conf/icml/FuLYCLY0FZ25} proposes visual editing as a form of chain-of-thought for
 structured image understanding. It asks an MLLM to generate Python code that edits the image,
 including drawing boxes, highlighting relevant regions, and masking distractors. A \sysname{}
 case belongs in this category when the generated capability explicitly changes the visual input
@@ -505,7 +505,7 @@ file path, and the answer before and after using the capability.
 \subsection{Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}
 \label{app:zoomeye_style}
 
-ZoomEye~\citep{zoomeye_2024} addresses the loss of fine visual detail by treating image
+ZoomEye~\citep{DBLP:conf/emnlp/ShenZZXZZY25} addresses the loss of fine visual detail by treating image
 understanding as a tree-based exploration process. The full image is the root node, zoomed image
 regions are child nodes, and the model searches over promising regions until it finds the visual
 evidence needed to answer. A \sysname{} case belongs in this category when the generated
