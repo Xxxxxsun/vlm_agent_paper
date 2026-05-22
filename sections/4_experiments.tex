@@ -247,22 +247,36 @@ algorithms of ReFocus~\citep{refocus_2025} or ZoomEye~\citep{zoomeye_2024}.
 To simulate real online user traffic---where the task distribution shifts over time as
 different users and requests arrive---we replay a non-stationary stream that begins on one
 family (HRBench) and then drifts into mixtures dominated by MathVista, ChartQA, and
-finally V$^*$. The replay reuses completed per-case outputs, isolating the adaptation
-policy from the cost of regenerating capabilities online. We compare \emph{Direct} (no
-capabilities), \emph{Static} (capabilities evolved on the initial distribution only and
-never updated), \emph{Online adapt} (\sysname{} detects the shift and updates skills and
-tools on the new sub-stream), and \emph{Oracle} (capabilities pre-evolved on every family,
-an upper bound), each on three stream constructions: \emph{Capability-relevant} (cases
-whose outcome depends on the matching capability), \emph{Stress} (cases the matching
-capability fixes), and \emph{Natural} (fixed-seed mixture).
+finally a four-way mixed phase including V$^*$. The replay reuses completed per-case
+outputs, isolating the adaptation policy from the cost of regenerating capabilities
+online. We compare \emph{Direct} (no capabilities), \emph{Static} (capabilities evolved
+on the initial distribution only and never updated), \emph{Online adapt} (\sysname{}
+detects the shift and updates skills and tools on the new sub-stream), and \emph{Oracle}
+(capabilities pre-evolved on every family, an upper bound).
 
-Table~\ref{tab:distribution_shift} shows \emph{Online adapt} consistently lands closer to
-\emph{Oracle} than to \emph{Static}. On GPT-5.4 capability-relevant it reaches $0.870$
-versus $0.636$ static and $0.899$ oracle; on stress, \emph{Direct} collapses to $0.026$,
-\emph{Static} reaches $0.391$, and \emph{Online adapt} recovers to $0.947$. On the natural
-mix---where many cases do not require a newly-evolved capability---the gain is smaller but
-still positive ($0.830$ vs.\ $0.800$ static). The other four backbones follow the same
-pattern.
+Figure~\ref{fig:distribution_shift} plots rolling accuracy over the stream for GPT-5.4 on
+the capability-relevant protocol. \emph{Static} matches \emph{Oracle} through the warmup
+phase but collapses each time the distribution shifts. \emph{Online adapt} closes most of
+the gap within a small detection latency (typically 2--7 cases per shift) and tracks
+\emph{Oracle} for the remainder of each phase. Aggregated over the full stream, the
+ordering holds across all five backbones and three stream constructions: on GPT-5.4
+capability-relevant, \emph{Online adapt} reaches $0.870$ versus $0.636$ static and $0.899$
+oracle; on stress, \emph{Direct} collapses to $0.026$, \emph{Static} reaches $0.391$, and
+\emph{Online adapt} recovers to $0.947$; on the natural mix the gain shrinks but remains
+positive ($0.830$ vs.\ $0.800$ static).
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/distribution_shift_timeseries.pdf}
+  \caption{%
+    \textbf{Online adaptation under distribution shift (GPT-5.4, capability-relevant).}
+    Rolling accuracy along the stream for each policy. Shaded bands mark the four stream
+    phases. \emph{Static} matches the oracle in the warmup phase but collapses at each
+    shift; \emph{Online adapt} recovers within a short detection latency and tracks the
+    oracle for the remainder of each phase.
+  }
+  \label{fig:distribution_shift}
+\end{figure}
 
 \begin{table}[t]
 \centering
