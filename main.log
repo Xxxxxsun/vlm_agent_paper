@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  22 MAY 2026 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  22 MAY 2026 16:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1288,14 +1288,14 @@ File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
 (pdftex.def)             Requested size: 455.24411pt x 247.31961pt.
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 52
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 58
 .
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.95pt on input line 52.
+(Font)              scaled to size 10.95pt on input line 58.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1303,15 +1303,15 @@ Package microtype Info: Loading generic protrusion settings for font family
  [3 <./figures/method.pdf>]) (./sections/4_experiments.tex [4]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 112.
+
+Underfull \vbox (badness 1014) has occurred while \output is active []
+
  [5]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 414.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 
 Underfull \hbox (badness 2103) in paragraph at lines 441--446
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
@@ -1334,11 +1334,13 @@ Underfull \hbox (badness 1077) in paragraph at lines 194--200
 \T1/ptm/m/n/10 (+20) Yu. 2025.  [][]Deep-Eyes: In-cen-tiviz-ing ``think-ing
  []
 
-) [9] (./sections/A_appendix.tex
+[9]) [10
+
+] (./sections/A_appendix.tex
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10
+[11
 
 ]
 Underfull \hbox (badness 2027) in paragraph at lines 174--176
@@ -1357,7 +1359,7 @@ Underfull \hbox (badness 1668) in paragraph at lines 188--198
 \T1/ptm/m/n/10.95 (+20) are them-selves ex-pressed as natural-language
  []
 
-[11]
+[12]
 Underfull \hbox (badness 4024) in paragraph at lines 264--267
  []\T1/ptm/b/n/10.95 (+20) Writing hook.[] \T1/ptm/m/n/10.95 (+20) Mas-tery im-
 proves pre-ci-sion
@@ -1369,7 +1371,7 @@ Underfull \hbox (badness 1527) in paragraph at lines 272--274
 usable ca-pa-bil-i-ties
  []
 
-[12]
+[13]
 Underfull \hbox (badness 1845) in paragraph at lines 309--316
 []\T1/ptm/m/n/10.95 (+20) Origin-only is ex-pected to pro-duce higher
  []
@@ -1386,7 +1388,7 @@ Underfull \hbox (badness 1082) in paragraph at lines 320--331
 tm/m/n/10.95 (+20) evo-lu-tion it-er-a-tions. The sen-si-tiv-
  []
 
-[13]
+[14]
 Underfull \hbox (badness 6493) in paragraph at lines 396--398
 []|\T1/ptm/m/n/9 (+20) A skill that in-structs the
  []
@@ -1428,18 +1430,18 @@ Underfull \hbox (badness 2158) in paragraph at lines 408--410
 
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 7.0pt on input line 445.
-[14] [15]
+[15] [16]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
 61.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-[16])
+[17])
 
 Package lineno Warning: Linenumber reference failed, 
 (lineno)                rerun to get it right.
 
-[17
+[18
 
 ] (./main.aux)
 
@@ -1449,10 +1451,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 8D870CB0A373206E2E122BB10A229533;6765.
  ) 
 Here is how much of TeX's memory you used:
- 36690 strings out of 478994
- 704896 string characters out of 5858184
- 1211011 words of memory out of 5000000
- 52506 multiletter control sequences out of 15000+600000
+ 36695 strings out of 478994
+ 704947 string characters out of 5858184
+ 1211015 words of memory out of 5000000
+ 52508 multiletter control sequences out of 15000+600000
  550495 words of font info for 610 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,15n,108p,982b,1626s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1478,10 +1480,10 @@ st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on main.pdf (17 pages, 4884955 bytes).
+Output written on main.pdf (18 pages, 4889329 bytes).
 PDF statistics:
- 973 PDF objects out of 1000 (max. 8388607)
- 761 compressed objects within 8 object streams
- 265 named destinations out of 1000 (max. 500000)
+ 979 PDF objects out of 1000 (max. 8388607)
+ 766 compressed objects within 8 object streams
+ 268 named destinations out of 1000 (max. 500000)
  115631 words of extra memory for PDF output out of 128383 (max. 10000000)
 
