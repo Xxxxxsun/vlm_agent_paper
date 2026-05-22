@@ -255,25 +255,26 @@ detects the shift and updates skills and tools on the new sub-stream), and \emph
 (capabilities pre-evolved on every family, an upper bound).
 
 Figure~\ref{fig:distribution_shift} plots rolling accuracy over the stream for GPT-5.4 on
-the capability-relevant protocol. \emph{Static} matches \emph{Oracle} through the warmup
-phase but collapses each time the distribution shifts. \emph{Online adapt} closes most of
-the gap within a small detection latency (typically 2--7 cases per shift) and tracks
-\emph{Oracle} for the remainder of each phase. Aggregated over the full stream, the
-ordering holds across all five backbones and three stream constructions: on GPT-5.4
-capability-relevant, \emph{Online adapt} reaches $0.870$ versus $0.636$ static and $0.899$
-oracle; on stress, \emph{Direct} collapses to $0.026$, \emph{Static} reaches $0.391$, and
-\emph{Online adapt} recovers to $0.947$; on the natural mix the gain shrinks but remains
-positive ($0.830$ vs.\ $0.800$ static).
+the natural protocol. All four policies share the same trajectory through the warmup
+phase; at each subsequent shift, \emph{Static}'s accuracy lags because its
+HRBench-evolved capabilities no longer match the incoming distribution, while
+\emph{Online adapt} re-evolves on the new sub-stream and catches up to \emph{Oracle}
+within a small detection latency (2--7 cases per shift). Aggregated over the full stream,
+the ordering holds across all five backbones and three stream constructions: on GPT-5.4
+natural, \emph{Online adapt} reaches $0.832$ versus $0.736$ static and $0.851$ oracle;
+on the capability-relevant protocol, which selects cases whose outcome depends on the
+matching capability, the gap widens to $0.870$ vs.\ $0.636$ static and $0.899$ oracle;
+on the stress protocol, \emph{Direct} collapses to $0.026$, \emph{Static} reaches $0.391$,
+and \emph{Online adapt} recovers to $0.947$.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{figures/distribution_shift_timeseries.pdf}
   \caption{%
-    \textbf{Online adaptation under distribution shift (GPT-5.4, capability-relevant).}
-    Rolling accuracy along the stream for each policy. Shaded bands mark the four stream
-    phases. \emph{Static} matches the oracle in the warmup phase but collapses at each
-    shift; \emph{Online adapt} recovers within a short detection latency and tracks the
-    oracle for the remainder of each phase.
+    \textbf{Online adaptation under distribution shift (GPT-5.4, natural stream).}
+    Rolling accuracy for each policy along a 208-step stream that drifts from HRBench
+    through MathVista, ChartQA, and a four-way mix. \emph{Static} lags at each shift;
+    \emph{Online adapt} catches up to \emph{Oracle} within a small detection latency.
   }
   \label{fig:distribution_shift}
 \end{figure}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  22 MAY 2026 17:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  22 MAY 2026 17:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1313,13 +1313,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
-ut line 270.
+ut line 272.
 (pdftex.def)             Requested size: 219.08614pt x 133.0674pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [6 <./figures/distribution_shift_timeseries.pdf>]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 428.
+(Font)              scaled to size 10.0pt on input line 429.
 
-Underfull \hbox (badness 2103) in paragraph at lines 455--460
+Underfull \hbox (badness 2103) in paragraph at lines 456--461
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
 (+20) On V$[]$ and
  []
@@ -1442,18 +1445,26 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
  (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-[17]) [18
+[17])
+
+Package lineno Warning: Linenumber reference failed, 
+(lineno)                rerun to get it right.
+
+[18
 
 ] (./main.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 8D870CB0A373206E2E122BB10A229533;6765.
  ) 
 Here is how much of TeX's memory you used:
  36722 strings out of 478994
- 705448 string characters out of 5858184
+ 705439 string characters out of 5858184
  1211611 words of memory out of 5000000
  52516 multiletter control sequences out of 15000+600000
- 551636 words of font info for 622 fonts, out of 8000000 for 9000
+ 551538 words of font info for 622 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,15n,108p,982b,1626s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
@@ -1478,7 +1489,7 @@ st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on main.pdf (18 pages, 4904591 bytes).
+Output written on main.pdf (18 pages, 4905188 bytes).
 PDF statistics:
  1026 PDF objects out of 1200 (max. 8388607)
  776 compressed objects within 8 object streams
