@@ -18,18 +18,24 @@
 \subsection{Problem Formulation}
 \label{sec:method_formulation}
 
-Let $\mathcal{D}_{\text{train}} = \{(x_i, y_i, \mathbf{v}_i)\}_{i=1}^{k}$ denote a small training
-subset of $k$ cases, where $x_i$ is the question, $y_i$ the ground-truth answer, and $\mathbf{v}_i$
-the associated visual input (one or more images).
-Let $\pi_\theta$ be a frozen VLM backbone (no gradient updates permitted).
-We define a capability set $\mathcal{C} = \{\mathcal{S}, \mathcal{T}\}$, where
-$\mathcal{S}$ is a library of \emph{skills} (structured reasoning SOPs) and
-$\mathcal{T}$ is a library of \emph{tools} (executable Python programs).
-An agent $f_{\mathcal{C}}$ operates by retrieving relevant capabilities from $\mathcal{C}$,
-applying them during problem solving, and invoking $\pi_\theta$ for reasoning.
-Our goal is to learn $\mathcal{C}$ from $\mathcal{D}_{\text{train}}$ to maximise performance on a
-held-out validation set $\mathcal{D}_{\text{val}}$, subject to the constraint
-$\nabla_\theta = 0$ (no weight updates).
+Let $\mathcal{D}_{\text{train}} = \{(x_i, y_i, \mathbf{v}_i)\}_{i=1}^{k}$ denote a small
+training subset of $k$ cases, where $x_i$ is the question, $y_i$ the ground-truth answer,
+and $\mathbf{v}_i$ the associated visual input (one or more images). Let $\pi_\theta$ be a
+frozen VLM backbone. We define a capability set $\mathcal{C} = (\mathcal{S}, \mathcal{T})$,
+where $\mathcal{S}$ is a library of \emph{skills} (structured reasoning SOPs) and
+$\mathcal{T}$ is a library of \emph{tools} (executable Python programs). An agent
+$f_{\mathcal{C}}$ retrieves relevant capabilities from $\mathcal{C}$, applies them during
+problem solving, and invokes $\pi_\theta$ for reasoning.
+Given a held-out validation set $\mathcal{D}_{\text{val}}$, our goal is to learn
+$\mathcal{C}$ that maximises agent accuracy without any weight update:
+\begin{equation}
+  \mathcal{C}^{\star}
+  = \arg\max_{\mathcal{C}}
+    \mathbb{E}_{(x, y, \mathbf{v}) \sim \mathcal{D}_{\text{val}}}
+    \mathbf{1}\!\left[\, f_{\mathcal{C}}(x, \mathbf{v};\, \pi_\theta) = y \,\right],
+  \quad \text{s.t.}\; \nabla_\theta = 0.
+  \label{eq:objective}
+\end{equation}
 
 \subsection{Evolution Loop}
 \label{sec:method_loop}
@@ -56,15 +62,24 @@ combinations, each addressing the diagnosed bottleneck with a different strategy
 implementation.
 
 \textbf{Validate and promote.}
-Each candidate is evaluated on $\mathcal{D}_{\text{train}}$, and the combination with the
-highest accuracy is added to $\mathcal{C}$. Selection by accuracy on
-$\mathcal{D}_{\text{train}}$ subsumes both an \emph{origin} requirement (the new capability
-must improve over the previous $f_{\mathcal{C}}$ on the cases it targets) and a
-\emph{regression} requirement (it must not degrade currently-correct cases). When the action
-is \texttt{both}, the paired skill additionally serves as the tool's mastery SOP, gating
-tool invocation at inference (Section~\ref{sec:method_tool}). The full procedure runs for
-$N$ iterations (default $N{=}3$); pseudocode is given in Appendix~\ref{app:impl}
-(Algorithm~\ref{alg:main}).
+Each candidate is evaluated on $\mathcal{D}_{\text{train}}$ and the highest-accuracy
+combination is promoted:
+\begin{equation}
+  m^{\star}
+  = \arg\max_{m \in \{1, \dots, M\}}
+    \mathrm{Acc}\!\left(f_{\mathcal{C} \cup (s_m, t_m)};\;
+    \mathcal{D}_{\text{train}}\right),
+  \;\;\;
+  \mathcal{C} \leftarrow \mathcal{C} \cup \{(s_{m^{\star}}, t_{m^{\star}})\}.
+  \label{eq:selection}
+\end{equation}
+Selection by accuracy on $\mathcal{D}_{\text{train}}$ subsumes both an \emph{origin}
+requirement (the new capability must improve over the previous $f_{\mathcal{C}}$ on the
+cases it targets) and a \emph{regression} requirement (it must not degrade
+currently-correct cases). When the action is \texttt{both}, the paired skill additionally
+serves as the tool's mastery SOP, gating tool invocation at inference
+(Section~\ref{sec:method_tool}). The full procedure runs for $N$ iterations (default
+$N{=}3$); pseudocode is given in Appendix~\ref{app:impl} (Algorithm~\ref{alg:main}).
 
 \subsection{Skills}
 \label{sec:method_skill}
