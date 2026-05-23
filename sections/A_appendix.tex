@@ -464,14 +464,49 @@ beyond the triggering examples.
 
 \begin{figure}[ht]
 \centering
-\fbox{\rule{0pt}{3cm}\rule{0.7\columnwidth}{0pt}}
-\caption{Placeholder for ChartQA accuracy vs.\ training set size
-$k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.}
+\includegraphics[width=0.82\columnwidth]{figures/chartqa_k_sensitivity.pdf}
+\caption{%
+  \textbf{ChartQA training-size sensitivity.}
+  We sweep $k \in \{10,25,50,100,200\}$ with $N{=}3$ evolution iterations and
+  evaluate each frozen library on the same 200-case ChartQA validation slice.
+  Labels above the held-out curve indicate the promoted capabilities.
+}
 \label{fig:k_sensitivity}
 \end{figure}
 
-Figure~\ref{fig:k_sensitivity} shows ChartQA accuracy as a function of training set size
-$k \in \{10, 25, 50, 100, 200\}$ at $N{=}3$ iterations.
+\begin{table}[ht]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{rccc}
+\toprule
+\textbf{$k$} & \textbf{Promoted capabilities} & \textbf{Train replay} & \textbf{Frozen val[:200]} \\
+\midrule
+10  & 0 & 9 / 10   (0.900) & 162 / 200 (0.810) \\
+25  & 0 & 23 / 25  (0.920) & 159 / 200 (0.795) \\
+50  & 1 skill & 45 / 50  (0.900) & 159 / 200 (0.795) \\
+100 & 1 skill & 88 / 100 (0.880) & 158 / 200 (0.790) \\
+200 & 1 skill + 1 tool & 180 / 200 (0.900) & 161 / 200 (0.805) \\
+\bottomrule
+\end{tabular}}
+\caption{%
+  \textbf{Artifact-backed ChartQA sensitivity sweep.}
+  All rows use the same safe ChartQA normalization, Doubao-Seed-2.0-Pro runtime,
+  $N{=}3$, max-attempts 5, and the same 200-case validation slice.
+}
+\label{tab:k_sensitivity}
+\end{table}
+
+Figure~\ref{fig:k_sensitivity} and Table~\ref{tab:k_sensitivity} show that the held-out
+accuracy is stable across training subset sizes, ranging from 0.790 to 0.810 on the
+matched validation slice. The sweep therefore supports a saturation interpretation rather
+than a tuning claim: small subsets already expose the common ChartQA reading patterns,
+while increasing $k$ mainly changes what the gate is willing to promote. In particular,
+the $k{=}200$ run is the only row that promotes a generated visual tool together with its
+mastery skill, and it recovers the best held-out score among the evolved-library rows
+(0.805), but the difference from smaller subsets remains within two accuracy points.
 
 \subsection{Per-Category Analysis on ChartQA}
 
