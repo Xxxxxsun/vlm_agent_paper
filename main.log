@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  23 MAY 2026 17:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  23 MAY 2026 18:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1493,25 +1493,18 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ))
 
-Package lineno Warning: Linenumber reference failed, 
-(lineno)                rerun to get it right.
-
-
 Package natbib Warning: There were undefined citations.
 
 [18
 
 ] (./main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 0929CD4A1D230077555DC34C9DDBAC7C;6983.
  ) 
 Here is how much of TeX's memory you used:
  36689 strings out of 478994
  706696 string characters out of 5858184
- 1253131 words of memory out of 5000000
+ 1253133 words of memory out of 5000000
  52528 multiletter control sequences out of 15000+600000
  548079 words of font info for 589 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1538,7 +1531,7 @@ st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on main.pdf (18 pages, 4925695 bytes).
+Output written on main.pdf (18 pages, 4925513 bytes).
 PDF statistics:
  1040 PDF objects out of 1200 (max. 8388607)
  748 compressed objects within 8 object streams
