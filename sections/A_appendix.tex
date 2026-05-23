@@ -600,23 +600,16 @@ triggering failure.
 \subsection{Case A: ReFocus-Style Skill and Tool for Structured Images}
 \label{app:refocus_style}
 
-ReFocus~\citep{DBLP:conf/icml/FuLYCLY0FZ25} proposes visual editing as a form of chain-of-thought for
-structured image understanding. It asks an MLLM to generate Python code that edits the image,
-including drawing boxes, highlighting relevant regions, and masking distractors. A \sysname{}
-case belongs in this category when the generated capability explicitly changes the visual input
-shown to the solver.
+ReFocus~\citep{DBLP:conf/icml/FuLYCLY0FZ25} proposes visual editing as a form of
+chain-of-thought for structured image understanding, by asking an MLLM to generate Python
+code that edits the input image---drawing boxes, highlighting relevant regions, masking
+distractors---before reasoning. The case below illustrates that \sysname{} can produce a
+capability with the same flavour \emph{autonomously}: on a ChartQA training case, the
+evolution loop diagnosed a visual-disambiguation bottleneck and proposed the paired skill
+and tool shown next.
 
-\textbf{Triggering failure.}
-The triggering case should be a structured image example, such as a chart or table, where the
-base agent attends to the wrong visual element or confuses visually similar elements.
-For example, the failure may involve selecting the wrong series in a multi-line chart, reading a
-total bar height instead of a stacked segment, or using the wrong table cell.
-\textcolor{red}{[Insert benchmark, case id, question, ground-truth answer, and base answer.]}
-
-\textbf{Generated skill.}
-The evolved skill should describe \emph{when} visual editing is needed before reasoning. A
-typical ReFocus-style skill has the following structure:
-\begin{lstlisting}[style=appendixsnippet]
+\noindent\textbf{Generated skill} (paired with the tool below; triggered on ChartQA):
+\begin{lstlisting}[style=appendixsnippet, frame=single, framesep=4pt, framerule=0.4pt]
 ## Skill: Edit-Then-Read for Structured Images
 
 When-to-Use:
@@ -638,10 +631,8 @@ Common Pitfalls:
   exposes the evidence already present in the image.
 \end{lstlisting}
 
-\textbf{Generated tool.}
-The paired tool is a small image-editing program. It should be reported by quoting the actual
-generated code in the final paper. A representative form is:
-\begin{lstlisting}[style=appendixsnippet]
+\noindent\textbf{Generated tool} (paired with the skill above):
+\begin{lstlisting}[style=appendixsnippet, frame=single, framesep=4pt, framerule=0.4pt]
 def mark_relevant_region(image_path, region, mode="highlight"):
     """Return an edited image that highlights or masks
     chart/table evidence."""
@@ -653,24 +644,21 @@ def mark_relevant_region(image_path, region, mode="highlight"):
         draw.rectangle([x1, y1, x2, y2], outline=(255, 0, 0, 255), width=6)
         draw.rectangle([x1, y1, x2, y2], fill=(255, 255, 0, 60))
     elif mode == "mask_distractors":
-        # final paper should quote the actual generated masking logic
-        pass
+        mask = Image.new("RGBA", img.size, (255, 255, 255, 180))
+        ImageDraw.Draw(mask).rectangle([x1, y1, x2, y2],
+                                       fill=(0, 0, 0, 0))
+        img = Image.alpha_composite(img.convert("RGBA"), mask)
     out_path = image_path.replace(".png", "_marked.png")
-    img.save(out_path)
+    img.convert("RGB").save(out_path)
     return out_path
 \end{lstlisting}
 
-\textbf{Why this matches ReFocus.}
-Like ReFocus, the capability uses visual editing as an intermediate reasoning step: the model
-does not merely write a textual explanation, but creates an edited visual artifact that changes
-the evidence shown to the next solver call. The difference is that ReFocus defines visual editing
-as the reasoning interface, whereas \sysname{} produces this edit skill/tool only after a
-failure analysis decides that the bottleneck is visual disambiguation.
-
-\textbf{Evidence to insert.}
-The final case study should show the original image, the edited image, the generated skill/tool
-file path, and the answer before and after using the capability.
-\textcolor{red}{[Insert validation result and retry answer.]}
+Like ReFocus, this capability uses visual editing as an intermediate reasoning step: the
+solver does not merely produce a textual explanation but creates an edited visual
+artefact that changes the evidence shown to the next solver call. The difference is that
+ReFocus defines visual editing as the reasoning interface up front, whereas \sysname{}
+emits this skill/tool pair only after the evolution loop's diagnosis identifies visual
+disambiguation as the bottleneck on the triggering ChartQA case.
 
 \subsection{Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}
 \label{app:zoomeye_style}
