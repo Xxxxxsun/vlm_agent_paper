@@ -94,57 +94,120 @@ row of Table~\ref{tab:ablation_mechanism} rules out one alternative explanation 
 Full system's gains.
 
 \paragraph{Setup.}
-All variants use the same protocol as Experiment~I (frozen GPT-5.4 backbone; 20\% of each
-benchmark's training split as $\mathcal{D}_{\text{train}}$; $N{=}3$ evolution iterations;
-$M$ candidate skill$+$tool combinations per iteration) and rebuild $\mathcal{C}$ from
-scratch so any deficit reflects the ablated mechanism rather than a carried-over artifact.
-The two primary benchmarks are \textbf{ChartQA} (cognitive / procedural) and
-\textbf{HRBench} (perceptual / high-resolution); \textbf{MathVista} and \textbf{V$^\star$}
-are reported as secondary checks.
+The full grid of mechanism ablations is expensive because each row rebuilds
+$\mathcal{C}$ from scratch. We therefore report the completed artifact-backed probes first,
+and use them to answer the most immediate reviewer question: is the gain merely generic
+prompting, or does the evolved visual-tool path matter? All rows in
+Table~\ref{tab:ablation_mechanism} use the same HRBench validation set (700 cases) and the
+same function-calling VQA runtime with Doubao-Seed-2.0-Pro. For the first three rows,
+tools are disabled, so the comparison isolates prompt/skill content; the last two rows
+reuse the existing full-val tool-enabled runs for context.
 
-\paragraph{Main mechanism table.}
-Table~\ref{tab:ablation_mechanism} reports six ablation variants spanning the four
-mechanism families: diagnosis (whether the AnalyzerDecider sees correct cases and visual
-input), exploration (multi-candidate generation), inference-time gating (paired mastery
-skill), and persistence (cross-case library). The Full row reproduces the Full entry from
-Table~\ref{tab:evolution_full} for reference.
+\paragraph{Completed mechanism probe.}
+Table~\ref{tab:ablation_mechanism} shows that generic skill injection does not explain
+the HRBench gain. A neutral task prompt is slightly below the no-capability runtime, and
+the evolved no-tool skill is essentially tied with it. In contrast, enabling the evolved
+visual-tool/artifact path yields a much larger improvement. This supports the mechanism
+claim for perceptual benchmarks: the active ingredient is not ``more prompt text'', but
+validated image transformations that expose hard-to-read local evidence.
 
 \begin{table*}[t]
 \centering
 \small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.18}
-\begin{tabular}{lp{0.34\textwidth}cccc}
+\begin{tabular}{lp{0.38\textwidth}ccc}
 \toprule
-\textbf{Variant} & \textbf{Ablated mechanism}
-  & \textbf{ChartQA} & \textbf{HRBench}
-  & \textbf{MathVista} & \textbf{V$^\star$} \\
+\textbf{Variant} & \textbf{Mechanism isolated}
+  & \textbf{Tools} & \textbf{Correct / Total} & \textbf{Accuracy} \\
 \midrule
-Full \sysname{}              & --- (full evolution loop)
-  & & & & \\
+No Capability                & no skill context; no tool exposure
+  & off & 599 / 700 & 0.8557 \\
+Generic Skill                & evolved library $\to$ hand-neutral HRBench prompt
+  & off & 594 / 700 & 0.8486 \\
+Evolved No-Tool Skill        & evolved HRBench SOP, but visual tools disabled
+  & off & 597 / 700 & 0.8529 \\
 \midrule
-Generic Skill                & evolved library $\to$ hand-neutral task prompt
-  & & & & \\
-Failure-Only Diagnosis       & AnalyzerDecider sees only incorrect cases
-  & & & & \\
-Text-only Diagnosis          & AnalyzerDecider sees no images or tool artefacts
-  & & & & \\
-Single-Candidate ($M{=}1$)   & one Generator proposal per iteration; no selection
-  & & & & \\
-No Paired Mastery Skill      & tool emitted without its paired skill (action $=$ both)
-  & & & & \\
-No Persistence               & capabilities not stored across cases
-  & & & & \\
+Evolved Tool Only            & validated visual tools/artifacts, no extra generated skill text
+  & on & 629 / 700 & 0.8986 \\
+Evolved Skill + Tool         & paired evolved skill/tool deployment
+  & on & 625 / 700 & 0.8929 \\
 \bottomrule
 \end{tabular}
 \caption{%
-  \textbf{Mechanism ablations.}
-  Each row removes one mechanism from \sysname{} while holding the rest fixed
-  (GPT-5.4; 20\% training split; $N{=}3$). The Full row reproduces the Full entry from
-  Table~\ref{tab:evolution_full}. Numbers will be filled in once the corresponding runs
-  complete.
+  \textbf{Completed HRBench mechanism probe.}
+  The first three rows disable tools and test whether generic prompt/skill text explains
+  the gain. It does not: generic and evolved no-tool skills are near the no-capability
+  runtime. The tool-enabled rows show the much larger gain from validated visual
+  artifacts, isolating the perceptual mechanism used by \sysname{} on HRBench.
 }
 \label{tab:ablation_mechanism}
+\end{table*}
+
+The source artifacts for the first three rows are
+\path{ablate_hrbench_nocap_fc_doubao_20260520T074011Z},
+\path{ablate_hrbench_generic_skillonly_fc_doubao_20260520T074011Z}, and
+\path{ablate_hrbench_evolved_skillonly_fc_doubao_20260520T074011Z}. The tool-enabled
+context rows are
+\path{exp1r1_doubao_hrbench_toolonly_20260519T140901Z_doubao_sourceplus2_w64} and
+\path{exp1r1_doubao_hrbench_skilltool_20260519T140901Z_doubao_sourceplus2_w64}.
+
+\paragraph{Additional mechanism-rerun audit.}
+We also reran the remaining mechanism interventions on HRBench with the same
+Doubao-Seed-2.0-Pro runtime, a 25-case evolution subset, and the first 200 validation
+cases under the structured benchmark ordering. This audit is useful diagnostically, but
+we do not use it as the headline evidence because the small training subset was already
+near-saturated: the no-capability adaptive solver solved 23/25 cases, leaving little
+promotion signal. In this setting, the Full, Failure-Only Diagnosis, Text-only Diagnosis,
+and No-Persistence variants proposed candidates but promoted no reusable capability.
+Single-Candidate and No Paired Mastery each promoted one round-3 skill-only fallback
+($\Delta{=}+0.04$ on the 25-case subset). The No Paired Mastery run therefore did
+\emph{not} instantiate the intended generated-tool-without-mastery test; its accepted
+bundle had zero generated tools.
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{lp{0.40\textwidth}cc}
+\toprule
+\textbf{Variant} & \textbf{Outcome on the matched 200-case HRBench subset}
+  & \textbf{Correct / Total} & \textbf{Accuracy} \\
+\midrule
+No Capability & matched control from the 700-case artifact
+  & 172 / 200 & 0.8600 \\
+Generic Skill & matched generic-prompt control
+  & 171 / 200 & 0.8550 \\
+Evolved No-Tool Skill & matched no-tool evolved-skill control
+  & 170 / 200 & 0.8500 \\
+Evolved Tool Only & matched tool-enabled control
+  & 183 / 200 & 0.9150 \\
+Evolved Skill + Tool & matched paired deployment control
+  & 180 / 200 & 0.9000 \\
+\midrule
+Single-Candidate ($M{=}1$) & promoted one skill-only fallback in round 3
+  & 170 / 200 & 0.8500 \\
+No Paired Mastery & promoted one skill-only fallback; no generated tool was accepted
+  & 174 / 200 & 0.8700 \\
+Full rerun & no candidate promoted on the 25-case evolution subset
+  & -- & -- \\
+Failure-Only Diagnosis & no candidate promoted on the 25-case evolution subset
+  & -- & -- \\
+Text-only Diagnosis & no candidate promoted on the 25-case evolution subset
+  & -- & -- \\
+No Persistence & no candidate promoted on the 25-case evolution subset
+  & -- & -- \\
+\bottomrule
+\end{tabular}
+\caption{%
+  \textbf{HRBench mechanism-rerun audit on a matched 200-case subset.}
+  The matched controls come from the completed 700-case artifacts but are filtered to the
+  same case IDs as the 2026-05-22 mechanism rerun. The audit confirms that the two
+  promoted fallback skills do not recover the tool-enabled gain, while the no-promotion
+  rows should be read as negative diagnostics rather than held-out mechanism effect sizes.
+}
+\label{tab:ablation_rerun_audit}
 \end{table*}
 
 \subsection{Generic Skill vs. Evolved Capability}
@@ -163,6 +226,14 @@ improves over Direct by only a small margin and stays well below Full, the gap i
 attributable to mechanism-level evolution---failure-specific procedures, applicability
 triggers, and pitfalls that a generic prompt cannot anticipate---rather than to the
 presence of any task-aware prompt.
+
+\paragraph{Observed pattern.}
+On HRBench with tools disabled, Generic Skill obtains 0.8486 accuracy, compared with
+0.8557 for the no-capability runtime and 0.8529 for the evolved no-tool skill. These rows
+show that simply adding a neutral task prompt does not recover the tool-enabled gains.
+The tool-enabled rows in Table~\ref{tab:ablation_mechanism} are roughly four points
+higher, so the HRBench improvement is better explained by validated visual artefacts than
+by generic skill injection.
 
 \subsection{Failure-Only Diagnosis}
 \label{app:abl_failure_only}
@@ -265,18 +336,16 @@ point is chosen to fit the per-benchmark budget.
 \subsection{Summary}
 \label{app:abl_summary}
 
-Read together, the six mechanism ablations are designed to triangulate the same claim
-from six different angles. Generic Skill rules out a pure prompt-engineering explanation;
-Failure-Only Diagnosis rules out ``correct cases carry no signal''; Text-only Diagnosis
-rules out ``text reflection is enough'' and supports the visual-diagnosis channel;
-Single-Candidate rules out ``the first proposal is good enough'' and supports
-multi-candidate exploration; No Paired Mastery Skill rules out ``expose every generated
-tool'' and supports applicability-bounded deployment; and No Persistence rules out
-``per-case retry is enough'' and supports cross-case capability accumulation. The
-expected pattern is that removing any one mechanism reduces held-out accuracy noticeably,
-but no single ablation collapses the system---consistent with the design view that the
-six mechanisms implement complementary aspects of capability evolution rather than
-redundant copies of the same underlying lever.
+Read together, the mechanism ablations are designed to triangulate the same claim from
+different angles. The completed HRBench probe already rules out a pure prompt-engineering
+explanation and points to the visual-tool/artifact path as the active mechanism on
+perceptual tasks. The additional 200-case rerun audit is consistent with that conclusion:
+the promoted Single-Candidate and No-Paired-Mastery fallbacks behave like no-tool skills
+and stay below the matched tool-enabled controls, while several mechanism variants
+promoted no capability on a near-saturated 25-case training subset. We therefore treat
+Failure-Only Diagnosis, Text-only Diagnosis, No Paired Mastery Skill, and No Persistence
+as precisely defined intervention protocols, with the completed HRBench artifacts
+indicating which variants produced citeable held-out evidence under the current budget.
 
 \paragraph{Practical diagnostic.}
 The mechanism ablations also suggest a practical rule of thumb for new task families. If
