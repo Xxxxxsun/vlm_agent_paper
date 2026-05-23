@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  23 MAY 2026 17:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  23 MAY 2026 17:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1330,33 +1330,39 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
  [3 <./figures/method.pdf>] [4]) (./sections/4_experiments.tex [5]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 112.
-<figures/distribution_shift_bars.pdf, id=536, 479.58861pt x 174.36057pt>
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 115.
+<figures/distribution_shift_bars.pdf, id=538, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
-e 275.
+e 278.
 (pdftex.def)             Requested size: 455.24411pt x 165.51653pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--313
+Underfull \hbox (badness 10000) in paragraph at lines 306--316
  []\T1/ptm/b/n/10.95 (+20) What does environment-specific mas-tery
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 303--313
+Underfull \hbox (badness 1033) in paragraph at lines 306--316
 \T1/ptm/m/n/10.95 (+20) its skill is a generic visual-reasoning prompt
  []
 
 
-Underfull \hbox (badness 1810) in paragraph at lines 303--313
+Underfull \hbox (badness 1810) in paragraph at lines 306--316
 \T1/ptm/m/n/10.95 (+20) the tar-get en-vi-ron-ment's spe-cific tool chains,
  []
 
-[6]
+
+Underfull \vbox (badness 1107) has occurred while \output is active []
+
+ [6]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 400.
+(Font)              scaled to size 10.0pt on input line 403.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [7]
-Underfull \hbox (badness 2103) in paragraph at lines 427--432
+Underfull \hbox (badness 2103) in paragraph at lines 430--435
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
 (+20) On V$[]$ and
  []
@@ -1419,7 +1425,7 @@ Underfull \hbox (badness 2698) in paragraph at lines 382--386
  []
 
 [14]
-<figures/distribution_shift_timeseries.pdf, id=732, 237.70663pt x 144.37573pt>
+<figures/distribution_shift_timeseries.pdf, id=731, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
@@ -1485,12 +1491,11 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
+))
 
 Package lineno Warning: Linenumber reference failed, 
 (lineno)                rerun to get it right.
 
-)
 
 Package natbib Warning: There were undefined citations.
 
@@ -1504,51 +1509,39 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 0929CD4A1D230077555DC34C9DDBAC7C;6983.
  ) 
 Here is how much of TeX's memory you used:
- 36693 strings out of 478994
- 706761 string characters out of 5858184
+ 36689 strings out of 478994
+ 706696 string characters out of 5858184
  1253131 words of memory out of 5000000
  52528 multiletter control sequences out of 15000+600000
  548079 words of font info for 589 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,15n,108p,754b,2346s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{table.caption.65} has been referenced but does no
-t exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.63} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.46} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.42} has been referenced but does not 
-exist, replaced by a fixed one
-
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{/u
-sr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/loca
-l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/
-texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist/f
-onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
-pe1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/ti
-mes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8
-a.pfb>
-Output written on main.pdf (18 pages, 4925466 bytes).
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
+/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
+ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/lo
+cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loc
+al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist
+/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/
+type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr
+i8a.pfb>
+Output written on main.pdf (18 pages, 4925695 bytes).
 PDF statistics:
- 1044 PDF objects out of 1200 (max. 8388607)
- 752 compressed objects within 8 object streams
- 277 named destinations out of 1000 (max. 500000)
+ 1040 PDF objects out of 1200 (max. 8388607)
+ 748 compressed objects within 8 object streams
+ 273 named destinations out of 1000 (max. 500000)
  115657 words of extra memory for PDF output out of 128383 (max. 10000000)
 

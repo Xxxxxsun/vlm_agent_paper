@@ -43,9 +43,12 @@ updates are performed.
 For each benchmark, we sample 20\% of the official training split as
 $\mathcal{D}_{\text{train}}$ and run the \sysname{} evolution loop for $N{=}3$ iterations.
 The capability set $\mathcal{C}$ is then frozen and evaluated on the held-out
-validation / test split. We report the average over three independent random seeds
-(different 20\% subsets) to account for sampling variance where repeated runs are
-available.
+validation / test split. For each evolution configuration (\emph{Skill Only},
+\emph{Tool Only}, \emph{Full}), we run \textbf{three independent seeds} that vary the
+20\% training subset and the Generator's sampling, and report mean $\pm$ standard
+deviation in Table~\ref{tab:evolution_full}. The \emph{None} (Base Agent) row invokes
+the frozen VLM with no evolved capabilities and is run once per cell---there is no
+capability-generation randomness to average over---so it carries no standard deviation.
 
 \paragraph{Baselines.}
 For Experiment~I, we compare four evolution configurations that isolate the contribution
