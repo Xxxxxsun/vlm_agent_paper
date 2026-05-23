@@ -608,8 +608,12 @@ capability with the same flavour \emph{autonomously}: on a ChartQA training case
 evolution loop diagnosed a visual-disambiguation bottleneck and proposed the paired skill
 and tool shown next.
 
-\noindent\textbf{Generated skill} (paired with the tool below; triggered on ChartQA):
-\begin{lstlisting}[style=appendixsnippet, frame=single, framesep=4pt, framerule=0.4pt]
+\begin{tcolorbox}[
+    title={\textbf{Generated skill (paired with the tool below; triggered on ChartQA)}},
+    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
+    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+]
+\begin{lstlisting}[style=appendixsnippet]
 ## Skill: Edit-Then-Read for Structured Images
 
 When-to-Use:
@@ -630,9 +634,14 @@ Common Pitfalls:
 - Do not treat the visual edit as adding new information; it only
   exposes the evidence already present in the image.
 \end{lstlisting}
+\end{tcolorbox}
 
-\noindent\textbf{Generated tool} (paired with the skill above):
-\begin{lstlisting}[style=appendixsnippet, frame=single, framesep=4pt, framerule=0.4pt]
+\begin{tcolorbox}[
+    title={\textbf{Generated tool (paired with the skill above)}},
+    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
+    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+]
+\begin{lstlisting}[style=appendixsnippet]
 def mark_relevant_region(image_path, region, mode="highlight"):
     """Return an edited image that highlights or masks
     chart/table evidence."""
@@ -652,6 +661,7 @@ def mark_relevant_region(image_path, region, mode="highlight"):
     img.convert("RGB").save(out_path)
     return out_path
 \end{lstlisting}
+\end{tcolorbox}
 
 Like ReFocus, this capability uses visual editing as an intermediate reasoning step: the
 solver does not merely produce a textual explanation but creates an edited visual
