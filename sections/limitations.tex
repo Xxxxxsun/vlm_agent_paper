@@ -23,3 +23,15 @@ generality claims about the cognitive / perceptual decision rule.
 Each training case incurs roughly 15K tokens for the combined attempt, diagnosis,
 generation, and validation pass. While negligible compared with RL training, this cost
 should be accounted for when comparing training-free methods.
+
+\paragraph{Reliance on a per-case correctness signal.}
+Both the offline evolution loop and the online adaptation policy
+(Sections~\ref{sec:method_loop}--\ref{sec:method_adaptation}) require a per-case
+correctness signal to drive diagnosis and the multi-candidate selection rule. Our
+experiments use ground-truth labels from the benchmark splits as this signal, which
+corresponds to deployment settings with human-in-the-loop review, an automated
+quality-assurance pipeline, or an LLM-based post-hoc verifier. Deployments that have no
+access to any of these channels---i.e.\ fully unsupervised production traffic---fall
+outside the scope of the current method; extending \sysname{} to that setting would
+require a confidence-based or self-consistency-based feedback substitute that we leave
+to future work.
