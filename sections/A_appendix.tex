@@ -823,27 +823,6 @@ artefact. The difference is that \sysname{} stores the visual anchor \emph{persi
 inside the capability library and retrieves it on later cases of the same problem family,
 rather than synthesising a fresh visualisation per call.
 
-\section{Case Study Artifact Checklist}
-\label{app:case_artifact_checklist}
-
-To avoid conflating qualitative analysis with unreported experiments, we instantiate each case
-study only from artifacts produced by the evolution loop. For each of the three cases above, the
-final appendix should include:
-\begin{itemize}
-  \item the triggering failure record: benchmark, example id, question, ground-truth answer,
-  and base-agent answer;
-  \item the generated skill file, quoted or summarized without changing its operative steps;
-  \item the generated tool file when one exists, including the exact operation it performs;
-  \item the visual artifact produced by the tool, such as a marked chart, selected crop, or
-  embedded visual anchor;
-  \item the validation record showing whether the capability was accepted and whether the retry
-  answer changed.
-\end{itemize}
-If a case lacks one of these artifacts, we mark the missing field explicitly rather than
-inferring it from the intended behavior. This keeps the case studies as evidence for the form of
-the evolved capabilities, while the quantitative claims remain grounded in the tables in
-Section~\ref{sec:experiments}.
-
 \section{Reproducibility Statement}
 \label{app:reproducibility}
 
