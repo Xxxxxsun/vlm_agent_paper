@@ -434,12 +434,19 @@ policy raises 7B V$^\star$ to $92.7$ and 7B HRBench4K to $81.3$, the strongest
 configurations in those cells.
 
 \paragraph{Cost.}
-\sysname{} performs no weight updates: an evolution run uses 20\% of each benchmark's
-training split for $N{=}3$ passes and invokes the frozen VLM for solving, diagnosis,
-generation, and validation. The comparison therefore shows that across these three task
-families, \sysname{} recovers most of the RL gain on Chart/Table and matches or beats
-RL on high-resolution visual search, while composing additively with RL when both are
-available.
+The RL baselines require substantial training compute. VTool-R1's 3B Chart checkpoint
+is reported after 80 GRPO steps with a batch of 32 prompts and $n_{\text{rollout}}{=}8$
+rollouts per prompt---approximately $80 \times 32 \times 8 = 20{,}480$ trajectories and
+80 gradient updates of a 3B model. DeepEyes' 7B V$^\star$/HRBench4K numbers come from
+240 RL steps with a batch of 128 prompts and $n_{\text{rollout}}{=}4$---approximately
+$240 \times 128 \times 4 = 122{,}880$ trajectories and 240 gradient updates of a 7B
+model. \sysname{}, by contrast, performs no weight updates: a run uses 20\% of each
+benchmark's training split for $N{=}3$ passes and invokes the frozen VLM only for
+solving, diagnosis, generation, and validation (a few thousand frozen-VLM API calls per
+benchmark; see Appendix~\ref{app:impl} for the per-benchmark token totals). Across the
+three task families, \sysname{} therefore recovers most of the RL gain on Chart/Table
+and matches or beats RL on high-resolution visual search at a fraction of the
+training-time compute, while composing additively with RL when both are available.
 \begin{table}[t]
 \centering
 \scriptsize
