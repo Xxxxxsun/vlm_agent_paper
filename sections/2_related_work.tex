@@ -10,11 +10,11 @@ between episodes; Voyager~\citep{DBLP:journals/tmlr/WangX0MXZFA24} and
 ExpeL~\citep{DBLP:conf/aaai/Zhao0XLLH24} accumulate persistent skill libraries in game and
 tool-use domains; AutoManual~\citep{DBLP:conf/aaai/Zhao0XLLH24} and
 EvolveR~\citep{DBLP:journals/corr/abs-2510-16079} refine instruction manuals or reasoning
-strategies via self-play; Trace2Skill~\citep{trace2skill} distils trajectory-local
+strategies via self-play; Trace2Skill~\citep{DBLP:journals/corr/abs-2603-25158} distils trajectory-local
 lessons into transferable agent skills. Whether language models can bootstrap reasoning
 capabilities entirely without external scaffolding remains
-debated~\citep{selfimprov_paradox}, and broader surveys map the design space for
-personalised LLM-powered agents~\citep{personalized_agents}. All these methods operate in
+debated~\citep{DBLP:conf/acl/SunCZXZY25}, and broader surveys map the design space for
+personalised LLM-powered agents~\citep{DBLP:journals/corr/abs-2602-22680}. All these methods operate in
 text, code, or game domains, never generating executable visual processing nor deciding
 whether a bottleneck is cognitive or perceptual. \sysname{} extends the persistent-library
 paradigm into the visual domain with a multimodal diagnostic that text-only frameworks
@@ -38,7 +38,7 @@ PixelReasoner~\citep{DBLP:journals/corr/abs-2505-15966}, and V-Thinker~\citep{DB
 SFT and/or RL with curated trajectories to teach a VLM when and how to invoke a fixed tool
 inventory. ZoomEye~\citep{DBLP:conf/emnlp/ShenZZXZZY25} and ReFocus~\citep{DBLP:conf/icml/FuLYCLY0FZ25}
 are training-free but assume a fixed zoom/search algorithm or visual-editing interface;
-Lever~LM~\citep{yang2024lever} configures in-context example sequences to leverage
+Lever~LM~\citep{DBLP:conf/nips/YangPMXZHZ24} configures in-context example sequences to leverage
 pretrained VLMs without retraining. \sysname{} instead generates and validates the skills
 and tools themselves from the agent's own behaviour on a small training subset, with no
 weight updates and no predefined tool inventory.
@@ -47,10 +47,10 @@ weight updates and no predefined tool inventory.
 VisProg~\citep{DBLP:conf/cvpr/GuptaK23}, ViperGPT~\citep{DBLP:conf/iccv/SurisMV23}, and
 Chameleon~\citep{DBLP:conf/nips/LuPCGCWZG23} compose hand-curated tool libraries
 (detectors, OCR, arithmetic modules) via program synthesis;
-MMR-Bench~\citep{ma2026mmr} extends evaluation of such systems to multimodal LLM
+MMR-Bench~\citep{DBLP:journals/corr/abs-2601-17814} extends evaluation of such systems to multimodal LLM
 routing across diverse backbones and tools. They handle broad compositional visual tasks
 effectively but cannot recover when the required tool is missing from the human-designed
 inventory, and cost-aware alignment frameworks such as
-EcoAlign~\citep{cheng2025ecoalign} highlight the practical pressure to adapt LVLMs
+EcoAlign~\citep{DBLP:journals/corr/abs-2511-11301} highlight the practical pressure to adapt LVLMs
 efficiently. \sysname{} fills this gap by generating new tools when the current set is
 insufficient, bridging fixed-tool composition and training-based tool learning.
