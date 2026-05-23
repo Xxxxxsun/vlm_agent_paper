@@ -22,9 +22,9 @@ small training subset and without any weight updates.
   \label{fig:motivation}
 \end{figure}
 
-We instantiate this idea in \sysname{}, a framework that evolves two complementary
-capability types from a small labeled training subset and dynamically equips them at
-inference, without any weight updates or task-specific prompt engineering. \textbf{Skills} are
+We instantiate this idea in \sysname{}, a training-free framework that evolves two
+complementary capability types from a small labeled training subset and dynamically
+equips them at inference. \textbf{Skills} are
 structured Markdown SOPs for \emph{cognitive} bottlenecks, where the visual evidence is
 available but the agent's reasoning procedure is weak. \textbf{Tools} are short Python
 programs for \emph{perceptual} bottlenecks, where the agent needs a transformed view---a
@@ -63,6 +63,6 @@ and combines additively with RL when both are available.
   \item \textbf{Empirical evidence} across four visual-reasoning benchmarks, six VLM
         backbones, the GTA tool-mastery benchmark, and three task families
         (chart, table, perception) each compared against its representative RL method,
-        showing that capability evolution can match or complement task-specific RL without
-        any weight updates.
+        showing that capability evolution is a viable training-free alternative---and
+        add-on---to task-specific RL.
 \end{enumerate}
