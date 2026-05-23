@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  23 MAY 2026 22:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  23 MAY 2026 22:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1362,7 +1362,7 @@ LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [7]
-Underfull \hbox (badness 2103) in paragraph at lines 430--435
+Underfull \hbox (badness 2103) in paragraph at lines 428--432
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
 (+20) On V$[]$ and
  []
@@ -1512,20 +1512,17 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 Package natbib Warning: There were undefined citations.
 
 [20] (./main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 0929CD4A1D230077555DC34C9DDBAC7C;6983.
  ) 
 Here is how much of TeX's memory you used:
- 36704 strings out of 478994
- 706860 string characters out of 5858184
- 1331646 words of memory out of 5000000
+ 36700 strings out of 478994
+ 706818 string characters out of 5858184
+ 1331620 words of memory out of 5000000
  52535 multiletter control sequences out of 15000+600000
- 547976 words of font info for 588 fonts, out of 8000000 for 9000
+ 547743 words of font info for 585 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,15n,108p,960b,2347s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,15n,108p,806b,2347s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
 /usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
 ive/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
@@ -1548,7 +1545,7 @@ st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on main.pdf (20 pages, 4933084 bytes).
+Output written on main.pdf (20 pages, 4932545 bytes).
 PDF statistics:
  1059 PDF objects out of 1200 (max. 8388607)
  765 compressed objects within 8 object streams

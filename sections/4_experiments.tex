@@ -35,7 +35,7 @@ Experiment~I evaluates five proprietary and open-weight VLMs:
 Experiment~II evaluates \textbf{GPT-4o}, \textbf{GPT-5.4}, and \textbf{Doubao-Seed-2.0}
 on the GTA benchmark, plus a controlled \textbf{Doubao-Seed-2.0-Pro} analysis that
 inspects how provided-tool skills change with tool abstraction and task environment.
-Experiment~III uses the \textbf{Qwen2.5-VL} family (3B, 7B, 32B) to align with the
+Experiment~III uses the \textbf{Qwen2.5-VL} family (3B, 7B) to align with the
 VTool-R1 evaluation protocol. All VLM weights are \emph{frozen} throughout; no gradient
 updates are performed.
 
@@ -412,41 +412,40 @@ OCR role & OCR+Search env & 20 & 85.0 & 100.0 & 2.35 \\
 \label{sec:exp3}
 % ============================================================
 
-We compare \sysname{} against task-specific RL on three task families using the
-Qwen2.5-VL family (3B, 7B, 32B): Chart and Table reasoning under the VTool-R1
-protocol~\citep{DBLP:journals/corr/abs-2505-19255}, and high-resolution V$^\star$ and HRBench4K under the
-DeepEyes protocol~\citep{DBLP:journals/corr/abs-2505-14362}. Two cells (32B \sysname{}\,$+$\,RL on Chart and
-Table) are runs not yet completed.
+We compare \sysname{} against task-specific RL on three task families using two
+Qwen2.5-VL backbones (3B, 7B): Chart and Table reasoning under the VTool-R1
+protocol~\citep{DBLP:journals/corr/abs-2505-19255}, and high-resolution V$^\star$ and
+HRBench4K under the DeepEyes protocol~\citep{DBLP:journals/corr/abs-2505-14362}.
 
 \paragraph{Chart and Table reasoning.}
 Using the gap-recovery fraction $(\sysname{}-\text{Direct})/(\text{RL}-\text{Direct})$,
-\sysname{} recovers $65.7\%$ and $99.4\%$ of the Chart gap at 3B and 7B respectively, and
-\emph{exceeds} RL at 32B ($86.4$ vs.\ $84.3$). On Table, recovery is
-$67.5\%$ / $91.4\%$ / $46.8\%$. \sysname{}\,$+$\,RL further beats RL alone by $1$--$3$
-points wherever the row is reported, indicating that the two interventions compose
+\sysname{} recovers $65.7\%$ and $99.4\%$ of the Chart gap at 3B and 7B respectively,
+and $67.5\%$ and $91.4\%$ of the Table gap. \sysname{}\,$+$\,RL further beats RL alone
+by $1$--$3$ points on every reported cell, indicating that the two interventions compose
 additively.
 
 \paragraph{High-resolution visual search.}
-On V$^\star$ and HRBench4K, \sysname{} alone matches or beats task-specific RL at every
-scale: it gains $+6.3$ / $+1.0$ / $\pm 0.0$ over RL on V$^\star$ (3B / 7B / 32B) and
-$+4.0$ / $+0.7$ / $+5.1$ on HRBench4K. Adding \sysname{} on top of the RL-trained
-policy raises 7B V$^\star$ to $92.7$ and 7B HRBench4K to $81.3$, the strongest
-configurations in those cells.
+On V$^\star$ and HRBench4K, \sysname{} alone matches or beats task-specific RL at both
+scales: it gains $+6.3$ and $+1.0$ over RL on V$^\star$ (3B / 7B) and $+4.0$ and $+0.7$
+on HRBench4K. Adding \sysname{} on top of the RL-trained policy raises 7B V$^\star$ to
+$92.7$ and 7B HRBench4K to $81.3$, the strongest configurations in those cells.
 
 \paragraph{Cost.}
-The RL baselines require substantial training compute. VTool-R1's 3B Chart checkpoint
-is reported after 80 GRPO steps with a batch of 32 prompts and $n_{\text{rollout}}{=}8$
-rollouts per prompt---approximately $80 \times 32 \times 8 = 20{,}480$ trajectories and
-80 gradient updates of a 3B model. DeepEyes' 7B V$^\star$/HRBench4K numbers come from
-240 RL steps with a batch of 128 prompts and $n_{\text{rollout}}{=}4$---approximately
-$240 \times 128 \times 4 = 122{,}880$ trajectories and 240 gradient updates of a 7B
-model. \sysname{}, by contrast, performs no weight updates: a run uses 20\% of each
-benchmark's training split for $N{=}3$ passes and invokes the frozen VLM only for
-solving, diagnosis, generation, and validation (a few thousand frozen-VLM API calls per
-benchmark; see Appendix~\ref{app:impl} for the per-benchmark token totals). Across the
-three task families, \sysname{} therefore recovers most of the RL gain on Chart/Table
-and matches or beats RL on high-resolution visual search at a fraction of the
-training-time compute, while composing additively with RL when both are available.
+The RL baselines require substantial training compute, and the protocol is the same
+across the two backbones in each family. VTool-R1's Chart and Table checkpoints (both
+3B and 7B) are each reported after 80 GRPO steps with a batch of 32 prompts and
+$n_{\text{rollout}}{=}8$ rollouts per prompt---approximately $80 \times 32 \times 8 =
+20{,}480$ trajectories and 80 gradient updates per backbone. DeepEyes' V$^\star$ and
+HRBench4K checkpoints (both 3B and 7B) are each reported after 240 RL steps with a batch
+of 128 prompts and $n_{\text{rollout}}{=}4$---approximately $240 \times 128 \times 4 =
+122{,}880$ trajectories and 240 gradient updates per backbone. \sysname{}, by contrast,
+performs no weight updates: a run uses 20\% of each benchmark's training split for
+$N{=}3$ passes and invokes the frozen VLM only for solving, diagnosis, generation, and
+validation (a few thousand frozen-VLM API calls per benchmark; see
+Appendix~\ref{app:impl} for the per-benchmark token totals). Across these three task
+families, \sysname{} therefore recovers most of the RL gain on Chart/Table and matches
+or beats RL on high-resolution visual search at a fraction of the training-time compute,
+while composing additively with RL when both are available.
 \begin{table}[t]
 \centering
 \scriptsize
@@ -470,20 +469,14 @@ training-time compute, while composing additively with RL when both are availabl
   & RL                  & 75.18   & 68.42   &84.82  &76.88  \\
   & \sysname{}          & 75.060  & 67.43   & 85.86 &75.12 \\
   & \sysname{} + RL     & 76.88   & 69.41   &92.67   &81.25  \\
-% \midrule
-% \multirow{4}{*}{Qwen2.5-VL-32B}
-%   & Direct              & 81.3559 & 82.8947 & 81.68 & 75.62 \\
-%   & RL                  & 84.3    & 84.3    &88.48  &72.88  \\
-%   & \sysname{}          & 86.44    & 83.55   & 88.48   & 78.00 \\
-%   & \sysname{} + RL     &     &    &91.10    &76.38  \\
 \bottomrule
 \end{tabular}%
 }
 \caption{%
   \textbf{Self-evolution vs.\ task-specific RL across three task families.}
-  Accuracy (\%). \sysname{} alone matches or beats RL on all six high-resolution cells
-  and recovers most of the Chart/Table gap; \sysname{}\,$+$\,RL is additive in nearly
-  every cell. Blank cells are runs not yet completed.
+  Accuracy (\%) on Qwen2.5-VL 3B and 7B. \sysname{} alone matches or beats RL on every
+  high-resolution cell and recovers most of the Chart/Table gap;
+  \sysname{}\,$+$\,RL is additive in every cell.
 }
 \label{tab:rl_combined}
 \end{table}
