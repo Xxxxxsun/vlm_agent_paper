@@ -210,6 +210,59 @@ No Persistence & no candidate promoted on the 25-case evolution subset
 \label{tab:ablation_rerun_audit}
 \end{table*}
 
+\paragraph{Guarded 30-case tool-generation pilot.}
+After adding the generated-tool acceptance guards, we ran a time-bounded HRBench pilot on
+the first 30 validation cases to check whether the mechanism interventions now instantiate
+the intended tool path. This pilot is not a replacement for the 700-case mechanism probe
+above; it is an audit of the evolution loop under the stricter acceptance criterion. We
+therefore report the selection score used by the loop---candidate accuracy on the same
+30-case subset against the same-run baseline---rather than treating the noisy final replay
+as a held-out estimate.
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{lp{0.42\textwidth}ccc}
+\toprule
+\textbf{Variant} & \textbf{Guarded outcome}
+  & \textbf{Baseline} & \textbf{Candidate} & $\Delta$ \\
+\midrule
+Full tool-guard pilot & accepted one generated tool with its paired mastery skill;
+target HRBench-cross family improved from 0.5000 to 0.8125
+  & 0.5667 & 0.6000 & +0.0333 \\
+Failure-Only Diagnosis & accepted one generated tool with paired mastery skill;
+failed cases alone exposed the cross-position bottleneck in this subset
+  & 0.6000 & 0.7000 & +0.1000 \\
+Text-only Diagnosis & rejected: the proposed tool produced no visual artifact, so no
+generated tool was promoted
+  & 0.6667 & 0.6667 & 0.0000 \\
+Single-Candidate ($M{=}1$) & accepted one generated tool with paired mastery skill from a
+single proposal
+  & 0.5333 & 0.6000 & +0.0667 \\
+No Paired Mastery & smoke passed, but the unpaired tool candidate regressed on the full
+subset; HRBench-cross fell from 0.5625 to 0.4375
+  & 0.5667 & 0.5333 & -0.0333 \\
+No Persistence & the candidate regressed before persistence mattered, so this row is
+diagnostic but not a clean persistence ablation
+  & 0.5667 & 0.5333 & -0.0333 \\
+\bottomrule
+\end{tabular}
+\caption{%
+  \textbf{Guarded HRBench tool-generation pilot on 30 validation cases.}
+  All rows require at least one generated tool and forbid skill-only fallback. The Full
+  row uses the accepted tool-guard pilot
+  \path{ablation_hrbench_toolguard_fastdry30_w8_v5_doubao_20260523T110300Z}; the other
+  rows use the matched one-round guarded variants
+  \path{ablation_hrbench_*_fastdry30_w3_doubao_20260523T114000Z}. These numbers are
+  mechanism-audit scores, not held-out effect sizes. A same-\texttt{w3} Full replicate was
+  started but omitted because Doubao returned sustained TPM-limit errors during candidate
+  evaluation after smoke validation.
+}
+\label{tab:ablation_guarded_pilot}
+\end{table*}
+
 \subsection{Generic Skill vs. Evolved Capability}
 \label{app:abl_generic}
 
@@ -252,6 +305,15 @@ correct attempts tell the AnalyzerDecider \emph{which sub-patterns the current
 $\mathcal{C}$ already handles}, which sharpens the next capability proposal toward what is
 still missing.
 
+\paragraph{Observed pattern.}
+In the guarded 30-case HRBench pilot, Failure-Only Diagnosis promoted a generated
+cross-position tool and paired mastery skill, improving the selection score from 0.6000 to
+0.7000. This does not support a strong claim that correct cases are always necessary; on
+this narrow perceptual cluster, the failures alone were sufficient to recover a useful
+tool. We therefore treat this row as evidence that failure-only diagnosis can work on
+concentrated HRBench cross-position errors, while leaving the broader benefit of
+correct-case contrast to larger runs.
+
 \subsection{Text-only Diagnosis}
 \label{app:abl_textonly}
 
@@ -267,6 +329,13 @@ image introduced artefacts. We expect the gap to Full to be largest on the perce
 benchmarks (HRBench, V$^\star$). On ChartQA the gap should be smaller because many
 failures there are procedural; a small ChartQA gap with a large HRBench/V$^\star$ gap is
 itself the signature of the visual-diagnosis claim.
+
+\paragraph{Observed pattern.}
+The guarded HRBench pilot produced the expected failure mode: the text-only candidate was
+rejected because the proposed tool did not produce a visual artifact. Its selection score
+therefore stayed at the same-run baseline (0.6667 to 0.6667) and no generated tool was
+promoted. This supports the qualitative mechanism claim that visual diagnosis is needed to
+materialize useful image-processing tools, not just to write another textual rule.
 
 \subsection{Single-Candidate ($M{=}1$)}
 \label{app:abl_single_candidate}
@@ -285,6 +354,15 @@ roughly matches Full, the exploration step is decorative. A measurable gap shows
 diverse candidates plus selection by training-set accuracy is what turns a noisy proposal
 distribution into a reliably improving library.
 
+\paragraph{Observed pattern.}
+On the guarded 30-case HRBench pilot, the single-candidate run accepted one generated
+lateral-position tool and paired mastery skill, improving from 0.5333 to 0.6000. This is a
+positive result for the generator, but it is not evidence that multi-candidate selection
+is unnecessary: the accepted capability targets the same narrow HRBench-cross bottleneck
+where several runs generated similar position-marking tools. We therefore report this row
+as a successful small-subset stress test of the guarded tool path, not as a settled
+multi-candidate ablation.
+
 \subsection{No Paired Mastery Skill}
 \label{app:abl_mastery}
 
@@ -301,6 +379,14 @@ retrieval of an applicability-encoding skill is what keeps tool usage selective.
 No Paired Mastery Skill is expected to keep or even increase tool-usage rate but reduce
 accuracy on benchmarks where naive tool exposure can hurt---MathVista is the canonical
 cautionary case.
+
+\paragraph{Observed pattern.}
+The guarded HRBench pilot cleanly instantiated this ablation. The unpaired generated tool
+passed smoke validation, but once exposed without a mastery skill it regressed on the
+30-case subset (0.5667 to 0.5333) and was rejected. The targeted HRBench-cross family also
+dropped from 0.5625 to 0.4375. This is the strongest new mechanism evidence from the
+pilot: the tool itself can be executable and locally plausible, while the missing
+when-to-use gate still makes it harmful at subset scale.
 
 \subsection{No Persistence}
 \label{app:abl_persistence}
@@ -320,6 +406,14 @@ can retrieve, not just from one more attempt at the triggering case. ChartQA is 
 cleanest test because failures there form recurring families (stacked-bar boundary
 reading, multi-series selection) that a single capability can fix across many held-out
 cases.
+
+\paragraph{Observed pattern.}
+The guarded HRBench pilot did not produce a clean persistence test. The generated
+candidate regressed before the persistence switch mattered (0.5667 to 0.5333), so the run
+was rejected under the same rule as ordinary candidate selection. We therefore mark this
+row as inconclusive rather than claiming evidence for or against cross-case persistence.
+The persistence question still needs a row where the same generated capability improves
+the triggering subset and is then explicitly discarded before later cases.
 
 \subsection{Sensitivity to Training Subset Size and Iteration Count}
 \label{app:abl_sensitivity}
@@ -346,6 +440,13 @@ promoted no capability on a near-saturated 25-case training subset. We therefore
 Failure-Only Diagnosis, Text-only Diagnosis, No Paired Mastery Skill, and No Persistence
 as precisely defined intervention protocols, with the completed HRBench artifacts
 indicating which variants produced citeable held-out evidence under the current budget.
+The guarded 30-case pilot in Table~\ref{tab:ablation_guarded_pilot} updates that audit
+with stricter acceptance checks: it confirms that the evolution loop can promote real
+generated tools, that text-only diagnosis fails to materialize a usable artifact, and that
+removing paired mastery can turn an executable tool into a harmful subset-level
+intervention. At the same time, it keeps the Failure-Only and No-Persistence conclusions
+modest, because those rows do not yet isolate the intended mechanisms under the current
+budget.
 
 \paragraph{Practical diagnostic.}
 The mechanism ablations also suggest a practical rule of thumb for new task families. If
