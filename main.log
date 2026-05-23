@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  23 MAY 2026 16:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  23 MAY 2026 17:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1242,9 +1242,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 135.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 136.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 135.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 136.
 
 (./sections/1_introduction.tex
 <figures/Picture2.pdf, id=183, 269.005pt x 316.18124pt>
@@ -1252,35 +1252,36 @@ File: figures/Picture2.pdf Graphic file (type pdf)
 <use figures/Picture2.pdf>
 Package pdftex.def Info: figures/Picture2.pdf  used on input line 13.
 (pdftex.def)             Requested size: 219.08614pt x 257.50934pt.
-
-Underfull \vbox (badness 4779) has occurred while \output is active []
-
  [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
  <./figures/Picture2.pdf>]
-Underfull \hbox (badness 6708) in paragraph at lines 60--65
+Underfull \hbox (badness 6708) in paragraph at lines 63--68
 []\T1/ptm/b/n/10.95 (+20) Empirical ev-i-dence \T1/ptm/m/n/10.95 (+20) across f
 our visual-
  []
 
 ) (./sections/2_related_work.tex
 
-Package natbib Warning: Citation `trace2skill' on page 2 undefined on input lin
-e 13.
+Package natbib Warning: Citation `DBLP:journals/corr/abs-2603-25158' on page 2 
+undefined on input line 13.
 
 
-Package natbib Warning: Citation `selfimprov_paradox' on page 2 undefined on in
-put line 16.
+Package natbib Warning: Citation `DBLP:conf/acl/SunCZXZY25' on page 2 undefined
+ on input line 16.
 
 
-Package natbib Warning: Citation `personalized_agents' on page 2 undefined on i
-nput line 17.
+Package natbib Warning: Citation `DBLP:journals/corr/abs-2602-22680' on page 2 
+undefined on input line 17.
 
 
-Package natbib Warning: Citation `yang2024lever' on page 2 undefined on input l
-ine 41.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package natbib Warning: Citation `DBLP:conf/nips/YangPMXZHZ24' on page 2 undefi
+ned on input line 41.
 
 
 Underfull \hbox (badness 1019) in paragraph at lines 35--45
@@ -1299,22 +1300,23 @@ Underfull \hbox (badness 1331) in paragraph at lines 35--45
 p-
  []
 
+[2]
 
-Package natbib Warning: Citation `ma2026mmr' on page 2 undefined on input line 
-50.
+Package natbib Warning: Citation `DBLP:journals/corr/abs-2601-17814' on page 3 
+undefined on input line 50.
 
 
-Package natbib Warning: Citation `cheng2025ecoalign' on page 2 undefined on inp
-ut line 54.
+Package natbib Warning: Citation `DBLP:journals/corr/abs-2511-11301' on page 3 
+undefined on input line 54.
 
 )
-Underfull \hbox (badness 1924) in paragraph at lines 47--148
+Underfull \hbox (badness 1924) in paragraph at lines 47--149
 \T1/ptm/b/n/10.95 (+20) sets.[] \T1/ptm/m/n/10.95 (+20) Vis-Prog ([][]Gupta and
  Kem-b-havi[][], [][]2023[][]),
  []
 
-[2] (./sections/3_method.tex
-<figures/method.pdf, id=333, 753.81625pt x 409.53pt>
+(./sections/3_method.tex
+<figures/method.pdf, id=327, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
@@ -1331,19 +1333,16 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [3 <./figures/method.pdf>]) [4] (./sections/4_experiments.tex [5]
+ [3 <./figures/method.pdf>] [4]) (./sections/4_experiments.tex [5]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 112.
-<figures/distribution_shift_bars.pdf, id=534, 479.58861pt x 174.36057pt>
+<figures/distribution_shift_bars.pdf, id=532, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
 e 271.
 (pdftex.def)             Requested size: 455.24411pt x 165.51653pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6]
 Underfull \hbox (badness 10000) in paragraph at lines 299--309
  []\T1/ptm/b/n/10.95 (+20) What does environment-specific mas-tery
  []
@@ -1358,18 +1357,22 @@ Underfull \hbox (badness 1810) in paragraph at lines 299--309
 \T1/ptm/m/n/10.95 (+20) the tar-get en-vi-ron-ment's spe-cific tool chains,
  []
 
+[6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 396.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5105) has occurred while \output is active []
 
- [7 <./figures/distribution_shift_bars.pdf>]
+ [7]
 Underfull \hbox (badness 2103) in paragraph at lines 423--428
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
 (+20) On V$[]$ and
  []
 
-) (./sections/6_conclusion.tex) [8] (./sections/limitations.tex
+) (./sections/6_conclusion.tex [8 <./figures/distribution_shift_bars.pdf>])
+(./sections/limitations.tex
 Underfull \hbox (badness 4886) in paragraph at lines 12--16
  []\T1/ptm/b/n/10.95 (+20) Tool qual-ity ceil-ing.[] \T1/ptm/m/n/10.95 (+20) To
 ol ef-fec-tive-ness is
@@ -1385,9 +1388,7 @@ Underfull \hbox (badness 1152) in paragraph at lines 174--179
 []\T1/ptm/m/n/10 (+20) Ziwei Zheng, Michael Yang, Jack Hong, Chenx-
  []
 
-) [10
-
-] (./sections/A_appendix.tex
+) [10] (./sections/A_appendix.tex
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1428,7 +1429,7 @@ Underfull \hbox (badness 2698) in paragraph at lines 382--386
  []
 
 [14]
-<figures/distribution_shift_timeseries.pdf, id=724, 237.70663pt x 144.37573pt>
+<figures/distribution_shift_timeseries.pdf, id=723, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
@@ -1488,15 +1489,11 @@ Underfull \hbox (badness 2158) in paragraph at lines 481--483
 
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 7.0pt on input line 518.
-[15 <./figures/distribution_shift_timeseries.pdf>] [16]
-
-Package lineno Warning: Linenumber reference failed, 
-(lineno)                rerun to get it right.
-
-[17]
+[15 <./figures/distribution_shift_timeseries.pdf>] [16] [17]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
 34.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ))
 
@@ -1505,55 +1502,43 @@ Package natbib Warning: There were undefined citations.
 [18
 
 ] (./main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 0929CD4A1D230077555DC34C9DDBAC7C;6983.
  ) 
 Here is how much of TeX's memory you used:
- 36670 strings out of 478994
- 706546 string characters out of 5858184
- 1254441 words of memory out of 5000000
- 52525 multiletter control sequences out of 15000+600000
- 547128 words of font info for 577 fonts, out of 8000000 for 9000
+ 36680 strings out of 478994
+ 706608 string characters out of 5858184
+ 1256672 words of memory out of 5000000
+ 52528 multiletter control sequences out of 15000+600000
+ 547516 words of font info for 583 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,15n,108p,754b,2346s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{table.caption.61} has been referenced but does no
-t exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.59} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.60} has been referenced but does not
- exist, replaced by a fixed one
-
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{/u
-sr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/loca
-l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/
-texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist/f
-onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
-pe1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/ti
-mes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8
-a.pfb>
-Output written on main.pdf (18 pages, 4922603 bytes).
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
+/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
+ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/lo
+cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loc
+al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist
+/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/
+type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr
+i8a.pfb>
+Output written on main.pdf (18 pages, 4923078 bytes).
 PDF statistics:
- 1035 PDF objects out of 1200 (max. 8388607)
- 743 compressed objects within 8 object streams
- 274 named destinations out of 1000 (max. 500000)
+ 1032 PDF objects out of 1200 (max. 8388607)
+ 740 compressed objects within 8 object streams
+ 271 named destinations out of 1000 (max. 500000)
  115657 words of extra memory for PDF output out of 128383 (max. 10000000)
 

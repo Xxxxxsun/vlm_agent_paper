@@ -3,8 +3,9 @@
 % ============================================================
 \label{sec:conclusion}
 
-\sysname{} is a training-free framework in which a frozen VLM agent builds and updates its
-own task-family-specific capability library from a small training subset. The agent
+\sysname{} is a framework in which a frozen VLM agent builds and updates its own
+task-family-specific capability library from a small labeled training subset, without any
+weight updates or hand-authored task-specific prompts. The agent
 inspects both correct and incorrect attempts on a sampled sub-training set, an evolution
 planner decides whether to evolve a reasoning skill, an executable visual tool, or both,
 and the best of multiple candidates is promoted by validation accuracy. A mastery skill

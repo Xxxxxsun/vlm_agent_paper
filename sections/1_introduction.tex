@@ -12,17 +12,19 @@ small training subset and without any weight updates.
   \centering
   \includegraphics[width=\columnwidth]{figures/Picture2.pdf}
   \caption{
-    \textbf{Labor-free task adaptation via skill-tool evolution.}
-    Per-task VLM adaptation typically requires manually curated SFT data with a hand-designed
-    RL pipeline for every new task family. \sysname{} instead lets a frozen VLM agent evolve
-    its own skill and tool set per task family without human supervision, and dynamically
-    equips the matching set when a case from that family arrives.
+    \textbf{Per-task adaptation without weight updates or hand-authored prompts.}
+    Per-task VLM adaptation typically requires manually curated SFT data with a
+    hand-designed RL pipeline for every new task family. \sysname{} instead lets a frozen
+    VLM agent evolve its own skill and tool set per task family from a small labeled
+    training subset---without any weight updates or hand-authored task-specific
+    prompts---and dynamically equips the matching set when a case from that family arrives.
   }
   \label{fig:motivation}
 \end{figure}
 
-We instantiate this idea in \sysname{}, a training-free framework that evolves two
-complementary capability types and dynamically equips them at inference. \textbf{Skills} are
+We instantiate this idea in \sysname{}, a framework that evolves two complementary
+capability types from a small labeled training subset and dynamically equips them at
+inference, without any weight updates or task-specific prompt engineering. \textbf{Skills} are
 structured Markdown SOPs for \emph{cognitive} bottlenecks, where the visual evidence is
 available but the agent's reasoning procedure is weak. \textbf{Tools} are short Python
 programs for \emph{perceptual} bottlenecks, where the agent needs a transformed view---a
@@ -50,9 +52,10 @@ and combines additively with RL when both are available.
 
 \paragraph{Contributions.}
 \begin{enumerate}[leftmargin=*, label=(\arabic*), noitemsep]
-  \item A \textbf{problem formulation} that recasts per-task VLM adaptation as labor-free
+  \item A \textbf{problem formulation} that recasts per-task VLM adaptation as
         capability evolution: a frozen agent builds its own task-family-specific skill and
-        tool set from a small training subset, replacing manual SFT data curation and
+        tool set from a small labeled training subset, without any weight updates or
+        hand-authored task-specific prompts, replacing manual SFT data curation and
         task-specific RL pipelines.
   \item A \textbf{multi-candidate evolution loop with mastery} that diagnoses both correct
         and incorrect attempts, generates candidate skill$+$tool combinations, selects the
@@ -60,6 +63,6 @@ and combines additively with RL when both are available.
   \item \textbf{Empirical evidence} across four visual-reasoning benchmarks, six VLM
         backbones, the GTA tool-mastery benchmark, and three task families
         (chart, table, perception) each compared against its representative RL method,
-        showing that capability evolution is a viable training-free alternative---and
-        add-on---to task-specific RL.
+        showing that capability evolution can match or complement task-specific RL without
+        any weight updates.
 \end{enumerate}
