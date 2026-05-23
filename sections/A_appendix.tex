@@ -743,20 +743,20 @@ and implements only the subset of zoom/search behaviour the diagnosis warrants.
 \subsection{Case C: Interleaved Visual Skill}
 \label{app:interleaved_visual_skills}
 
-The third case is different from the previous two because the main artifact is not only an
-executable program. An interleaved visual skill is a retrieved Markdown skill that contains both
-textual reasoning instructions and visual evidence, such as an embedded crop, annotated chart, or
-linked processed image from the triggering failure.
+This case differs from A and B in that the main artefact is not purely executable. An
+\emph{interleaved} visual skill is a retrieved Markdown skill whose content includes both
+textual reasoning steps \emph{and} a persistent visual anchor (an annotated crop saved
+during the triggering case and retrieved on later cases). The case below was triggered on
+the ChartQA stacked-bar question ``\textit{What is the difference between the highest and
+the lowest green bar?}'', where the base agent read the total bar height instead of the
+green-segment values. The evolution loop diagnosed the bottleneck as visually distinguishing
+the target segment from its neighbours and emitted the paired skill and tool shown next.
 
-\textbf{Triggering failure.}
-This case should involve a problem where a text-only SOP is underspecified because the visual
-pattern itself matters. A common example is chart reasoning: the agent may know that it should
-subtract segment boundaries in a stacked bar chart, but still confuse which boundary belongs to
-the target segment.
-\textcolor{red}{[Insert benchmark, case id, question, ground-truth answer, and base answer.]}
-
-\textbf{Generated skill.}
-The generated skill should be quoted directly if available. A representative interleaved form is:
+\begin{tcolorbox}[
+    title={\textbf{Generated skill (paired with the tool below; triggered on ChartQA)}},
+    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
+    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+]
 \begin{lstlisting}[style=appendixsnippet]
 ## Skill: Stacked-Bar Segment Reading with Visual Anchor
 
@@ -772,55 +772,56 @@ Strategy:
 5. Verify the result against the visual anchor below.
 
 Visual Anchor:
-[embedded crop or linked image showing the annotated segment boundaries]
+See Figure ref:chartqa_visual_anchor: the two target green segments
+are outlined in red on the original ChartQA image.
 
 Common Pitfalls:
 - Do not read the total bar height when the question asks for one segment.
 - Do not use a nearby segment with a visually similar colour.
 \end{lstlisting}
+\end{tcolorbox}
 
-\textbf{Optional generated tool.}
-In this case, the paired tool may be simple: it produces the crop or annotation that is embedded
-in the skill.
+\begin{tcolorbox}[
+    title={\textbf{Generated tool (produces the visual anchor used in the skill above)}},
+    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
+    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+]
 \begin{lstlisting}[style=appendixsnippet]
 def make_visual_anchor(image_path, crop_box, annotations):
     """Create an annotated crop used as the visual anchor in a skill."""
     from PIL import Image, ImageDraw
     img = Image.open(image_path).convert("RGB")
-    crop = img.crop(crop_box)
+    crop = img.crop(crop_box) if crop_box else img.copy()
     draw = ImageDraw.Draw(crop)
     for ann in annotations:
-        draw.rectangle(ann["box"], outline=ann.get("color", "red"), width=4)
+        draw.rectangle(ann["box"], outline=ann.get("color", "red"), width=3)
         if "label" in ann:
-            draw.text((ann["box"][0], ann["box"][1]), ann["label"],
-                      fill=ann.get("color", "red"))
+            draw.text((ann["box"][0], ann["box"][1] - 12),
+                      ann["label"], fill=ann.get("color", "red"))
     out_path = image_path.replace(".png", "_visual_anchor.png")
     crop.save(out_path)
     return out_path
 \end{lstlisting}
-
-\textbf{Why this is interleaved.}
-The retrieved capability is not purely textual and not purely executable. The skill tells the
-agent how to reason, while the visual anchor shows what the relevant visual configuration looks
-like. This is related to visual-thought methods, but the visual artifact is stored persistently
-inside the capability library and retrieved on later cases.
-
-\textbf{Evidence to insert.}
-The final case study should include the generated Markdown skill, the visual anchor image, and a
-before/after answer showing how the retrieved interleaved skill changes the solver's behavior.
-\textcolor{red}{[Insert validation result and retry answer.]}
+\end{tcolorbox}
 
 \begin{figure}[ht]
 \centering
-% TODO: replace with generated Figure 5/6 (case study + skill/tool example)
-\fbox{\rule{0pt}{5cm}\rule{0.95\columnwidth}{0pt}}
-\caption{
-  \textbf{Placeholder for a concrete before/after case study.}
-  The final version should insert the original image, the failed base answer, the generated
-  skill/tool artifact, the processed visual output if any, and the validated retry answer.
+\includegraphics[width=0.85\columnwidth]{figures/chartqa_visual_anchor.png}
+\caption{%
+  \textbf{Stored visual anchor for the interleaved skill in Case C.}
+  Annotated version of the triggering ChartQA case (Pew Research, ``Slight increase in
+  Japanese support for more active military role''). The red outlines mark the two
+  target green segments (29 and 23) whose difference the question is asking for. The
+  skill in the box above retrieves this image when the same problem family is
+  encountered on later cases.
 }
-\label{fig:casestudy}
+\label{fig:chartqa_visual_anchor}
 \end{figure}
+
+Like visual-thought methods, this capability couples textual reasoning with a visual
+artefact. The difference is that \sysname{} stores the visual anchor \emph{persistently}
+inside the capability library and retrieves it on later cases of the same problem family,
+rather than synthesising a fresh visualisation per call.
 
 \section{Case Study Artifact Checklist}
 \label{app:case_artifact_checklist}
