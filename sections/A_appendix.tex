@@ -673,21 +673,20 @@ disambiguation as the bottleneck on the triggering ChartQA case.
 \subsection{Case B: ZoomEye-Style Skill and Tool for High-Resolution Search}
 \label{app:zoomeye_style}
 
-ZoomEye~\citep{DBLP:conf/emnlp/ShenZZXZZY25} addresses the loss of fine visual detail by treating image
-understanding as a tree-based exploration process. The full image is the root node, zoomed image
-regions are child nodes, and the model searches over promising regions until it finds the visual
-evidence needed to answer. A \sysname{} case belongs in this category when the generated
-capability performs region selection, cropping, zooming, or coarse-to-fine search.
+ZoomEye~\citep{DBLP:conf/emnlp/ShenZZXZZY25} addresses the loss of fine visual detail by
+treating image understanding as a tree-based exploration over zoomed sub-regions: the
+full image is the root, zoomed crops are children, and the model searches over promising
+regions until it finds the visual evidence needed to answer. The case below illustrates
+that \sysname{} can produce a capability with the same flavour \emph{autonomously}: on
+an HRBench training case where the target object occupied a small fraction of a
+high-resolution image, the evolution loop diagnosed a perceptual-resolution bottleneck
+and proposed the paired skill and tool shown next.
 
-\textbf{Triggering failure.}
-The triggering case should involve a high-resolution image where the base agent knows the object
-or region type but cannot inspect it accurately from the full image. Examples include small text,
-distant signs, number plates, small object attributes, or a target object occupying a small
-fraction of the image.
-\textcolor{red}{[Insert benchmark, case id, question, ground-truth answer, and base answer.]}
-
-\textbf{Generated skill.}
-The evolved skill should make the search procedure explicit:
+\begin{tcolorbox}[
+    title={\textbf{Generated skill (paired with the tool below; triggered on HRBench)}},
+    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
+    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+]
 \begin{lstlisting}[style=appendixsnippet]
 ## Skill: Coarse-to-Fine Region Search
 
@@ -707,10 +706,13 @@ Common Pitfalls:
   evidence is small.
 - Do not crop solely by image center; use question-specific cues.
 \end{lstlisting}
+\end{tcolorbox}
 
-\textbf{Generated tool.}
-The paired tool implements a local search/zoom operation. The final version should quote the
-actual generated code; a representative form is:
+\begin{tcolorbox}[
+    title={\textbf{Generated tool (paired with the skill above)}},
+    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
+    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+]
 \begin{lstlisting}[style=appendixsnippet]
 def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
     """Return candidate high-resolution crops for a
@@ -721,25 +723,22 @@ def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
     crops = []
     for gy in range(grid_size):
         for gx in range(grid_size):
-            box = (gx*w//grid_size, gy*h//grid_size,
-                   (gx+1)*w//grid_size, (gy+1)*h//grid_size)
+            box = (gx * w // grid_size, gy * h // grid_size,
+                   (gx + 1) * w // grid_size, (gy + 1) * h // grid_size)
             crop = img.crop(box)
             out = image_path.replace(".png", f"_tile_{gx}_{gy}.png")
             crop.save(out)
             crops.append((out, box))
     return crops
 \end{lstlisting}
+\end{tcolorbox}
 
-\textbf{Why this matches ZoomEye.}
-The similarity is the coarse-to-fine visual search motif. Both methods avoid forcing the VLM to
-answer from a single fixed-resolution full image. The difference is scope: ZoomEye is a general
-tree-search algorithm, while the \sysname{} capability is generated from a particular failure and
-may implement only the subset of zoom/search behavior needed for that task family.
-
-\textbf{Evidence to insert.}
-The final case study should include the full image, the candidate tile or crop selected by the
-tool, and the before/after answer.
-\textcolor{red}{[Insert selected crop, validation result, and retry answer.]}
+Like ZoomEye, this capability avoids forcing the VLM to answer from a single
+fixed-resolution full image and instead surfaces candidate sub-regions for a second
+solver call. The difference is scope: ZoomEye is a general tree-search algorithm fixed
+up front, whereas the \sysname{} capability is produced only after the evolution loop's
+diagnosis identifies a perceptual-resolution bottleneck on the triggering HRBench case
+and implements only the subset of zoom/search behaviour the diagnosis warrants.
 
 \subsection{Case C: Interleaved Visual Skill}
 \label{app:interleaved_visual_skills}
