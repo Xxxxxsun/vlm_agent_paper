@@ -141,21 +141,32 @@ over time---a stream may begin with high-resolution perception cases and later s
 including MathVista-style reasoning cases, or vice versa. We design \sysname{} to detect
 such shifts and \emph{update} its skills and tools online, without weight updates and
 without the practitioner having to anticipate the shift or prepare a per-family training
-set.
+set in advance.
 
-\sysname{} continuously samples a sub-training set from the most recent queries and runs
-the evolution loop of Section~\ref{sec:method_loop} on them, accumulating skills and tools
-into the library $\mathcal{C}$. Let $W$ be a rolling-window length. The dominant task
-family at step $t$ is
+\paragraph{Feedback signal.}
+Running the evolution loop online requires a per-case correctness signal to drive
+diagnosis and selection (Eqs.~\ref{eq:agent}--\ref{eq:selection}). Raw production traffic
+typically lacks ground-truth labels, so \sysname{} assumes one of the practical feedback
+channels available in real deployments: a small fraction of queries reviewed by humans in
+the loop, an automated quality-assurance pipeline, or an LLM-based verifier that scores
+the agent's answer post-hoc. Our experiments use the benchmark's ground-truth labels as a
+stand-in for this channel; the adaptation policy itself is agnostic to the source of the
+correctness signal, and the framework therefore does not claim fully unsupervised online
+adaptation.
+
+\sysname{} continuously samples a sub-training set from the most recent queries (together
+with their correctness signals) and runs the evolution loop of
+Section~\ref{sec:method_loop} on them, accumulating skills and tools into the library
+$\mathcal{C}$. Let $W$ be a rolling-window length. The dominant task family at step $t$ is
 \begin{equation}
   \hat{f}_t = \arg\max_{f}\; \sum_{i = t - W + 1}^{t} \mathbf{1}\!\left[\,\mathrm{fam}(x_i) = f\,\right],
   \label{eq:shift}
 \end{equation}
 where $\mathrm{fam}(\cdot)$ classifies each query from its question and image features.
 When Eq.~\ref{eq:shift} flips ($\hat{f}_t \neq \hat{f}_{t-1}$), the next evolution
-iteration is triggered on the new sub-stream and produces updated skills and tools that handle the new distribution. The
-library is thus kept in sync with the current query distribution without any human
-intervention. We treat this autonomous online adaptation as one of the method's
-contributions; Experiment~I (Section~\ref{sec:exp1}) evaluates it against a static
-baseline that never refreshes and an oracle whose full capability set is available from
-the start.
+iteration is triggered on the new sub-stream and produces updated skills and tools that
+handle the new distribution. The library is thus kept in sync with the current query
+distribution. We treat this autonomous online adaptation---decoupled from the source of
+the correctness signal---as one of the method's contributions; Experiment~I
+(Section~\ref{sec:exp1}) evaluates it against a static baseline that never refreshes and
+an oracle whose full capability set is available from the start.

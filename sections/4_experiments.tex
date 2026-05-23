@@ -248,8 +248,12 @@ To simulate real online user traffic---where the task distribution grows and shi
 time as different users and requests arrive---we replay a 208-step non-stationary stream
 in which each phase introduces a new task family while keeping carry-over cases from
 earlier phases: starting with HRBench, then adding MathVista, ChartQA, and finally V$^*$
-as the new dominant family. The replay reuses completed per-case outputs, isolating the
-adaptation policy from the cost of regenerating capabilities online. We compare \emph{Direct} (no capabilities), \emph{Static} (capabilities evolved
+as the new dominant family. The replay reuses completed per-case outputs, and the
+benchmark's ground-truth labels stand in for the per-case correctness signal that a
+real deployment would obtain from human review, automated QA, or an LLM
+verifier~(Section~\ref{sec:method_adaptation}). This isolates the adaptation policy from
+the cost of regenerating capabilities online and from the cost of the feedback channel
+itself; we do not claim fully unsupervised online adaptation. We compare \emph{Direct} (no capabilities), \emph{Static} (capabilities evolved
 on the initial distribution only and never updated), \emph{Online adapt} (\sysname{}
 detects the shift and updates skills and tools on the new sub-stream), and \emph{Oracle}
 (capabilities pre-evolved on every family, an upper bound).
