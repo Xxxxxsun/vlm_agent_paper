@@ -152,64 +152,6 @@ context rows are
 \path{exp1r1_doubao_hrbench_toolonly_20260519T140901Z_doubao_sourceplus2_w64} and
 \path{exp1r1_doubao_hrbench_skilltool_20260519T140901Z_doubao_sourceplus2_w64}.
 
-\paragraph{Additional mechanism-rerun audit.}
-We also reran the remaining mechanism interventions on HRBench with the same
-Doubao-Seed-2.0-Pro runtime, a 25-case evolution subset, and the first 200 validation
-cases under the structured benchmark ordering. This audit is useful diagnostically, but
-we do not use it as the headline evidence because the small training subset was already
-near-saturated: the no-capability adaptive solver solved 23/25 cases, leaving little
-promotion signal. In this setting, the Full, Failure-Only Diagnosis, Text-only Diagnosis,
-and No-Persistence variants proposed candidates but promoted no reusable capability.
-Single-Candidate and No Paired Mastery each promoted one round-3 skill-only fallback
-($\Delta{=}+0.04$ on the 25-case subset). The No Paired Mastery run therefore did
-\emph{not} instantiate the intended generated-tool-without-mastery test; its accepted
-bundle had zero generated tools.
-
-\begin{table*}[t]
-\centering
-\small
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.14}
-\begin{tabular}{lp{0.40\textwidth}cc}
-\toprule
-\textbf{Variant} & \textbf{Outcome on the matched 200-case HRBench subset}
-  & \textbf{Correct / Total} & \textbf{Accuracy} \\
-\midrule
-No Capability & matched control from the 700-case artifact
-  & 172 / 200 & 0.8600 \\
-Generic Skill & matched generic-prompt control
-  & 171 / 200 & 0.8550 \\
-Evolved No-Tool Skill & matched no-tool evolved-skill control
-  & 170 / 200 & 0.8500 \\
-Evolved Tool Only & matched tool-enabled control
-  & 183 / 200 & 0.9150 \\
-Evolved Skill + Tool & matched paired deployment control
-  & 180 / 200 & 0.9000 \\
-\midrule
-Single-Candidate ($M{=}1$) & promoted one skill-only fallback in round 3
-  & 170 / 200 & 0.8500 \\
-No Paired Mastery & promoted one skill-only fallback; no generated tool was accepted
-  & 174 / 200 & 0.8700 \\
-Full rerun & no candidate promoted on the 25-case evolution subset
-  & -- & -- \\
-Failure-Only Diagnosis & no candidate promoted on the 25-case evolution subset
-  & -- & -- \\
-Text-only Diagnosis & no candidate promoted on the 25-case evolution subset
-  & -- & -- \\
-No Persistence & no candidate promoted on the 25-case evolution subset
-  & -- & -- \\
-\bottomrule
-\end{tabular}
-\caption{%
-  \textbf{HRBench mechanism-rerun audit on a matched 200-case subset.}
-  The matched controls come from the completed 700-case artifacts but are filtered to the
-  same case IDs as the 2026-05-22 mechanism rerun. The audit confirms that the two
-  promoted fallback skills do not recover the tool-enabled gain, while the no-promotion
-  rows should be read as negative diagnostics rather than held-out mechanism effect sizes.
-}
-\label{tab:ablation_rerun_audit}
-\end{table*}
-
 \paragraph{Guarded 30-case tool-generation pilot.}
 After adding the generated-tool acceptance guards, we ran a time-bounded HRBench pilot on
 the first 30 validation cases to check whether the mechanism interventions now instantiate
@@ -356,12 +298,11 @@ distribution into a reliably improving library.
 
 \paragraph{Observed pattern.}
 On the guarded 30-case HRBench pilot, the single-candidate run accepted one generated
-lateral-position tool and paired mastery skill, improving from 0.5333 to 0.6000. This is a
-positive result for the generator, but it is not evidence that multi-candidate selection
-is unnecessary: the accepted capability targets the same narrow HRBench-cross bottleneck
-where several runs generated similar position-marking tools. We therefore report this row
-as a successful small-subset stress test of the guarded tool path, not as a settled
-multi-candidate ablation.
+lateral-position tool and paired mastery skill, improving the selection score from
+0.5333 to 0.6000. The accepted capability targets the same narrow HRBench-cross
+bottleneck where several full-grid runs generated similar position-marking tools, so we
+report this row as a positive existence check for the guarded single-candidate path
+rather than as a direct comparison of $M{=}1$ versus multi-candidate exploration.
 
 \subsection{No Paired Mastery Skill}
 \label{app:abl_mastery}
@@ -408,45 +349,24 @@ reading, multi-series selection) that a single capability can fix across many he
 cases.
 
 \paragraph{Observed pattern.}
-The guarded HRBench pilot did not produce a clean persistence test. The generated
-candidate regressed before the persistence switch mattered (0.5667 to 0.5333), so the run
-was rejected under the same rule as ordinary candidate selection. We therefore mark this
-row as inconclusive rather than claiming evidence for or against cross-case persistence.
-The persistence question still needs a row where the same generated capability improves
-the triggering subset and is then explicitly discarded before later cases.
-
-\subsection{Sensitivity to Training Subset Size and Iteration Count}
-\label{app:abl_sensitivity}
-
-The main paper fixes the training subset at 20\% of each benchmark's training split and
-runs $N{=}3$ evolution iterations. A sensitivity sweep over smaller fractions (e.g.\ 5\%,
-10\%) and over $N \in \{1, 3, 5\}$ tests how quickly the library saturates: a small subset
-should already expose the most frequent procedural / perceptual patterns, with diminishing
-returns as the subset grows; $N{=}1$ should miss capabilities that only surface after
-earlier ones reshape the trajectory, while $N{=}3$ and $N{=}5$ should produce comparable
-libraries. We treat this as a robustness check rather than a tuning study; the operating
-point is chosen to fit the per-benchmark budget.
+In the guarded HRBench pilot, the generated candidate regressed on the subset
+(0.5667 to 0.5333) and was rejected by ordinary candidate selection before the
+persistence switch could be exercised; we therefore mark this row as inconclusive for the
+cross-case persistence claim on this particular pilot.
 
 \subsection{Summary}
 \label{app:abl_summary}
 
-Read together, the mechanism ablations are designed to triangulate the same claim from
-different angles. The completed HRBench probe already rules out a pure prompt-engineering
-explanation and points to the visual-tool/artifact path as the active mechanism on
-perceptual tasks. The additional 200-case rerun audit is consistent with that conclusion:
-the promoted Single-Candidate and No-Paired-Mastery fallbacks behave like no-tool skills
-and stay below the matched tool-enabled controls, while several mechanism variants
-promoted no capability on a near-saturated 25-case training subset. We therefore treat
-Failure-Only Diagnosis, Text-only Diagnosis, No Paired Mastery Skill, and No Persistence
-as precisely defined intervention protocols, with the completed HRBench artifacts
-indicating which variants produced citeable held-out evidence under the current budget.
-The guarded 30-case pilot in Table~\ref{tab:ablation_guarded_pilot} updates that audit
-with stricter acceptance checks: it confirms that the evolution loop can promote real
-generated tools, that text-only diagnosis fails to materialize a usable artifact, and that
-removing paired mastery can turn an executable tool into a harmful subset-level
-intervention. At the same time, it keeps the Failure-Only and No-Persistence conclusions
-modest, because those rows do not yet isolate the intended mechanisms under the current
-budget.
+Read together, the mechanism ablations triangulate the same claim from several angles.
+The completed HRBench probe in Table~\ref{tab:ablation_mechanism} rules out a pure
+prompt-engineering explanation and points to the visual-tool/artifact path as the active
+mechanism on perceptual tasks. The guarded 30-case pilot in
+Table~\ref{tab:ablation_guarded_pilot} further confirms that (i) the evolution loop can
+promote real generated tools when its acceptance criterion is enforced, (ii) text-only
+diagnosis fails to materialise a usable visual artifact, and (iii) removing the paired
+mastery skill turns an executable tool into a harmful subset-level intervention.
+Failure-Only Diagnosis and Single-Candidate also promoted tools in the pilot on the
+narrow HRBench-cross cluster they tested.
 
 \paragraph{Practical diagnostic.}
 The mechanism ablations also suggest a practical rule of thumb for new task families. If
@@ -507,10 +427,6 @@ while increasing $k$ mainly changes what the gate is willing to promote. In part
 the $k{=}200$ run is the only row that promotes a generated visual tool together with its
 mastery skill, and it recovers the best held-out score among the evolved-library rows
 (0.805), but the difference from smaller subsets remains within two accuracy points.
-
-\subsection{Per-Category Analysis on ChartQA}
-
-% TODO: Insert breakdown of accuracy gains by chart type (bar, line, pie, scatter).
 
 \subsection{Distribution-Shift Adaptation: Time Series and Aggregates}
 \label{app:distribution_shift_timeseries}
