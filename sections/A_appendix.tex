@@ -243,6 +243,64 @@ tool. We therefore treat this row as evidence that failure-only diagnosis can wo
 concentrated HRBench cross-position errors, while leaving the broader benefit of
 correct-case contrast to larger runs.
 
+\subsection{Correct-Only vs. Error-Only Diagnosis}
+\label{app:abl_diagnosis_polarity}
+
+\paragraph{What is removed.}
+This stress test splits the diagnosis evidence by polarity on a ChartQA $k{=}50$,
+$N{=}3$ run. Correct-Only Diagnosis exposes only cases the current agent already solves;
+Error-Only Diagnosis exposes only the cases it misses. All other settings match the
+ChartQA structured evolution protocol.
+
+\paragraph{What this rules out.}
+The full method assumes that useful evolution needs contrast: correct cases show the
+boundary of the existing capability, while incorrect cases expose the missing behavior.
+Correct-only evidence should therefore have no target for evolution, and error-only
+evidence should over-focus on the visible failures without enough successful neighboring
+cases to constrain the proposed capability.
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{lp{0.38\textwidth}ccc}
+\toprule
+\textbf{Variant} & \textbf{Observed evolution behavior}
+  & \textbf{Rounds} & \textbf{Promoted} & \textbf{Train replay} \\
+\midrule
+Correct-Only Diagnosis & no failure cluster is constructed, so the loop stops before
+candidate generation
+  & 0 & 0 & 45 / 50 \\
+Error-Only Diagnosis & each round targets the same ChartQA error cluster and proposes a
+new broad visual-overlay tool; round 1 fails smoke validation, while rounds 2--3 tie the
+baseline selection score and are rejected
+  & 3 & 0 & 45 / 50 \\
+\bottomrule
+\end{tabular}
+\caption{%
+  \textbf{Diagnosis-polarity stress test on ChartQA.}
+  Correct-only evidence cannot drive evolution because no missed cases are available.
+  Error-only evidence repeatedly triggers new tool generation
+  (\texttt{chart\_data\_point\_highlighter},
+  \texttt{chart\_series\_value\_overlay}, and
+  \texttt{chart\_data\_point\_overlay\_generator}) but promotes none of them. The
+  selection baseline and candidates for the two completed error-only rounds are both
+  46/50, so the generated tools do not improve the subset despite repeated regeneration.
+}
+\label{tab:ablation_diagnosis_polarity}
+\end{table*}
+
+\paragraph{Observed pattern.}
+The two extremes show the intended qualitative failure modes. Correct-only diagnosis is
+degenerate: with no failures in the digest, the evolution loop has no target family to
+repair and accepts no capability. Error-only diagnosis is active but unstable: the decider
+asks for \texttt{generate\_both} in every round, and the generator produces a fresh
+overlay/highlighter-style tool each time rather than refining a stable reusable
+capability. Since none of these candidates improves over the 46/50 selection baseline,
+the library remains unchanged. The result supports the design choice to diagnose both
+correct and incorrect attempts rather than treating either polarity alone as sufficient.
+
 \subsection{Text-only Diagnosis}
 \label{app:abl_textonly}
 
@@ -354,6 +412,11 @@ diagnosis fails to materialise a usable visual artifact, and (iii) removing the 
 mastery skill turns an executable tool into a harmful subset-level intervention.
 Failure-Only Diagnosis and Single-Candidate also promoted tools in the pilot on the
 narrow HRBench-cross cluster they tested.
+The ChartQA polarity stress test in Table~\ref{tab:ablation_diagnosis_polarity}
+adds a complementary signal: correct-only diagnosis cannot enter the generation path,
+while error-only diagnosis repeatedly regenerates broad tools without promoting any
+capability. This supports the full loop's use of contrast between solved and unsolved
+cases when forming reusable skills and tools.
 
 \paragraph{Practical diagnostic.}
 The mechanism ablations also suggest a practical rule of thumb for new task families. If
