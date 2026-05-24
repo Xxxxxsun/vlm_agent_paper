@@ -502,6 +502,51 @@ Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm
 \label{tab:distribution_shift}
 \end{table}
 
+\subsection{Multi-benchmark Joint Evolution}
+\label{app:mixed_benchmark}
+
+Experiment~I in the main paper evolves a separate library per benchmark. This appendix
+tests whether a single shared library can serve all four visual reasoning benchmarks at
+once. We combine the validation sets of \textbf{ChartQA}, \textbf{MathVista},
+\textbf{HRBench}, and \textbf{V$^\star$} into one mixed pool, sample 10\% as the joint
+evolution subset, and use the remaining 3{,}671 cases as the held-out test set. The
+evolution loop produces a single unified skill paired with the standard preset tools
+(\texttt{execute\_python}, \texttt{get\_image\_info}, \texttt{zoom\_image},
+\texttt{crop\_image}); we evaluate the frozen library on the held-out pool with GPT-4o.
+
+\begin{table}[ht]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Benchmark} & \textbf{Held-out cases} & \textbf{Correct} & \textbf{Accuracy} \\
+\midrule
+ChartQA      & 1{,}920 & 1{,}488 & 0.775 \\
+MathVista    &    900 &     616 & 0.684 \\
+HRBench      &    700 &     476 & 0.680 \\
+V$^\star$    &    151 &     101 & 0.669 \\
+\midrule
+\textbf{Combined} & \textbf{3{,}671} & \textbf{2{,}681} & \textbf{0.730} \\
+\bottomrule
+\end{tabular}
+\caption{%
+  \textbf{Multi-benchmark joint evolution (GPT-4o).}
+  A single unified skill, evolved on a 10\% subset of the combined four-benchmark
+  validation pool, is applied to the remaining 3{,}671 held-out cases. The same library
+  is used across all four benchmarks; no per-benchmark capability is loaded.
+}
+\label{tab:mixed_benchmark}
+\end{table}
+
+The unified skill reaches $73.0\%$ overall on the held-out pool, with per-benchmark
+accuracy ranging from $66.9\%$ on V$^\star$ to $77.5\%$ on ChartQA. This shows that
+\sysname{} can evolve a library that generalises across visually distinct benchmark
+families from a single joint training subset, rather than requiring a separate evolution
+run per benchmark---an option useful in practice when a deployed agent must answer
+queries drawn from a mixture of task families.
+
 \section{Qualitative Analysis of Evolved Capabilities}
 \label{app:capability_cases}
 
