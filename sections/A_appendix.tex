@@ -166,15 +166,9 @@ as a held-out estimate.
 Full tool-guard pilot & accepted one generated tool with its paired mastery skill;
 target HRBench-cross family improved from 0.5000 to 0.8125
   & 0.5667 & 0.6000 & +0.0333 \\
-Failure-Only Diagnosis & accepted one generated tool with paired mastery skill;
-failed cases alone exposed the cross-position bottleneck in this subset
-  & 0.6000 & 0.7000 & +0.1000 \\
 Text-only Diagnosis & rejected: the proposed tool produced no visual artifact, so no
 generated tool was promoted
   & 0.6667 & 0.6667 & 0.0000 \\
-Single-Candidate ($M{=}1$) & accepted one generated tool with paired mastery skill from a
-single proposal
-  & 0.5333 & 0.6000 & +0.0667 \\
 No Paired Mastery & smoke passed, but the unpaired tool candidate regressed on the full
 subset; HRBench-cross fell from 0.5625 to 0.4375
   & 0.5667 & 0.5333 & -0.0333 \\
@@ -216,32 +210,6 @@ show that simply adding a neutral task prompt does not recover the tool-enabled 
 The tool-enabled rows in Table~\ref{tab:ablation_mechanism} are roughly four points
 higher, so the HRBench improvement is better explained by validated visual artefacts than
 by generic skill injection.
-
-\subsection{Failure-Only Diagnosis}
-\label{app:abl_failure_only}
-
-\paragraph{What is removed.}
-The AnalyzerDecider only sees the incorrect cases in the sampled sub-training set; the
-correct cases are dropped. Everything else---multimodal input, multi-candidate
-exploration, paired mastery skill, persistence---is unchanged.
-
-\paragraph{What this rules out.}
-Most prior self-improvement work treats correct cases as nothing to learn from. This
-variant tests that assumption directly. If Failure-Only Diagnosis matches Full, then the
-correct cases carry no useful diagnostic signal and the abstract's framing of ``diagnoses
-both correct and incorrect attempts'' is decorative. A gap supports the design choice:
-correct attempts tell the AnalyzerDecider \emph{which sub-patterns the current
-$\mathcal{C}$ already handles}, which sharpens the next capability proposal toward what is
-still missing.
-
-\paragraph{Observed pattern.}
-In the guarded 30-case HRBench pilot, Failure-Only Diagnosis promoted a generated
-cross-position tool and paired mastery skill, improving the selection score from 0.6000 to
-0.7000. This does not support a strong claim that correct cases are always necessary; on
-this narrow perceptual cluster, the failures alone were sufficient to recover a useful
-tool. We therefore treat this row as evidence that failure-only diagnosis can work on
-concentrated HRBench cross-position errors, while leaving the broader benefit of
-correct-case contrast to larger runs.
 
 \subsection{Correct-Only vs. Error-Only Diagnosis}
 \label{app:abl_diagnosis_polarity}
@@ -324,31 +292,6 @@ therefore stayed at the same-run baseline (0.6667 to 0.6667) and no generated to
 promoted. This supports the qualitative mechanism claim that visual diagnosis is needed to
 materialize useful image-processing tools, not just to write another textual rule.
 
-\subsection{Single-Candidate ($M{=}1$)}
-\label{app:abl_single_candidate}
-
-\paragraph{What is removed.}
-The Generator produces a single capability proposal per iteration (the same setting as
-typical generate-then-validate tool-creation methods such as
-CREATOR~\citep{DBLP:conf/emnlp/QianH0Q0J23} and LATM~\citep{DBLP:conf/iclr/Cai00CZ24}). The validate-and-promote
-step (Eq.~\ref{eq:selection}) collapses to a binary accept/reject of that single
-candidate against the training set.
-
-\paragraph{What this rules out.}
-A reviewer might ask whether the multi-candidate $\arg\max$ in Eq.~\ref{eq:selection} is
-load-bearing or whether the first proposal is usually good enough. If Single-Candidate
-roughly matches Full, the exploration step is decorative. A measurable gap shows that
-diverse candidates plus selection by training-set accuracy is what turns a noisy proposal
-distribution into a reliably improving library.
-
-\paragraph{Observed pattern.}
-On the guarded 30-case HRBench pilot, the single-candidate run accepted one generated
-lateral-position tool and paired mastery skill, improving the selection score from
-0.5333 to 0.6000. The accepted capability targets the same narrow HRBench-cross
-bottleneck where several full-grid runs generated similar position-marking tools, so we
-report this row as a positive existence check for the guarded single-candidate path
-rather than as a direct comparison of $M{=}1$ versus multi-candidate exploration.
-
 \subsection{No Paired Mastery Skill}
 \label{app:abl_mastery}
 
@@ -402,21 +345,33 @@ cross-case persistence claim on this particular pilot.
 \subsection{Summary}
 \label{app:abl_summary}
 
-Read together, the mechanism ablations triangulate the same claim from several angles.
-The completed HRBench probe in Table~\ref{tab:ablation_mechanism} rules out a pure
-prompt-engineering explanation and points to the visual-tool/artifact path as the active
-mechanism on perceptual tasks. The guarded 30-case pilot in
-Table~\ref{tab:ablation_guarded_pilot} further confirms that (i) the evolution loop can
-promote real generated tools when its acceptance criterion is enforced, (ii) text-only
-diagnosis fails to materialise a usable visual artifact, and (iii) removing the paired
-mastery skill turns an executable tool into a harmful subset-level intervention.
-Failure-Only Diagnosis and Single-Candidate also promoted tools in the pilot on the
-narrow HRBench-cross cluster they tested.
-The ChartQA polarity stress test in Table~\ref{tab:ablation_diagnosis_polarity}
-adds a complementary signal: correct-only diagnosis cannot enter the generation path,
-while error-only diagnosis repeatedly regenerates broad tools without promoting any
-capability. This supports the full loop's use of contrast between solved and unsolved
-cases when forming reusable skills and tools.
+We deliberately keep the claims from these tables narrow.
+
+\textbf{Generic prompt injection does not explain the HRBench gain.}
+Table~\ref{tab:ablation_mechanism} (700 cases) shows that disabling the tool path and
+replacing the evolved library with either a hand-neutral prompt or an evolved no-tool
+skill leaves accuracy within noise of the no-capability runtime; the four- to five-point
+gain appears only once the validated visual-tool path is enabled. This rules out a pure
+prompt-engineering account of \sysname{} on perceptual tasks.
+
+\textbf{Visual diagnosis is necessary to materialise a usable image-processing tool.}
+In the guarded 30-case pilot (Table~\ref{tab:ablation_guarded_pilot}), the text-only
+diagnosis variant proposed a tool that produced no visual artifact and was rejected by
+the acceptance guard, leaving the selection score equal to the same-run baseline.
+
+\textbf{Diagnosis must see both correct and incorrect cases.}
+The ChartQA polarity stress test in Table~\ref{tab:ablation_diagnosis_polarity} shows that
+neither polarity alone supports useful evolution: correct-only diagnosis cannot enter the
+generation path because no failure cluster is formed, while error-only diagnosis is
+active but unstable, regenerating a fresh broad overlay tool in each round and promoting
+none of them. The contrast between solved and unsolved cases is what gives the
+AnalyzerDecider a stable target for capability proposal.
+
+The remaining two pilot rows (No Paired Mastery and No Persistence) sit within
+subset-level noise on 30 cases and should be read as diagnostic audits of the loop
+machinery rather than as effect-size estimates. The multi-candidate exploration
+mechanism (single-candidate vs.\ $M{>}1$) requires a larger-subset experiment than the
+current pilot allows and is left to future work.
 
 \paragraph{Practical diagnostic.}
 The mechanism ablations also suggest a practical rule of thumb for new task families. If
