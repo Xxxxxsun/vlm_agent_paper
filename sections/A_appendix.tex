@@ -62,24 +62,21 @@ Table~\ref{tab:hyperparams} lists all hyperparameter settings.
 \toprule
 \textbf{Parameter} & \textbf{Value} & \textbf{Description} \\
 \midrule
-$k$         & 200        & Training cases per benchmark \\
-$N$         & 3          & Evolution iterations \\
-$K$         & 3          & Skills retrieved per query \\
-Max tool lines & 150     & Max lines for generated Python tool \\
-Mastery sample & 50      & Cases for mastery profiling \\
-Regression buffer & 20   & Cases for tool regression test \\
-Temperature & 0.7        & Generator temperature \\
-Max tokens (gen.) & 2048 & Max tokens for capability generation \\
+Training subset & 20\% of train split & Per-benchmark evolution subset $\mathcal{D}_{\text{train}}$ \\
+$N$               & 3                    & Evolution iterations \\
+$K$               & 3                    & Skills retrieved per query \\
+Max tool lines    & 150                  & Max lines for generated Python tool \\
+Temperature       & 0.7                  & Generator temperature \\
+Max tokens (gen.) & 2{,}048              & Max tokens for capability generation \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{Compute.}
 Experiments use the frozen VLM backbones listed in Section~\ref{sec:setup}.
-Total API calls per benchmark: $\leq k \times N \times 3 = 1{,}800$ calls
-(solver + analyzer + generator, upper bound).
-Estimated token usage: $\sim$3M tokens per benchmark.
-No GPU training is performed.
+Each training case incurs at most three frozen-VLM calls (Solver, AnalyzerDecider, and
+Generator), so the per-benchmark call budget scales linearly in the size of the training
+subset and in $N$. No GPU training is performed.
 
 \section{Mechanism Ablations}
 \label{app:ablation_mechanisms}
