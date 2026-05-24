@@ -144,14 +144,6 @@ Evolved Skill + Tool         & paired evolved skill/tool deployment
 \label{tab:ablation_mechanism}
 \end{table*}
 
-The source artifacts for the first three rows are
-\path{ablate_hrbench_nocap_fc_doubao_20260520T074011Z},
-\path{ablate_hrbench_generic_skillonly_fc_doubao_20260520T074011Z}, and
-\path{ablate_hrbench_evolved_skillonly_fc_doubao_20260520T074011Z}. The tool-enabled
-context rows are
-\path{exp1r1_doubao_hrbench_toolonly_20260519T140901Z_doubao_sourceplus2_w64} and
-\path{exp1r1_doubao_hrbench_skilltool_20260519T140901Z_doubao_sourceplus2_w64}.
-
 \paragraph{Guarded 30-case tool-generation pilot.}
 After adding the generated-tool acceptance guards, we ran a time-bounded HRBench pilot on
 the first 30 validation cases to check whether the mechanism interventions now instantiate
@@ -193,14 +185,9 @@ diagnostic but not a clean persistence ablation
 \end{tabular}
 \caption{%
   \textbf{Guarded HRBench tool-generation pilot on 30 validation cases.}
-  All rows require at least one generated tool and forbid skill-only fallback. The Full
-  row uses the accepted tool-guard pilot
-  \texttt{ablation\_hrbench\_toolguard\_fastdry30\_w8\_v5\_doubao\_20260523T110300Z}; the
-  other rows use the matched one-round guarded variants
-  \texttt{ablation\_hrbench\_*\_fastdry30\_w3\_doubao\_20260523T114000Z}. These numbers are
-  mechanism-audit scores, not held-out effect sizes. A same-\texttt{w3} Full replicate was
-  started but omitted because Doubao returned sustained TPM-limit errors during candidate
-  evaluation after smoke validation.
+  All rows require at least one generated tool and forbid skill-only fallback. Numbers
+  are selection scores against the same-run baseline (not held-out effect sizes), so the
+  rows should be read as a mechanism audit rather than a benchmark comparison.
 }
 \label{tab:ablation_guarded_pilot}
 \end{table*}
