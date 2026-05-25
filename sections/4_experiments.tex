@@ -10,22 +10,22 @@
 
 \paragraph{Benchmarks.}
 For the evolution-from-scratch setting (Exp~I) we use four visual reasoning benchmarks:
-\textbf{ChartQA}~\citep{DBLP:conf/acl/MasryLTJH22} (multi-step numerical reasoning over charts;
-2{,}500 test questions, relaxed accuracy with 5\% tolerance),
-\textbf{MathVista}~\citep{DBLP:conf/iclr/LuBX0LH0CG024} (math reasoning grounded in figures and plots;
-1{,}000 testmini questions, accuracy),
-\textbf{HRBench}~\citep{DBLP:conf/aaai/Wang0ZZ000T25} (perception on $\geq$4K-resolution images;
-accuracy), and
+\textbf{ChartQA}~\citep{DBLP:conf/acl/MasryLTJH22} (multi-step numerical reasoning over
+charts; 2{,}500 test questions),
+\textbf{MathVista}~\citep{DBLP:conf/iclr/LuBX0LH0CG024} (math reasoning in figures and
+plots; 1{,}000 testmini questions),
+\textbf{HRBench4K}~\citep{DBLP:conf/aaai/Wang0ZZ000T25} (perception on 4K-resolution
+images), and
 \textbf{V$^*$}~\citep{DBLP:conf/cvpr/WuX24a} (visual search for an object's property;
-191 questions, accuracy); the first two stress \emph{cognitive} bottlenecks
-while the latter two stress \emph{perceptual} ones.
-For the tool-mastery setting (Exp~II) we use \textbf{GTA}~\citep{DBLP:conf/nips/WangMLZC0L24}, a benchmark of
-229 real-world tasks with tools across perception, operation, logic, and creativity
-categories. GTA reports step-by-step accuracy on tool selection, argument prediction, and
-instruction following, plus an end-to-end answer accuracy.
+191 questions); the first two stress \emph{cognitive} bottlenecks while the latter two
+stress \emph{perceptual} ones, and all four use accuracy as the metric.
+For the tool-mastery setting (Exp~II) we use \textbf{GTA}~\citep{DBLP:conf/nips/WangMLZC0L24},
+229 real-world tool-use tasks across perception, operation, logic, and creativity
+categories, reporting per-step tool-selection, argument-prediction, and
+instruction-following accuracy plus end-to-end answer accuracy.
 For the RL comparison (Exp~III) we follow the VTool-R1
-protocol~\citep{DBLP:journals/corr/abs-2505-19255} on its \textbf{Chart} and \textbf{Table} reasoning splits and
-reuse \textbf{V$^*$} and \textbf{HRBench4K} as the high-resolution splits of the DeepEyes
+protocol~\citep{DBLP:journals/corr/abs-2505-19255} on \textbf{ChartQA} and
+\textbf{TableQA}, and reuse \textbf{V$^*$} and \textbf{HRBench4K} under the DeepEyes
 protocol~\citep{DBLP:journals/corr/abs-2505-14362}.
 
 \paragraph{Foundation models.}
