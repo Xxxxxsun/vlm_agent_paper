@@ -134,9 +134,8 @@ executable visual tools for perceptual ones. Each generated tool is paired with 
 that specifies when to invoke it, and both capability types accumulate in a persistent
 library.
 Across four visual reasoning benchmarks and six VLM backbones, \sysname{} improves direct
-inference on all 20 model--benchmark settings (avg.\ $+4.7$ acc). The same framework extends to a
-tool-mastery setting with a pre-provided tool set, where mastery profiling lifts
-step-level tool selection across all tested backbones. Against task-specific RL (VTool-R1, DeepEyes), \sysname{}
+inference on all 20 model--benchmark settings (avg.\ $+4.7$ acc). When the tool set is given in advance, the framework learns when to call each tool, and
+per-step tool choice improves on every tested backbone. Against task-specific RL (VTool-R1, DeepEyes), \sysname{}
 matches or approaches RL accuracy at a fraction of the compute (60--94\% gap recovery on
 chart/table; 91.1 vs.\ 90.1 on V$^*$-7B) and combines additively with RL when available.
 \end{abstract}
