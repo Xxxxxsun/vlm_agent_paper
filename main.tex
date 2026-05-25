@@ -130,8 +130,9 @@ or hand-designed prompts and tools. We present \sysname{}, a training-free frame
 that adapts a frozen VLM without any weight updates. On a small labeled training
 subset, the agent inspects its own correct and incorrect attempts and evolves two
 complementary capabilities: reusable reasoning skills for cognitive bottlenecks, and
-executable visual tools for perceptual ones. The visual tools are gated by learned
-applicability conditions, and both capability types accumulate in a persistent library.
+executable visual tools for perceptual ones. Each generated tool is paired with a skill
+that specifies when to invoke it, and both capability types accumulate in a persistent
+library.
 Across four visual reasoning benchmarks and six VLM backbones, \sysname{} improves direct
 inference in 21 of 23 settings (avg.\ $+4.8$ acc). The same framework extends to the
 tool-mastery setting on GTA, where mastery profiling lifts step-level tool selection
