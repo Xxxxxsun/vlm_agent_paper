@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 16:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1260,7 +1260,7 @@ Underfull \vbox (badness 2818) has occurred while \output is active []
 
 
  <./figures/Picture2.pdf>]
-Underfull \hbox (badness 6708) in paragraph at lines 66--72
+Underfull \hbox (badness 6708) in paragraph at lines 64--67
 []\T1/ptm/b/n/10.95 (+20) Empirical ev-i-dence \T1/ptm/m/n/10.95 (+20) across f
 our visual-
  []
@@ -1277,10 +1277,6 @@ Package natbib Warning: Citation `DBLP:conf/acl/SunCZXZY25' on page 2 undefined
 
 Package natbib Warning: Citation `DBLP:journals/corr/abs-2602-22680' on page 2 
 undefined on input line 17.
-
-
-Underfull \vbox (badness 2393) has occurred while \output is active []
-
 
 
 Package natbib Warning: Citation `DBLP:conf/nips/YangPMXZHZ24' on page 2 undefi
@@ -1303,13 +1299,12 @@ Underfull \hbox (badness 1331) in paragraph at lines 35--45
 p-
  []
 
-[2]
 
-Package natbib Warning: Citation `DBLP:journals/corr/abs-2601-17814' on page 3 
+Package natbib Warning: Citation `DBLP:journals/corr/abs-2601-17814' on page 2 
 undefined on input line 50.
 
 
-Package natbib Warning: Citation `DBLP:journals/corr/abs-2511-11301' on page 3 
+Package natbib Warning: Citation `DBLP:journals/corr/abs-2511-11301' on page 2 
 undefined on input line 54.
 
 )
@@ -1318,8 +1313,8 @@ Underfull \hbox (badness 1924) in paragraph at lines 47--148
  Kem-b-havi[][], [][]2023[][]),
  []
 
-(./sections/3_method.tex
-<figures/method.pdf, id=334, 753.81625pt x 409.53pt>
+[2] (./sections/3_method.tex
+<figures/method.pdf, id=340, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
@@ -1339,16 +1334,13 @@ Package microtype Info: Loading generic protrusion settings for font family
  [3 <./figures/method.pdf>] [4]) (./sections/4_experiments.tex [5]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 115.
-
-Underfull \vbox (badness 1014) has occurred while \output is active []
-
 <figures/distribution_shift_bars.pdf, id=539, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
 e 278.
 (pdftex.def)             Requested size: 455.24411pt x 165.51653pt.
- [6]
+
 Underfull \hbox (badness 10000) in paragraph at lines 306--316
  []\T1/ptm/b/n/10.95 (+20) What does environment-specific mas-tery
  []
@@ -1363,45 +1355,40 @@ Underfull \hbox (badness 1810) in paragraph at lines 306--316
 \T1/ptm/m/n/10.95 (+20) the tar-get en-vi-ron-ment's spe-cific tool chains,
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7]
+[6]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 403.
-
+ [7]
 Underfull \hbox (badness 2103) in paragraph at lines 429--433
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
 (+20) On V$[]$ and
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3792) has occurred while \output is active []
 
- [8 <./figures/distribution_shift_bars.pdf>]) (./sections/6_conclusion.tex)
+) [8 <./figures/distribution_shift_bars.pdf>] (./sections/6_conclusion.tex)
 (./sections/limitations.tex
 Underfull \hbox (badness 4886) in paragraph at lines 12--16
  []\T1/ptm/b/n/10.95 (+20) Tool qual-ity ceil-ing.[] \T1/ptm/m/n/10.95 (+20) To
 ol ef-fec-tive-ness is
  []
 
-) [9] (./main.bbl
+) (./main.bbl [9]
 Underfull \hbox (badness 3354) in paragraph at lines 86--92
 []\T1/ptm/m/n/10 (+20) Haozhan Shen, Kangjia Zhao, Tiancheng Zhao,
  []
 
-[10]
+
 Underfull \hbox (badness 1152) in paragraph at lines 174--179
 []\T1/ptm/m/n/10 (+20) Ziwei Zheng, Michael Yang, Jack Hong, Chenx-
  []
 
-) [11
-
-] (./sections/A_appendix.tex
+) [10] (./sections/A_appendix.tex
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12
+[11
 
 ]
 Underfull \hbox (badness 4454) in paragraph at lines 123--124
@@ -1409,7 +1396,7 @@ Underfull \hbox (badness 4454) in paragraph at lines 123--124
  hand-neutral HRBench
  []
 
-[13]
+[12]
 Underfull \hbox (badness 10000) in paragraph at lines 255--255
 []\T1/ptm/m/n/10 (+20) Table 8: |\T1/ptm/b/n/10 (+20) Diagnosis-polarity stress
  test on ChartQA. \T1/ptm/m/n/10 (+20) Correct-only ev-i-dence can-not drive
@@ -1431,8 +1418,8 @@ m/m/n/10 (+20) , and
 
 Underfull \vbox (badness 1199) has occurred while \output is active []
 
- [14]
-[15]
+ [13]
+[14]
 <figures/chartqa_k_sensitivity.pdf, id=734, 348.6966pt x 218.39969pt>
 File: figures/chartqa_k_sensitivity.pdf Graphic file (type pdf)
 <use figures/chartqa_k_sensitivity.pdf>
@@ -1456,7 +1443,7 @@ Underfull \hbox (badness 7595) in paragraph at lines 498--498
 s for the
  []
 
-[16 <./figures/chartqa_k_sensitivity.pdf> <./figures/distribution_shift_timeser
+[15 <./figures/chartqa_k_sensitivity.pdf> <./figures/distribution_shift_timeser
 ies.pdf>]
 Underfull \hbox (badness 6493) in paragraph at lines 568--570
 []|\T1/ptm/m/n/9 (+20) A skill that in-structs the
@@ -1502,7 +1489,7 @@ LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17]
+ [16]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 <figures/chartqa_visual_anchor.png, id=886, 310.15875pt x 344.28625pt>
@@ -1515,15 +1502,15 @@ Package pdftex.def Info: figures/chartqa_visual_anchor.png  used on input line
 
 Package natbib Warning: There were undefined citations.
 
-[18 <./figures/chartqa_visual_anchor.png (PNG copy)>] (./main.aux)
+[17 <./figures/chartqa_visual_anchor.png (PNG copy)>] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AF1317765931E0DDE23A78309C889442;6324.
  ) 
 Here is how much of TeX's memory you used:
- 36709 strings out of 478994
- 707568 string characters out of 5858184
- 1352064 words of memory out of 5000000
- 52553 multiletter control sequences out of 15000+600000
+ 36706 strings out of 478994
+ 707546 string characters out of 5858184
+ 1352038 words of memory out of 5000000
+ 52551 multiletter control sequences out of 15000+600000
  549979 words of font info for 584 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,16n,108p,754b,1332s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1548,10 +1535,10 @@ st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (18 pages, 4967618 bytes).
+Output written on main.pdf (17 pages, 4966924 bytes).
 PDF statistics:
  1090 PDF objects out of 1200 (max. 8388607)
- 761 compressed objects within 8 object streams
- 278 named destinations out of 1000 (max. 500000)
+ 762 compressed objects within 8 object streams
+ 277 named destinations out of 1000 (max. 500000)
  117691 words of extra memory for PDF output out of 128383 (max. 10000000)
 
