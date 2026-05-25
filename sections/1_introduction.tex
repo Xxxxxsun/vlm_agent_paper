@@ -28,8 +28,10 @@ complementary capability types from a small labeled training subset and dynamica
 equips them at inference. \textbf{Skills} are
 structured Markdown SOPs for \emph{cognitive} bottlenecks, where the visual evidence is
 available but the agent's reasoning procedure is weak. \textbf{Tools} are short Python
-programs for \emph{perceptual} bottlenecks, where the agent needs a transformed view---a
-crop, zoom, contrast adjustment, or rerendering---before the evidence becomes legible. On
+programs for \emph{perceptual} bottlenecks, where the agent needs a transformed view of
+the input before the evidence becomes legible: a crop or zoom into a region of interest,
+a contrast adjustment, a chart re-rendering with enlarged axis labels, the extraction of a
+specific color or chart layer, or a saliency-guided sub-region extraction. On
 each iteration over a sampled sub-training set, \sysname{} diagnoses both the correct and
 the incorrect attempts using their images and reasoning traces, proposes multiple candidate
 skill$+$tool combinations, and promotes the highest-validation-accuracy candidate into a
