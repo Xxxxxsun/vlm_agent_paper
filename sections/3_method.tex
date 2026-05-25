@@ -69,16 +69,16 @@ combinations, each addressing the diagnosed bottleneck with a different strategy
 implementation.
 
 \textbf{Validate and promote.}
-Each candidate is evaluated on $\mathcal{D}_{\text{train}}$ and the highest-accuracy
-combination is promoted:
+Writing each candidate as $c_m = (s_m, t_m)$, we evaluate every $c_m$ on
+$\mathcal{D}_{\text{train}}$ and promote the highest-accuracy one:
 \begin{equation}
 \begin{aligned}
   m^{\star} &= \arg\max_{m \in \{1, \dots, M\}}
-              \mathrm{Acc}\!\left(f_{\mathcal{C} \cup (s_m, t_m)};\, \mathcal{D}_{\text{train}}\right), \\
+              \mathrm{Acc}\!\left(f_{\mathcal{C} \cup c_m};\, \mathcal{D}_{\text{train}}\right), \\
   \mathcal{C} &\leftarrow
     \begin{cases}
-      \mathcal{C} \cup \{(s_{m^{\star}}, t_{m^{\star}})\}
-        & \text{if } \mathrm{Acc}(f_{\mathcal{C} \cup (s_{m^{\star}}, t_{m^{\star}})})
+      \mathcal{C} \cup \{c_{m^{\star}}\}
+        & \text{if } \mathrm{Acc}(f_{\mathcal{C} \cup c_{m^{\star}}})
                      > \mathrm{Acc}(f_{\mathcal{C}}), \\
       \mathcal{C} & \text{otherwise,}
     \end{cases}
