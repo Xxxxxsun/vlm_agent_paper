@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 04:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 04:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1317,7 +1317,7 @@ File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
 e 276.
-(pdftex.def)             Requested size: 386.96027pt x 140.69118pt.
+(pdftex.def)             Requested size: 432.48051pt x 157.23964pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 304--314
  []\T1/ptm/b/n/10.95 (+20) What does environment-specific mas-tery
@@ -1333,19 +1333,22 @@ Underfull \hbox (badness 1810) in paragraph at lines 304--314
 \T1/ptm/m/n/10.95 (+20) the tar-get en-vi-ron-ment's spe-cific tool chains,
  []
 
-[7 <./figures/distribution_shift_bars.pdf>]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./figures/distribution_shift_bars.pdf>]
 Underfull \hbox (badness 1052) in paragraph at lines 419--423
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
 (+20) On V$[]$, \T1/ptm/m/sc/10.95 (+20) Dy-
  []
 
-) (./sections/6_conclusion.tex) (./sections/limitations.tex
+) (./sections/6_conclusion.tex) [8] (./sections/limitations.tex
 Underfull \hbox (badness 4886) in paragraph at lines 12--16
  []\T1/ptm/b/n/10.95 (+20) Tool qual-ity ceil-ing.[] \T1/ptm/m/n/10.95 (+20) To
 ol ef-fec-tive-ness is
  []
 
-[8]) (./main.bbl [9]
+) (./main.bbl [9]
 Underfull \hbox (badness 3354) in paragraph at lines 126--132
 []\T1/ptm/m/n/10 (+20) Haozhan Shen, Kangjia Zhao, Tiancheng Zhao,
  []
@@ -1484,11 +1487,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 399A84F0F5CEC2D5E835B9D6B1ED3556;6699.
  ) 
 Here is how much of TeX's memory you used:
- 36799 strings out of 478994
- 709367 string characters out of 5858184
- 1341205 words of memory out of 5000000
+ 36791 strings out of 478994
+ 709299 string characters out of 5858184
+ 1341201 words of memory out of 5000000
  52582 multiletter control sequences out of 15000+600000
- 552869 words of font info for 617 fonts, out of 8000000 for 9000
+ 552403 words of font info for 611 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,16n,108p,699b,1332s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
@@ -1513,7 +1516,7 @@ fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
 ype1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/t
 imes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri
 8a.pfb>
-Output written on main.pdf (18 pages, 4982129 bytes).
+Output written on main.pdf (18 pages, 4982535 bytes).
 PDF statistics:
  1149 PDF objects out of 1200 (max. 8388607)
  819 compressed objects within 9 object streams

@@ -5,11 +5,17 @@
 
 \sysname{} is a training-free framework in which a frozen VLM agent evolves a
 task-family-specific library of reasoning skills and executable visual tools from a small
-labeled training subset, with the AnalyzerDecider choosing on each case whether to emit a
-skill, a tool, or both. Across four visual-reasoning benchmarks and five backbones,
-\sysname{} improves direct inference on all 20 model--benchmark cells; on GTA it lifts
-every step-level tool-use metric across all tested backbones; and against task-specific RL
-(VTool-R1, DeepEyes), \sysname{} matches or beats RL on high-resolution perception,
-recovers most of the structured-VQA gap, and composes additively with RL when both are
-available. A substantial part of task-specific VLM adaptation can therefore be obtained
-without any gradient updates, by letting the agent shape its own capability library.
+labeled training subset, with the \textsc{AnalyzerDecider} choosing on each case whether
+to emit a skill, a tool, or both. A mastery skill paired with each generated tool gates
+its invocation at inference, and an online adaptation loop refreshes the library when the
+query distribution shifts.
+
+Across four visual-reasoning benchmarks and five backbones, \sysname{} improves direct
+inference on all 20 model--benchmark cells; on GTA it lifts every step-level tool-use
+metric across all tested backbones; and against task-specific RL (VTool-R1, DeepEyes),
+\sysname{} matches or beats RL on high-resolution perception, recovers most of the
+structured-VQA gap, and composes additively with RL when both are available. Together,
+these results suggest that a substantial part of task-specific VLM adaptation can be
+obtained without any gradient updates: capability evolution can serve as a lightweight
+alternative when labels or feedback signals are available, and as a complementary
+component when task-specific RL training is also feasible.
