@@ -3,15 +3,6 @@
 % ============================================================
 \label{sec:limitations}
 
-\paragraph{Validation-set proxy.}
-We promote candidates by training-subset accuracy with a guard against net regressions
-(Eq.~\ref{eq:selection}), rather than by a held-out validation score. The guard ensures
-monotonic training-set accuracy but does not rule out per-case regressions (a candidate
-can fix some previously-incorrect cases while flipping others), and the selection-induced
-bias from picking $c^{\star}$ over a discrete candidate set scales logarithmically in $M$.
-We keep $M$ at a single-digit budget so this term stays small in practice, but quantifying
-it empirically across benchmarks remains open.
-
 \paragraph{Diagnosis bounded by the backbone.}
 The \textsc{AnalyzerDecider}'s bottleneck classification (\emph{cognitive} vs.\
 \emph{perceptual}) and the \textsc{Generator}'s candidates are produced by the same frozen
@@ -20,17 +11,12 @@ bottleneck can propagate to a mis-targeted skill or tool; the promotion guard re
 under-performing candidates but does not correct upstream diagnosis errors, so smaller or
 less capable backbones may converge more slowly or to a less useful library.
 
-\paragraph{Library governance.}
-The capability library grows monotonically across iterations and across distribution-shift
-phases. We merge skills covering the same problem class to prevent duplicate inflation
-(Section~\ref{sec:method_skill}), but the library has no formal size bound; long-running
-deployments may need additional pruning, versioning, or stale-capability eviction policies
-that we do not investigate.
-
 \paragraph{Benchmark scope.}
-We evaluate four visual-reasoning benchmarks plus GTA and the VTool-R1 / DeepEyes splits.
-Broader coverage (video QA, 3D spatial reasoning, medical imaging) is needed before strong
-generality claims about the cognitive / perceptual decision rule.
+We evaluate capability evolution on image-based VLMs across four visual-reasoning
+benchmarks plus GTA and the VTool-R1 / DeepEyes splits. Video VLMs and other modalities
+(3D spatial reasoning, medical imaging) are outside the current scope; whether the
+cognitive / perceptual decision rule and the executable-tool interface transfer to those
+settings is left to future work.
 
 \paragraph{Reliance on a per-case correctness signal.}
 Both the offline evolution loop and the online adaptation policy
