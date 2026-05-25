@@ -48,9 +48,12 @@ Each evolution iteration over $\mathcal{D}_{\text{train}}$ has three phases
 (Figure~\ref{fig:method}).
 
 \textbf{Diagnose.}
-The agent (Eq.~\ref{eq:agent}) solves $\mathcal{D}_{\text{train}}$ with the current
-$\mathcal{C}$, then samples a sub-training set $\mathcal{D}_{\text{sub}} \subseteq \mathcal{D}_{\text{train}}$ containing
-both correct and incorrect attempts. The \textsc{AnalyzerDecider} inspects
+The agent (Eq.~\ref{eq:agent}) attempts each case in $\mathcal{D}_{\text{train}}$ once with
+the current $\mathcal{C}$; we then sample
+$\mathcal{D}_{\text{sub}} \subseteq \mathcal{D}_{\text{train}}$ across questions (not
+stratified per question), including both correct and incorrect attempts when both are
+present. If all attempts are correct, the iteration is skipped (no bottleneck to fix); if
+all are incorrect, the \textsc{AnalyzerDecider} proceeds on failures alone. The \textsc{AnalyzerDecider} inspects
 $\mathcal{D}_{\text{sub}}$---the questions $x_i$, ground-truth answers $y_i$, original
 images $\mathbf{v}_i$, reasoning traces $\tau_i$, and any intermediate tool outputs---and
 emits a root-cause analysis grounded in visual evidence, an identified bottleneck type (\emph{cognitive} when the visual evidence

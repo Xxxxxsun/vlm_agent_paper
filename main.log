@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 22:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 22:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1272,14 +1272,14 @@ File: figures/method.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
 (pdftex.def)             Requested size: 455.24411pt x 247.31961pt.
  [2]
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 58
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 61
 .
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.95pt on input line 58.
+(Font)              scaled to size 10.95pt on input line 61.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1458,11 +1458,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AF1317765931E0DDE23A78309C889442;6324.
  ) 
 Here is how much of TeX's memory you used:
- 36754 strings out of 478994
- 708911 string characters out of 5858184
+ 36761 strings out of 478994
+ 708973 string characters out of 5858184
  1353909 words of memory out of 5000000
  52577 multiletter control sequences out of 15000+600000
- 550811 words of font info for 593 fonts, out of 8000000 for 9000
+ 551171 words of font info for 598 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,16n,108p,754b,1332s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
@@ -1486,7 +1486,7 @@ st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (18 pages, 4970228 bytes).
+Output written on main.pdf (18 pages, 4970480 bytes).
 PDF statistics:
  1134 PDF objects out of 1200 (max. 8388607)
  804 compressed objects within 9 object streams
