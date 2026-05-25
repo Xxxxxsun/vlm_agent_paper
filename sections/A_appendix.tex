@@ -95,14 +95,14 @@ The full grid of mechanism ablations is expensive because each row rebuilds
 $\mathcal{C}$ from scratch. We therefore report the completed artifact-backed probes first,
 and use them to answer the most immediate reviewer question: is the gain merely generic
 prompting, or does the evolved visual-tool path matter? All rows in
-Table~\ref{tab:ablation_mechanism} use the same HRBench validation set (700 cases) and the
+Table~\ref{tab:ablation_mechanism} use the same HRBench4K validation set (700 cases) and the
 same function-calling VQA runtime with Doubao-Seed-2.0-Pro. For the first three rows,
 tools are disabled, so the comparison isolates prompt/skill content; the last two rows
 reuse the existing full-val tool-enabled runs for context.
 
 \paragraph{Completed mechanism probe.}
 Table~\ref{tab:ablation_mechanism} shows that generic skill injection does not explain
-the HRBench gain. A neutral task prompt is slightly below the no-capability runtime, and
+the HRBench4K gain. A neutral task prompt is slightly below the no-capability runtime, and
 the evolved no-tool skill is essentially tied with it. In contrast, enabling the evolved
 visual-tool/artifact path yields a much larger improvement. This supports the mechanism
 claim for perceptual benchmarks: the active ingredient is not ``more prompt text'', but
@@ -120,9 +120,9 @@ validated image transformations that expose hard-to-read local evidence.
 \midrule
 No Capability                & no skill context; no tool exposure
   & off & 599 / 700 & 0.8557 \\
-Generic Skill                & evolved library $\to$ hand-neutral HRBench prompt
+Generic Skill                & evolved library $\to$ hand-neutral HRBench4K prompt
   & off & 594 / 700 & 0.8486 \\
-Evolved No-Tool Skill        & evolved HRBench SOP, but visual tools disabled
+Evolved No-Tool Skill        & evolved HRBench4K SOP, but visual tools disabled
   & off & 597 / 700 & 0.8529 \\
 \midrule
 Evolved Tool Only            & validated visual tools/artifacts, no extra generated skill text
@@ -132,17 +132,17 @@ Evolved Skill + Tool         & paired evolved skill/tool deployment
 \bottomrule
 \end{tabular}
 \caption{%
-  \textbf{Completed HRBench mechanism probe.}
+  \textbf{Completed HRBench4K mechanism probe.}
   The first three rows disable tools and test whether generic prompt/skill text explains
   the gain. It does not: generic and evolved no-tool skills are near the no-capability
   runtime. The tool-enabled rows show the much larger gain from validated visual
-  artifacts, isolating the perceptual mechanism used by \sysname{} on HRBench.
+  artifacts, isolating the perceptual mechanism used by \sysname{} on HRBench4K.
 }
 \label{tab:ablation_mechanism}
 \end{table*}
 
 \paragraph{Guarded 30-case tool-generation pilot.}
-After adding the generated-tool acceptance guards, we ran a time-bounded HRBench pilot on
+After adding the generated-tool acceptance guards, we ran a time-bounded HRBench4K pilot on
 the first 30 validation cases to check whether the mechanism interventions now instantiate
 the intended tool path. This pilot is not a replacement for the 700-case mechanism probe
 above; it is an audit of the evolution loop under the stricter acceptance criterion. We
@@ -161,13 +161,13 @@ as a held-out estimate.
   & \textbf{Baseline} & \textbf{Candidate} & $\Delta$ \\
 \midrule
 Full tool-guard pilot & accepted one generated tool with its paired mastery skill;
-target HRBench-cross family improved from 0.5000 to 0.8125
+target HRBench4K-cross family improved from 0.5000 to 0.8125
   & 0.5667 & 0.6000 & +0.0333 \\
 Text-only Diagnosis & rejected: the proposed tool produced no visual artifact, so no
 generated tool was promoted
   & 0.6667 & 0.6667 & 0.0000 \\
 No Paired Mastery & smoke passed, but the unpaired tool candidate regressed on the full
-subset; HRBench-cross fell from 0.5625 to 0.4375
+subset; HRBench4K-cross fell from 0.5625 to 0.4375
   & 0.5667 & 0.5333 & -0.0333 \\
 No Persistence & the candidate regressed before persistence mattered, so this row is
 diagnostic but not a clean persistence ablation
@@ -175,7 +175,7 @@ diagnostic but not a clean persistence ablation
 \bottomrule
 \end{tabular}
 \caption{%
-  \textbf{Guarded HRBench tool-generation pilot on 30 validation cases.}
+  \textbf{Guarded HRBench4K tool-generation pilot on 30 validation cases.}
   All rows require at least one generated tool and forbid skill-only fallback. Numbers
   are selection scores against the same-run baseline (not held-out effect sizes), so the
   rows should be read as a mechanism audit rather than a benchmark comparison.
@@ -189,7 +189,7 @@ diagnostic but not a clean persistence ablation
 \paragraph{What is removed.}
 The evolved capability library is replaced with a single hand-neutral task prompt that
 gives generic task advice (for ChartQA: ``read the chart carefully, identify relevant
-values, reason step by step''; for HRBench: ``inspect local details before answering and
+values, reason step by step''; for HRBench4K: ``inspect local details before answering and
 verify the target object''). No diagnosis, generation, validation, or persistence is run.
 
 \paragraph{What this rules out.}
@@ -201,11 +201,11 @@ triggers, and pitfalls that a generic prompt cannot anticipate---rather than to 
 presence of any task-aware prompt.
 
 \paragraph{Observed pattern.}
-On HRBench with tools disabled, Generic Skill obtains 0.8486 accuracy, compared with
+On HRBench4K with tools disabled, Generic Skill obtains 0.8486 accuracy, compared with
 0.8557 for the no-capability runtime and 0.8529 for the evolved no-tool skill. These rows
 show that simply adding a neutral task prompt does not recover the tool-enabled gains.
 The tool-enabled rows in Table~\ref{tab:ablation_mechanism} are roughly four points
-higher, so the HRBench improvement is better explained by validated visual artefacts than
+higher, so the HRBench4K improvement is better explained by validated visual artefacts than
 by generic skill injection.
 
 \subsection{Correct-Only vs. Error-Only Diagnosis}
@@ -278,12 +278,12 @@ image, no intermediate tool output, and no processed visual artefact is passed i
 Text reflection can say \emph{that} an answer was wrong, but it cannot tell whether a
 crop was misaligned, whether a zoomed region missed the target, or whether a processed
 image introduced artefacts. We expect the gap to Full to be largest on the perceptual
-benchmarks (HRBench, V$^\star$). On ChartQA the gap should be smaller because many
-failures there are procedural; a small ChartQA gap with a large HRBench/V$^\star$ gap is
+benchmarks (HRBench4K, V$^\star$). On ChartQA the gap should be smaller because many
+failures there are procedural; a small ChartQA gap with a large HRBench4K/V$^\star$ gap is
 itself the signature of the visual-diagnosis claim.
 
 \paragraph{Observed pattern.}
-The guarded HRBench pilot produced the expected failure mode: the text-only candidate was
+The guarded HRBench4K pilot produced the expected failure mode: the text-only candidate was
 rejected because the proposed tool did not produce a visual artifact. Its selection score
 therefore stayed at the same-run baseline (0.6667 to 0.6667) and no generated tool was
 promoted. This supports the qualitative mechanism claim that visual diagnosis is needed to
@@ -307,9 +307,9 @@ accuracy on benchmarks where naive tool exposure can hurt---MathVista is the can
 cautionary case.
 
 \paragraph{Observed pattern.}
-The guarded HRBench pilot cleanly instantiated this ablation. The unpaired generated tool
+The guarded HRBench4K pilot cleanly instantiated this ablation. The unpaired generated tool
 passed smoke validation, but once exposed without a mastery skill it regressed on the
-30-case subset (0.5667 to 0.5333) and was rejected. The targeted HRBench-cross family also
+30-case subset (0.5667 to 0.5333) and was rejected. The targeted HRBench4K-cross family also
 dropped from 0.5625 to 0.4375. This is the strongest new mechanism evidence from the
 pilot: the tool itself can be executable and locally plausible, while the missing
 when-to-use gate still makes it harmful at subset scale.
@@ -334,7 +334,7 @@ reading, multi-series selection) that a single capability can fix across many he
 cases.
 
 \paragraph{Observed pattern.}
-In the guarded HRBench pilot, the generated candidate regressed on the subset
+In the guarded HRBench4K pilot, the generated candidate regressed on the subset
 (0.5667 to 0.5333) and was rejected by ordinary candidate selection before the
 persistence switch could be exercised; we therefore mark this row as inconclusive for the
 cross-case persistence claim on this particular pilot.
@@ -344,7 +344,7 @@ cross-case persistence claim on this particular pilot.
 
 We deliberately keep the claims from these tables narrow.
 
-\textbf{Generic prompt injection does not explain the HRBench gain.}
+\textbf{Generic prompt injection does not explain the HRBench4K gain.}
 Table~\ref{tab:ablation_mechanism} (700 cases) shows that disabling the tool path and
 replacing the evolved library with either a hand-neutral prompt or an evolved no-tool
 skill leaves accuracy within noise of the no-capability runtime; the four- to five-point
@@ -505,7 +505,7 @@ Natural & $0.850{\pm}0.023$ & $0.876{\pm}0.022$ & $0.893{\pm}0.019$ & $0.895{\pm
 Experiment~I in the main paper evolves a separate library per benchmark. This appendix
 tests whether a single shared library can serve all four visual reasoning benchmarks at
 once. We combine the validation sets of \textbf{ChartQA}, \textbf{MathVista},
-\textbf{HRBench}, and \textbf{V$^\star$} into one mixed pool, sample 10\% as the joint
+\textbf{HRBench4K}, and \textbf{V$^\star$} into one mixed pool, sample 10\% as the joint
 evolution subset, and use the remaining 3{,}671 cases as the held-out test set. The
 evolution loop produces a single unified skill paired with the standard preset tools
 (\texttt{execute\_python}, \texttt{get\_image\_info}, \texttt{zoom\_image},
@@ -522,7 +522,7 @@ evolution loop produces a single unified skill paired with the standard preset t
 \midrule
 ChartQA      & 1{,}920 & 1{,}488 & 0.775 \\
 MathVista    &    900 &     616 & 0.684 \\
-HRBench      &    700 &     476 & 0.680 \\
+HRBench4K      &    700 &     476 & 0.680 \\
 V$^\star$    &    151 &     101 & 0.669 \\
 \midrule
 \textbf{Combined} & \textbf{3{,}671} & \textbf{2{,}681} & \textbf{0.730} \\
@@ -676,12 +676,12 @@ treating image understanding as a tree-based exploration over zoomed sub-regions
 full image is the root, zoomed crops are children, and the model searches over promising
 regions until it finds the visual evidence needed to answer. The case below illustrates
 that \sysname{} can produce a capability with the same flavour \emph{autonomously}: on
-an HRBench training case where the target object occupied a small fraction of a
+an HRBench4K training case where the target object occupied a small fraction of a
 high-resolution image, the evolution loop diagnosed a perceptual-resolution bottleneck
 and proposed the paired skill and tool shown next.
 
 \begin{tcolorbox}[
-    title={\textbf{Generated skill (paired with the tool below; triggered on HRBench)}},
+    title={\textbf{Generated skill (paired with the tool below; triggered on HRBench4K)}},
     colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
     breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
 ]
@@ -735,7 +735,7 @@ Like ZoomEye, this capability avoids forcing the VLM to answer from a single
 fixed-resolution full image and instead surfaces candidate sub-regions for a second
 solver call. The difference is scope: ZoomEye is a general tree-search algorithm fixed
 up front, whereas the \sysname{} capability is produced only after the evolution loop's
-diagnosis identifies a perceptual-resolution bottleneck on the triggering HRBench case
+diagnosis identifies a perceptual-resolution bottleneck on the triggering HRBench4K case
 and implements only the subset of zoom/search behaviour the diagnosis warrants.
 
 \subsection{Case C: Interleaved Visual Skill}
