@@ -85,16 +85,16 @@ over time (Section~\ref{sec:method_adaptation}).
 \paragraph{Per-benchmark results.}
 Table~\ref{tab:evolution_full} reports accuracy for the four configurations on each
 backbone. Comparing the Full system to the zero-shot \emph{None} baseline, \sysname{}
-improves direct inference on all 20 model--benchmark cells, with an average gain of $+4.7$
-accuracy points. The largest gains are on o4-mini / HRBench4K ($+12.7$), GPT-5.4 / HRBench4K
-($+10.7$), Doubao-Seed-2.0 / V$^*$ ($+8.8$), and Qwen3.5-27B / HRBench4K ($+8.2$). The
-relative strength of \emph{Skill Only} and \emph{Tool Only} also follows the cognitive /
-perceptual split: Skill Only is competitive on ChartQA and MathVista, where the gain comes
-from better decomposition and calculation procedures, while Tool Only and Full dominate on
-HRBench4K and V$^*$, where sub-region inspection and visual search are central. On a few
-cells (GPT-4o / MathVista, Doubao / V$^*$) Skill Only or Tool Only slightly edges out
-Full---an expected consequence of leaving capability choice to the AnalyzerDecider rather
-than enforcing both per case.
+improves direct inference on all 20 model--benchmark cells, with an average gain of $+5.6$
+accuracy points. The largest gains are on o4-mini / V$^*$ ($+14.1$), o4-mini / HRBench4K
+($+12.7$), GPT-5.4 / HRBench4K ($+10.7$), Doubao-Seed-2.0 / V$^*$ ($+8.8$), and
+Qwen3.5-27B / HRBench4K ($+8.4$). The relative strength of \emph{Skill Only} and \emph{Tool
+Only} also follows the cognitive / perceptual split: Skill Only is competitive on ChartQA
+and MathVista, where the gain comes from better decomposition and calculation procedures,
+while Tool Only and Full dominate on HRBench4K and V$^*$, where sub-region inspection and
+visual search are central. The only cell where an ablation edges out Full is Doubao /
+HRBench4K, where Tool Only beats Full by $0.0015$---an expected consequence of leaving
+capability choice to the AnalyzerDecider rather than enforcing both per case.
 
 \paragraph{Capability quality.}
 Appendix~\ref{app:capability_cases} inspects three representative forms of evolved
