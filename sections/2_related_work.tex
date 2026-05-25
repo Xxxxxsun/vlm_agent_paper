@@ -24,8 +24,9 @@ CREATOR~\citep{DBLP:conf/emnlp/QianH0Q0J23} prompts an LLM to write Python helpe
 cannot solve directly; LATM~\citep{DBLP:conf/iclr/Cai00CZ24} and ToolLLM~\citep{DBLP:conf/iclr/QinLYZYLLCTQZHT24} scale
 this to large API collections. The generated tools are typically text-domain utilities,
 such as arithmetic helpers, unit converters, and API wrappers, evaluated on math word
-problems and similar text-symbolic benchmarks. Successful tools are often retained for
-later reuse, sharing the persistent-library notion with the self-improving agents above.
+problems and similar text-symbolic benchmarks. 
+% Successful tools are often retained for
+% later reuse, sharing the persistent-library notion with the self-improving agents above.
 
 
 \paragraph{Visual reasoning with tools.}
@@ -36,9 +37,11 @@ SFT and/or RL with curated trajectories to teach a VLM when and how to invoke a 
 inventory. ZoomEye~\citep{DBLP:conf/emnlp/ShenZZXZZY25} and ReFocus~\citep{DBLP:conf/icml/FuLYCLY0FZ25}
 are training-free but assume a fixed zoom/search algorithm or visual-editing interface;
 Lever~LM~\citep{DBLP:conf/nips/YangPMXZHZ24} configures in-context example sequences to leverage
-pretrained VLMs without retraining. \sysname{} instead generates and validates the skills
-and tools themselves from the agent's own behaviour on a small training subset, with no
-weight updates and no predefined tool inventory.
+pretrained VLMs without retraining. 
+
+% \sysname{} instead generates and validates the skills
+% and tools themselves from the agent's own behaviour on a small training subset, with no
+% weight updates and no predefined tool inventory.
 
 \paragraph{Tool-augmented VLMs with predefined tool sets.}
 VisProg~\citep{DBLP:conf/cvpr/GuptaK23}, ViperGPT~\citep{DBLP:conf/iccv/SurisMV23}, and
