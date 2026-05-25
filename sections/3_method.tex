@@ -159,11 +159,11 @@ with their correctness signals) and runs the evolution loop of
 Section~\ref{sec:method_loop} on them, accumulating skills and tools into the library
 $\mathcal{C}$. Let $W$ be a rolling-window length. The dominant task family at step $t$ is
 \begin{equation}
-  \hat{f}_t = \arg\max_{f}\; \sum_{i = t - W + 1}^{t} \mathbf{1}\!\left[\,\mathrm{fam}(x_i) = f\,\right],
+  \hat{\phi}_t = \arg\max_{\phi}\; \sum_{i = t - W + 1}^{t} \mathbf{1}\!\left[\,\mathrm{fam}(x_i) = \phi\,\right],
   \label{eq:shift}
 \end{equation}
 where $\mathrm{fam}(\cdot)$ classifies each query from its question and image features.
-When Eq.~\ref{eq:shift} flips ($\hat{f}_t \neq \hat{f}_{t-1}$), the next evolution
+When Eq.~\ref{eq:shift} flips ($\hat{\phi}_t \neq \hat{\phi}_{t-1}$), the next evolution
 iteration is triggered on the new sub-stream and produces updated skills and tools that
 handle the new distribution. The library is thus kept in sync with the current query
 distribution. We treat this autonomous online adaptation---decoupled from the source of
