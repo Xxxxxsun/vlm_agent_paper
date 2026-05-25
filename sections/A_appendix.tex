@@ -787,14 +787,25 @@ and implements only the subset of zoom/search behaviour the diagnosis warrants.
 \subsection{Case C: Interleaved Visual Skill}
 \label{app:interleaved_visual_skills}
 
-This case differs from A and B in that the main artefact is not purely executable. An
-\emph{interleaved} visual skill is a retrieved Markdown skill whose content includes both
-textual reasoning steps \emph{and} a persistent visual anchor (an annotated crop saved
-during the triggering case and retrieved on later cases). The case below was triggered on
-the ChartQA stacked-bar question ``\textit{What is the difference between the highest and
-the lowest green bar?}'', where the base agent read the total bar height instead of the
-green-segment values. The evolution loop diagnosed the bottleneck as visually distinguishing
-the target segment from its neighbours and emitted the paired skill and tool shown next.
+This case is the most interesting of the three because the artefact stored in the library
+is \emph{partly visual}. An \emph{interleaved} visual skill couples textual reasoning
+steps with a persistent annotated image (a ``state card'' in the spirit of multimodal
+skill libraries), both retrieved together on every later case of the same problem family.
+
+The triggering case is the Pew Research stacked bar in
+Figure~\ref{fig:chartqa_visual_anchor} (``\textit{Slight increase in Japanese support for
+more active military role}''), with the question
+\emph{``What is the difference between the highest and the lowest green segment?''}.
+The base agent looked at the tallest \emph{bar} and answered $78$, the total height of
+the green$+$grey$+$blue stack for the 2015 column. The actual quantity asked is the green
+sub-segment alone, $29$ (peak year) minus $23$ (trough year), so the correct answer is
+$6$. The \textsc{AnalyzerDecider} traced the failure to ``\textit{which colour band of
+which bar}''---a perceptual disambiguation problem---and the Generator emitted a paired
+skill+tool whose state card is a freshly annotated crop with the two target green
+segments outlined in red. On later same-family cases (different chart, different years,
+same ``read one stacked segment'' shape), the skill is retrieved together with that crop,
+and the agent reads against the anchor rather than reconstructing the segmentation from
+scratch.
 
 \begin{tcolorbox}[
     title={\textbf{Generated skill (paired with the tool below; triggered on ChartQA)}},
@@ -805,23 +816,37 @@ the target segment from its neighbours and emitted the paired skill and tool sho
 ## Skill: Stacked-Bar Segment Reading with Visual Anchor
 
 When-to-Use:
-Use when the question asks for a value, difference, or comparison
-involving a segment of a stacked bar chart.
+Use when the question asks for the value, the difference, or a
+comparison of one coloured segment inside a stacked bar (not the
+whole bar). Trigger words: "segment", "portion of the bar", or a
+specific colour from the legend.
 
 Strategy:
-1. Locate the target bar using the x-axis label.
-2. Locate the target segment using the legend colour.
-3. Read the lower and upper boundaries of the segment.
-4. Subtract lower from upper to obtain the segment value.
-5. Verify the result against the visual anchor below.
+1. Re-read the question and write down the *segment colour* and the
+   *bar(s)* (e.g. years, categories) it is asking about.
+2. Locate the legend; map the colour name to the legend swatch.
+3. For each target bar, find the top and bottom y-coordinate of the
+   *coloured segment only* (not the bar's outer edges).
+4. Read the segment value as (top - bottom); for differences,
+   compute (max segment value) - (min segment value) across bars.
+5. Cross-check against the stored Visual Anchor: the red outlines
+   mark exactly the segments to be measured.
 
 Visual Anchor:
-See Figure ref:chartqa_visual_anchor: the two target green segments
-are outlined in red on the original ChartQA image.
+Figure ref:chartqa_visual_anchor stores the original Pew Research
+chart with the two target green segments outlined in red (values
+29 and 23). The anchor is retrieved together with this skill on
+later "stacked-bar one-segment" cases.
 
 Common Pitfalls:
-- Do not read the total bar height when the question asks for one segment.
-- Do not use a nearby segment with a visually similar colour.
+- Reading the *total bar height* (the green+grey+blue stack) when
+  the question asks about a single colour. This was the original
+  failure on the triggering case: the agent answered 78 instead of
+  the green-segment difference 6.
+- Picking a visually similar but legend-distinct colour (e.g. teal
+  vs. green) when the legend separates them.
+- Forgetting to subtract the lower segment boundary from the upper:
+  the value is the *segment height*, not the upper edge alone.
 \end{lstlisting}
 \end{tcolorbox}
 
@@ -862,10 +887,13 @@ def make_visual_anchor(image_path, crop_box, annotations):
 \label{fig:chartqa_visual_anchor}
 \end{figure}
 
-Like visual-thought methods, this capability couples textual reasoning with a visual
-artefact. The difference is that \sysname{} stores the visual anchor \emph{persistently}
-inside the capability library and retrieves it on later cases of the same problem family,
-rather than synthesising a fresh visualisation per call.
+Like ``visual chain-of-thought'' methods, this capability interleaves text with a visual
+artefact. The differences are that the artefact is \emph{persistent} (saved into the
+capability library and retrieved on later cases of the same problem family) and that the
+artefact and the text steps were generated \emph{together} by the same diagnosis: the
+red outlines and the ``don't read the total bar height'' pitfall point to the same
+failure mode. On later cases of the same family the agent does not have to discover the
+segmentation or the pitfall again; it loads them as a state card.
 
 \section{Reproducibility Statement}
 \label{app:reproducibility}
