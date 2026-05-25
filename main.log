@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 20:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1287,37 +1287,14 @@ Package natbib Warning: Citation `DBLP:conf/nips/YangPMXZHZ24' on page 2 undefi
 ned on input line 39.
 
 
-Underfull \hbox (badness 1019) in paragraph at lines 33--41
- []\T1/ptm/b/n/10.95 (+20) Visual rea-son-ing with tools.[] \T1/ptm/m/n/10.95 (
-+20) Sev-eral re-cent
- []
-
-
-Underfull \hbox (badness 1852) in paragraph at lines 33--41
-\T1/ptm/m/n/10.95 (+20) sys-tems equip VLMs with vi-sual pro-cess-ing
- []
-
-
-Underfull \hbox (badness 1331) in paragraph at lines 33--41
-\T1/ptm/m/n/10.95 (+20) tools. VTool-R1 ([][]Wu et al.[][], [][]2025a[][]), Dee
-p-
- []
-
-
 Package natbib Warning: Citation `DBLP:journals/corr/abs-2601-17814' on page 2 
-undefined on input line 50.
+undefined on input line 43.
 
 
 Package natbib Warning: Citation `DBLP:journals/corr/abs-2511-11301' on page 2 
-undefined on input line 54.
+undefined on input line 45.
 
-)
-Underfull \hbox (badness 1924) in paragraph at lines 47--148
-\T1/ptm/b/n/10.95 (+20) sets.[] \T1/ptm/m/n/10.95 (+20) Vis-Prog ([][]Gupta and
- Kem-b-havi[][], [][]2023[][]),
- []
-
-(./sections/3_method.tex
+) (./sections/3_method.tex
 <figures/method.pdf, id=294, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
@@ -1336,14 +1313,14 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [3 <./figures/method.pdf>]) [4] (./sections/4_experiments.tex [5]
+ [3 <./figures/method.pdf>]) (./sections/4_experiments.tex [4] [5]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 115.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-<figures/distribution_shift_bars.pdf, id=549, 479.58861pt x 174.36057pt>
+<figures/distribution_shift_bars.pdf, id=548, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
@@ -1425,7 +1402,7 @@ Underfull \vbox (badness 1199) has occurred while \output is active []
 
  [13]
 [14]
-<figures/chartqa_k_sensitivity.pdf, id=728, 348.6966pt x 218.39969pt>
+<figures/chartqa_k_sensitivity.pdf, id=727, 348.6966pt x 218.39969pt>
 File: figures/chartqa_k_sensitivity.pdf Graphic file (type pdf)
 <use figures/chartqa_k_sensitivity.pdf>
 Package pdftex.def Info: figures/chartqa_k_sensitivity.pdf  used on input line 
@@ -1436,7 +1413,7 @@ Underfull \hbox (badness 2698) in paragraph at lines 436--440
 \T1/ptm/m/n/10.95 (+20) Figure [][]3[][] in the main pa-per ag-gre-gates the
  []
 
-<figures/distribution_shift_timeseries.pdf, id=734, 237.70663pt x 144.37573pt>
+<figures/distribution_shift_timeseries.pdf, id=733, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
@@ -1497,7 +1474,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [16]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<figures/chartqa_visual_anchor.png, id=880, 310.15875pt x 344.28625pt>
+<figures/chartqa_visual_anchor.png, id=879, 310.15875pt x 344.28625pt>
 File: figures/chartqa_visual_anchor.png Graphic file (type png)
 <use figures/chartqa_visual_anchor.png>
 Package pdftex.def Info: figures/chartqa_visual_anchor.png  used on input line 
@@ -1512,9 +1489,9 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AF1317765931E0DDE23A78309C889442;6324.
  ) 
 Here is how much of TeX's memory you used:
- 36702 strings out of 478994
- 707508 string characters out of 5858184
- 1352002 words of memory out of 5000000
+ 36701 strings out of 478994
+ 707497 string characters out of 5858184
+ 1352012 words of memory out of 5000000
  52551 multiletter control sequences out of 15000+600000
  549746 words of font info for 581 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1540,10 +1517,10 @@ st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (17 pages, 4965376 bytes).
+Output written on main.pdf (17 pages, 4965016 bytes).
 PDF statistics:
- 1084 PDF objects out of 1200 (max. 8388607)
- 756 compressed objects within 8 object streams
- 277 named destinations out of 1000 (max. 500000)
+ 1082 PDF objects out of 1200 (max. 8388607)
+ 754 compressed objects within 8 object streams
+ 276 named destinations out of 1000 (max. 500000)
  117691 words of extra memory for PDF output out of 128383 (max. 10000000)
 
