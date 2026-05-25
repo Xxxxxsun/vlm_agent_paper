@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 03:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 03:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1312,32 +1312,32 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-<figures/distribution_shift_bars.pdf, id=579, 479.58861pt x 174.36057pt>
+<figures/distribution_shift_bars.pdf, id=578, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
-e 277.
+e 276.
 (pdftex.def)             Requested size: 455.24411pt x 165.51653pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--315
+Underfull \hbox (badness 10000) in paragraph at lines 304--314
  []\T1/ptm/b/n/10.95 (+20) What does environment-specific mas-tery
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 305--315
+Underfull \hbox (badness 1033) in paragraph at lines 304--314
 \T1/ptm/m/n/10.95 (+20) its skill is a generic visual-reasoning prompt
  []
 
 
-Underfull \hbox (badness 1810) in paragraph at lines 305--315
+Underfull \hbox (badness 1810) in paragraph at lines 304--314
 \T1/ptm/m/n/10.95 (+20) the tar-get en-vi-ron-ment's spe-cific tool chains,
  []
 
 [7 <./figures/distribution_shift_bars.pdf>]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 402.
+(Font)              scaled to size 10.0pt on input line 401.
 
-Underfull \hbox (badness 1052) in paragraph at lines 428--432
+Underfull \hbox (badness 1052) in paragraph at lines 427--431
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
 (+20) On V$[]$, \T1/ptm/m/sc/10.95 (+20) Dy-
  []
@@ -1386,7 +1386,7 @@ m/m/n/10 (+20) , and
  []
 
 [14] [15]
-<figures/chartqa_k_sensitivity.pdf, id=779, 348.6966pt x 218.39969pt>
+<figures/chartqa_k_sensitivity.pdf, id=777, 348.6966pt x 218.39969pt>
 File: figures/chartqa_k_sensitivity.pdf Graphic file (type pdf)
 <use figures/chartqa_k_sensitivity.pdf>
 Package pdftex.def Info: figures/chartqa_k_sensitivity.pdf  used on input line 
@@ -1397,7 +1397,7 @@ Underfull \hbox (badness 2698) in paragraph at lines 436--440
 \T1/ptm/m/n/10.95 (+20) Figure [][]3[][] in the main pa-per ag-gre-gates the
  []
 
-<figures/distribution_shift_timeseries.pdf, id=785, 237.70663pt x 144.37573pt>
+<figures/distribution_shift_timeseries.pdf, id=783, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
@@ -1458,7 +1458,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [17]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<figures/chartqa_visual_anchor.png, id=931, 310.15875pt x 344.28625pt>
+<figures/chartqa_visual_anchor.png, id=930, 310.15875pt x 344.28625pt>
 File: figures/chartqa_visual_anchor.png Graphic file (type png)
 <use figures/chartqa_visual_anchor.png>
 Package pdftex.def Info: figures/chartqa_visual_anchor.png  used on input line 
@@ -1502,10 +1502,10 @@ fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
 ype1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/t
 imes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri
 8a.pfb>
-Output written on main.pdf (18 pages, 4979103 bytes).
+Output written on main.pdf (18 pages, 4979034 bytes).
 PDF statistics:
- 1140 PDF objects out of 1200 (max. 8388607)
- 808 compressed objects within 9 object streams
+ 1139 PDF objects out of 1200 (max. 8388607)
+ 807 compressed objects within 9 object streams
  285 named destinations out of 1000 (max. 500000)
  117697 words of extra memory for PDF output out of 128383 (max. 10000000)
 

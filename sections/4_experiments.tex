@@ -257,8 +257,7 @@ itself; we do not claim fully unsupervised online adaptation. We compare \emph{D
 Table~\ref{tab:evolution_full}), \emph{Static} (capabilities evolved on the first phase
 only and never refreshed), \emph{Online adapt} (\sysname{} detects the shift via the
 rolling-window rule of Section~\ref{sec:method_adaptation} and re-runs the evolution loop
-on the new sub-stream), and \emph{Oracle} (capabilities pre-evolved on every family, an
-upper bound).
+on the new sub-stream), and \emph{Oracle} (pre-evolved on every family; upper bound).
 
 Figure~\ref{fig:distribution_shift} compares the four policies across all five backbones
 and three stream constructions: the \emph{natural} mixture (a fixed-seed mix of the four
@@ -270,7 +269,7 @@ representative: \emph{Online adapt} reaches $0.83$ vs.\ $0.74$ static on natural
 to $0.89$ vs.\ $0.65$ on capability-relevant; and on stress, \emph{Direct} collapses to
 $0.03$ while \emph{Online adapt} still recovers to $0.95$. The per-step trajectory along
 the stream, with shift-detection latencies of 2--7 cases per phase, is shown in
-Appendix~\ref{app:distribution_shift_timeseries} (Figure~\ref{fig:distribution_shift_timeseries}).
+Appendix~\ref{app:distribution_shift_timeseries}.
 
 \begin{figure*}[t]
   \centering
