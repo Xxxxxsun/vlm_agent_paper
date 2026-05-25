@@ -38,7 +38,7 @@ that promoted capabilities are deployed selectively rather than indiscriminately
 
 We evaluate three questions.
 \textbf{(I) Does \sysname{} work across diverse benchmarks and backbones?}
-On ChartQA, MathVista, HRBench, and V$^*$ across six VLM backbones, skill-tool co-evolution
+On ChartQA, MathVista, HRBench, and V$^*$ across five VLM backbones, skill-tool co-evolution
 improves direct inference on all 20 model--benchmark settings, averaging $+4.7$ accuracy
 points.
 \textbf{(II) Does the framework extend to a tool-mastery setting with a curated tool set?}
@@ -61,7 +61,7 @@ and combines additively with RL when both are available.
   \item A \textbf{multi-candidate evolution loop with mastery} that diagnoses both correct
         and incorrect attempts, generates candidate skill$+$tool combinations, selects the
         best by validation accuracy, and learns per-tool applicability boundaries.
-  \item \textbf{Empirical evidence} across four visual-reasoning benchmarks, six VLM
+  \item \textbf{Empirical evidence} across four visual-reasoning benchmarks, five VLM
         backbones, the GTA tool-mastery benchmark, and three task families
         (chart, table, perception) each compared against its representative RL method,
         showing that capability evolution is a viable training-free alternative---and
