@@ -22,7 +22,11 @@ self-evolution~\citep{DBLP:journals/corr/abs-2604-01193,DBLP:conf/acl/SunCZXZY25
 A complementary line generates new tools on demand:
 CREATOR~\citep{DBLP:conf/emnlp/QianH0Q0J23} prompts an LLM to write Python helpers for problems it
 cannot solve directly; LATM~\citep{DBLP:conf/iclr/Cai00CZ24} and ToolLLM~\citep{DBLP:conf/iclr/QinLYZYLLCTQZHT24} scale
-this to large API collections. 
+this to large API collections. The generated tools are typically text-domain utilities,
+such as arithmetic helpers, unit converters, and API wrappers, evaluated on math word
+problems and similar text-symbolic benchmarks. Successful tools are often retained for
+later reuse, sharing the persistent-library notion with the self-improving agents above.
+
 
 \paragraph{Visual reasoning with tools.}
 Several recent systems equip VLMs with visual processing tools. VTool-R1~\citep{DBLP:journals/corr/abs-2505-19255},
