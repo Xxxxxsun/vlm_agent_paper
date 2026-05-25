@@ -423,10 +423,10 @@ by $1$--$3$ points on every reported cell, indicating that the two interventions
 additively.
 
 \paragraph{High-resolution visual search.}
-On V$^\star$ and HRBench4K, \sysname{} alone matches or beats task-specific RL at both
-scales: it gains $+6.3$ and $+1.0$ over RL on V$^\star$ (3B / 7B) and $+4.0$ and $+0.7$
-on HRBench4K. Adding \sysname{} on top of the RL-trained policy raises 7B V$^\star$ to
-$92.7$ and 7B HRBench4K to $81.3$, the strongest configurations in those cells.
+On V$^\star$, \sysname{} alone beats task-specific RL at both scales ($+6.3$ at 3B,
+$+1.0$ at 7B). On HRBench4K, \sysname{} beats RL at 3B by $+4.0$ but trails at 7B by
+$1.8$. Adding \sysname{} on top of the RL-trained policy raises 7B V$^\star$ to $92.7$
+and 7B HRBench4K to $81.3$, the strongest configurations in those cells.
 
 \paragraph{Cost.}
 The RL baselines require substantial training compute, and the protocol is the same
