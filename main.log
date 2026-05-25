@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 22:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 22:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1284,14 +1284,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [3 <./figures/method.pdf>]) [4] (./sections/4_experiments.tex [5]
+
+Overfull \hbox (116.58609pt too wide) detected at line 87
+[][]
+ []
+
+[3 <./figures/method.pdf>]) [4] (./sections/4_experiments.tex [5]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 115.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-<figures/distribution_shift_bars.pdf, id=577, 479.58861pt x 174.36057pt>
+<figures/distribution_shift_bars.pdf, id=578, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
@@ -1375,7 +1380,7 @@ Underfull \vbox (badness 1199) has occurred while \output is active []
 
  [14]
 [15]
-<figures/chartqa_k_sensitivity.pdf, id=776, 348.6966pt x 218.39969pt>
+<figures/chartqa_k_sensitivity.pdf, id=777, 348.6966pt x 218.39969pt>
 File: figures/chartqa_k_sensitivity.pdf Graphic file (type pdf)
 <use figures/chartqa_k_sensitivity.pdf>
 Package pdftex.def Info: figures/chartqa_k_sensitivity.pdf  used on input line 
@@ -1386,7 +1391,7 @@ Underfull \hbox (badness 2698) in paragraph at lines 436--440
 \T1/ptm/m/n/10.95 (+20) Figure [][]3[][] in the main pa-per ag-gre-gates the
  []
 
-<figures/distribution_shift_timeseries.pdf, id=782, 237.70663pt x 144.37573pt>
+<figures/distribution_shift_timeseries.pdf, id=783, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
@@ -1447,7 +1452,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [17]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<figures/chartqa_visual_anchor.png, id=928, 310.15875pt x 344.28625pt>
+<figures/chartqa_visual_anchor.png, id=929, 310.15875pt x 344.28625pt>
 File: figures/chartqa_visual_anchor.png Graphic file (type png)
 <use figures/chartqa_visual_anchor.png>
 Package pdftex.def Info: figures/chartqa_visual_anchor.png  used on input line 
@@ -1460,11 +1465,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  36758 strings out of 478994
  708949 string characters out of 5858184
- 1353909 words of memory out of 5000000
+ 1352909 words of memory out of 5000000
  52577 multiletter control sequences out of 15000+600000
  551044 words of font info for 596 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,16n,108p,754b,1332s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,17n,108p,754b,1332s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
 /usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
 ive/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
@@ -1486,10 +1491,10 @@ st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (18 pages, 4970559 bytes).
+Output written on main.pdf (18 pages, 4971160 bytes).
 PDF statistics:
- 1134 PDF objects out of 1200 (max. 8388607)
- 804 compressed objects within 9 object streams
+ 1135 PDF objects out of 1200 (max. 8388607)
+ 805 compressed objects within 9 object streams
  285 named destinations out of 1000 (max. 500000)
  117691 words of extra memory for PDF output out of 128383 (max. 10000000)
 
