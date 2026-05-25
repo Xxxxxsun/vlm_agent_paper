@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 13:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 14:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1276,6 +1276,10 @@ Package natbib Warning: Citation `DBLP:journals/corr/abs-2602-22680' on page 2
 undefined on input line 17.
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
 Package natbib Warning: Citation `DBLP:conf/nips/YangPMXZHZ24' on page 2 undefi
 ned on input line 41.
 
@@ -1332,13 +1336,16 @@ Package microtype Info: Loading generic protrusion settings for font family
  [3 <./figures/method.pdf>] [4]) (./sections/4_experiments.tex [5]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 115.
+
+Underfull \vbox (badness 1014) has occurred while \output is active []
+
 <figures/distribution_shift_bars.pdf, id=525, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
 e 278.
 (pdftex.def)             Requested size: 455.24411pt x 165.51653pt.
-
+ [6]
 Underfull \hbox (badness 10000) in paragraph at lines 306--316
  []\T1/ptm/b/n/10.95 (+20) What does environment-specific mas-tery
  []
@@ -1354,38 +1361,41 @@ Underfull \hbox (badness 1810) in paragraph at lines 306--316
  []
 
 
-Underfull \vbox (badness 1107) has occurred while \output is active []
-
- [6]
-LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 403.
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [7]
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 10.0pt on input line 403.
+
 Underfull \hbox (badness 2103) in paragraph at lines 428--432
  []\T1/ptm/b/n/10.95 (+20) High-resolution vi-sual search.[] \T1/ptm/m/n/10.95 
 (+20) On V$[]$ and
  []
 
-) [8 <./figures/distribution_shift_bars.pdf>] (./sections/6_conclusion.tex)
+
+Underfull \vbox (badness 1142) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./figures/distribution_shift_bars.pdf>]) (./sections/6_conclusion.tex)
 (./sections/limitations.tex
 Underfull \hbox (badness 4886) in paragraph at lines 12--16
  []\T1/ptm/b/n/10.95 (+20) Tool qual-ity ceil-ing.[] \T1/ptm/m/n/10.95 (+20) To
 ol ef-fec-tive-ness is
  []
 
-) (./main.bbl [9]
+) [9] (./main.bbl
 Underfull \hbox (badness 3354) in paragraph at lines 86--92
 []\T1/ptm/m/n/10 (+20) Haozhan Shen, Kangjia Zhao, Tiancheng Zhao,
  []
 
-
+[10]
 Underfull \hbox (badness 1152) in paragraph at lines 174--179
 []\T1/ptm/m/n/10 (+20) Ziwei Zheng, Michael Yang, Jack Hong, Chenx-
  []
 
-[10]) [11
+) [11
 
 ] (./sections/A_appendix.tex
 
@@ -1510,11 +1520,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AF1317765931E0DDE23A78309C889442;6324.
  ) 
 Here is how much of TeX's memory you used:
- 36718 strings out of 478994
- 707650 string characters out of 5858184
+ 36717 strings out of 478994
+ 707646 string characters out of 5858184
  1352268 words of memory out of 5000000
  52553 multiletter control sequences out of 15000+600000
- 550334 words of font info for 588 fonts, out of 8000000 for 9000
+ 550231 words of font info for 587 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,16n,108p,754b,1332s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
@@ -1539,7 +1549,7 @@ st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on main.pdf (18 pages, 5044776 bytes).
+Output written on main.pdf (18 pages, 5044904 bytes).
 PDF statistics:
  1077 PDF objects out of 1200 (max. 8388607)
  747 compressed objects within 8 object streams
