@@ -136,12 +136,12 @@ selective by construction rather than indiscriminate---a property that distingui
 generated tools without learned applicability boundaries.
 
 \paragraph{External tool sets (Mode B).}
-When a curated tool set $\mathcal{T}_0 \neq \emptyset$ is already provided, \sysname{} can
+When a curated tool set $\mathcal{T}_0 \neq \emptyset$ is provided, \sysname{} can
 operate in \textbf{Mode B}: skip tool generation and instead synthesise a mastery skill for
 each provided tool $t_j \in \mathcal{T}_0$, learning when to invoke it from the agent's own
 behaviour on $\mathcal{D}_{\text{train}}$. Mode B requires no code generation, making it
-practical when tool quality is already high but deployment strategy is unknown.
-Experiment~II (Section~\ref{sec:exp2}) evaluates this mode.
+practical when tool quality is high but deployment strategy is unknown.
+Experiment~II (Section~\ref{sec:exp2}) evaluates Mode B.
 
 \subsection{Online Adaptation to Distribution Shift}
 \label{sec:method_adaptation}
