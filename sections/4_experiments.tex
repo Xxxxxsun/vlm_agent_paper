@@ -293,14 +293,15 @@ Appendix~\ref{app:distribution_shift_timeseries}.
 Table~\ref{tab:gta_detailed} compares three methods on the 121-case GTA validation split:
 \emph{Base Agent} (zero-shot VLM with the GTA tools exposed); an \emph{XSkill-style}
 baseline; and \sysname{} Mode~B (skills~$+$~mastery learned on the training set).
-\textbf{XSkill}~\citep{DBLP:journals/corr/abs-2603-12056} equips a multimodal agent with a
-continually-learned library of skill prompts that are injected into the system prompt at
-inference. We port XSkill to GTA as faithfully as possible, keeping XSkill's
-prompt-injection mechanism, agent stack, tool environment, and scorer the same as in the
-original setup; the injected skill is a generic visual-reasoning prompt of the kind
-XSkill's continual-learning loop produces before it sees an environment as specialised as
-GTA. The comparison therefore isolates the contribution of XSkill's skill-injection
-mechanism from \sysname{}'s GTA-specific mastery skills.
+\textbf{XSkill}~\citep{DBLP:journals/corr/abs-2603-12056} is a continual-learning
+framework that maintains a library of structured Markdown skills (with workflow, code
+templates, and watchpoints) plus a complementary library of short JSON experiences, both
+grounded in visual observations and injected into the agent's system prompt at inference.
+Our \emph{XSkill-style} baseline adopts XSkill's prompt-injection setup on GTA (same tool
+environment, same scorer, same injection point in the system prompt), but supplies a
+single generic visual-reasoning skill prompt in place of running XSkill's continual-learning
+loop end-to-end on GTA training data. The comparison therefore isolates the contribution
+of XSkill's skill-injection mechanism from \sysname{}'s GTA-specific mastery skills.
 \sysname{} improves every metric on every backbone, with the largest gains on
 Doubao-Seed-2.0 ($+18.7$ ToolAcc, $+15.8$ ArgAcc, $+16.1$ InstAcc, $+4.9$ AnsAcc) and
 smaller but uniformly positive gains on GPT-4o ($+4.3$ / $+2.2$ / $+11.4$ / $+5.0$) and
