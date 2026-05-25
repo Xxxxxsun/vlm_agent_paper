@@ -101,9 +101,9 @@ A \emph{skill} is a structured Markdown document with four fields:
 \textbf{Worked Example}.
 The Generator writes a skill conditioned on the AnalyzerDecider's root-cause analysis; if a
 skill covering the same problem class already exists in $\mathcal{S}$, new insights are merged
-into it rather than creating a duplicate, preventing library bloat. At inference, the Solver
-retrieves the top-$K$ skills by BM25 similarity to the question and appends them to the system
-prompt.
+into it rather than creating a duplicate, preventing library bloat. At inference,
+$\mathrm{Retrieve}(\cdot)$ (Eq.~\ref{eq:agent}) returns the top-$K$ skills by BM25
+similarity to the question, which the Solver appends to the system prompt.
 
 \subsection{Tools and Mastery}
 \label{sec:method_tool}
