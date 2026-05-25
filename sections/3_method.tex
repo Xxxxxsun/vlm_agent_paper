@@ -59,6 +59,10 @@ images $\mathbf{v}_i$, reasoning traces $\tau_i$, and any intermediate tool outp
 emits a root-cause analysis grounded in visual evidence, an identified bottleneck type (\emph{cognitive} when the visual evidence
 is available but the reasoning procedure is weak, or \emph{perceptual} when the agent needs a
 transformed visual input), and an action $a \in \{\texttt{skill}, \texttt{tool}, \texttt{both}\}$.
+Letting the \textsc{AnalyzerDecider} choose freely from this three-action set on each
+case is the default \sysname{} behaviour (denoted \emph{Full} in
+Section~\ref{sec:exp1}); restricting $a$ to $\{\texttt{skill}\}$ or $\{\texttt{tool}\}$
+yields the \emph{Skill Only} and \emph{Tool Only} ablations.
 Visual input here is essential: deciding whether a crop is misaligned, whether labels are
 legible, or whether a processed image introduced artefacts requires inspecting the image, not
 just the reasoning trace.
