@@ -101,6 +101,29 @@ visual-reasoning skill prompt (no GTA-specific tool-chain, argument-format, or
 answer-normalisation protocol). This isolates the contribution of XSkill's
 skill-injection mechanism from \sysname{}'s GTA-specific mastery skills.
 
+\subsection{RL Baseline Training Compute}
+\label{app:rl_cost}
+
+Each RL baseline in Experiment~III is the published, pre-trained checkpoint from its
+original protocol, evaluated at both Qwen2.5-VL scales (3B, 7B).
+
+\paragraph{VTool-R1 (ChartQA, TableQA).}
+The released checkpoints are reported after $80$ GRPO steps with a batch of $32$ prompts
+and $n_{\text{rollout}}{=}8$ rollouts per prompt, giving approximately
+$80 \times 32 \times 8 = 20{,}480$ trajectories and $80$ gradient updates per backbone.
+
+\paragraph{DeepEyes (V$^\star$, HRBench4K).}
+The released checkpoints are reported after $240$ RL steps with a batch of $128$ prompts
+and $n_{\text{rollout}}{=}4$ rollouts per prompt, giving approximately
+$240 \times 128 \times 4 = 122{,}880$ trajectories and $240$ gradient updates per backbone.
+
+\paragraph{\sysname{}.}
+A \sysname{} run performs no gradient updates. It uses $10\%$ of each benchmark's training
+split as $\mathcal{D}_{\text{train}}$ and runs the evolution loop for $N{=}3$ passes,
+invoking the frozen VLM only for solving, diagnosis, generation, and validation. The
+total budget is on the order of a few thousand frozen-VLM API calls per benchmark;
+per-benchmark token totals appear earlier in this appendix.
+
 \section{Mechanism Ablations}
 \label{app:ablation_mechanisms}
 

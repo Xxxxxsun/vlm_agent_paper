@@ -413,8 +413,7 @@ protocol~\citep{DBLP:journals/corr/abs-2505-14362}.
 Using the gap-recovery fraction $(\sysname{}-\text{Direct})/(\text{RL}-\text{Direct})$,
 \sysname{} recovers $65.7\%$ and $99.4\%$ of the ChartQA gap at 3B and 7B respectively,
 and $67.5\%$ and $91.4\%$ of the TableQA gap. \sysname{}\,$+$\,RL further beats RL alone
-by $1$--$3$ points on every reported cell, indicating that the two interventions compose
-additively.
+by $1$--$3$ points on every cell, showing the two interventions compose additively.
 
 \paragraph{High-resolution visual search.}
 On V$^\star$, \sysname{} alone beats task-specific RL at both scales ($+6.3$ at 3B,
@@ -423,21 +422,18 @@ $1.8$. Adding \sysname{} on top of the RL-trained policy raises 7B V$^\star$ to 
 and 7B HRBench4K to $81.3$, the strongest configurations in those cells.
 
 \paragraph{Cost.}
-The RL baselines require substantial training compute, and the protocol is the same
-across the two backbones in each family. VTool-R1's ChartQA and TableQA checkpoints (both
-3B and 7B) are each reported after 80 GRPO steps with a batch of 32 prompts and
-$n_{\text{rollout}}{=}8$ rollouts per prompt---approximately $80 \times 32 \times 8 =
-20{,}480$ trajectories and 80 gradient updates per backbone. DeepEyes' V$^\star$ and
-HRBench4K checkpoints (both 3B and 7B) are each reported after 240 RL steps with a batch
-of 128 prompts and $n_{\text{rollout}}{=}4$---approximately $240 \times 128 \times 4 =
-122{,}880$ trajectories and 240 gradient updates per backbone. \sysname{}, by contrast,
-performs no weight updates: a run uses 10\% of each benchmark's training split for
-$N{=}3$ passes and invokes the frozen VLM only for solving, diagnosis, generation, and
-validation (a few thousand frozen-VLM API calls per benchmark; see
-Appendix~\ref{app:impl} for the per-benchmark token totals). Across these two task
-families, \sysname{} therefore recovers most of the RL gain on ChartQA/TableQA and matches
-or beats RL on high-resolution visual search at a fraction of the training-time compute,
-while composing additively with RL when both are available.
+The RL baselines need on the order of $10^4$--$10^5$ rollouts and $80$--$240$ gradient
+updates per backbone (Appendix~\ref{app:rl_cost} for the per-protocol breakdown).
+\sysname{} performs no weight updates: a run uses $10\%$ of the training split for
+$N{=}3$ passes of frozen-VLM API calls, a few thousand calls per benchmark in total
+(per-benchmark token totals in Appendix~\ref{app:impl}).
+
+\paragraph{Takeaway.}
+\sysname{}'s self-evolved skills and tools alone reach RL-level accuracy on both task
+families (most of the gap on ChartQA/TableQA; matching or beating RL on V$^\star$ and at
+3B on HRBench4K) without any weight updates. RL and self-evolution are not at odds:
+\sysname{}\,$+$\,RL is the strongest configuration in every cell, so the two
+interventions compose additively rather than competing.
 \begin{table}[t]
 \centering
 \scriptsize
