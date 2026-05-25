@@ -78,6 +78,29 @@ Each training case incurs at most three frozen-VLM calls (Solver, AnalyzerDecide
 Generator), so the per-benchmark call budget scales linearly in the size of the training
 subset and in $N$. No GPU training is performed.
 
+\subsection{XSkill-style Baseline}
+\label{app:xskill_baseline}
+
+\textbf{What XSkill is.}
+XSkill~\citep{DBLP:journals/corr/abs-2603-12056} is a continual-learning framework that
+maintains a library of structured Markdown skills (Definition 2.1 of their paper: each
+skill carries metadata, a workflow, code templates, and watchpoints) and a complementary
+library of short JSON experiences (Definition 2.2: $(c, a, v_e)$ tuples of triggering
+condition, recommended action, and semantic embedding, $\leq 64$ words combined). At
+inference, XSkill decomposes the task into subtasks, retrieves top-$k$ experiences by
+embedding similarity to the current visual context, rewrites them, prunes irrelevant
+sections of a retrieved skill against the current image, and injects the adapted skill
+plus rewritten experiences into the agent's system prompt as a non-prescriptive reference.
+
+\textbf{Our port to GTA.}
+Our XSkill-style baseline keeps XSkill's prompt-injection point in the system prompt, the
+same GTA tool environment, and the same scorer as \sysname{} Mode~B. It does not run
+XSkill's continual-learning loop end-to-end on GTA training data; instead, the slot that
+XSkill would fill with a learned Markdown skill is filled by a single generic
+visual-reasoning skill prompt (no GTA-specific tool-chain, argument-format, or
+answer-normalisation protocol). This isolates the contribution of XSkill's
+skill-injection mechanism from \sysname{}'s GTA-specific mastery skills.
+
 \section{Mechanism Ablations}
 \label{app:ablation_mechanisms}
 
