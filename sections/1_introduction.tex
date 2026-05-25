@@ -4,10 +4,10 @@
 
 Vision-language models (VLMs) have improved rapidly, yet adapting a VLM to a new
 visual-reasoning task family still typically requires manually curated SFT data or a
-hand-designed RL pipeline---per task and per backbone. We ask whether the agent can build
-its own task-family-specific capability set instead, by inspecting its own behaviour on a
-small training subset and without any weight updates. We illustrate this motivation in
-Figure~\ref{fig:motivation}.
+hand-designed RL pipeline. We ask whether the agent can build its own task-family-specific
+capability set instead, by inspecting its own behaviour on a small training subset and
+without any weight updates. Figure~\ref{fig:motivation} contrasts this capability-evolution
+route with the per-task SFT/RL pipeline it replaces.
 
 \begin{figure}[t]
   \centering
