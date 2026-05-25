@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 03:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 03:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1312,28 +1312,31 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-<figures/distribution_shift_bars.pdf, id=578, 479.58861pt x 174.36057pt>
+<figures/distribution_shift_bars.pdf, id=574, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
 e 276.
 (pdftex.def)             Requested size: 455.24411pt x 165.51653pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--314
+Underfull \hbox (badness 10000) in paragraph at lines 309--319
  []\T1/ptm/b/n/10.95 (+20) What does environment-specific mas-tery
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 304--314
+Underfull \hbox (badness 1033) in paragraph at lines 309--319
 \T1/ptm/m/n/10.95 (+20) its skill is a generic visual-reasoning prompt
  []
 
 
-Underfull \hbox (badness 1810) in paragraph at lines 304--314
+Underfull \hbox (badness 1810) in paragraph at lines 309--319
 \T1/ptm/m/n/10.95 (+20) the tar-get en-vi-ron-ment's spe-cific tool chains,
  []
 
-[7 <./figures/distribution_shift_bars.pdf>]
+
+Underfull \vbox (badness 1168) has occurred while \output is active []
+
+ [7 <./figures/distribution_shift_bars.pdf>]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 401.
 
@@ -1386,7 +1389,7 @@ m/m/n/10 (+20) , and
  []
 
 [14] [15]
-<figures/chartqa_k_sensitivity.pdf, id=777, 348.6966pt x 218.39969pt>
+<figures/chartqa_k_sensitivity.pdf, id=769, 348.6966pt x 218.39969pt>
 File: figures/chartqa_k_sensitivity.pdf Graphic file (type pdf)
 <use figures/chartqa_k_sensitivity.pdf>
 Package pdftex.def Info: figures/chartqa_k_sensitivity.pdf  used on input line 
@@ -1397,7 +1400,7 @@ Underfull \hbox (badness 2698) in paragraph at lines 436--440
 \T1/ptm/m/n/10.95 (+20) Figure [][]3[][] in the main pa-per ag-gre-gates the
  []
 
-<figures/distribution_shift_timeseries.pdf, id=783, 237.70663pt x 144.37573pt>
+<figures/distribution_shift_timeseries.pdf, id=775, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
@@ -1458,7 +1461,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [17]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<figures/chartqa_visual_anchor.png, id=930, 310.15875pt x 344.28625pt>
+<figures/chartqa_visual_anchor.png, id=922, 310.15875pt x 344.28625pt>
 File: figures/chartqa_visual_anchor.png Graphic file (type png)
 <use figures/chartqa_visual_anchor.png>
 Package pdftex.def Info: figures/chartqa_visual_anchor.png  used on input line 
@@ -1473,13 +1476,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AF1317765931E0DDE23A78309C889442;6324.
  ) 
 Here is how much of TeX's memory you used:
- 36764 strings out of 478994
- 709009 string characters out of 5858184
- 1354015 words of memory out of 5000000
+ 36760 strings out of 478994
+ 708971 string characters out of 5858184
+ 1353665 words of memory out of 5000000
  52577 multiletter control sequences out of 15000+600000
- 551557 words of font info for 599 fonts, out of 8000000 for 9000
+ 551226 words of font info for 596 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,16n,108p,754b,1332s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,16n,108p,699b,1332s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
 /usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texl
 ive/2021/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
@@ -1502,10 +1505,10 @@ fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
 ype1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/t
 imes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri
 8a.pfb>
-Output written on main.pdf (18 pages, 4979034 bytes).
+Output written on main.pdf (18 pages, 4978829 bytes).
 PDF statistics:
- 1139 PDF objects out of 1200 (max. 8388607)
- 807 compressed objects within 9 object streams
+ 1131 PDF objects out of 1200 (max. 8388607)
+ 801 compressed objects within 9 object streams
  285 named destinations out of 1000 (max. 500000)
  117697 words of extra memory for PDF output out of 128383 (max. 10000000)
 

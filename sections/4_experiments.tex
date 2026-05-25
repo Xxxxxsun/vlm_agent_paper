@@ -292,13 +292,18 @@ Appendix~\ref{app:distribution_shift_timeseries}.
 \paragraph{Results on GTA.}
 Table~\ref{tab:gta_detailed} compares three methods on the 121-case GTA validation split:
 \emph{Base Agent} (zero-shot VLM with the GTA tools exposed); an \emph{XSkill-style}
-baseline~\citep{DBLP:journals/corr/abs-2603-12056} that injects a generic visual-reasoning skill header on top
-of the same tool environment but without GTA-specific protocols; and \sysname{} Mode~B
-(skills~$+$~mastery learned on the training set). \sysname{} improves every metric on
-every backbone, with the largest gains on Doubao-Seed-2.0 ($+18.7$ ToolAcc, $+15.8$
-ArgAcc, $+16.1$ InstAcc, $+4.9$ AnsAcc) and smaller but uniformly positive gains on
-GPT-4o ($+4.3$ / $+2.2$ / $+11.4$ / $+5.0$) and GPT-5.4 ($+6.8$ / $+3.2$ / $+6.1$ /
-$+1.7$).
+baseline; and \sysname{} Mode~B (skills~$+$~mastery learned on the training set).
+\textbf{XSkill}~\citep{DBLP:journals/corr/abs-2603-12056} equips a multimodal agent with a
+continually-learned library of skill prompts that are injected into the system prompt at
+inference. Our XSkill-style baseline mirrors this injection mechanism but supplies a
+single generic visual-reasoning skill instead of a learned library, on top of the same
+tool environment and scorer, and without GTA's tool-chain, argument, or answer-normalization
+protocols; this isolates ``a skill prompt was injected'' from ``the prompt encodes
+environment-specific protocols''.
+\sysname{} improves every metric on every backbone, with the largest gains on
+Doubao-Seed-2.0 ($+18.7$ ToolAcc, $+15.8$ ArgAcc, $+16.1$ InstAcc, $+4.9$ AnsAcc) and
+smaller but uniformly positive gains on GPT-4o ($+4.3$ / $+2.2$ / $+11.4$ / $+5.0$) and
+GPT-5.4 ($+6.8$ / $+3.2$ / $+6.1$ / $+1.7$).
 
 \paragraph{What does environment-specific mastery contribute?}
 The \emph{XSkill-style} baseline isolates generic skill injection from environment-specific
@@ -350,13 +355,8 @@ formats, and answer normalisation rules.
 \end{tabular}%
 }
 \caption{%
-  \textbf{Learning to use pre-provided tools on GTA (121-case validation split).}
-  \sysname{} Mode~B (skills~$+$~mastery only; no new tool generation) improves every
-  metric on every backbone and beats both \emph{Base Agent} and the
-  \emph{XSkill-style}~\citep{DBLP:journals/corr/abs-2603-12056} generic-skill-injection baseline. XSkill-style
-  itself drops below Base on the step-level metrics for GPT-4o and GPT-5.4, showing that
-  generic skill injection without environment-specific protocols can confuse tool
-  selection.
+  \textbf{GTA results: Base Agent, XSkill-style, and \sysname{} Mode~B on the 121-case
+  validation split.} Accuracy (\%) per backbone; best per row in bold.
 }
 \label{tab:gta_detailed}
 \end{table}
