@@ -425,15 +425,15 @@ and 7B HRBench4K to $81.3$, the strongest configurations in those cells.
 The RL baselines need on the order of $10^4$--$10^5$ rollouts and $80$--$240$ gradient
 updates per backbone (Appendix~\ref{app:rl_cost} for the per-protocol breakdown).
 \sysname{} performs no weight updates: a run uses $10\%$ of the training split for
-$N{=}3$ passes of frozen-VLM API calls, a few thousand calls per benchmark in total
-(per-benchmark token totals in Appendix~\ref{app:impl}).
+$N{=}3$ passes of frozen-VLM API calls, a few thousand calls per benchmark
+(token totals in Appendix~\ref{app:impl}).
 
 \paragraph{Takeaway.}
 \sysname{}'s self-evolved skills and tools alone reach RL-level accuracy on both task
 families (most of the gap on ChartQA/TableQA; matching or beating RL on V$^\star$ and at
 3B on HRBench4K) without any weight updates. RL and self-evolution are not at odds:
 \sysname{}\,$+$\,RL is the strongest configuration in every cell, so the two
-interventions compose additively rather than competing.
+interventions compose additively.
 \begin{table}[t]
 \centering
 \scriptsize
@@ -462,9 +462,7 @@ interventions compose additively rather than competing.
 }
 \caption{%
   \textbf{Self-evolution vs.\ task-specific RL across two task families.}
-  Accuracy (\%) on Qwen2.5-VL 3B and 7B. \sysname{} alone matches or beats RL on every
-  high-resolution cell and recovers most of the ChartQA/TableQA gap;
-  \sysname{}\,$+$\,RL is additive in every cell.
+  Accuracy (\%) on Qwen2.5-VL 3B and 7B.
 }
 \label{tab:rl_combined}
 \end{table}
@@ -527,4 +525,4 @@ validated visual-tool path does; (ii) text-only diagnosis cannot materialise a u
 image-processing tool; and (iii) diagnosing only correct or only incorrect ChartQA cases
 fails to drive useful evolution, supporting the full loop's use of contrast between
 solved and unsolved cases. The remaining mechanism removal (multi-candidate exploration)
-requires a larger subset than the current pilot and is left to future work.
+needs a larger subset and is left to future work.
