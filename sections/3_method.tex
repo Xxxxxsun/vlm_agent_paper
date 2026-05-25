@@ -73,13 +73,12 @@ Writing each candidate as $c_m = (s_m, t_m)$, we evaluate every $c_m$ on
 $\mathcal{D}_{\text{train}}$ and promote the highest-accuracy one:
 \begin{equation}
 \begin{aligned}
-  m^{\star} &= \arg\max_{m \in \{1, \dots, M\}}
-              \mathrm{Acc}\!\left(f_{\mathcal{C} \cup c_m};\, \mathcal{D}_{\text{train}}\right), \\
+  c^{\star} &= \arg\max_{c \in \{c_1, \dots, c_M\}}
+              \mathrm{Acc}\!\left(f_{\mathcal{C} \cup c};\, \mathcal{D}_{\text{train}}\right), \\
   \mathcal{C} &\leftarrow
     \begin{cases}
-      \mathcal{C} \cup \{c_{m^{\star}}\}
-        & \text{if } \mathrm{Acc}(f_{\mathcal{C} \cup c_{m^{\star}}})
-                     > \mathrm{Acc}(f_{\mathcal{C}}), \\
+      \mathcal{C} \cup \{c^{\star}\}
+        & \text{if } \mathrm{Acc}(f_{\mathcal{C} \cup c^{\star}}) > \mathrm{Acc}(f_{\mathcal{C}}), \\
       \mathcal{C} & \text{otherwise,}
     \end{cases}
 \end{aligned}
