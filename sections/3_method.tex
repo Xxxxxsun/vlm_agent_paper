@@ -92,11 +92,10 @@ Eq.~\ref{eq:objective} and subsumes both an \emph{origin} requirement (the new c
 must improve over the previous $f_{\mathcal{C}}$ on the cases it targets) and a
 \emph{regression} requirement (it must not degrade currently-correct cases). Because
 $\mathcal{D}_{\text{train}}$ and $\mathcal{D}_{\text{val}}$ are disjoint, this proxy does
-not contaminate the held-out numbers we report; the only residual concern is
-selection-induced bias in $m^{\star}$ over a discrete candidate set, which scales
-logarithmically in $M$. We keep $M$ at a single-digit candidate budget so this term stays
-small; quantifying it empirically across benchmarks requires a larger ablation than the
-current pilot allows, and is left to future work.
+not contaminate the held-out numbers we report; the only residual concern is selection
+bias in $c^{\star}$ over a discrete candidate set, which scales logarithmically in $M$,
+so we keep $M$ at a single-digit budget. A broader empirical estimate is left to future
+work.
 When the action is \texttt{both}, the paired skill additionally serves as the tool's
 mastery SOP, gating tool invocation at inference (Section~\ref{sec:method_tool}). The full
 procedure runs for $N$ iterations (default $N{=}3$); pseudocode is given in
