@@ -295,11 +295,12 @@ Table~\ref{tab:gta_detailed} compares three methods on the 121-case GTA validati
 baseline; and \sysname{} Mode~B (skills~$+$~mastery learned on the training set).
 \textbf{XSkill}~\citep{DBLP:journals/corr/abs-2603-12056} equips a multimodal agent with a
 continually-learned library of skill prompts that are injected into the system prompt at
-inference. Our XSkill-style baseline mirrors this injection mechanism but supplies a
-single generic visual-reasoning skill instead of a learned library, on top of the same
-tool environment and scorer, and without GTA's tool-chain, argument, or answer-normalization
-protocols; this isolates ``a skill prompt was injected'' from ``the prompt encodes
-environment-specific protocols''.
+inference. We port XSkill to GTA as faithfully as possible, keeping XSkill's
+prompt-injection mechanism, agent stack, tool environment, and scorer the same as in the
+original setup; the injected skill is a generic visual-reasoning prompt of the kind
+XSkill's continual-learning loop produces before it sees an environment as specialised as
+GTA. The comparison therefore isolates the contribution of XSkill's skill-injection
+mechanism from \sysname{}'s GTA-specific mastery skills.
 \sysname{} improves every metric on every backbone, with the largest gains on
 Doubao-Seed-2.0 ($+18.7$ ToolAcc, $+15.8$ ArgAcc, $+16.1$ InstAcc, $+4.9$ AnsAcc) and
 smaller but uniformly positive gains on GPT-4o ($+4.3$ / $+2.2$ / $+11.4$ / $+5.0$) and
