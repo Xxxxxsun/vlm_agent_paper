@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 00:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 00:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1284,7 +1284,28 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [3 <./figures/method.pdf>]) [4] (./sections/4_experiments.tex [5]
+ [3 <./figures/method.pdf>]) [4] (./sections/4_experiments.tex
+
+Package natbib Warning: Citation `DBLP:journals/corr/abs-2410-21276' on page 5 
+undefined on input line 33.
+
+
+Package natbib Warning: Citation `openai2025o3o4mini' on page 5 undefined on in
+put line 33.
+
+
+Package natbib Warning: Citation `openai2026gpt54thinking' on page 5 undefined 
+on input line 33.
+
+
+Package natbib Warning: Citation `bytedanceseed2026seed20' on page 5 undefined 
+on input line 33.
+
+
+Package natbib Warning: Citation `qwen35blog' on page 5 undefined on input line
+ 34.
+
+[5]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 115.
 
@@ -1453,16 +1474,20 @@ File: figures/chartqa_visual_anchor.png Graphic file (type png)
 Package pdftex.def Info: figures/chartqa_visual_anchor.png  used on input line 
 807.
 (pdftex.def)             Requested size: 186.22455pt x 206.71518pt.
-) [18 <./figures/chartqa_visual_anchor.png (PNG copy)>] (./main.aux)
+)
+
+Package natbib Warning: There were undefined citations.
+
+[18 <./figures/chartqa_visual_anchor.png (PNG copy)>] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AF1317765931E0DDE23A78309C889442;6324.
  ) 
 Here is how much of TeX's memory you used:
  36755 strings out of 478994
  708928 string characters out of 5858184
- 1353852 words of memory out of 5000000
+ 1353896 words of memory out of 5000000
  52577 multiletter control sequences out of 15000+600000
- 550917 words of font info for 594 fonts, out of 8000000 for 9000
+ 551015 words of font info for 594 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,16n,108p,754b,1332s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{
@@ -1487,7 +1512,7 @@ fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
 ype1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/t
 imes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri
 8a.pfb>
-Output written on main.pdf (18 pages, 4978391 bytes).
+Output written on main.pdf (18 pages, 4978333 bytes).
 PDF statistics:
  1135 PDF objects out of 1200 (max. 8388607)
  803 compressed objects within 9 object streams

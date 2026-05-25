@@ -40,15 +40,15 @@ VTool-R1 evaluation protocol. All VLM weights are \emph{frozen} throughout; no g
 updates are performed.
 
 \paragraph{Evolution protocol.}
-For each benchmark, we sample 20\% of the official training split as
+For each benchmark, we sample 10\% of the official training split as
 $\mathcal{D}_{\text{train}}$ and run the \sysname{} evolution loop for $N{=}3$ iterations.
 The capability set $\mathcal{C}$ is then frozen and evaluated on the held-out
 validation / test split. For each evolution configuration (\emph{Skill Only},
 \emph{Tool Only}, \emph{Full}), we run \textbf{three independent seeds} that vary the
-20\% training subset and the Generator's sampling, and report mean $\pm$ standard
-deviation in Table~\ref{tab:evolution_full}. The \emph{None} (Base Agent) row invokes
-the frozen VLM with no evolved capabilities and is run once per cell---there is no
-capability-generation randomness to average over---so it carries no standard deviation.
+10\% training subset and the Generator's sampling, and report mean $\pm$ standard
+deviation in Table~\ref{tab:evolution_full}. The \emph{None} (Base Agent) row runs the
+frozen VLM with no evolved capabilities once per cell, so no standard deviation is
+reported.
 
 \paragraph{Baselines.}
 For Experiment~I, we compare four evolution configurations that isolate the contribution
@@ -440,7 +440,7 @@ $n_{\text{rollout}}{=}8$ rollouts per prompt---approximately $80 \times 32 \time
 HRBench4K checkpoints (both 3B and 7B) are each reported after 240 RL steps with a batch
 of 128 prompts and $n_{\text{rollout}}{=}4$---approximately $240 \times 128 \times 4 =
 122{,}880$ trajectories and 240 gradient updates per backbone. \sysname{}, by contrast,
-performs no weight updates: a run uses 20\% of each benchmark's training split for
+performs no weight updates: a run uses 10\% of each benchmark's training split for
 $N{=}3$ passes and invokes the frozen VLM only for solving, diagnosis, generation, and
 validation (a few thousand frozen-VLM API calls per benchmark; see
 Appendix~\ref{app:impl} for the per-benchmark token totals). Across these two task
