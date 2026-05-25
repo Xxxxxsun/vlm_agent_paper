@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 17:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  25 MAY 2026 17:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1260,7 +1260,7 @@ Underfull \vbox (badness 2818) has occurred while \output is active []
 
 
  <./figures/Picture2.pdf>]
-Underfull \hbox (badness 6708) in paragraph at lines 64--67
+Underfull \hbox (badness 6708) in paragraph at lines 65--68
 []\T1/ptm/b/n/10.95 (+20) Empirical ev-i-dence \T1/ptm/m/n/10.95 (+20) across f
 our visual-
  []
@@ -1535,7 +1535,7 @@ st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (17 pages, 4966892 bytes).
+Output written on main.pdf (17 pages, 4966924 bytes).
 PDF statistics:
  1090 PDF objects out of 1200 (max. 8388607)
  762 compressed objects within 8 object streams
