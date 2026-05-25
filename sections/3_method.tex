@@ -44,8 +44,8 @@ where the maximisation is over $\mathcal{C}$ only and $\pi_\theta$ remains froze
 \subsection{Evolution Loop}
 \label{sec:method_loop}
 
-Each evolution iteration over $\mathcal{D}_{\text{train}}$ has three
-phases~(Figure~\ref{fig:method}).
+Each iteration has three
+phases (Figure~\ref{fig:method}).
 
 \textbf{Diagnose.}
 The agent (Eq.~\ref{eq:agent}) attempts each case in $\mathcal{D}_{\text{train}}$ once with
@@ -100,7 +100,7 @@ current pilot allows, and is left to future work.
 When the action is \texttt{both}, the paired skill additionally serves as the tool's
 mastery SOP, gating tool invocation at inference (Section~\ref{sec:method_tool}). The full
 procedure runs for $N$ iterations (default $N{=}3$); pseudocode is given in
-Appendix~\ref{app:impl} (Algorithm~\ref{alg:main}).
+Appendix~\ref{app:impl}.
 
 \subsection{Skills}
 \label{sec:method_skill}
