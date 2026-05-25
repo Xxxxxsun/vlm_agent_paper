@@ -253,15 +253,17 @@ benchmark's ground-truth labels stand in for the per-case correctness signal tha
 real deployment would obtain from human review, automated QA, or an LLM
 verifier~(Section~\ref{sec:method_adaptation}). This isolates the adaptation policy from
 the cost of regenerating capabilities online and from the cost of the feedback channel
-itself; we do not claim fully unsupervised online adaptation. We compare \emph{Direct} (no capabilities), \emph{Static} (capabilities evolved
-on the initial distribution only and never updated), \emph{Online adapt} (\sysname{}
-detects the shift and updates skills and tools on the new sub-stream), and \emph{Oracle}
-(capabilities pre-evolved on every family, an upper bound).
+itself; we do not claim fully unsupervised online adaptation. We compare \emph{Direct} (no capabilities, same as the \emph{None} baseline in
+Table~\ref{tab:evolution_full}), \emph{Static} (capabilities evolved on the first phase
+only and never refreshed), \emph{Online adapt} (\sysname{} detects the shift via the
+rolling-window rule of Section~\ref{sec:method_adaptation} and re-runs the evolution loop
+on the new sub-stream), and \emph{Oracle} (capabilities pre-evolved on every family, an
+upper bound).
 
 Figure~\ref{fig:distribution_shift} compares the four policies across all five backbones
 and three stream constructions: the \emph{natural} mixture (a fixed-seed mix of the four
 families), \emph{capability-relevant} (cases whose outcome depends on the matching
-capability), and \emph{stress} (cases the matching capability is required to fix). The
+capability), and \emph{stress} (cases the agent fails on without the matching capability). The
 ordering \emph{Direct} $\le$ \emph{Static} $<$ \emph{Online adapt} $\approx$ \emph{Oracle}
 is consistent across every backbone $\times$ protocol cell. On GPT-5.4 the gap is
 representative: \emph{Online adapt} reaches $0.83$ vs.\ $0.74$ static on natural; widens
