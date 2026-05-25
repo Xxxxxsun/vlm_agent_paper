@@ -1,4 +1,4 @@
-\begin{thebibliography}{23}
+\begin{thebibliography}{31}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Cai et~al.(2024)Cai, Wang, Ma, Chen, and
@@ -6,6 +6,13 @@
 Tianle Cai, Xuezhi Wang, Tengyu Ma, Xinyun Chen, and Denny Zhou. 2024.
 \newblock Large language models as tool makers.
 \newblock In \emph{{ICLR}}. OpenReview.net.
+
+\bibitem[{Cheng et~al.(2025)Cheng, Ma, Ma, and
+  Zhang}]{DBLP:journals/corr/abs-2511-11301}
+Ruoxi Cheng, Haoxuan Ma, Teng Ma, and Hongyi Zhang. 2025.
+\newblock Ecoalign: An economically rational framework for efficient {LVLM}
+  alignment.
+\newblock \emph{CoRR}, abs/2511.11301.
 
 \bibitem[{Fu et~al.(2025)Fu, Liu, Yang, Corring, Lu, Yang, Roth,
   Flor{\^{e}}ncio, and Zhang}]{DBLP:conf/icml/FuLYCLY0FZ25}
@@ -21,12 +28,32 @@ Tanmay Gupta and Aniruddha Kembhavi. 2023.
 \newblock Visual programming: Compositional visual reasoning without training.
 \newblock In \emph{{CVPR}}, pages 14953--14962. {IEEE}.
 
+\bibitem[{Hong et~al.(2025)Hong, Zhao, Zhu, Lu, Xu, and
+  Yu}]{DBLP:journals/corr/abs-2511-05271}
+Jack Hong, Chenxiao Zhao, ChengLin Zhu, Weiheng Lu, Guohai Xu, and Xing Yu.
+  2025.
+\newblock \href {https://doi.org/10.48550/ARXIV.2511.05271} {Deepeyesv2: Toward
+  agentic multimodal model}.
+\newblock \emph{CoRR}, abs/2511.05271.
+
 \bibitem[{Jiang et~al.(2026)Jiang, Su, Qu, and
   Fung}]{DBLP:journals/corr/abs-2603-12056}
 Guanyu Jiang, Zhaochen Su, Xiaoye Qu, and Yi~R. Fung. 2026.
 \newblock Xskill: Continual learning from experience and skills in multimodal
   agents.
 \newblock \emph{CoRR}, abs/2603.12056.
+
+\bibitem[{Li et~al.(2025)Li, Wu, Du, Liu, Nghiem, and
+  Shi}]{DBLP:conf/cvpr/LiWDLNS25}
+Zongxia Li, Xiyang Wu, Hongyang Du, Fuxiao Liu, Huy Nghiem, and Guangyao Shi.
+  2025.
+\newblock \href
+  {https://openaccess.thecvf.com/content/CVPR2025W/TMM-OpenWorld/html/Li\_A\_Survey\_of\_State\_of\_the\_Art\_Large\_Vision\_Language\_CVPRW\_2025\_paper.html}
+  {A survey of state of the art large vision language models: Benchmark
+  evaluations and challenges}.
+\newblock In \emph{{IEEE/CVF} Conference on Computer Vision and Pattern
+  Recognition Workshops, {CVPR} Workshops 2025, Nashville, TN, USA, June 11-15,
+  2025}, pages 1587--1606. Computer Vision Foundation / {IEEE}.
 
 \bibitem[{Lu et~al.(2024)Lu, Bansal, Xia, Liu, Li, Hajishirzi, Cheng, Chang,
   Galley, and Gao}]{DBLP:conf/iclr/LuBX0LH0CG024}
@@ -45,6 +72,11 @@ Pan Lu, Baolin Peng, Hao Cheng, Michel Galley, Kai{-}Wei Chang, Ying~Nian Wu,
   models.
 \newblock In \emph{NeurIPS}.
 
+\bibitem[{Ma et~al.(2026)Ma, Lai, and Ye}]{DBLP:journals/corr/abs-2601-17814}
+Haoxuan Ma, Guannan Lai, and Han{-}Jia Ye. 2026.
+\newblock Mmr-bench: {A} comprehensive benchmark for multimodal {LLM} routing.
+\newblock \emph{CoRR}, abs/2601.17814.
+
 \bibitem[{Masry et~al.(2022)Masry, Long, Tan, Joty, and
   Hoque}]{DBLP:conf/acl/MasryLTJH22}
 Ahmed Masry, Do~Xuan Long, Jia~Qing Tan, Shafiq~R. Joty, and Enamul Hoque.
@@ -53,6 +85,14 @@ Ahmed Masry, Do~Xuan Long, Jia~Qing Tan, Shafiq~R. Joty, and Enamul Hoque.
   visual and logical reasoning.
 \newblock In \emph{{ACL} (Findings)}, Findings of {ACL}, pages 2263--2279.
   Association for Computational Linguistics.
+
+\bibitem[{Ni et~al.(2026)Ni, Liu, Liu, Sun, Zhou, Cheng, Wang, Zhao, Jiang, and
+  Jiang}]{DBLP:journals/corr/abs-2603-25158}
+Jingwei Ni, Yihao Liu, Xinpeng Liu, Yutao Sun, Mengyu Zhou, Pengyu Cheng, Dexin
+  Wang, Erchao Zhao, Xiaoxi Jiang, and Guanjun Jiang. 2026.
+\newblock Trace2skill: Distill trajectory-local lessons into transferable agent
+  skills.
+\newblock \emph{CoRR}, abs/2603.25158.
 
 \bibitem[{Qian et~al.(2023)Qian, Han, Fung, Qin, Liu, and
   Ji}]{DBLP:conf/emnlp/QianH0Q0J23}
@@ -104,6 +144,15 @@ Alex Su, Haozhe Wang, Weiming Ren, Fangzhen Lin, and Wenhu Chen. 2025.
   curiosity-driven reinforcement learning.
 \newblock \emph{CoRR}, abs/2505.15966.
 
+\bibitem[{Sun et~al.(2025)Sun, Chen, Zhao, Xu, Zhang, and
+  Yin}]{DBLP:conf/acl/SunCZXZY25}
+Yutao Sun, Mingshuai Chen, Tiancheng Zhao, Ruochen Xu, Zilun Zhang, and Jianwei
+  Yin. 2025.
+\newblock The self-improvement paradox: Can language models bootstrap reasoning
+  capabilities without external scaffolding?
+\newblock In \emph{{ACL} (Findings)}, Findings of {ACL}, pages 6501--6512.
+  Association for Computational Linguistics.
+
 \bibitem[{Sur{\'{\i}}s et~al.(2023)Sur{\'{\i}}s, Menon, and
   Vondrick}]{DBLP:conf/iccv/SurisMV23}
 D{\'{\i}}dac Sur{\'{\i}}s, Sachit Menon, and Carl Vondrick. 2023.
@@ -154,13 +203,30 @@ Rong Wu, Xiaoman Wang, Jianbiao Mei, Pinlong Cai, Daocheng Fu, Cheng Yang,
   lifecycle.
 \newblock \emph{CoRR}, abs/2510.16079.
 
-\bibitem[{Zhang et~al.(2025)Zhang, Gao, Zhang, Li, Zhang, Liu, Yuan, Wu, Jia,
-  Zhu et~al.}]{zhang2025adaptive}
-Xintong Zhang, Zhi Gao, Bofei Zhang, Pengxiang Li, Xiaowen Zhang, Yang Liu, Tao
-  Yuan, Yuwei Wu, Yunde Jia, Song-Chun Zhu, and 1 others. 2025.
-\newblock Adaptive chain-of-focus reasoning via dynamic visual search and
-  zooming for efficient vlms.
-\newblock \emph{arXiv preprint arXiv:2505.15436}.
+\bibitem[{Xu et~al.(2025)Xu, Jiang, Niu, Deng, Poovendran, Choi, and
+  Lin}]{DBLP:conf/iclr/XuJNDP0L25}
+Zhangchen Xu, Fengqing Jiang, Luyao Niu, Yuntian Deng, Radha Poovendran, Yejin
+  Choi, and Bill~Yuchen Lin. 2025.
+\newblock \href {https://openreview.net/forum?id=Pnk7vMbznK} {Magpie: Alignment
+  data synthesis from scratch by prompting aligned llms with nothing}.
+\newblock In \emph{The Thirteenth International Conference on Learning
+  Representations, {ICLR} 2025, Singapore, April 24-28, 2025}. OpenReview.net.
+
+\bibitem[{Yang et~al.(2024)Yang, Peng, Ma, Xu, Zhang, Han, and
+  Zhang}]{DBLP:conf/nips/YangPMXZHZ24}
+Xu~Yang, Yingzhe Peng, Haoxuan Ma, Shuo Xu, Chi Zhang, Yucheng Han, and Hanwang
+  Zhang. 2024.
+\newblock Lever {LM:} configuring in-context sequence to lever large vision
+  language models.
+\newblock In \emph{NeurIPS}.
+
+\bibitem[{Zhang et~al.(2026)Zhang, Bai, Zheng, Jaitly, Collobert, and
+  Zhang}]{DBLP:journals/corr/abs-2604-01193}
+Ruixiang Zhang, Richard~He Bai, Huangjie Zheng, Navdeep Jaitly, Ronan
+  Collobert, and Yizhe Zhang. 2026.
+\newblock \href {https://doi.org/10.48550/ARXIV.2604.01193} {Embarrassingly
+  simple self-distillation improves code generation}.
+\newblock \emph{CoRR}, abs/2604.01193.
 
 \bibitem[{Zhao et~al.(2024)Zhao, Huang, Xu, Lin, Liu, and
   Huang}]{DBLP:conf/aaai/Zhao0XLLH24}
