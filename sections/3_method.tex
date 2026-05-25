@@ -49,7 +49,7 @@ Each evolution iteration over $\mathcal{D}_{\text{train}}$ has three phases
 
 \textbf{Diagnose.}
 The agent (Eq.~\ref{eq:agent}) attempts each case in $\mathcal{D}_{\text{train}}$ once with
-the current $\mathcal{C}$; we then sample
+the current $\mathcal{C}$, producing one reasoning trace $\tau_i$ per case. We then sample
 $\mathcal{D}_{\text{sub}} \subseteq \mathcal{D}_{\text{train}}$ across questions (not
 stratified per question), including both correct and incorrect attempts when both are
 present. If all attempts are correct, the iteration is skipped (no bottleneck to fix); if
