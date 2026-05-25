@@ -3,26 +3,34 @@
 % ============================================================
 \label{sec:limitations}
 
-\paragraph{Short evolution horizon.}
-We report results at $N{=}3$ iterations; the evolution dynamics suggest gains plateau by
-$N{=}5$, but we have not evaluated whether longer runs (e.g.\ $N{>}10$) eventually overfit
-the training distribution.
+\paragraph{Validation-set proxy.}
+We promote candidates by training-subset accuracy with a guard against net regressions
+(Eq.~\ref{eq:selection}), rather than by a held-out validation score. The guard ensures
+monotonic training-set accuracy but does not rule out per-case regressions (a candidate
+can fix some previously-incorrect cases while flipping others), and the selection-induced
+bias from picking $c^{\star}$ over a discrete candidate set scales logarithmically in $M$.
+We keep $M$ at a single-digit budget so this term stays small in practice, but quantifying
+it empirically across benchmarks remains open.
 
-\paragraph{Tool quality ceiling.}
-Tool effectiveness is bounded by the backbone's Python coding ability. For benchmarks
-requiring specialised computer-vision operations beyond standard libraries (e.g.\ learned
-feature extractors), the Generator may fail to produce a working tool, limiting the
-perceptual gains.
+\paragraph{Diagnosis bounded by the backbone.}
+The \textsc{AnalyzerDecider}'s bottleneck classification (\emph{cognitive} vs.\
+\emph{perceptual}) and the \textsc{Generator}'s candidates are produced by the same frozen
+VLM that the agent uses. On backbones with weak self-introspection a mis-classified
+bottleneck can propagate to a mis-targeted skill or tool; the promotion guard rejects
+under-performing candidates but does not correct upstream diagnosis errors, so smaller or
+less capable backbones may converge more slowly or to a less useful library.
+
+\paragraph{Library governance.}
+The capability library grows monotonically across iterations and across distribution-shift
+phases. We merge skills covering the same problem class to prevent duplicate inflation
+(Section~\ref{sec:method_skill}), but the library has no formal size bound; long-running
+deployments may need additional pruning, versioning, or stale-capability eviction policies
+that we do not investigate.
 
 \paragraph{Benchmark scope.}
 We evaluate four visual-reasoning benchmarks plus GTA and the VTool-R1 / DeepEyes splits.
 Broader coverage (video QA, 3D spatial reasoning, medical imaging) is needed before strong
 generality claims about the cognitive / perceptual decision rule.
-
-\paragraph{API cost.}
-Each training case incurs roughly 15K tokens for the combined attempt, diagnosis,
-generation, and validation pass. While negligible compared with RL training, this cost
-should be accounted for when comparing training-free methods.
 
 \paragraph{Reliance on a per-case correctness signal.}
 Both the offline evolution loop and the online adaptation policy
