@@ -78,16 +78,16 @@ combination is promoted:
   \mathcal{C} &\leftarrow
     \begin{cases}
       \mathcal{C} \cup \{(s_{m^{\star}}, t_{m^{\star}})\}
-        & \text{if } \mathrm{Acc}(f_{\mathcal{C} \cup (s_{m^{\star}}, t_{m^{\star}})};\, \mathcal{D}_{\text{train}})
-                     > \mathrm{Acc}(f_{\mathcal{C}};\, \mathcal{D}_{\text{train}}), \\
-      \mathcal{C} & \text{otherwise.}
+        & \text{if } \mathrm{Acc}(f_{\mathcal{C} \cup (s_{m^{\star}}, t_{m^{\star}})})
+                     > \mathrm{Acc}(f_{\mathcal{C}}), \\
+      \mathcal{C} & \text{otherwise,}
     \end{cases}
 \end{aligned}
 \label{eq:selection}
 \end{equation}
-The guard in Eq.~\ref{eq:selection} ensures monotonic training-set accuracy: an iteration
-in which no candidate strictly improves over the current $f_{\mathcal{C}}$ leaves
-$\mathcal{C}$ unchanged.
+where both accuracies are computed on $\mathcal{D}_{\text{train}}$. The guard ensures
+monotonic training-set accuracy: an iteration in which no candidate strictly improves over
+the current $f_{\mathcal{C}}$ leaves $\mathcal{C}$ unchanged.
 Eq.~\ref{eq:selection} is a training-set proxy for the validation objective in
 Eq.~\ref{eq:objective} and subsumes both an \emph{origin} requirement (the new capability
 must improve over the previous $f_{\mathcal{C}}$ on the cases it targets) and a
