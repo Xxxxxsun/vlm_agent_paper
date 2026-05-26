@@ -739,14 +739,8 @@ Common Pitfalls:
 
 \paragraph{Generated tool (paired with the skill above)}
 \begin{lstlisting}[style=pycode]
-def coarse_to_fine_zoom(image_path, target_description,
-                         score_tile, grid=2, depth=2):
-    """Recursively split-and-zoom on an image. At each level the
-    image is divided into a `grid` x `grid` array of tiles, every
-    tile is scored against `target_description` via the supplied
-    `score_tile(tile_path, desc) -> float` callback, and the
-    function recurses into the highest-scoring tile. After `depth`
-    levels the path of the final zoomed crop is returned."""
+def coarse_to_fine_zoom(image_path, target_description, score_tile, grid=2, depth=2):
+    """Recursively split-and-zoom on an image. At each level the image is divided into a `grid` x `grid` array of tiles, every tile is scored against `target_description` via the supplied `score_tile(tile_path, desc) -> float` callback, and the function recurses into the highest-scoring tile. After `depth` levels the path of the final zoomed crop is returned."""
     from PIL import Image
     crop_path = image_path
     for level in range(depth):
@@ -755,10 +749,8 @@ def coarse_to_fine_zoom(image_path, target_description,
         best_path, best_score = None, -float("inf")
         for gy in range(grid):
             for gx in range(grid):
-                box = (gx * W // grid,        gy * H // grid,
-                       (gx + 1) * W // grid, (gy + 1) * H // grid)
-                tile_path = crop_path.replace(
-                    ".png", f"_L{level}_t{gx}{gy}.png")
+                box = (gx * W // grid, gy * H // grid, (gx + 1) * W // grid, (gy + 1) * H // grid)
+                tile_path = crop_path.replace(".png", f"_L{level}_t{gx}{gy}.png")
                 img.crop(box).save(tile_path)
                 s = score_tile(tile_path, target_description)
                 if s > best_score:
@@ -831,9 +823,7 @@ Common Pitfalls:
 \paragraph{Generated tool (produces the good/bad crop pair used in the skill above)}
 \begin{lstlisting}[style=pycode]
 def make_crop_reference(image_path, bad_crop_box, expand_px=30):
-    """Render a side-by-side good/bad crop reference for the skill.
-    `bad_crop_box` is the agent's failed crop (axis labels cut off).
-    The good crop is the same target with `expand_px` padding restored."""
+    """Render a side-by-side good/bad crop reference for the skill. `bad_crop_box` is the agent's failed crop (axis labels cut off). The good crop is the same target with `expand_px` padding restored."""
     from PIL import Image
     img = Image.open(image_path).convert("RGB")
     W, H = img.size
