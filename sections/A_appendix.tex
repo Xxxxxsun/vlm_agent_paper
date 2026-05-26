@@ -842,30 +842,29 @@ def make_crop_reference(image_path, bad_crop_box, expand_px=30):
     return good_path, bad_path
 \end{lstlisting}
 
-\begin{figure}[t]
+\begin{figure}[!t]
 \centering
 \begin{subfigure}{0.55\columnwidth}
   \centering
   \includegraphics[width=\linewidth]{figures/crop_good.png}
-  \caption{\textcolor{refgood}{\textbf{crop\_good.png}}: target appearance. Year labels
-  (2016, 2015) and category headers are fully visible alongside the bars, so the agent
-  can read off values and associate them with the right year.}
+  \caption{\hlgood{\texttt{crop\_good.png}}: target appearance. Year labels (2016, 2015)
+  and category headers are fully visible alongside the bars, so the agent can read off
+  values and associate them with the right year.}
   \label{fig:crop_good}
 \end{subfigure}\hfill
 \begin{subfigure}{0.43\columnwidth}
   \centering
   \includegraphics[width=\linewidth]{figures/crop_bad.png}
-  \caption{\textcolor{refbad}{\textbf{crop\_bad.png}}: failure appearance. The year-label
-  column on the left is cut off (red ``?'' marks the missing labels). Bars are still
-  visible but the agent can no longer tell which bar is which year.}
+  \caption{\hlbad{\texttt{crop\_bad.png}}: failure appearance. The year-label column on
+  the left is cut off (red ``?'' marks the missing labels). Bars are still visible but
+  the agent can no longer tell which bar is which year.}
   \label{fig:crop_bad}
 \end{subfigure}
 \caption{%
   \textbf{Two reference images stored alongside the Case~C skill.}
   Strategy step~4 of the skill instructs the agent to compare its own intermediate crop
-  against these two files: re-do if the crop converges to
-  \textcolor{refbad}{\texttt{crop\_bad.png}}, proceed if it matches
-  \textcolor{refgood}{\texttt{crop\_good.png}}.
+  against these two files: re-do if the crop converges to the right panel, proceed if
+  it matches the left panel.
 }
 \label{fig:chartqa_visual_anchor}
 \end{figure}
