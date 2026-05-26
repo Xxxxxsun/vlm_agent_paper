@@ -661,22 +661,17 @@ and tool shown next.
 ## Skill: Edit-Then-Read for Structured Images
 
 When-to-Use:
-Use when the question refers to a specific chart/table element
-that is visually close to distractors, such as one series among
-many lines, one segment in a stacked bar, or one table row/column.
+Use when the question refers to a specific chart/table element that is visually close to distractors, such as one series among many lines, one segment in a stacked bar, or one table row/column.
 
 Strategy:
 1. Identify the visual entity named by the question.
-2. Before computing the answer, create an edited view that marks
-   only the relevant region and suppresses likely distractors.
+2. Before computing the answer, create an edited view that marks only the relevant region and suppresses likely distractors.
 3. Re-read the edited image and extract the required value.
 4. Perform the requested arithmetic or comparison.
 
 Common Pitfalls:
-- Do not answer from the unedited image if multiple marks are
-  visually similar.
-- Do not treat the visual edit as adding new information; it only
-  exposes the evidence already present in the image.
+- Do not answer from the unedited image if multiple marks are visually similar.
+- Do not treat the visual edit as adding new information; it only exposes the evidence already present in the image.
 \end{lstlisting}
 \end{tcolorbox}
 
@@ -735,8 +730,7 @@ and proposed the paired skill and tool shown next.
 ## Skill: Coarse-to-Fine Region Search
 
 When-to-Use:
-Use when the question asks about a small object, distant text,
-fine-grained attribute, or localized region in a high-resolution image.
+Use when the question asks about a small object, distant text, fine-grained attribute, or localized region in a high-resolution image.
 
 Strategy:
 1. Parse the question for target object, attribute, and spatial cues.
@@ -746,8 +740,7 @@ Strategy:
 5. If the crop is ambiguous, repeat with a finer crop around the target.
 
 Common Pitfalls:
-- Do not answer from the globally downsampled image when the requested
-  evidence is small.
+- Do not answer from the globally downsampled image when the requested evidence is small.
 - Do not crop solely by image center; use question-specific cues.
 \end{lstlisting}
 \end{tcolorbox}
@@ -818,43 +811,24 @@ it what to do in each case.
 ## Skill: Conservative Cropping with Axis-Label Preservation
 
 When-to-Use:
-Use when the question requires reading values off a chart and your
-plan is to crop the chart for higher-resolution inspection. Trigger
-words: "zoom", "crop", "look closer", "read the y-axis".
+Use when the question requires reading values off a chart and your plan is to crop the chart for higher-resolution inspection. Trigger words: "zoom", "crop", "look closer", "read the y-axis".
 
 Strategy:
-1. Identify both the *measurement target* (the bars / lines / points
-   you need to read off) AND the *context* you need to interpret it
-   (x-axis labels, y-axis ticks, legend swatches).
+1. Identify both the *measurement target* (the bars / lines / points you need to read off) AND the *context* you need to interpret it (x-axis labels, y-axis ticks, legend swatches).
 2. Compute a tight bounding box around the measurement target.
-3. Expand the bounding box by ~30 px in every direction toward an
-   axis or legend; never crop with margin = 0.
-4. Render the crop and *compare it against the two reference images
-   stored with this skill*:
-     - good-crop (left panel of the visual reference):
-       target + axis labels + legend all visible
-     - bad-crop  (right panel of the visual reference):
-       target visible but axis labels are truncated
-5. If your crop matches the bad-crop pattern (labels missing on the
-   side adjacent to where the labels should be), expand the bounding
-   box in that direction by another ~30 px and re-crop. Otherwise
-   proceed to read off values.
+3. Expand the bounding box by ~30 px in every direction toward an axis or legend; never crop with margin = 0.
+4. Render the crop and *compare it against the two reference images stored with this skill*:
+     - good-crop (left panel of the visual reference): target + axis labels + legend all visible
+     - bad-crop  (right panel of the visual reference): target visible but axis labels are truncated
+5. If your crop matches the bad-crop pattern (labels missing on the side adjacent to where the labels should be), expand the bounding box in that direction by another ~30 px and re-crop. Otherwise proceed to read off values.
 
 Visual References:
-Figure ref:chartqa_visual_anchor stores the good-crop / bad-crop
-pair as one image (good on the left, bad on the right) so the agent
-can pattern-match its own crop against both panels.
+Figure ref:chartqa_visual_anchor stores the good-crop / bad-crop pair as one image (good on the left, bad on the right) so the agent can pattern-match its own crop against both panels.
 
 Common Pitfalls:
-- Cropping with margin = 0 around the bars. This almost always
-  truncates the x-axis labels, which was the failure on the
-  triggering case.
-- Assuming the agent can recover from a label-truncated crop by
-  recalling labels from the full image. The full image was the
-  reason for cropping in the first place; the crop is the new
-  source of truth for the agent.
-- Cropping too generously (margin >> 50 px), which defeats the
-  purpose of zooming in. Stick to ~30 px.
+- Cropping with margin = 0 around the bars. This almost always truncates the x-axis labels, which was the failure on the triggering case.
+- Assuming the agent can recover from a label-truncated crop by recalling labels from the full image. The full image was the reason for cropping in the first place; the crop is the new source of truth for the agent.
+- Cropping too generously (margin >> 50 px), which defeats the purpose of zooming in. Stick to ~30 px.
 \end{lstlisting}
 \end{tcolorbox}
 
