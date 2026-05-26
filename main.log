@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 16:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 16:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1581,39 +1581,6 @@ Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
 (textcomp)             Default family used instead on input line 743.
 
-
-! Package inputenc Error: Invalid UTF-8 byte sequence.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.813 - Figure ref:crop_good — 
-                                 the target appearance for any crop produced...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
-! Package inputenc Error: Invalid UTF-8 byte sequence.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.814 - Figure ref:crop_bad  — 
-                                 the failure appearance; if you see your own...
-
-The document does not appear to be in UTF-8 encoding.
-Try adding \UseRawInputEncoding as the first line of the file
-or specify an encoding such as \usepackage [latin1]{inputenc}
-in the document preamble.
-Alternatively, save the file in UTF-8 using your editor or another tool
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1659,10 +1626,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AE93AB99DD0E328567A751992FCA1D03;6526.
  ) 
 Here is how much of TeX's memory you used:
- 37435 strings out of 478994
- 717672 string characters out of 5858184
+ 37433 strings out of 478994
+ 717644 string characters out of 5858184
  1783086 words of memory out of 5000000
- 53194 multiletter control sequences out of 15000+600000
+ 53192 multiletter control sequences out of 15000+600000
  555168 words of font info for 628 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,16n,108p,699b,1684s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1695,7 +1662,7 @@ s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on main.pdf (18 pages, 5072417 bytes).
+Output written on main.pdf (18 pages, 5072421 bytes).
 PDF statistics:
  1166 PDF objects out of 1200 (max. 8388607)
  830 compressed objects within 9 object streams
