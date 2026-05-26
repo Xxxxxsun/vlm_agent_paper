@@ -674,10 +674,7 @@ Common Pitfalls:
 \end{lstlisting}
 \end{tcolorbox}
 
-\begin{tcolorbox}[
-    title={\textbf{Generated tool (paired with the skill above)}},
-    casebox
-]
+\paragraph{Generated tool (paired with the skill above)}
 \begin{lstlisting}[style=pycode]
 def mark_relevant_region(image_path, region, mode="highlight"):
     """Return an edited image that highlights or masks
@@ -697,7 +694,6 @@ def mark_relevant_region(image_path, region, mode="highlight"):
     img.convert("RGB").save(out_path)
     return out_path
 \end{lstlisting}
-\end{tcolorbox}
 
 Like ReFocus, this capability uses visual editing as an intermediate reasoning step: the
 solver does not merely produce a textual explanation but creates an edited visual
@@ -741,10 +737,7 @@ Common Pitfalls:
 \end{lstlisting}
 \end{tcolorbox}
 
-\begin{tcolorbox}[
-    title={\textbf{Generated tool (paired with the skill above)}},
-    casebox
-]
+\paragraph{Generated tool (paired with the skill above)}
 \begin{lstlisting}[style=pycode]
 def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
     """Return candidate high-resolution crops for a
@@ -762,7 +755,6 @@ def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
             crops.append((out, box))
     return crops
 \end{lstlisting}
-\end{tcolorbox}
 
 Like ZoomEye, this capability avoids forcing the VLM to answer from a single
 fixed-resolution full image and instead surfaces candidate sub-regions for a second
@@ -825,10 +817,7 @@ Common Pitfalls:
 \end{lstlisting}
 \end{tcolorbox}
 
-\begin{tcolorbox}[
-    title={\textbf{Generated tool (produces the good/bad crop pair used in the skill above)}},
-    casebox
-]
+\paragraph{Generated tool (produces the good/bad crop pair used in the skill above)}
 \begin{lstlisting}[style=pycode]
 def make_crop_reference(image_path, bad_crop_box, expand_px=30):
     """Render a side-by-side good/bad crop reference for the skill.
@@ -850,7 +839,6 @@ def make_crop_reference(image_path, bad_crop_box, expand_px=30):
     pair.save(out_path)
     return out_path
 \end{lstlisting}
-\end{tcolorbox}
 
 \begin{figure}[ht]
 \centering
