@@ -822,17 +822,17 @@ Common Pitfalls:
 
 \begin{figure}[!t]
 \centering
-\begin{subfigure}{0.55\columnwidth}
+\begin{subfigure}[t]{0.55\columnwidth}
   \centering
-  \includegraphics[width=\linewidth]{figures/crop_good.png}
+  \includegraphics[height=0.25\columnwidth]{figures/crop_good.png}
   \caption{\hlgood{\texttt{crop\_good.png}}: target appearance. Year labels (2016, 2015)
   and category headers are fully visible alongside the bars, so the agent can read off
   values and associate them with the right year.}
   \label{fig:crop_good}
 \end{subfigure}\hfill
-\begin{subfigure}{0.43\columnwidth}
+\begin{subfigure}[t]{0.43\columnwidth}
   \centering
-  \includegraphics[width=\linewidth]{figures/crop_bad.png}
+  \includegraphics[height=0.25\columnwidth]{figures/crop_bad.png}
   \caption{\hlbad{\texttt{crop\_bad.png}}: failure appearance. The year-label column on
   the left is cut off (red ``?'' marks the missing labels). Bars are still visible but
   the agent can no longer tell which bar is which year.}
