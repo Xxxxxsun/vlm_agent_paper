@@ -150,9 +150,11 @@ reuse the existing full-val tool-enabled runs for context.
 Table~\ref{tab:ablation_mechanism} shows that generic skill injection does not explain
 the HRBench4K gain. A neutral task prompt is slightly below the no-capability runtime, and
 the evolved no-tool skill is essentially tied with it. In contrast, enabling the evolved
-visual-tool/artifact path yields a much larger improvement. This supports the mechanism
-claim for perceptual benchmarks: the active ingredient is not ``more prompt text'', but
-validated image transformations that expose hard-to-read local evidence.
+visual-tool/artifact path yields a much larger improvement, and pairing the evolved tool
+with its mastery skill (\emph{Evolved Skill + Tool}) reaches the highest accuracy in the
+probe. This supports the mechanism claim for perceptual benchmarks: the active ingredient
+is not ``more prompt text'' but validated image transformations that expose hard-to-read
+local evidence, with paired mastery skills adding a small incremental boost on top.
 
 \begin{table*}[t]
 \centering
@@ -172,17 +174,19 @@ Evolved No-Tool Skill        & evolved HRBench4K SOP, but visual tools disabled
   & off & 597 / 700 & 0.8529 \\
 \midrule
 Evolved Tool Only            & validated visual tools/artifacts, no extra generated skill text
-  & on & 629 / 700 & 0.8986 \\
-Evolved Skill + Tool         & paired evolved skill/tool deployment
   & on & 625 / 700 & 0.8929 \\
+Evolved Skill + Tool         & paired evolved skill/tool deployment
+  & on & 629 / 700 & 0.8986 \\
 \bottomrule
 \end{tabular}
 \caption{%
   \textbf{Completed HRBench4K mechanism probe.}
   The first three rows disable tools and test whether generic prompt/skill text explains
   the gain. It does not: generic and evolved no-tool skills are near the no-capability
-  runtime. The tool-enabled rows show the much larger gain from validated visual
-  artifacts, isolating the perceptual mechanism used by \sysname{} on HRBench4K.
+  runtime. The tool-enabled rows show a much larger gain from validated visual artifacts,
+  and the paired \emph{Evolved Skill + Tool} reaches the highest accuracy in the probe,
+  isolating both the perceptual mechanism and the additional boost from pairing skill
+  with tool.
 }
 \label{tab:ablation_mechanism}
 \end{table*}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 16:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 17:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1370,21 +1370,21 @@ Underfull \hbox (badness 1406) in paragraph at lines 116--119
 
 [12]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 301.
+(Font)              scaled to size 10.0pt on input line 305.
 
-Underfull \hbox (badness 10000) in paragraph at lines 301--301
+Underfull \hbox (badness 10000) in paragraph at lines 305--305
 []\T1/ptm/m/n/10 (+20) Table 8: |\T1/ptm/b/n/10 (+20) Diagnosis-polarity stress
  test on ChartQA. \T1/ptm/m/n/10 (+20) Correct-only ev-i-dence can-not drive
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 301--301
+Underfull \hbox (badness 10000) in paragraph at lines 305--305
 \T1/ptm/m/n/10 (+20) evo-lu-tion be-cause no missed cases are avail-able. Error
 -only ev-i-dence re-peat-edly trig-gers
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 301--301
+Underfull \hbox (badness 10000) in paragraph at lines 305--305
 \T1/ptm/m/n/10 (+20) new tool gen-er-a-tion (\T1/zi4/m/n/10 chart_data_point_hi
 ghlighter\T1/ptm/m/n/10 (+20) , \T1/zi4/m/n/10 chart_series_value_overlay\T1/pt
 m/m/n/10 (+20) , and
@@ -1395,71 +1395,73 @@ m/m/n/10 (+20) , and
 File: figures/chartqa_k_sensitivity.pdf Graphic file (type pdf)
 <use figures/chartqa_k_sensitivity.pdf>
 Package pdftex.def Info: figures/chartqa_k_sensitivity.pdf  used on input line 
-435.
+439.
 (pdftex.def)             Requested size: 179.65222pt x 112.52208pt.
-
-Underfull \hbox (badness 2698) in paragraph at lines 482--486
+ [15 <./figures/chartqa_k_sensitivity.pdf>]
+Underfull \hbox (badness 2698) in paragraph at lines 486--490
 \T1/ptm/m/n/10.95 (+20) Figure [][]3[][] in the main pa-per ag-gre-gates the
  []
 
-[15 <./figures/chartqa_k_sensitivity.pdf>]
 <figures/distribution_shift_timeseries.pdf, id=829, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
-ut line 489.
+ut line 493.
 (pdftex.def)             Requested size: 219.08614pt x 133.0674pt.
 
-Underfull \hbox (badness 7595) in paragraph at lines 544--544
+Underfull \hbox (badness 7595) in paragraph at lines 548--548
 []\T1/ptm/m/n/10 (+20) Table 10: |\T1/ptm/b/n/10 (+20) Per-backbone ag-gre-gate
 s for the
  []
 
 
-Underfull \hbox (badness 6493) in paragraph at lines 614--616
+Underfull \hbox (badness 6493) in paragraph at lines 618--620
 []|\T1/ptm/m/n/9 (+20) A skill that in-structs the
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 614--616
+Underfull \hbox (badness 1168) in paragraph at lines 618--620
 \T1/ptm/m/n/9 (+20) chart/table struc-ture, plus a
  []
 
 
-Underfull \hbox (badness 3803) in paragraph at lines 618--620
+Underfull \hbox (badness 3803) in paragraph at lines 622--624
 []|\T1/ptm/m/sc/9 (+20) Dynamo \T1/ptm/m/n/9 (+20) can gen-er-ate a
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 618--620
+Underfull \hbox (badness 2020) in paragraph at lines 622--624
 \T1/ptm/m/n/9 (+20) re-ly-ing on a fixed visual-
  []
 
 
-Underfull \hbox (badness 1092) in paragraph at lines 622--624
+Underfull \hbox (badness 1092) in paragraph at lines 626--628
 \T1/ptm/m/n/9 (+20) ques-tion into target-location
  []
 
 
-Underfull \hbox (badness 4832) in paragraph at lines 624--626
+Underfull \hbox (badness 4832) in paragraph at lines 628--630
 []|\T1/ptm/m/n/9 (+20) ZoomEye per-forms training-
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 624--626
+Underfull \hbox (badness 1902) in paragraph at lines 628--630
 \T1/ptm/m/n/9 (+20) free tree-based im-age ex-plo-
  []
 
 
-Underfull \hbox (badness 2158) in paragraph at lines 626--628
+Underfull \hbox (badness 2158) in paragraph at lines 630--632
 \T1/ptm/m/n/9 (+20) Zoom-Eye as a pre-de-fined
  []
 
-[16 <./figures/distribution_shift_timeseries.pdf>]
+
+Underfull \vbox (badness 1019) has occurred while \output is active []
+
+ [16 <./figures/distribution_shift_timeseries.pdf>]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 7.0pt on input line 659.
+(Font)              scaled to size 7.0pt on input line 663.
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
-(Font)              scaled to size 7.0pt on input line 660.
+(Font)              scaled to size 7.0pt on input line 664.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1469,15 +1471,15 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 680.
+(Font)              using `T1/zi4/m/n' instead on input line 684.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 7.0pt on input line 680.
+(Font)              scaled to size 7.0pt on input line 684.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 728.
+(textcomp)             Default family used instead on input line 732.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
-28.
+32.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
@@ -1486,7 +1488,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-728.
+732.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -1497,51 +1499,51 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 728.
+(textcomp)             Default family used instead on input line 732.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 729.
+(textcomp)             Default family used instead on input line 733.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 729.
+(textcomp)             Default family used instead on input line 733.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 730.
+(textcomp)             Default family used instead on input line 734.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 730.
+(textcomp)             Default family used instead on input line 734.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 730.
+(textcomp)             Default family used instead on input line 734.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 730.
+(textcomp)             Default family used instead on input line 734.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 731.
+(textcomp)             Default family used instead on input line 735.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 731.
+(textcomp)             Default family used instead on input line 735.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 731.
+(textcomp)             Default family used instead on input line 735.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 731.
+(textcomp)             Default family used instead on input line 735.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 736.
+(textcomp)             Default family used instead on input line 740.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 736.
+(textcomp)             Default family used instead on input line 740.
 LaTeX Font Info:    Trying to load font information for TS1+zi4 on input line 7
-36.
+40.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/inconsolata/ts1zi4.fd
 File: ts1zi4.fd 2018/01/14 TS1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `TS1/zi4/m/n' will be
-(Font)              scaled to size 7.0pt on input line 736.
+(Font)              scaled to size 7.0pt on input line 740.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1552,78 +1554,78 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [17]
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 743.
+(textcomp)             Default family used instead on input line 747.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 <figures/crop_good.png, id=932, 608.2725pt x 301.125pt>
 File: figures/crop_good.png Graphic file (type png)
 <use figures/crop_good.png>
-Package pdftex.def Info: figures/crop_good.png  used on input line 827.
+Package pdftex.def Info: figures/crop_good.png  used on input line 831.
 (pdftex.def)             Requested size: 106.2569pt x 52.60117pt.
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 830.
+(Font)              scaled to size 9.0pt on input line 834.
 
-Underfull \hbox (badness 4543) in paragraph at lines 830--830
+Underfull \hbox (badness 4543) in paragraph at lines 834--834
 \T1/ptm/m/n/9 (+20) ap-pear-ance. Year la-bels
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 830--830
+Underfull \hbox (badness 1275) in paragraph at lines 834--834
 \T1/ptm/m/n/9 (+20) (2016, 2015) and cat-e-gory
  []
 
 <figures/crop_bad.png, id=933, 608.2725pt x 301.125pt>
 File: figures/crop_bad.png Graphic file (type png)
 <use figures/crop_bad.png>
-Package pdftex.def Info: figures/crop_bad.png  used on input line 835.
+Package pdftex.def Info: figures/crop_bad.png  used on input line 839.
 (pdftex.def)             Requested size: 106.2569pt x 52.60117pt.
 
 LaTeX Font Warning: Font shape `TS1/zi4/m/it' undefined
 (Font)              using `TS1/zi4/m/n' instead
-(Font)              for symbol `textquotesingle' on input line 854.
+(Font)              for symbol `textquotesingle' on input line 858.
 
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 856.
+(textcomp)             Default family used instead on input line 860.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 856.
+(textcomp)             Default family used instead on input line 860.
 LaTeX Font Info:    Font shape `TS1/zi4/m/it' will be
-(Font)              scaled to size 7.0pt on input line 856.
+(Font)              scaled to size 7.0pt on input line 860.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 857.
+(textcomp)             Default family used instead on input line 861.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 857.
+(textcomp)             Default family used instead on input line 861.
 )
 
 Package natbib Warning: There were undefined citations.
@@ -1637,11 +1639,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AE93AB99DD0E328567A751992FCA1D03;6526.
  ) 
 Here is how much of TeX's memory you used:
- 37438 strings out of 478994
- 717724 string characters out of 5858184
- 1782502 words of memory out of 5000000
+ 37441 strings out of 478994
+ 717751 string characters out of 5858184
+ 1783705 words of memory out of 5000000
  53201 multiletter control sequences out of 15000+600000
- 555286 words of font info for 626 fonts, out of 8000000 for 9000
+ 555511 words of font info for 628 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,16n,108p,699b,1714s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
@@ -1673,7 +1675,7 @@ s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on main.pdf (18 pages, 5118322 bytes).
+Output written on main.pdf (18 pages, 5118630 bytes).
 PDF statistics:
  1166 PDF objects out of 1200 (max. 8388607)
  830 compressed objects within 9 object streams
