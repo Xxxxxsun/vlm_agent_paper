@@ -725,35 +725,46 @@ When-to-Use:
 Use when the question asks about a small object, distant text, fine-grained attribute, or localized region in a high-resolution image.
 
 Strategy:
-1. Parse the question for target object, attribute, and spatial cues.
-2. Inspect the full image only to estimate candidate regions.
-3. Divide the image into coarse tiles and score each tile for relevance.
-4. Zoom into the best candidate region and answer from the enlarged view.
-5. If the crop is ambiguous, repeat with a finer crop around the target.
+1. Phrase the question into a short `target_description` (e.g., "small red sign on the right side of the building").
+2. Provide a tile scoring callback `score_tile(tile_path, desc)` that returns a higher value when the tile is more likely to contain the target; in our agent this is a fast VLM yes/no probe.
+3. Call `coarse_to_fine_zoom(image_path, target_description, score_tile, grid=2, depth=2)` (defined in the paired tool below). The function recursively splits the image into a 2x2 grid, scores all four tiles, zooms into the best one, and recurses; after `depth=2` it returns the path of the final zoomed crop.
+4. Answer the question from the returned zoomed crop. If the crop is still ambiguous, call `coarse_to_fine_zoom` again on the returned crop with `depth=1` to drill in one more level.
 
 Common Pitfalls:
 - Do not answer from the globally downsampled image when the requested evidence is small.
-- Do not crop solely by image center; use question-specific cues.
+- Do not crop solely by image center; rely on the per-tile score and let the function pick.
+- Do not use `depth >= 3` without re-checking the crop's resolution; further subdivision yields tiles too small to read text from.
 \end{lstlisting}
 \end{tcolorbox}
 
 \paragraph{Generated tool (paired with the skill above)}
 \begin{lstlisting}[style=pycode]
-def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
-    """Return candidate high-resolution crops for a
-    target described in text."""
+def coarse_to_fine_zoom(image_path, target_description,
+                         score_tile, grid=2, depth=2):
+    """Recursively split-and-zoom on an image. At each level the
+    image is divided into a `grid` x `grid` array of tiles, every
+    tile is scored against `target_description` via the supplied
+    `score_tile(tile_path, desc) -> float` callback, and the
+    function recurses into the highest-scoring tile. After `depth`
+    levels the path of the final zoomed crop is returned."""
     from PIL import Image
-    img = Image.open(image_path).convert("RGB")
-    w, h = img.size
-    crops = []
-    for gy in range(grid_size):
-        for gx in range(grid_size):
-            box = (gx * w // grid_size, gy * h // grid_size, (gx + 1) * w // grid_size, (gy + 1) * h // grid_size)
-            crop = img.crop(box)
-            out = image_path.replace(".png", f"_tile_{gx}_{gy}.png")
-            crop.save(out)
-            crops.append((out, box))
-    return crops
+    crop_path = image_path
+    for level in range(depth):
+        img = Image.open(crop_path).convert("RGB")
+        W, H = img.size
+        best_path, best_score = None, -float("inf")
+        for gy in range(grid):
+            for gx in range(grid):
+                box = (gx * W // grid,        gy * H // grid,
+                       (gx + 1) * W // grid, (gy + 1) * H // grid)
+                tile_path = crop_path.replace(
+                    ".png", f"_L{level}_t{gx}{gy}.png")
+                img.crop(box).save(tile_path)
+                s = score_tile(tile_path, target_description)
+                if s > best_score:
+                    best_path, best_score = tile_path, s
+        crop_path = best_path
+    return crop_path
 \end{lstlisting}
 
 Like ZoomEye, this capability avoids forcing the VLM to answer from a single
