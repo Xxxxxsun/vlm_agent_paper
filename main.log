@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 16:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 16:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1247,7 +1247,7 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 215.
 
 (./sections/1_introduction.tex
-<figures/Picture2.pdf, id=182, 269.005pt x 316.18124pt>
+<figures/Picture2.pdf, id=178, 269.005pt x 316.18124pt>
 File: figures/Picture2.pdf Graphic file (type pdf)
 <use figures/Picture2.pdf>
 Package pdftex.def Info: figures/Picture2.pdf  used on input line 14.
@@ -1266,7 +1266,7 @@ our visual-
  []
 
 ) (./sections/2_related_work.tex) (./sections/3_method.tex
-<figures/method.pdf, id=319, 753.81625pt x 409.53pt>
+<figures/method.pdf, id=315, 753.81625pt x 409.53pt>
 File: figures/method.pdf Graphic file (type pdf)
 <use figures/method.pdf>
 Package pdftex.def Info: figures/method.pdf  used on input line 8.
@@ -1312,7 +1312,7 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-<figures/distribution_shift_bars.pdf, id=583, 479.58861pt x 174.36057pt>
+<figures/distribution_shift_bars.pdf, id=579, 479.58861pt x 174.36057pt>
 File: figures/distribution_shift_bars.pdf Graphic file (type pdf)
 <use figures/distribution_shift_bars.pdf>
 Package pdftex.def Info: figures/distribution_shift_bars.pdf  used on input lin
@@ -1391,7 +1391,7 @@ m/m/n/10 (+20) , and
  []
 
 [13] [14]
-<figures/chartqa_k_sensitivity.pdf, id=778, 348.6966pt x 218.39969pt>
+<figures/chartqa_k_sensitivity.pdf, id=774, 348.6966pt x 218.39969pt>
 File: figures/chartqa_k_sensitivity.pdf Graphic file (type pdf)
 <use figures/chartqa_k_sensitivity.pdf>
 Package pdftex.def Info: figures/chartqa_k_sensitivity.pdf  used on input line 
@@ -1403,7 +1403,7 @@ Underfull \hbox (badness 2698) in paragraph at lines 482--486
  []
 
 [15 <./figures/chartqa_k_sensitivity.pdf>]
-<figures/distribution_shift_timeseries.pdf, id=833, 237.70663pt x 144.37573pt>
+<figures/distribution_shift_timeseries.pdf, id=829, 237.70663pt x 144.37573pt>
 File: figures/distribution_shift_timeseries.pdf Graphic file (type pdf)
 <use figures/distribution_shift_timeseries.pdf>
 Package pdftex.def Info: figures/distribution_shift_timeseries.pdf  used on inp
@@ -1552,78 +1552,118 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [17]
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 745.
+(textcomp)             Default family used instead on input line 743.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 745.
+(textcomp)             Default family used instead on input line 743.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 745.
+(textcomp)             Default family used instead on input line 743.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 745.
+(textcomp)             Default family used instead on input line 743.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 746.
+(textcomp)             Default family used instead on input line 743.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 746.
+(textcomp)             Default family used instead on input line 743.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 747.
+(textcomp)             Default family used instead on input line 743.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 747.
+(textcomp)             Default family used instead on input line 743.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 748.
+(textcomp)             Default family used instead on input line 743.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 748.
+(textcomp)             Default family used instead on input line 743.
+
+
+! Package inputenc Error: Invalid UTF-8 byte sequence.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.813 - Figure ref:crop_good — 
+                                 the target appearance for any crop produced...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+! Package inputenc Error: Invalid UTF-8 byte sequence.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.814 - Figure ref:crop_bad  — 
+                                 the failure appearance; if you see your own...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 835.
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 835.
 
 
 LaTeX Font Warning: Font shape `TS1/zi4/m/it' undefined
 (Font)              using `TS1/zi4/m/n' instead
-(Font)              for symbol `textquotesingle' on input line 835.
+(Font)              for symbol `textquotesingle' on input line 826.
 
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 836.
+(textcomp)             Default family used instead on input line 828.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 836.
-<figures/chartqa_visual_anchor.png, id=935, 859.21pt x 270.00874pt>
-File: figures/chartqa_visual_anchor.png Graphic file (type png)
-<use figures/chartqa_visual_anchor.png>
-Package pdftex.def Info: figures/chartqa_visual_anchor.png  used on input line 
-856.
-(pdftex.def)             Requested size: 186.22455pt x 58.52042pt.
+(textcomp)             Default family used instead on input line 828.
+LaTeX Font Info:    Font shape `TS1/zi4/m/it' will be
+(Font)              scaled to size 7.0pt on input line 828.
+Package textcomp Info: Symbol \textasciigrave not provided by
+(textcomp)             font family zi4 in TS1 encoding.
+(textcomp)             Default family used instead on input line 829.
+Package textcomp Info: Symbol \textasciigrave not provided by
+(textcomp)             font family zi4 in TS1 encoding.
+(textcomp)             Default family used instead on input line 829.
+<figures/crop_good.png, id=932, 485.815pt x 240.9pt>
+File: figures/crop_good.png Graphic file (type png)
+<use figures/crop_good.png>
+Package pdftex.def Info: figures/crop_good.png  used on input line 849.
+(pdftex.def)             Requested size: 120.49803pt x 59.75066pt.
+<figures/crop_bad.png, id=933, 397.485pt x 240.9pt>
+File: figures/crop_bad.png Graphic file (type png)
+<use figures/crop_bad.png>
+Package pdftex.def Info: figures/crop_bad.png  used on input line 857.
+(pdftex.def)             Requested size: 94.20543pt x 57.09303pt.
 )
 
 Package natbib Warning: There were undefined citations.
 
-[18 <./figures/chartqa_visual_anchor.png (PNG copy)>] (./main.aux)
+[18 <./figures/crop_good.png (PNG copy)> <./figures/crop_bad.png (PNG copy)>]
+(./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 399A84F0F5CEC2D5E835B9D6B1ED3556;6699.
+(rerunfilecheck)             Checksum: AE93AB99DD0E328567A751992FCA1D03;6526.
  ) 
 Here is how much of TeX's memory you used:
- 37431 strings out of 478994
- 717566 string characters out of 5858184
- 1811461 words of memory out of 5000000
- 53176 multiletter control sequences out of 15000+600000
- 555460 words of font info for 631 fonts, out of 8000000 for 9000
+ 37435 strings out of 478994
+ 717672 string characters out of 5858184
+ 1783086 words of memory out of 5000000
+ 53194 multiletter control sequences out of 15000+600000
+ 555168 words of font info for 628 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,16n,108p,699b,1684s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
@@ -1655,10 +1695,10 @@ s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on main.pdf (18 pages, 5061743 bytes).
+Output written on main.pdf (18 pages, 5072417 bytes).
 PDF statistics:
- 1180 PDF objects out of 1200 (max. 8388607)
- 845 compressed objects within 9 object streams
- 297 named destinations out of 1000 (max. 500000)
- 120785 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 1166 PDF objects out of 1200 (max. 8388607)
+ 830 compressed objects within 9 object streams
+ 287 named destinations out of 1000 (max. 500000)
+ 120782 words of extra memory for PDF output out of 128383 (max. 10000000)
 

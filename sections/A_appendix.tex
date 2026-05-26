@@ -784,12 +784,12 @@ bars to read their heights more precisely. Its first crop was tight enough that 
 could no longer tell which bar corresponded to which year, and answered the wrong year.
 The \textsc{AnalyzerDecider} traced the failure to ``\textit{crop too aggressive: target
 context lost},'' and the Generator emitted a paired skill+tool whose visual anchor is
-two images stored side by side
-(Figure~\ref{fig:chartqa_visual_anchor}):
-\textbf{good-crop}, the same chart re-cropped with $\sim 30$\,px of padding so the
-axis labels are fully visible; and \textbf{bad-crop}, the agent's own failed crop with
-the axis labels truncated. The skill text below points the agent at both panels and tells
-it what to do in each case.
+\emph{two separate} reference images: \textbf{good-crop}
+(Figure~\ref{fig:crop_good}), the same chart re-cropped with $\sim 30$\,px of padding so
+the axis labels are fully visible; and \textbf{bad-crop}
+(Figure~\ref{fig:crop_bad}), the agent's own failed crop with the axis labels truncated.
+The skill text refers to each by name and tells the agent what to do when its own
+intermediate crop matches each one.
 
 \begin{tcolorbox}[
     title={\textbf{Generated skill (paired with the tool below; triggered on ChartQA)}},
@@ -805,13 +805,13 @@ Strategy:
 1. Identify both the *measurement target* (the bars / lines / points you need to read off) AND the *context* you need to interpret it (x-axis labels, y-axis ticks, legend swatches).
 2. Compute a tight bounding box around the measurement target.
 3. Expand the bounding box by ~30 px in every direction toward an axis or legend; never crop with margin = 0.
-4. Render the crop and *compare it against the two reference images stored with this skill*:
-     - good-crop (left panel of the visual reference): target + axis labels + legend all visible
-     - bad-crop  (right panel of the visual reference): target visible but axis labels are truncated
-5. If your crop matches the bad-crop pattern (labels missing on the side adjacent to where the labels should be), expand the bounding box in that direction by another ~30 px and re-crop. Otherwise proceed to read off values.
+4. Render the crop and *check what it looks like*:
+     - If your crop looks like the failure case in Figure ref:crop_bad (axis labels or legend on one side cut off, target visible but no longer associated with its label), the crop is too aggressive. Re-think the bounding box: expand it by another ~30 px in the direction of the missing context and re-crop. Repeat step 4.
+     - If your crop looks like the success case in Figure ref:crop_good (target + axis labels + legend all visible together), proceed to read off values.
 
 Visual References:
-Figure ref:chartqa_visual_anchor stores the good-crop / bad-crop pair as one image (good on the left, bad on the right) so the agent can pattern-match its own crop against both panels.
+- Figure ref:crop_good — the target appearance for any crop produced under this skill.
+- Figure ref:crop_bad  — the failure appearance; if you see your own crop converging to this shape, redo step 3 with a larger expansion.
 
 Common Pitfalls:
 - Cropping with margin = 0 around the bars. This almost always truncates the x-axis labels, which was the failure on the triggering case.
@@ -820,51 +820,63 @@ Common Pitfalls:
 \end{lstlisting}
 \end{tcolorbox}
 
-\paragraph{Generated tool (produces the good/bad crop pair used in the skill above)}
+\paragraph{Generated tool (produces the two reference images used in the skill above)}
 \begin{lstlisting}[style=pycode]
 def make_crop_reference(image_path, bad_crop_box, expand_px=30):
-    """Render a side-by-side good/bad crop reference for the skill. `bad_crop_box` is the agent's failed crop (axis labels cut off). The good crop is the same target with `expand_px` padding restored."""
+    """Save the agent's failed crop and a corrected good crop as
+    TWO separate reference images for the skill library.
+    `bad_crop_box` is the agent's failed crop (axis labels cut off).
+    The good crop is the same target with `expand_px` padding
+    restored on every side. Returns (good_path, bad_path)."""
     from PIL import Image
     img = Image.open(image_path).convert("RGB")
     W, H = img.size
-    bad = img.crop(bad_crop_box)
     l, t, r, b = bad_crop_box
-    good_box = (max(0, l - expand_px), max(0, t - expand_px), min(W, r + expand_px), min(H, b + expand_px))
-    good = img.crop(good_box)
-    pair_w = good.size[0] + bad.size[0]
-    pair_h = max(good.size[1], bad.size[1])
-    pair = Image.new("RGB", (pair_w, pair_h), "white")
-    pair.paste(good, (0, 0))
-    pair.paste(bad, (good.size[0], 0))
-    out_path = image_path.replace(".png", "_crop_reference.png")
-    pair.save(out_path)
-    return out_path
+    bad  = img.crop(bad_crop_box)
+    good = img.crop((max(0, l - expand_px), max(0, t - expand_px),
+                     min(W, r + expand_px), min(H, b + expand_px)))
+    bad_path  = image_path.replace(".png", "_crop_bad.png")
+    good_path = image_path.replace(".png", "_crop_good.png")
+    bad.save(bad_path)
+    good.save(good_path)
+    return good_path, bad_path
 \end{lstlisting}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.85\columnwidth]{figures/chartqa_visual_anchor.png}
+\begin{subfigure}{0.55\columnwidth}
+  \centering
+  \includegraphics[width=\linewidth]{figures/crop_good.png}
+  \caption{\textbf{good-crop}: target appearance. Year labels (2016, 2015) and category
+  headers are fully visible alongside the bars, so the agent can read off values and
+  associate them with the right year.}
+  \label{fig:crop_good}
+\end{subfigure}\hfill
+\begin{subfigure}{0.43\columnwidth}
+  \centering
+  \includegraphics[width=\linewidth]{figures/crop_bad.png}
+  \caption{\textbf{bad-crop}: failure appearance. The year-label column on the left is
+  cut off (red ``?'' marks the missing labels). Bars are still visible but the agent can
+  no longer tell which bar is which year.}
+  \label{fig:crop_bad}
+\end{subfigure}
 \caption{%
-  \textbf{Stored good/bad crop reference for the interleaved skill in Case C.}
-  Two panels saved together as the visual anchor on the triggering ChartQA case.
-  \emph{Left (good crop)}: the chart cropped with $\sim 30$\,px padding so the x-axis
-  labels stay visible. \emph{Right (bad crop)}: the agent's own failed crop with the
-  x-axis labels truncated. On later cases the skill is retrieved together with this
-  pair, and the agent compares its own crop against both panels and re-crops when its
-  output matches the right panel.
+  \textbf{Two reference images stored alongside the Case~C skill.}
+  The skill's Strategy step~4 instructs the agent to compare its own intermediate crop
+  against these two images: re-do if the crop converges to the bad-crop appearance,
+  proceed if it matches the good-crop appearance.
 }
 \label{fig:chartqa_visual_anchor}
 \end{figure}
 
-The interleaved nature here is concrete: the skill is not just text that mentions an
-image, it is a Markdown body whose Strategy step~4 instructs the agent to literally
-\emph{compare} its own intermediate crop against a pair of stored reference panels and
-to \emph{act} differently depending on which panel matches. The good panel, the bad
-panel, the diagnostic ``crop too aggressive'' line, and the conservative-cropping rule
-were all emitted by the same evolution iteration on the triggering case, and all four
-are retrieved together on later cases of the same problem family. The agent does not
-have to rediscover the failure mode or invent the heuristic; it loads them as one
-bundle.
+The interleaved nature here is concrete: the skill is not just text that mentions a
+picture, it is a Markdown body whose Strategy step~4 names \emph{two specific stored
+images} and prescribes different agent behaviour depending on which one the agent's own
+intermediate crop matches. The good reference, the bad reference, the diagnostic
+``crop too aggressive'' line, and the conservative-cropping rule were all emitted by
+the same evolution iteration on the triggering case, and all four are retrieved together
+on later cases of the same problem family. The agent does not have to rediscover the
+failure mode or invent the heuristic; it loads them as one bundle.
 
 % \section{Reproducibility Statement}
 % \label{app:reproducibility}
