@@ -96,6 +96,10 @@
   literate={->}{$\rightarrow$}{2}
 }
 
+% Reference colours shared between skill listings and figure captions
+\definecolor{refgood}{HTML}{1F7A1F}   % green for good-crop references
+\definecolor{refbad}{HTML}{C53030}    % red for bad-crop references
+
 % Markdown skill listing style: highlight ## headers and field names
 \lstdefinestyle{mdskill}{
   basicstyle=\ttfamily\scriptsize,
@@ -104,6 +108,13 @@
   commentstyle=\color{skillhdr}\bfseries,
   morekeywords={When-to-Use,Strategy,Common,Pitfalls,Visual,Anchor,References,Skill,Trigger},
   keywordstyle=\color{skillem}\bfseries,
+  classoffset=1,
+  morekeywords={crop_bad.png},
+  keywordstyle=\color{refbad}\bfseries,
+  classoffset=2,
+  morekeywords={crop_good.png},
+  keywordstyle=\color{refgood}\bfseries,
+  classoffset=0,
   breaklines=true,
   breakatwhitespace=true,
   breakautoindent=false,
