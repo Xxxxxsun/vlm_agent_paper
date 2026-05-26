@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 16:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 16:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1583,42 +1583,47 @@ Package textcomp Info: Symbol \textasciigrave not provided by
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<figures/crop_good.png, id=932, 485.815pt x 240.9pt>
+<figures/crop_good.png, id=932, 608.2725pt x 301.125pt>
 File: figures/crop_good.png Graphic file (type png)
 <use figures/crop_good.png>
 Package pdftex.def Info: figures/crop_good.png  used on input line 827.
-(pdftex.def)             Requested size: 60.74896pt x 30.1245pt.
+(pdftex.def)             Requested size: 106.2569pt x 52.60117pt.
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 9.0pt on input line 830.
 
-Underfull \hbox (badness 1694) in paragraph at lines 830--830
-\T1/ptm/m/n/9 (+20) pear-ance. Year la-bels (2016,
+Underfull \hbox (badness 4543) in paragraph at lines 830--830
+\T1/ptm/m/n/9 (+20) ap-pear-ance. Year la-bels
  []
 
-<figures/crop_bad.png, id=933, 397.485pt x 240.9pt>
+
+Underfull \hbox (badness 1275) in paragraph at lines 830--830
+\T1/ptm/m/n/9 (+20) (2016, 2015) and cat-e-gory
+ []
+
+<figures/crop_bad.png, id=933, 608.2725pt x 301.125pt>
 File: figures/crop_bad.png Graphic file (type png)
 <use figures/crop_bad.png>
 Package pdftex.def Info: figures/crop_bad.png  used on input line 835.
-(pdftex.def)             Requested size: 38.85925pt x 23.55135pt.
+(pdftex.def)             Requested size: 106.2569pt x 52.60117pt.
 
 LaTeX Font Warning: Font shape `TS1/zi4/m/it' undefined
 (Font)              using `TS1/zi4/m/n' instead
-(Font)              for symbol `textquotesingle' on input line 853.
+(Font)              for symbol `textquotesingle' on input line 854.
 
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 855.
+(textcomp)             Default family used instead on input line 856.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 855.
+(textcomp)             Default family used instead on input line 856.
 LaTeX Font Info:    Font shape `TS1/zi4/m/it' will be
-(Font)              scaled to size 7.0pt on input line 855.
+(Font)              scaled to size 7.0pt on input line 856.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 856.
+(textcomp)             Default family used instead on input line 857.
 Package textcomp Info: Symbol \textasciigrave not provided by
 (textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 856.
+(textcomp)             Default family used instead on input line 857.
 )
 
 Package natbib Warning: There were undefined citations.
@@ -1633,8 +1638,8 @@ Package rerunfilecheck Info: File `main.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  37438 strings out of 478994
- 717721 string characters out of 5858184
- 1782428 words of memory out of 5000000
+ 717724 string characters out of 5858184
+ 1782502 words of memory out of 5000000
  53201 multiletter control sequences out of 15000+600000
  555286 words of font info for 626 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1668,7 +1673,7 @@ s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on main.pdf (18 pages, 5072563 bytes).
+Output written on main.pdf (18 pages, 5118322 bytes).
 PDF statistics:
  1166 PDF objects out of 1200 (max. 8388607)
  830 compressed objects within 9 object streams
