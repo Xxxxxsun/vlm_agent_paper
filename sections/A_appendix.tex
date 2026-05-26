@@ -820,28 +820,6 @@ Common Pitfalls:
 \end{lstlisting}
 \end{tcolorbox}
 
-\paragraph{Generated tool (produces the two reference images used in the skill above)}
-\begin{lstlisting}[style=pycode]
-def make_crop_reference(image_path, bad_crop_box, expand_px=30):
-    """Save the agent's failed crop and a corrected good crop as
-    TWO separate reference images for the skill library.
-    `bad_crop_box` is the agent's failed crop (axis labels cut off).
-    The good crop is the same target with `expand_px` padding
-    restored on every side. Returns (good_path, bad_path)."""
-    from PIL import Image
-    img = Image.open(image_path).convert("RGB")
-    W, H = img.size
-    l, t, r, b = bad_crop_box
-    bad  = img.crop(bad_crop_box)
-    good = img.crop((max(0, l - expand_px), max(0, t - expand_px),
-                     min(W, r + expand_px), min(H, b + expand_px)))
-    bad_path  = image_path.replace(".png", "_crop_bad.png")
-    good_path = image_path.replace(".png", "_crop_good.png")
-    bad.save(bad_path)
-    good.save(good_path)
-    return good_path, bad_path
-\end{lstlisting}
-
 \begin{figure}[!t]
 \centering
 \begin{subfigure}{0.55\columnwidth}
@@ -868,6 +846,28 @@ def make_crop_reference(image_path, bad_crop_box, expand_px=30):
 }
 \label{fig:chartqa_visual_anchor}
 \end{figure}
+
+\paragraph{Generated tool (produces the two reference images used in the skill above)}
+\begin{lstlisting}[style=pycode]
+def make_crop_reference(image_path, bad_crop_box, expand_px=30):
+    """Save the agent's failed crop and a corrected good crop as
+    TWO separate reference images for the skill library.
+    `bad_crop_box` is the agent's failed crop (axis labels cut off).
+    The good crop is the same target with `expand_px` padding
+    restored on every side. Returns (good_path, bad_path)."""
+    from PIL import Image
+    img = Image.open(image_path).convert("RGB")
+    W, H = img.size
+    l, t, r, b = bad_crop_box
+    bad  = img.crop(bad_crop_box)
+    good = img.crop((max(0, l - expand_px), max(0, t - expand_px),
+                     min(W, r + expand_px), min(H, b + expand_px)))
+    bad_path  = image_path.replace(".png", "_crop_bad.png")
+    good_path = image_path.replace(".png", "_crop_good.png")
+    bad.save(bad_path)
+    good.save(good_path)
+    return good_path, bad_path
+\end{lstlisting}
 
 The interleaved nature here is concrete: the skill is not just text that mentions a
 picture, it is a Markdown body whose Strategy step~4 names \emph{two specific stored

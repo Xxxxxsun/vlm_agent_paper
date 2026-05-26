@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 16:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.11)  26 MAY 2026 16:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1583,43 +1583,42 @@ Package textcomp Info: Symbol \textasciigrave not provided by
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-LaTeX Font Warning: Font shape `TS1/zi4/m/it' undefined
-(Font)              using `TS1/zi4/m/n' instead
-(Font)              for symbol `textquotesingle' on input line 826.
-
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 828.
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 828.
-LaTeX Font Info:    Font shape `TS1/zi4/m/it' will be
-(Font)              scaled to size 7.0pt on input line 828.
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 829.
-Package textcomp Info: Symbol \textasciigrave not provided by
-(textcomp)             font family zi4 in TS1 encoding.
-(textcomp)             Default family used instead on input line 829.
 <figures/crop_good.png, id=932, 485.815pt x 240.9pt>
 File: figures/crop_good.png Graphic file (type png)
 <use figures/crop_good.png>
-Package pdftex.def Info: figures/crop_good.png  used on input line 849.
+Package pdftex.def Info: figures/crop_good.png  used on input line 827.
 (pdftex.def)             Requested size: 120.49803pt x 59.75066pt.
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 852.
+(Font)              scaled to size 9.0pt on input line 830.
 
-Underfull \hbox (badness 1694) in paragraph at lines 852--852
+Underfull \hbox (badness 1694) in paragraph at lines 830--830
 \T1/ptm/m/n/9 (+20) pear-ance. Year la-bels (2016,
  []
 
 <figures/crop_bad.png, id=933, 397.485pt x 240.9pt>
 File: figures/crop_bad.png Graphic file (type png)
 <use figures/crop_bad.png>
-Package pdftex.def Info: figures/crop_bad.png  used on input line 857.
+Package pdftex.def Info: figures/crop_bad.png  used on input line 835.
 (pdftex.def)             Requested size: 94.20543pt x 57.09303pt.
+
+LaTeX Font Warning: Font shape `TS1/zi4/m/it' undefined
+(Font)              using `TS1/zi4/m/n' instead
+(Font)              for symbol `textquotesingle' on input line 853.
+
+Package textcomp Info: Symbol \textasciigrave not provided by
+(textcomp)             font family zi4 in TS1 encoding.
+(textcomp)             Default family used instead on input line 855.
+Package textcomp Info: Symbol \textasciigrave not provided by
+(textcomp)             font family zi4 in TS1 encoding.
+(textcomp)             Default family used instead on input line 855.
+LaTeX Font Info:    Font shape `TS1/zi4/m/it' will be
+(Font)              scaled to size 7.0pt on input line 855.
+Package textcomp Info: Symbol \textasciigrave not provided by
+(textcomp)             font family zi4 in TS1 encoding.
+(textcomp)             Default family used instead on input line 856.
+Package textcomp Info: Symbol \textasciigrave not provided by
+(textcomp)             font family zi4 in TS1 encoding.
+(textcomp)             Default family used instead on input line 856.
 )
 
 Package natbib Warning: There were undefined citations.
@@ -1669,7 +1668,7 @@ s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8a.p
 fb>
-Output written on main.pdf (18 pages, 5072609 bytes).
+Output written on main.pdf (18 pages, 5072610 bytes).
 PDF statistics:
  1166 PDF objects out of 1200 (max. 8388607)
  830 compressed objects within 9 object streams
