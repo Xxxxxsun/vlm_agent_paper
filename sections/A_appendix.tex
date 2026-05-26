@@ -787,25 +787,27 @@ and implements only the subset of zoom/search behaviour the diagnosis warrants.
 \subsection{Case C: Interleaved Visual Skill}
 \label{app:interleaved_visual_skills}
 
-This case is the most interesting of the three because the artefact stored in the library
-is \emph{partly visual}. An \emph{interleaved} visual skill couples textual reasoning
-steps with a persistent annotated image (a ``state card'' in the spirit of multimodal
-skill libraries), both retrieved together on every later case of the same problem family.
+The most interesting of the three cases. Here the artefact stored in the library is
+\emph{partly visual} and the visual part \emph{teaches by demonstration}: an
+\emph{interleaved} skill bundles textual reasoning steps with a pair of reference images,
+one \emph{good} example and one \emph{bad} example. The skill body literally instructs
+the agent to compare its own intermediate output against the two reference images and
+\emph{act differently depending on which one it matches}. The good/bad pair, the
+matching text rule, and the diagnostic that produced them are all emitted together by
+one evolution iteration and are retrieved together as a bundle on later cases.
 
-The triggering case is the Pew Research stacked bar in
-Figure~\ref{fig:chartqa_visual_anchor} (``\textit{Slight increase in Japanese support for
-more active military role}''), with the question
-\emph{``What is the difference between the highest and the lowest green segment?''}.
-The base agent looked at the tallest \emph{bar} and answered $78$, the total height of
-the green$+$grey$+$blue stack for the 2015 column. The actual quantity asked is the green
-sub-segment alone, $29$ (peak year) minus $23$ (trough year), so the correct answer is
-$6$. The \textsc{AnalyzerDecider} traced the failure to ``\textit{which colour band of
-which bar}''---a perceptual disambiguation problem---and the Generator emitted a paired
-skill+tool whose state card is a freshly annotated crop with the two target green
-segments outlined in red. On later same-family cases (different chart, different years,
-same ``read one stacked segment'' shape), the skill is retrieved together with that crop,
-and the agent reads against the anchor rather than reconstructing the segmentation from
-scratch.
+The triggering case is a ChartQA bar chart where the agent decided to zoom in on the
+bars to read their heights more precisely. Its first crop was tight enough that the
+\emph{x-axis labels were cut off}: in the zoomed view it could see the bar heights but
+could no longer tell which bar corresponded to which year, and answered the wrong year.
+The \textsc{AnalyzerDecider} traced the failure to ``\textit{crop too aggressive: target
+context lost},'' and the Generator emitted a paired skill+tool whose visual anchor is
+two images stored side by side
+(Figure~\ref{fig:chartqa_visual_anchor}):
+\textbf{good-crop}, the same chart re-cropped with $\sim 30$\,px of padding so the
+axis labels are fully visible; and \textbf{bad-crop}, the agent's own failed crop with
+the axis labels truncated. The skill text below points the agent at both panels and tells
+it what to do in each case.
 
 \begin{tcolorbox}[
     title={\textbf{Generated skill (paired with the tool below; triggered on ChartQA)}},
@@ -813,62 +815,74 @@ scratch.
     breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
 ]
 \begin{lstlisting}[style=appendixsnippet]
-## Skill: Stacked-Bar Segment Reading with Visual Anchor
+## Skill: Conservative Cropping with Axis-Label Preservation
 
 When-to-Use:
-Use when the question asks for the value, the difference, or a
-comparison of one coloured segment inside a stacked bar (not the
-whole bar). Trigger words: "segment", "portion of the bar", or a
-specific colour from the legend.
+Use when the question requires reading values off a chart and your
+plan is to crop the chart for higher-resolution inspection. Trigger
+words: "zoom", "crop", "look closer", "read the y-axis".
 
 Strategy:
-1. Re-read the question and write down the *segment colour* and the
-   *bar(s)* (e.g. years, categories) it is asking about.
-2. Locate the legend; map the colour name to the legend swatch.
-3. For each target bar, find the top and bottom y-coordinate of the
-   *coloured segment only* (not the bar's outer edges).
-4. Read the segment value as (top - bottom); for differences,
-   compute (max segment value) - (min segment value) across bars.
-5. Cross-check against the stored Visual Anchor: the red outlines
-   mark exactly the segments to be measured.
+1. Identify both the *measurement target* (the bars / lines / points
+   you need to read off) AND the *context* you need to interpret it
+   (x-axis labels, y-axis ticks, legend swatches).
+2. Compute a tight bounding box around the measurement target.
+3. Expand the bounding box by ~30 px in every direction toward an
+   axis or legend; never crop with margin = 0.
+4. Render the crop and *compare it against the two reference images
+   stored with this skill*:
+     - good-crop (left panel of the visual reference):
+       target + axis labels + legend all visible
+     - bad-crop  (right panel of the visual reference):
+       target visible but axis labels are truncated
+5. If your crop matches the bad-crop pattern (labels missing on the
+   side adjacent to where the labels should be), expand the bounding
+   box in that direction by another ~30 px and re-crop. Otherwise
+   proceed to read off values.
 
-Visual Anchor:
-Figure ref:chartqa_visual_anchor stores the original Pew Research
-chart with the two target green segments outlined in red (values
-29 and 23). The anchor is retrieved together with this skill on
-later "stacked-bar one-segment" cases.
+Visual References:
+Figure ref:chartqa_visual_anchor stores the good-crop / bad-crop
+pair as one image (good on the left, bad on the right) so the agent
+can pattern-match its own crop against both panels.
 
 Common Pitfalls:
-- Reading the *total bar height* (the green+grey+blue stack) when
-  the question asks about a single colour. This was the original
-  failure on the triggering case: the agent answered 78 instead of
-  the green-segment difference 6.
-- Picking a visually similar but legend-distinct colour (e.g. teal
-  vs. green) when the legend separates them.
-- Forgetting to subtract the lower segment boundary from the upper:
-  the value is the *segment height*, not the upper edge alone.
+- Cropping with margin = 0 around the bars. This almost always
+  truncates the x-axis labels, which was the failure on the
+  triggering case.
+- Assuming the agent can recover from a label-truncated crop by
+  recalling labels from the full image. The full image was the
+  reason for cropping in the first place; the crop is the new
+  source of truth for the agent.
+- Cropping too generously (margin >> 50 px), which defeats the
+  purpose of zooming in. Stick to ~30 px.
 \end{lstlisting}
 \end{tcolorbox}
 
 \begin{tcolorbox}[
-    title={\textbf{Generated tool (produces the visual anchor used in the skill above)}},
+    title={\textbf{Generated tool (produces the good/bad crop pair used in the skill above)}},
     colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
     breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
 ]
 \begin{lstlisting}[style=appendixsnippet]
-def make_visual_anchor(image_path, crop_box, annotations):
-    """Create an annotated crop used as the visual anchor in a skill."""
-    from PIL import Image, ImageDraw
+def make_crop_reference(image_path, bad_crop_box, expand_px=30):
+    """Render a side-by-side good/bad crop reference for the skill.
+    `bad_crop_box` is the agent's failed crop (axis labels cut off).
+    The good crop is the same target with `expand_px` padding restored."""
+    from PIL import Image
     img = Image.open(image_path).convert("RGB")
-    crop = img.crop(crop_box) if crop_box else img.copy()
-    draw = ImageDraw.Draw(crop)
-    for ann in annotations:
-        draw.rectangle(ann["box"], outline=ann.get("color", "red"), width=3)
-        if "label" in ann:
-            draw.text((ann["box"][0], ann["box"][1] - 12),
-                      ann["label"], fill=ann.get("color", "red"))
-    out_path = image_path.replace(".png", "_visual_anchor.png")
-    crop.save(out_path)
+    W, H = img.size
+    bad = img.crop(bad_crop_box)
+    l, t, r, b = bad_crop_box
+    good_box = (max(0, l - expand_px), max(0, t - expand_px),
+                min(W, r + expand_px), min(H, b + expand_px))
+    good = img.crop(good_box)
+    pair_w = good.size[0] + bad.size[0]
+    pair_h = max(good.size[1], bad.size[1])
+    pair = Image.new("RGB", (pair_w, pair_h), "white")
+    pair.paste(good, (0, 0))
+    pair.paste(bad, (good.size[0], 0))
+    out_path = image_path.replace(".png", "_crop_reference.png")
+    pair.save(out_path)
     return out_path
 \end{lstlisting}
 \end{tcolorbox}
@@ -877,23 +891,26 @@ def make_visual_anchor(image_path, crop_box, annotations):
 \centering
 \includegraphics[width=0.85\columnwidth]{figures/chartqa_visual_anchor.png}
 \caption{%
-  \textbf{Stored visual anchor for the interleaved skill in Case C.}
-  Annotated version of the triggering ChartQA case (Pew Research, ``Slight increase in
-  Japanese support for more active military role''). The red outlines mark the two
-  target green segments (29 and 23) whose difference the question is asking for. The
-  skill in the box above retrieves this image when the same problem family is
-  encountered on later cases.
+  \textbf{Stored good/bad crop reference for the interleaved skill in Case C.}
+  Two panels saved together as the visual anchor on the triggering ChartQA case.
+  \emph{Left (good crop)}: the chart cropped with $\sim 30$\,px padding so the x-axis
+  labels stay visible. \emph{Right (bad crop)}: the agent's own failed crop with the
+  x-axis labels truncated. On later cases the skill is retrieved together with this
+  pair, and the agent compares its own crop against both panels and re-crops when its
+  output matches the right panel.
 }
 \label{fig:chartqa_visual_anchor}
 \end{figure}
 
-Like ``visual chain-of-thought'' methods, this capability interleaves text with a visual
-artefact. The differences are that the artefact is \emph{persistent} (saved into the
-capability library and retrieved on later cases of the same problem family) and that the
-artefact and the text steps were generated \emph{together} by the same diagnosis: the
-red outlines and the ``don't read the total bar height'' pitfall point to the same
-failure mode. On later cases of the same family the agent does not have to discover the
-segmentation or the pitfall again; it loads them as a state card.
+The interleaved nature here is concrete: the skill is not just text that mentions an
+image, it is a Markdown body whose Strategy step~4 instructs the agent to literally
+\emph{compare} its own intermediate crop against a pair of stored reference panels and
+to \emph{act} differently depending on which panel matches. The good panel, the bad
+panel, the diagnostic ``crop too aggressive'' line, and the conservative-cropping rule
+were all emitted by the same evolution iteration on the triggering case, and all four
+are retrieved together on later cases of the same problem family. The agent does not
+have to rediscover the failure mode or invent the heuristic; it loads them as one
+bundle.
 
 \section{Reproducibility Statement}
 \label{app:reproducibility}
