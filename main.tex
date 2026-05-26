@@ -59,6 +59,64 @@
 \definecolor{impcolor}{HTML}{2E8B57}
 \definecolor{mygray}{gray}{0.9}
 
+% ---- Code/skill listing colours ----
+\definecolor{codebg}{HTML}{FAFBFC}        % near-white panel background
+\definecolor{codekw}{HTML}{005CC5}        % Python keywords (def, return, ...)
+\definecolor{codestr}{HTML}{C7254E}       % string literals
+\definecolor{codecomment}{HTML}{6A737D}   % comments / docstrings
+\definecolor{codenum}{HTML}{D0D7DE}       % line numbers
+\definecolor{codeframe}{HTML}{D0D7DE}     % subtle frame
+\definecolor{skillbg}{HTML}{F6F8FA}       % skill panel background (slightly different)
+\definecolor{skillhdr}{HTML}{1F3D7A}      % section headers in skill markdown
+\definecolor{skillem}{HTML}{6A0DAD}       % emphasised field names
+
+% Python tool listing style: full syntax highlighting
+\lstdefinestyle{pycode}{
+  language=Python,
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{codekw}\bfseries,
+  stringstyle=\color{codestr},
+  commentstyle=\color{codecomment}\itshape,
+  numbers=left,
+  numberstyle=\ttfamily\tiny\color{codenum},
+  numbersep=6pt,
+  xleftmargin=2.2em,
+  backgroundcolor=\color{codebg},
+  breaklines=true,
+  breakatwhitespace=true,
+  breakautoindent=false,
+  breakindent=0pt,
+  prebreak={},
+  postbreak={},
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=2,
+  upquote=true,
+  literate={->}{$\rightarrow$}{2}
+}
+
+% Markdown skill listing style: highlight ## headers and field names
+\lstdefinestyle{mdskill}{
+  basicstyle=\ttfamily\scriptsize,
+  backgroundcolor=\color{skillbg},
+  morecomment=[l]{\#\#},
+  commentstyle=\color{skillhdr}\bfseries,
+  morekeywords={When-to-Use,Strategy,Common,Pitfalls,Visual,Anchor,References,Skill,Trigger},
+  keywordstyle=\color{skillem}\bfseries,
+  breaklines=true,
+  breakatwhitespace=true,
+  breakautoindent=false,
+  breakindent=0pt,
+  prebreak={},
+  postbreak={},
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  xleftmargin=4pt
+}
+
+% Back-compat: keep old name as an alias to mdskill
 \lstdefinestyle{appendixsnippet}{
   basicstyle=\ttfamily\scriptsize,
   breaklines=true,
@@ -70,6 +128,22 @@
   columns=fullflexible,
   keepspaces=true,
   showstringspaces=false
+}
+
+% tcolorbox skin for skill / tool case-study panels
+\tcbset{
+  casebox/.style={
+    enhanced, breakable,
+    colback=white,
+    colframe=codeframe,
+    colbacktitle=gray!55,
+    coltitle=white,
+    fonttitle=\small\bfseries,
+    boxrule=0.5pt,
+    arc=3pt,
+    titlerule=0pt,
+    left=4pt, right=4pt, top=4pt, bottom=4pt,
+  }
 }
 
 % ---- Table helpers ----

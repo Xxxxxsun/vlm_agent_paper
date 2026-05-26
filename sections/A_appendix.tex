@@ -654,10 +654,9 @@ and tool shown next.
 
 \begin{tcolorbox}[
     title={\textbf{Generated skill (paired with the tool below; triggered on ChartQA)}},
-    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
-    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+    casebox
 ]
-\begin{lstlisting}[style=appendixsnippet]
+\begin{lstlisting}[style=mdskill]
 ## Skill: Edit-Then-Read for Structured Images
 
 When-to-Use:
@@ -677,10 +676,9 @@ Common Pitfalls:
 
 \begin{tcolorbox}[
     title={\textbf{Generated tool (paired with the skill above)}},
-    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
-    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+    casebox
 ]
-\begin{lstlisting}[style=appendixsnippet]
+\begin{lstlisting}[style=pycode]
 def mark_relevant_region(image_path, region, mode="highlight"):
     """Return an edited image that highlights or masks
     chart/table evidence."""
@@ -723,10 +721,9 @@ and proposed the paired skill and tool shown next.
 
 \begin{tcolorbox}[
     title={\textbf{Generated skill (paired with the tool below; triggered on HRBench4K)}},
-    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
-    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+    casebox
 ]
-\begin{lstlisting}[style=appendixsnippet]
+\begin{lstlisting}[style=mdskill]
 ## Skill: Coarse-to-Fine Region Search
 
 When-to-Use:
@@ -747,10 +744,9 @@ Common Pitfalls:
 
 \begin{tcolorbox}[
     title={\textbf{Generated tool (paired with the skill above)}},
-    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
-    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+    casebox
 ]
-\begin{lstlisting}[style=appendixsnippet]
+\begin{lstlisting}[style=pycode]
 def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
     """Return candidate high-resolution crops for a
     target described in text."""
@@ -804,10 +800,9 @@ it what to do in each case.
 
 \begin{tcolorbox}[
     title={\textbf{Generated skill (paired with the tool below; triggered on ChartQA)}},
-    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
-    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+    casebox
 ]
-\begin{lstlisting}[style=appendixsnippet]
+\begin{lstlisting}[style=mdskill]
 ## Skill: Conservative Cropping with Axis-Label Preservation
 
 When-to-Use:
@@ -834,10 +829,9 @@ Common Pitfalls:
 
 \begin{tcolorbox}[
     title={\textbf{Generated tool (produces the good/bad crop pair used in the skill above)}},
-    colback=gray!5, colframe=gray!50, fonttitle=\small\bfseries,
-    breakable, left=4pt, right=4pt, top=4pt, bottom=4pt
+    casebox
 ]
-\begin{lstlisting}[style=appendixsnippet]
+\begin{lstlisting}[style=pycode]
 def make_crop_reference(image_path, bad_crop_box, expand_px=30):
     """Render a side-by-side good/bad crop reference for the skill.
     `bad_crop_box` is the agent's failed crop (axis labels cut off).
