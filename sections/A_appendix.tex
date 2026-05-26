@@ -691,9 +691,8 @@ def mark_relevant_region(image_path, region, mode="highlight"):
         draw.rectangle([x1, y1, x2, y2], fill=(255, 255, 0, 60))
     elif mode == "mask_distractors":
         mask = Image.new("RGBA", img.size, (255, 255, 255, 180))
-        ImageDraw.Draw(mask).rectangle([x1, y1, x2, y2],
-                                       fill=(0, 0, 0, 0))
-        img = Image.alpha_composite(img.convert("RGBA"), mask)
+        ImageDraw.Draw(mask).rectangle([x1, y1, x2, y2], fill=(0, 0, 0, 0))
+        img = Image.alpha_composite( img.convert("RGBA"), mask)
     out_path = image_path.replace(".png", "_marked.png")
     img.convert("RGB").save(out_path)
     return out_path
@@ -756,8 +755,7 @@ def coarse_to_fine_zoom(image_path, target_description, grid_size=4):
     crops = []
     for gy in range(grid_size):
         for gx in range(grid_size):
-            box = (gx * w // grid_size, gy * h // grid_size,
-                   (gx + 1) * w // grid_size, (gy + 1) * h // grid_size)
+            box = (gx * w // grid_size, gy * h // grid_size, (gx + 1) * w // grid_size, (gy + 1) * h // grid_size)
             crop = img.crop(box)
             out = image_path.replace(".png", f"_tile_{gx}_{gy}.png")
             crop.save(out)
@@ -841,8 +839,7 @@ def make_crop_reference(image_path, bad_crop_box, expand_px=30):
     W, H = img.size
     bad = img.crop(bad_crop_box)
     l, t, r, b = bad_crop_box
-    good_box = (max(0, l - expand_px), max(0, t - expand_px),
-                min(W, r + expand_px), min(H, b + expand_px))
+    good_box = (max(0, l - expand_px), max(0, t - expand_px), min(W, r + expand_px), min(H, b + expand_px))
     good = img.crop(good_box)
     pair_w = good.size[0] + bad.size[0]
     pair_h = max(good.size[1], bad.size[1])
