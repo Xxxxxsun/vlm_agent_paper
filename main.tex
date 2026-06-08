@@ -1,27 +1,58 @@
 % ============================================================
 %  DYNAMO: Dynamic Skill-Tool Evolution for Vision-Language Agents
-%  Qwen Large Model Application Team (Alibaba) -- internal QABG template version
+%  Supports two layouts via the \ifqabg switch below:
+%   * QABG (Qwen LMA / Alibaba) two-column internal layout       -- \qabgtrue
+%   * ACL anonymous submission (review mode, single-column ACL)   -- \qabgfalse
+%  Body sections, custom commands, listings, tables are shared.
 % ============================================================
 
-% Pass xcolor options BEFORE the documentclass.
-% googledeepmind.cls itself loads xcolor with [dvipsnames]; we add [table] for
-% \rowcolor / \cellcolor support.
-\PassOptionsToPackage{table,dvipsnames}{xcolor}
-
 % ============================================================
-%  Layout: two-column (logo header on first page)
-%  - Switch to single-column by removing `twocolumn,` from the options.
+%  >>> LAYOUT SWITCH: comment ONE of the next two lines <<<
 % ============================================================
-\documentclass[10pt, a4paper, twocolumn, logo]{googledeepmind}
+\newif\ifqabg
+\qabgtrue        % <-- QABG (Qwen LMA / Alibaba) two-column
+% \qabgfalse      % <-- ACL anonymous submission
+% ============================================================
 
-% --- Packages NOT already loaded by googledeepmind.cls ---
+% ---- xcolor options must be passed BEFORE the documentclass ----
+\ifqabg
+  % googledeepmind.cls loads xcolor with [dvipsnames]; we add [table].
+  \PassOptionsToPackage{table,dvipsnames}{xcolor}
+\else
+  \PassOptionsToPackage{table}{xcolor}
+\fi
+
+% ---- documentclass ----
+\ifqabg
+  \documentclass[10pt, a4paper, twocolumn, logo]{googledeepmind}
+\else
+  \documentclass[11pt]{article}
+  \usepackage[review]{acl}
+\fi
+
+% ---- Common fonts ----
 \usepackage{times}
 \usepackage{microtype}
 \usepackage{inconsolata}
-% Free a math alphabet slot before too many packages are loaded.
-% (listings + tcolorbox + algorithm2e + xcolor each grab one and hit the
-%  16-alphabet limit. Reusing AMSb avoids needing a separate mathbb font.)
-\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+
+% ---- Packages googledeepmind.cls already loads vs ACL needs ----
+\ifqabg
+  % googledeepmind already loads: inputenc, fontenc, pifont, graphicx,
+  % colortbl, booktabs, enumitem, url, textcomp, amsmath/fonts/symb.
+  % Just consolidate \mathbb to free a math alphabet slot.
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+\else
+  \usepackage{latexsym}
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{pifont}
+  \usepackage{graphicx}
+  \usepackage{colortbl}
+  \usepackage{booktabs}
+  \usepackage{enumitem}
+  \usepackage{url}
+  \usepackage{textcomp}
+\fi
 
 % Provide \laplace before math_commands.tex attempts \renewcommand
 \providecommand{\laplace}{\mathcal{L}}
@@ -29,10 +60,10 @@
 % Math & notation (input macros from math_commands.tex)
 \input{math_commands.tex}
 
-% Standard packages (skip those loaded by the class to avoid option clashes)
+% ---- Common packages (load order matters for tcolorbox/listings) ----
 \usepackage{xurl}
 \usepackage{subcaption}
-\usepackage{amsmath,amsfonts}    % redundant with class load but harmless
+\usepackage{amsmath,amsfonts}
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{breakable}
 \usepackage{siunitx}
@@ -122,7 +153,7 @@
     {crop_bad.png}{{\hlbad{\texttt{crop\_bad.png}}}}{12}%
 }
 
-% Back-compat (older boxes referenced appendixsnippet)
+% Back-compat alias
 \lstdefinestyle{appendixsnippet}{
   basicstyle=\ttfamily\scriptsize,
   breaklines=true,
@@ -193,28 +224,35 @@
 \newcommand{\scorebase}[1]{#1}
 
 % ============================================================
-%  Title, authors, affiliations
+%  Title (shared)
 % ============================================================
 \title{\sysname{}: Dynamic Skill-Tool Evolution for Vision-Language Agents}
 
-\author[1]{Yutao Sun}
-\author[1]{Yanting Miao}
-\author[1]{Hao-Xuan Ma}
-\author[1]{Mengyu Zhou\textsuperscript{$\dag$}}
-\author[1]{Mingshuai Chen}
-\author[1]{Tiancheng Zhao}
-\author[1]{Dexin Wang}
-\author[1]{Lei Lv}
-\author[1]{Li Xu}
-\author[1]{Xiaoxi Jiang}
-\author[1]{Guanjun Jiang}
-\affil[1]{Qwen Large Model Application Team, Alibaba}
-\correspondingauthor{Mengyu Zhou (\texttt{zhoumengyu.zmy@alibaba-inc.com})}
+% ============================================================
+%  Authors (mode-specific)
+% ============================================================
+\ifqabg
+  \author[1]{Yutao Sun}
+  \author[1]{Yanting Miao}
+  \author[1]{Hao-Xuan Ma}
+  \author[1]{Mengyu Zhou\textsuperscript{$\dag$}}
+  \author[1]{Mingshuai Chen}
+  \author[1]{Tiancheng Zhao}
+  \author[1]{Dexin Wang}
+  \author[1]{Lei Lv}
+  \author[1]{Li Xu}
+  \author[1]{Xiaoxi Jiang}
+  \author[1]{Guanjun Jiang}
+  \affil[1]{Qwen Large Model Application Team, Alibaba}
+  \correspondingauthor{Mengyu Zhou (\texttt{zhoumengyu.zmy@alibaba-inc.com})}
+\else
+  \author{Anonymous ACL submission}
+\fi
 
 % ============================================================
-%  Abstract -- must come BEFORE \begin{document} for googledeepmind class
+%  Abstract text (defined once, positioned per mode)
 % ============================================================
-\begin{abstract}
+\newcommand{\paperabstract}{%
 Improving vision-language models (VLMs) on visual reasoning typically requires retraining
 or hand-designed prompts and tools. We present \sysname{}, a training-free framework
 that adapts a frozen VLM without any weight updates. On a small labeled training
@@ -226,8 +264,13 @@ library.
 Across four visual reasoning benchmarks and five VLM backbones, \sysname{} improves direct
 inference on all 20 model--benchmark settings (avg.\ $+5.6$ acc). When the tool set is given in advance, the framework learns when to call each tool, and
 per-step tool choice improves on every tested backbone. Against task-specific RL (VTool-R1, DeepEyes), \sysname{} closes 65--99\% of the RL gap at
-a fraction of the compute, and combines additively with RL when available.
-\end{abstract}
+a fraction of the compute, and combines additively with RL when available.%
+}
+
+% In QABG mode the abstract must be declared BEFORE \begin{document}.
+\ifqabg
+  \begin{abstract}\paperabstract\end{abstract}
+\fi
 
 % ============================================================
 %  Document
@@ -235,7 +278,12 @@ a fraction of the compute, and combines additively with RL when available.
 \begin{document}
 \maketitle
 
-% ---- Main sections ----
+% In ACL mode the abstract sits inside \begin{document}, after \maketitle.
+\ifqabg\else
+  \begin{abstract}\paperabstract\end{abstract}
+\fi
+
+% ---- Main sections (shared) ----
 \section{Introduction}
 \input{sections/1_introduction.tex}
 
@@ -255,7 +303,10 @@ a fraction of the compute, and combines additively with RL when available.
 \input{sections/limitations.tex}
 
 % ---- Bibliography ----
-\bibliographystyle{conference}
+% QABG uses conference.bst; ACL handles its own bibstyle via acl.sty.
+\ifqabg
+  \bibliographystyle{conference}
+\fi
 \bibliography{references}
 
 % ---- Appendix ----
