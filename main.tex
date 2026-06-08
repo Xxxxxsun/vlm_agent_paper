@@ -1,57 +1,52 @@
 % ============================================================
-%  Think with Images, Learn from Failure:
-%  Training-Free Self-Evolution of Visual Agents
-%  via Skill and Tool Generation
-%
-%  Target venue: *ACL submission  |  Page budget: 8 pages (main content)
+%  DYNAMO: Dynamic Skill-Tool Evolution for Vision-Language Agents
+%  Qwen Large Model Application Team (Alibaba) -- internal QABG template version
 % ============================================================
 
-% Pass xcolor options before documentclass to avoid option clash
-\PassOptionsToPackage{table}{xcolor}
+% Pass xcolor options BEFORE the documentclass.
+% googledeepmind.cls itself loads xcolor with [dvipsnames]; we add [table] for
+% \rowcolor / \cellcolor support.
+\PassOptionsToPackage{table,dvipsnames}{xcolor}
 
-\documentclass[11pt]{article}
-\usepackage[review]{acl}
+% ============================================================
+%  Layout: single-column (logo header on first page)
+%  - Switch to twocolumn by replacing this line with:
+%    \documentclass[10pt, a4paper, twocolumn, logo]{googledeepmind}
+% ============================================================
+\documentclass[10pt, a4paper, logo]{googledeepmind}
 
+% --- Packages NOT already loaded by googledeepmind.cls ---
 \usepackage{times}
-\usepackage{latexsym}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage{microtype}
 \usepackage{inconsolata}
+% mathalfa frees up math alphabet slots; needed because we load many packages
+% (listings, tcolorbox, algorithm2e, etc.) that each grab one.
+\usepackage[bb=ams]{mathalfa}
 
 % Provide \laplace before math_commands.tex attempts \renewcommand
 \providecommand{\laplace}{\mathcal{L}}
 
-% Math & notation
+% Math & notation (input macros from math_commands.tex)
 \input{math_commands.tex}
 
-% Standard packages
-\usepackage{url}
+% Standard packages (skip those loaded by the class to avoid option clashes)
 \usepackage{xurl}
-\usepackage{booktabs}
-\usepackage{graphicx}
 \usepackage{subcaption}
-\usepackage{amssymb}
-\usepackage{amsmath,amsfonts}
+\usepackage{amsmath,amsfonts}    % redundant with class load but harmless
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{breakable}
 \usepackage{siunitx}
-\usepackage{colortbl}
 \usepackage{color}
 \usepackage{wrapfig}
 \usepackage{array}
-\usepackage{textcomp}
 \usepackage{stfloats}
 \usepackage{float}
 \usepackage{verbatim}
 \usepackage{listings}
 \usepackage[ruled, linesnumbered, lined]{algorithm2e}
 \usepackage{multirow}
-\usepackage{enumitem}
-\usepackage{pifont}       % for \ding{51} / \ding{55} checkmarks
 \usepackage{etoolbox}
 \usepackage[normalem]{ulem}
-% Note: xcolor already loaded via \PassOptionsToPackage above
 
 % ---- Colour definitions ----
 \definecolor{BestColor}{HTML}{C8E6C9}
@@ -66,7 +61,7 @@
 \definecolor{codecomment}{HTML}{6A737D}   % comments / docstrings
 \definecolor{codenum}{HTML}{D0D7DE}       % line numbers
 \definecolor{codeframe}{HTML}{D0D7DE}     % subtle frame
-\definecolor{skillbg}{HTML}{F6F8FA}       % skill panel background (slightly different)
+\definecolor{skillbg}{HTML}{F6F8FA}       % skill panel background
 \definecolor{skillhdr}{HTML}{1F3D7A}      % section headers in skill markdown
 \definecolor{skillem}{HTML}{6A0DAD}       % emphasised field names
 
@@ -100,7 +95,7 @@
 \definecolor{refgoodbg}{HTML}{C7E9C0}   % light green for good-crop references
 \definecolor{refbadbg}{HTML}{FBD3D3}    % light red for bad-crop references
 
-% \hlref macros for using the same highlight outside lstlistings (e.g. in subcaptions)
+% Highlight macros for use outside lstlistings (e.g., in subcaptions)
 \newcommand{\hlgood}[1]{{\setlength{\fboxsep}{1.2pt}\colorbox{refgoodbg}{\strut #1}}}
 \newcommand{\hlbad}[1]{{\setlength{\fboxsep}{1.2pt}\colorbox{refbadbg}{\strut #1}}}
 
@@ -127,7 +122,7 @@
     {crop_bad.png}{{\hlbad{\texttt{crop\_bad.png}}}}{12}%
 }
 
-% Back-compat: keep old name as an alias to mdskill
+% Back-compat (older boxes referenced appendixsnippet)
 \lstdefinestyle{appendixsnippet}{
   basicstyle=\ttfamily\scriptsize,
   breaklines=true,
@@ -166,7 +161,6 @@
 \def\bb{\textcolor{blue}}
 
 % ---- Agent / notation macros ----
-% Change \sysname to your preferred system name before submission
 \newcommand{\sysname}{\textsc{Dynamo}}
 
 % Paper-specific math notation
@@ -199,20 +193,27 @@
 \newcommand{\scorebase}[1]{#1}
 
 % ============================================================
-%  Title, authors (anonymous for submission)
+%  Title, authors, affiliations
 % ============================================================
 \title{\sysname{}: Dynamic Skill-Tool Evolution for Vision-Language Agents}
 
-% Anonymous submission; the ACL review option replaces this with an anonymous header.
-\author{Anonymous ACL submission}
+\author[1]{Yutao Sun}
+\author[1]{Yanting Miao}
+\author[1]{Hao-Xuan Ma}
+\author[1]{Mengyu Zhou\textsuperscript{$\dag$}}
+\author[1]{Mingshuai Chen}
+\author[1]{Tiancheng Zhao}
+\author[1]{Dexin Wang}
+\author[1]{Lei Lv}
+\author[1]{Li Xu}
+\author[1]{Xiaoxi Jiang}
+\author[1]{Guanjun Jiang}
+\affil[1]{Qwen Large Model Application Team, Alibaba}
+\correspondingauthor{Mengyu Zhou (\texttt{zhoumengyu.zmy@alibaba-inc.com})}
 
 % ============================================================
-%  Abstract
+%  Abstract -- must come BEFORE \begin{document} for googledeepmind class
 % ============================================================
-
-\begin{document}
-\maketitle
-
 \begin{abstract}
 Improving vision-language models (VLMs) on visual reasoning typically requires retraining
 or hand-designed prompts and tools. We present \sysname{}, a training-free framework
@@ -227,6 +228,12 @@ inference on all 20 model--benchmark settings (avg.\ $+5.6$ acc). When the tool 
 per-step tool choice improves on every tested backbone. Against task-specific RL (VTool-R1, DeepEyes), \sysname{} closes 65--99\% of the RL gap at
 a fraction of the compute, and combines additively with RL when available.
 \end{abstract}
+
+% ============================================================
+%  Document
+% ============================================================
+\begin{document}
+\maketitle
 
 % ---- Main sections ----
 \section{Introduction}
@@ -248,6 +255,7 @@ a fraction of the compute, and combines additively with RL when available.
 \input{sections/limitations.tex}
 
 % ---- Bibliography ----
+\bibliographystyle{conference}
 \bibliography{references}
 
 % ---- Appendix ----
