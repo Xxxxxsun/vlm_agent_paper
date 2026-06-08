@@ -19,9 +19,10 @@
 \usepackage{times}
 \usepackage{microtype}
 \usepackage{inconsolata}
-% mathalfa frees up math alphabet slots; needed because we load many packages
-% (listings, tcolorbox, algorithm2e, etc.) that each grab one.
-\usepackage[bb=ams]{mathalfa}
+% Free a math alphabet slot before too many packages are loaded.
+% (listings + tcolorbox + algorithm2e + xcolor each grab one and hit the
+%  16-alphabet limit. Reusing AMSb avoids needing a separate mathbb font.)
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
 
 % Provide \laplace before math_commands.tex attempts \renewcommand
 \providecommand{\laplace}{\mathcal{L}}

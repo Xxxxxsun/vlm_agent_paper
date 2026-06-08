@@ -1,0 +1,29 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ind
+*.ilg
+
+# macOS
+.DS_Store
+
+# PowerPoint working files
+~$*
+*.pptx#
+
+# IDE / Editor
+.vscode/
+.idea/
