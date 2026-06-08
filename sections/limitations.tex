@@ -13,7 +13,7 @@ less capable backbones may converge more slowly or to a less useful library.
 
 \paragraph{Benchmark scope.}
 We evaluate capability evolution on image-based VLMs across four visual-reasoning
-benchmarks plus GTA and the VTool-R1 / DeepEyes splits. Video VLMs and other modalities
+benchmarks plus GTA and the VTool-R1 / DeepEyes splits. Other modalities
 (3D spatial reasoning, medical imaging) are outside the current scope; whether the
 cognitive / perceptual decision rule and the executable-tool interface transfer to those
 settings is left to future work.
@@ -22,10 +22,10 @@ settings is left to future work.
 Both the offline evolution loop and the online adaptation policy
 (Sections~\ref{sec:method_loop}--\ref{sec:method_adaptation}) require a per-case
 correctness signal to drive diagnosis and the multi-candidate selection rule. Our
-experiments use ground-truth labels from the benchmark splits as this signal, which
+experiments use ground-truth from the benchmark splits as this signal, which
 corresponds to deployment settings with human-in-the-loop review, an automated
 quality-assurance pipeline, or an LLM-based post-hoc verifier. Deployments that have no
 access to any of these channels---i.e.\ fully unsupervised production traffic---fall
 outside the scope of the current method; extending \sysname{} to that setting would
-require a confidence-based or self-consistency-based feedback substitute that we leave
+require a confidence-based or self-consistency-based feedback substitute that leave
 to future work.
